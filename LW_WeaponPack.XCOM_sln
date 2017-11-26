@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # XCOM ModBuddy Solution File, Format Version 11.00
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{5DAE07AF-E217-45C1-8DE7-FF99D6011E8A}") = "LW_WeaponPack", "LW_WeaponPack\LW_WeaponPack.x2proj", "{7D2D4540-90D8-45A2-AB9C-716642C9D762}"
+Project("{5DAE07AF-E217-45C1-8DE7-FF99D6011E8A}") = "LW_WeaponPack", "LW_WeaponPack\LW_WeaponPack.x2proj", "{E52E5707-F661-465F-8DE3-C3BC46FD4FA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,10 +10,10 @@ Global
 		Default|XCOM 2 = Default|XCOM 2
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7D2D4540-90D8-45A2-AB9C-716642C9D762}.Debug|XCOM 2.ActiveCfg = Debug|XCOM 2
-		{7D2D4540-90D8-45A2-AB9C-716642C9D762}.Debug|XCOM 2.Build.0 = Debug|XCOM 2
-		{7D2D4540-90D8-45A2-AB9C-716642C9D762}.Default|XCOM 2.ActiveCfg = Default|XCOM 2
-		{7D2D4540-90D8-45A2-AB9C-716642C9D762}.Default|XCOM 2.Build.0 = Default|XCOM 2
+		{E52E5707-F661-465F-8DE3-C3BC46FD4FA0}.Debug|XCOM 2.ActiveCfg = Default|XCOM 2
+		{E52E5707-F661-465F-8DE3-C3BC46FD4FA0}.Debug|XCOM 2.Build.0 = Default|XCOM 2
+		{E52E5707-F661-465F-8DE3-C3BC46FD4FA0}.Default|XCOM 2.ActiveCfg = Default|XCOM 2
+		{E52E5707-F661-465F-8DE3-C3BC46FD4FA0}.Default|XCOM 2.Build.0 = Default|XCOM 2
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,15 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Default" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Guid>b494d73c-4e2f-4ef9-bfde-72692f9ffe84</Guid>
+    <ProjectGuid>{e52e5707-f661-465f-8de3-c3bc46fd4fa0}</ProjectGuid>
     <Name>LW_WeaponPack</Name>
-    <Description>Compilation of Long War weapon mods for XCOM 2</Description>
-    <SteamPublishID>0</SteamPublishID>
-    <AssemblyName>LW_WeaponPack</AssemblyName>
-    <RootNamespace>LW_WeaponPack</RootNamespace>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <OutputPath>bin\Debug\</OutputPath>
+    <Description>Long war of the chosen weapon pack. SMG, laser, and coil weapons.</Description>
+    <Guid>002c1ba4-4d70-4911-937f-5f7305a1f09c</Guid>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Config\XComEditor.ini">
