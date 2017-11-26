@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Default" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Guid>b494d73c-4e2f-4ef9-bfde-72692f9ffe84</Guid>
+    <Name>LW_WeaponPack</Name>
+    <Description>Compilation of Long War weapon mods for XCOM 2</Description>
+    <SteamPublishID>0</SteamPublishID>
+    <AssemblyName>LW_WeaponPack</AssemblyName>
+    <RootNamespace>LW_WeaponPack</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Config\XComEditor.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComEngine.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComGame.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComLW_WeaponPack.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComStrategyTuning.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWAccessories_CG.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWAssaultRifle_CG.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWAssaultRifle_LS.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWAttachments_LS.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWCannon_CG.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWCannon_LS.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWPistol_CG.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWPistol_LS.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWShotgun_CG.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWShotgun_LS.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWSMG_BM.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWSMG_CG.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWSMG_CV.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWSMG_LS.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWSMG_MG.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWSniperRifle_CG.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LWSniperRifle_LS.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\UILibrary_LW_Coilguns.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\UILibrary_LW_LaserPack.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\UILibrary_SMG.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Coils\XComGame.chn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Coils\XComGame.cht">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Coils\XComGame.deu">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Coils\XComGame.esn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Coils\XComGame.fra">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Coils\XComGame.int">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Coils\XComGame.ita">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Coils\XComGame.jpn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Coils\XComGame.kor">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Coils\XComGame.pol">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Coils\XComGame.rus">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Lasers\XComGame.chn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Lasers\XComGame.cht">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Lasers\XComGame.deu">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Lasers\XComGame.esn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Lasers\XComGame.fra">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Lasers\XComGame.int">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Lasers\XComGame.ita">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Lasers\XComGame.jpn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Lasers\XComGame.kor">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Lasers\XComGame.pol">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Lasers\XComGame.rus">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\SMGs\XComGame.chn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\SMGs\XComGame.cht">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\SMGs\XComGame.deu">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\SMGs\XComGame.esn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\SMGs\XComGame.fra">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\SMGs\XComGame.int">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\SMGs\XComGame.ita">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\SMGs\XComGame.jpn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\SMGs\XComGame.kor">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\SMGs\XComGame.pol">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\SMGs\XComGame.rus">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModPreview.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ReadMe.txt" />
+    <Content Include="Src\LW_WeaponPack\Classes\X2Ability_SMGAbilities.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_WeaponPack\Classes\X2DownloadableContentInfo_LWWeaponPack.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_WeaponPack\Classes\X2Item_Coilguns.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_WeaponPack\Classes\X2Item_LaserSchematics.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_WeaponPack\Classes\X2Item_LaserWeapons.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_WeaponPack\Classes\X2Item_SMGSchematics.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_WeaponPack\Classes\X2Item_SMGWeapon.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_WeaponPack\Classes\X2StrategyElement_LaserTechs.uc">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Config\" />
+    <Folder Include="Content\" />
+    <Folder Include="Localization\" />
+    <Folder Include="Localization\Lasers" />
+    <Folder Include="Localization\Coils" />
+    <Folder Include="Localization\SMGs" />
+    <Folder Include="Src\" />
+    <Folder Include="Src\LW_WeaponPack\" />
+    <Folder Include="Src\LW_WeaponPack\Classes\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildLocalExtensionPath)\XCOM2.targets" />
+</Project>
