@@ -2,12 +2,12 @@
 //  FILE:    X2DownloadableContentInfo_LWSMGPack.uc
 //  AUTHOR:  Amineri / Pavonis Interactive
 //  PURPOSE: Initializes Officer mod settings on campaign start or when loading campaign without mod previously active
-//--------------------------------------------------------------------------------------- 
+//---------------------------------------------------------------------------------------
 
-class X2DownloadableContentInfo_LWWeaponPack extends X2DownloadableContentInfo;	
+class X2DownloadableContentInfo_LWOTCWeaponPack extends X2DownloadableContentInfo;	
 
 /// <summary>
-/// This method is run if the player loads a saved game that was created prior to this DLC / Mod being installed, and allows the 
+/// This method is run if the player loads a saved game that was created prior to this DLC / Mod being installed, and allows the
 /// DLC / Mod to perform custom processing in response. This will only be called once the first time a player loads a save that was
 /// create without the content installed. Subsequent saves will record that the content was installed.
 /// </summary>
@@ -149,7 +149,7 @@ static function UpdateSMGAttachmentTemplates()
 static function CopySchematicLoc (X2ItemTemplateManager ItemTemplateMgr, Name NewItem, Name BaseItem)
 {
 	local X2SchematicTemplate NewTemplate, BaseTemplate;
-	
+
 	BaseTemplate = X2SchematicTemplate (ItemTemplateMgr.FindItemTemplate (BaseItem));
 	NewTemplate = X2SchematicTemplate (ItemTemplateMgr.FindItemTemplate (NewItem));
 
@@ -194,14 +194,14 @@ static function AddSMGCritUpgrade(X2ItemTemplateManager ItemTemplateManager, Nam
 	local X2WeaponUpgradeTemplate Template;
 
 	Template = X2WeaponUpgradeTemplate(ItemTemplateManager.FindItemTemplate(TemplateName));
-	if(Template == none) 
+	if(Template == none)
 	{
 		`Redscreen("LW SMGPack : Failed to find upgrade template " $ string(TemplateName));
 		return;
 	}
 
 	// NEW Crit UPGRADE CONFIGURATION
-	//Parameters are : 	AttachSocket, UIArmoryCameraPointTag, MeshName, ProjectileName, MatchWeaponTemplate, AttachToPawn, IconName, InventoryIconName, InventoryCategoryIcon, ValidateAttachmentFn  
+	//Parameters are : 	AttachSocket, UIArmoryCameraPointTag, MeshName, ProjectileName, MatchWeaponTemplate, AttachToPawn, IconName, InventoryIconName, InventoryCategoryIcon, ValidateAttachmentFn
 	Template.AddUpgradeAttachment('Optic', 'UIPawnLocation_WeaponUpgrade_AssaultRifle_Optic', "LWSMG_CV.Meshes.SK_LWConvSMG_OpticB", "", 'SMG_CV', , "img:///UILibrary_SMG.conventional.LWConvSMG_OpticB", "img:///UILibrary_StrategyImages.X2InventoryIcons.ConvAssault_OpticB_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_scope");
 	Template.AddUpgradeAttachment('Optic', 'UIPawnLocation_WeaponUpgrade_AssaultRifle_Optic', "LWSMG_MG.Meshes.SK_LWMagSMG_OpticB", "", 'SMG_MG', , "img:///UILibrary_SMG.magnetic.LWMagSMG_OpticB", "img:///UILibrary_StrategyImages.X2InventoryIcons.MagAssaultRifle_OpticB_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_scope");
 	Template.AddUpgradeAttachment('Optic', 'UIPawnLocation_WeaponUpgrade_AssaultRifle_Optic', "LWSMG_BM.Meshes.SK_LWBeamSMG_OpticB", "", 'SMG_BM', , "img:///UILibrary_SMG.Beam.LWBeamSMG_OpticB", "img:///UILibrary_StrategyImages.X2InventoryIcons.BeamAssaultRifle_OpticA_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_scope");
@@ -212,7 +212,7 @@ static function AddSMGAimBonusUpgrade(X2ItemTemplateManager ItemTemplateManager,
 	local X2WeaponUpgradeTemplate Template;
 
 	Template = X2WeaponUpgradeTemplate(ItemTemplateManager.FindItemTemplate(TemplateName));
-	if(Template == none) 
+	if(Template == none)
 	{
 		`Redscreen("LW SMGPack : Failed to find upgrade template " $ string(TemplateName));
 		return;
@@ -230,14 +230,14 @@ static function AddSMGClipSizeBonusUpgrade(X2ItemTemplateManager ItemTemplateMan
 	local X2WeaponUpgradeTemplate Template;
 
 	Template = X2WeaponUpgradeTemplate(ItemTemplateManager.FindItemTemplate(TemplateName));
-	if(Template == none) 
+	if(Template == none)
 	{
 		`Redscreen("LW SMGPack : Failed to find upgrade template " $ string(TemplateName));
 		return;
 	}
 
-	// NEW ClipSize UPGRADE CONFIGURATION  
-	//Parameters are : 	AttachSocket, UIArmoryCameraPointTag, MeshName, ProjectileName, MatchWeaponTemplate, AttachToPawn, IconName, InventoryIconName, InventoryCategoryIcon, ValidateAttachmentFn 
+	// NEW ClipSize UPGRADE CONFIGURATION
+	//Parameters are : 	AttachSocket, UIArmoryCameraPointTag, MeshName, ProjectileName, MatchWeaponTemplate, AttachToPawn, IconName, InventoryIconName, InventoryCategoryIcon, ValidateAttachmentFn
 	Template.AddUpgradeAttachment('Mag', 'UIPawnLocation_WeaponUpgrade_AssaultRifle_Optic', "LWSMG_CV.Meshes.SK_LWConvSMG_MagB", "", 'SMG_CV', , "img:///UILibrary_SMG.conventional.LWConvSMG_MagB", "img:///UILibrary_SMG.conventional.LWConvSMG_MagB_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_clip", class'X2Item_DefaultUpgrades'.static.NoReloadUpgradePresent);
 	Template.AddUpgradeAttachment('Mag', 'UIPawnLocation_WeaponUpgrade_AssaultRifle_Mag', "MagAssaultRifle.Meshes.SM_MagAssaultRifle_MagB", "", 'SMG_MG', , "img:///UILibrary_SMG.magnetic.LWMagSMG_MagB", "img:///UILibrary_StrategyImages.X2InventoryIcons.MagAssaultRifle_MagB_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_clip", class'X2Item_DefaultUpgrades'.static.NoReloadUpgradePresent);
 	Template.AddUpgradeAttachment('Mag', 'UIPawnLocation_WeaponUpgrade_AssaultRifle_Mag', "BeamAssaultRifle.Meshes.SM_BeamAssaultRifle_MagB", "", 'SMG_BM', , "img:///UILibrary_SMG.Beam.LWBeamSMG_MagB", "img:///UILibrary_StrategyImages.X2InventoryIcons.BeamAssaultRifle_MagB_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_clip");
@@ -248,7 +248,7 @@ static function AddSMGFreeFireBonusUpgrade(X2ItemTemplateManager ItemTemplateMan
 	local X2WeaponUpgradeTemplate Template;
 
 	Template = X2WeaponUpgradeTemplate(ItemTemplateManager.FindItemTemplate(TemplateName));
-	if(Template == none) 
+	if(Template == none)
 	{
 		`Redscreen("LW SMGPack : Failed to find upgrade template " $ string(TemplateName));
 		return;
@@ -263,21 +263,21 @@ static function AddSMGFreeFireBonusUpgrade(X2ItemTemplateManager ItemTemplateMan
 
 	Template.AddUpgradeAttachment('Trigger', '', "MagAttachments.Meshes.SM_MagTriggerB", "", 'SMG_MG');
 
-} 
+}
 
 static function AddSMGReloadUpgrade(X2ItemTemplateManager ItemTemplateManager, Name TemplateName)
 {
 	local X2WeaponUpgradeTemplate Template;
 
 	Template = X2WeaponUpgradeTemplate(ItemTemplateManager.FindItemTemplate(TemplateName));
-	if(Template == none) 
+	if(Template == none)
 	{
 		`Redscreen("LW SMGPack : Failed to find upgrade template " $ string(TemplateName));
 		return;
 	}
 
-	// NEW Reload UPGRADE CONFIGURATION  
-	//Parameters are : 	AttachSocket, UIArmoryCameraPointTag, MeshName, ProjectileName, MatchWeaponTemplate, AttachToPawn, IconName, InventoryIconName, InventoryCategoryIcon, ValidateAttachmentFn 
+	// NEW Reload UPGRADE CONFIGURATION
+	//Parameters are : 	AttachSocket, UIArmoryCameraPointTag, MeshName, ProjectileName, MatchWeaponTemplate, AttachToPawn, IconName, InventoryIconName, InventoryCategoryIcon, ValidateAttachmentFn
 	Template.AddUpgradeAttachment('Mag', 'UIPawnLocation_WeaponUpgrade_AssaultRifle_Optic', "LWSMG_CV.Meshes.SK_LWConvSMG_MagC", "", 'SMG_CV', , "img:///UILibrary_SMG.conventional.LWConvSMG_MagC", "img:///UILibrary_SMG.conventional.LWConvSMG_MagC_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_clip", class'X2Item_DefaultUpgrades'.static.NoClipSizeUpgradePresent);
 	Template.AddUpgradeAttachment('Mag', 'UIPawnLocation_WeaponUpgrade_AssaultRifle_Optic', "LWSMG_CV.Meshes.SK_LWConvSMG_MagD", "", 'SMG_CV', , "img:///UILibrary_SMG.conventional.LWConvSMG_MagD", "img:///UILibrary_SMG.conventional.LWConvSMG_MagD_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_clip", class'X2Item_DefaultUpgrades'.static.ClipSizeUpgradePresent);
 	Template.AddUpgradeAttachment('Mag', 'UIPawnLocation_WeaponUpgrade_AssaultRifle_Mag', "MagAssaultRifle.Meshes.SM_MagAssaultRifle_MagC", "", 'SMG_MG', , "img:///UILibrary_SMG.magnetic.LWMagSMG_MagC", "img:///UILibrary_StrategyImages.X2InventoryIcons.MagAssaultRifle_MagC_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_clip", class'X2Item_DefaultUpgrades'.static.NoClipSizeUpgradePresent);
@@ -290,29 +290,29 @@ static function AddSMGMissDamageUpgrade(X2ItemTemplateManager ItemTemplateManage
 	local X2WeaponUpgradeTemplate Template;
 
 	Template = X2WeaponUpgradeTemplate(ItemTemplateManager.FindItemTemplate(TemplateName));
-	if(Template == none) 
+	if(Template == none)
 	{
 		`Redscreen("LW SMGPack : Failed to find upgrade template " $ string(TemplateName));
 		return;
 	}
 
 	// NEW MissDamage UPGRADE CONFIGURATION
-	//Parameters are : 	AttachSocket, UIArmoryCameraPointTag, MeshName, ProjectileName, MatchWeaponTemplate, AttachToPawn, IconName, InventoryIconName, InventoryCategoryIcon, ValidateAttachmentFn  
+	//Parameters are : 	AttachSocket, UIArmoryCameraPointTag, MeshName, ProjectileName, MatchWeaponTemplate, AttachToPawn, IconName, InventoryIconName, InventoryCategoryIcon, ValidateAttachmentFn
 	//Template.AddUpgradeAttachment('Stock', 'UIPawnLocation_WeaponUpgrade_AssaultRifle_Stock', "LWSMG_CV.Meshes.SM_LWConvSMG_StockB", "", 'SMG_CV', , "img:///UILibrary_SMG.conventional.LWConvSMG_StockB", "img:///UILibrary_SMG.conventional.LWConvSMG_StockB_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_stock");
 	Template.AddUpgradeAttachment('StockB', 'UIPawnLocation_WeaponUpgrade_Shotgun_Stock', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_StockB", "", 'SMG_CV', , "img:///UILibrary_SMG.conventional.LWConvSMG_StockB_alt", "img:///UILibrary_StrategyImages.X2InventoryIcons.ConvAssault_StockB_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_stock");
 	Template.AddUpgradeAttachment('Stock', 'UIPawnLocation_WeaponUpgrade_AssaultRifle_Stock', "MagAssaultRifle.Meshes.SM_MagAssaultRifle_StockB", "", 'SMG_MG', , "img:///UILibrary_SMG.magnetic.LWMagSMG_StockB", "img:///UILibrary_StrategyImages.X2InventoryIcons.MagAssaultRifle_StockB_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_stock");
 	Template.AddUpgradeAttachment('HeatSink', 'UIPawnLocation_WeaponUpgrade_AssaultRifle_Optic', "LWSMG_BM.Meshes.SK_LWBeamSMG_HeatsinkB", "", 'SMG_BM', , "img:///UILibrary_SMG.Beam.LWBeamSMG_HeatsinkB", "img:///UILibrary_StrategyImages.X2InventoryIcons.BeamSniper_HeatsinkB_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_stock");
-	
+
 	//Template.AddUpgradeAttachment('Crossbar', '', "ConvAttachments.Meshes.SM_ConvCrossbar", "", 'SMG_CV', , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_CrossbarA", , , class'X2Item_DefaultUpgrades'.static.FreeFireUpgradePresent);
 	Template.AddUpgradeAttachment('Crossbar', '', "MagAttachments.Meshes.SM_MagCrossbar", "", 'SMG_MG', , "img:///UILibrary_SMG.magnetic.LWMagSMG_Crossbar", , , class'X2Item_DefaultUpgrades'.static.FreeFireUpgradePresent);
-} 
+}
 
 static function AddSMGFreeKillUpgrade(X2ItemTemplateManager ItemTemplateManager, Name TemplateName)
 {
 	local X2WeaponUpgradeTemplate Template;
 
 	Template = X2WeaponUpgradeTemplate(ItemTemplateManager.FindItemTemplate(TemplateName));
-	if(Template == none) 
+	if(Template == none)
 	{
 		`Redscreen("LW SMGPack : Failed to find upgrade template " $ string(TemplateName));
 		return;
@@ -322,8 +322,8 @@ static function AddSMGFreeKillUpgrade(X2ItemTemplateManager ItemTemplateManager,
 	//Parameters are : 	AttachSocket, UIArmoryCameraPointTag, MeshName, ProjectileName, MatchWeaponTemplate, AttachToPawn, IconName, InventoryIconName, InventoryCategoryIcon, ValidateAttachmentFn
 	Template.AddUpgradeAttachment('Suppressor', 'UIPawnLocation_WeaponUpgrade_AssaultRifle_Suppressor', "LWSMG_CV.Meshes.SK_LWConvSMG_SuppressorB", "", 'SMG_CV', , "img:///UILibrary_SMG.conventional.LWConvSMG_SuppressorB", "img:///UILibrary_StrategyImages.X2InventoryIcons.ConvAssault_SuppressorB_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_barrel");
 	Template.AddUpgradeAttachment('SuppressorB', 'UIPawnLocation_WeaponUpgrade_AssaultRifle_Suppressor', "MagShotgun.Meshes.SM_MagShotgun_SuppressorB", "", 'SMG_MG', , "img:///UILibrary_SMG.magnetic.LWMagSMG_SuppressorB", "img:///UILibrary_StrategyImages.X2InventoryIcons.MagShotgun_SuppressorB_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_barrel");
-	Template.AddUpgradeAttachment('Suppressor', 'UIPawnLocation_WeaponUpgrade_AssaultRifle_Suppressor', "LWSMG_BM.Meshes.SK_LWBeamSMG_SuppressorA", "", 'SMG_BM', , "img:///UILibrary_SMG.Beam.LWBeamSMG_SuppressorA", "img:///UILibrary_SMG.Beam.Inv_LWBeamSMG_SuppressorA", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_barrel");  
-} 
+	Template.AddUpgradeAttachment('Suppressor', 'UIPawnLocation_WeaponUpgrade_AssaultRifle_Suppressor', "LWSMG_BM.Meshes.SK_LWBeamSMG_SuppressorA", "", 'SMG_BM', , "img:///UILibrary_SMG.Beam.LWBeamSMG_SuppressorA", "img:///UILibrary_SMG.Beam.Inv_LWBeamSMG_SuppressorA", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_barrel");
+}
 
 // *************************************************************************
 // ************  Laser Section *********************************************
@@ -336,7 +336,7 @@ static function UpdateLaserAttachmentTemplates()
 	//get access to item template manager to update existing upgrades
 	ItemTemplateManager = class'X2ItemTemplateManager'.static.GetItemTemplateManager();
 
-	if (ItemTemplateManager == none) 
+	if (ItemTemplateManager == none)
 	{
 		`Redscreen("LW LaserWeapons : failed to retrieve ItemTemplateManager to configure upgrades");
 		return;
@@ -378,7 +378,7 @@ static function AddLaserCritUpgrade(X2ItemTemplateManager ItemTemplateManager, N
 	local X2WeaponUpgradeTemplate Template;
 
 	Template = X2WeaponUpgradeTemplate(ItemTemplateManager.FindItemTemplate(TemplateName));
-	if(Template == none) 
+	if(Template == none)
 	{
 		`Redscreen("LW SMGPack : Failed to find upgrade template " $ string(TemplateName));
 		return;
@@ -393,7 +393,7 @@ static function AddLaserCritUpgrade(X2ItemTemplateManager ItemTemplateManager, N
 
 	// Shotgun
 	Template.AddUpgradeAttachment('Optic', 'UIPawnLocation_WeaponUpgrade_Shotgun_Optic', "LWShotgun_LS.Meshes.SK_LaserShotgun_Optic_B", "", 'Shotgun_LS', , "img:///UILibrary_LW_LaserPack.LaserShotgun_OpticC", "img:///UILibrary_LW_LaserPack.Inv_Laser_OpticC", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_scope");
-	
+
 	// Sniper Rifle
 	Template.AddUpgradeAttachment('Optic', 'UIPawnLocation_WeaponUpgrade_Sniper_Optic', "LWSniperRifle_LS.Meshes.SK_LaserSniper_Optic_C", "", 'SniperRifle_LS', , "img:///UILibrary_LW_LaserPack.LaserSniper_OpticC", "img:///UILibrary_LW_LaserPack.Inv_Laser_OpticC", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_scope");
 
@@ -407,7 +407,7 @@ static function AddLaserAimBonusUpgrade(X2ItemTemplateManager ItemTemplateManage
 	local X2WeaponUpgradeTemplate Template;
 
 	Template = X2WeaponUpgradeTemplate(ItemTemplateManager.FindItemTemplate(TemplateName));
-	if(Template == none) 
+	if(Template == none)
 	{
 		`Redscreen("LW SMGPack : Failed to find upgrade template " $ string(TemplateName));
 		return;
@@ -425,7 +425,7 @@ static function AddLaserAimBonusUpgrade(X2ItemTemplateManager ItemTemplateManage
 
 	// Sniper Rifle
 	Template.AddUpgradeAttachment('Optic', 'UIPawnLocation_WeaponUpgrade_Sniper_Optic', "LWSniperRifle_LS.Meshes.SK_LaserSniper_Optic_B", "", 'SniperRifle_LS', , "img:///UILibrary_LW_LaserPack.LaserSniper_OpticB", "img:///UILibrary_LW_LaserPack.Inv_LaserSniper_OpticB", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_scope");
-	
+
 	// Cannon
 	Template.AddUpgradeAttachment('Optic', 'UIPawnLocation_WeaponUpgrade_Cannon_Optic', "LWCannon_LS.Meshes.SK_LaserCannon_Optic_A", "", 'Cannon_LS', , "img:///UILibrary_LW_LaserPack.LaserCannon_OpticA", "img:///UILibrary_LW_LaserPack.Inv_LaserCannon_OpticA", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_scope");
 }
@@ -435,7 +435,7 @@ static function AddLaserClipSizeBonusUpgrade(X2ItemTemplateManager ItemTemplateM
 	local X2WeaponUpgradeTemplate Template;
 
 	Template = X2WeaponUpgradeTemplate(ItemTemplateManager.FindItemTemplate(TemplateName));
-	if(Template == none) 
+	if(Template == none)
 	{
 		`Redscreen("LW SMGPack : Failed to find upgrade template " $ string(TemplateName));
 		return;
@@ -463,7 +463,7 @@ static function AddLaserFreeFireBonusUpgrade(X2ItemTemplateManager ItemTemplateM
 	local X2WeaponUpgradeTemplate Template;
 
 	Template = X2WeaponUpgradeTemplate(ItemTemplateManager.FindItemTemplate(TemplateName));
-	if(Template == none) 
+	if(Template == none)
 	{
 		`Redscreen("LW SMGPack : Failed to find upgrade template " $ string(TemplateName));
 		return;
@@ -472,26 +472,26 @@ static function AddLaserFreeFireBonusUpgrade(X2ItemTemplateManager ItemTemplateM
 	//Parameters are : 	AttachSocket, UIArmoryCameraPointTag, MeshName, ProjectileName, MatchWeaponTemplate, AttachToPawn, IconName, InventoryIconName, InventoryCategoryIcon, ValidateAttachmentFn
 	// Assault Rifle
 	Template.AddUpgradeAttachment('Reargrip', 'UIPawnLocation_WeaponUpgrade_AssaultRifle_Mag', "LWAttachments_LS.Meshes.SK_Laser_Trigger_B", "", 'AssaultRifle_LS', , "img:///UILibrary_LW_LaserPack.LaserRifle_TriggerB", "img:///UILibrary_LW_LaserPack.Inv_Laser_TriggerB", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_trigger");
-	
+
 	//SMG
 	Template.AddUpgradeAttachment('Reargrip', 'UIPawnLocation_WeaponUpgrade_AssaultRifle_Mag', "LWAttachments_LS.Meshes.SK_Laser_Trigger_B", "", 'SMG_LS', , "img:///UILibrary_LW_LaserPack.LaserSMG_TriggerB", "img:///UILibrary_LW_LaserPack.Inv_Laser_TriggerB", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_trigger");
 
 	// Shotgun
 	Template.AddUpgradeAttachment('Reargrip', 'UIPawnLocation_WeaponUpgrade_Shotgun_Mag', "LWAttachments_LS.Meshes.SK_Laser_Trigger_B", "", 'Shotgun_LS', , "img:///UILibrary_LW_LaserPack.LaserShotgun_TriggerB", "img:///UILibrary_LW_LaserPack.Inv_Laser_TriggerB", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_trigger");
-	
+
 	// Sniper
 	Template.AddUpgradeAttachment('Reargrip', 'UIPawnLocation_WeaponUpgrade_Sniper_Mag', "LWAttachments_LS.Meshes.SK_Laser_Trigger_B", "", 'SniperRifle_LS', , "img:///UILibrary_LW_LaserPack.LaserSniper_TriggerB", "img:///UILibrary_LW_LaserPack.Inv_Laser_TriggerB", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_trigger");
 
 	// Cannon
 	Template.AddUpgradeAttachment('Reargrip', 'UIPawnLocation_WeaponUpgrade_Cannon_Mag', "LWCannon_LS.Meshes.SK_LaserCannon_Trigger_B", "", 'Cannon_LS', , "img:///UILibrary_LW_LaserPack.LaserCannon_TriggerB", "img:///UILibrary_LW_LaserPack.Inv_LaserCannon_TriggerB", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_trigger");
-} 
+}
 
 static function AddLaserReloadUpgrade(X2ItemTemplateManager ItemTemplateManager, Name TemplateName)
 {
 	local X2WeaponUpgradeTemplate Template;
 
 	Template = X2WeaponUpgradeTemplate(ItemTemplateManager.FindItemTemplate(TemplateName));
-	if(Template == none) 
+	if(Template == none)
 	{
 		`Redscreen("LW SMGPack : Failed to find upgrade template " $ string(TemplateName));
 		return;
@@ -506,7 +506,7 @@ static function AddLaserReloadUpgrade(X2ItemTemplateManager ItemTemplateManager,
 
 	// Shotgun
 	Template.AddUpgradeAttachment('Foregrip', 'UIPawnLocation_WeaponUpgrade_Shotgun_Mag', "LWAttachments_LS.Meshes.SK_Laser_Foregrip_B", "", 'Shotgun_LS', , "img:///UILibrary_LW_LaserPack.LaserShotgun_ForegripB", "img:///UILibrary_LW_LaserPack.Inv_Laser_ForegripB", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_clip");
-	
+
 	// Sniper
 	Template.AddUpgradeAttachment('Foregrip', 'UIPawnLocation_WeaponUpgrade_Sniper_Mag', "LWAttachments_LS.Meshes.SK_Laser_Foregrip_B", "", 'SniperRifle_LS', , "img:///UILibrary_LW_LaserPack.LaserSniper_ForegripB", "img:///UILibrary_LW_LaserPack.Inv_Laser_ForegripB", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_clip");
 
@@ -519,7 +519,7 @@ static function AddLaserMissDamageUpgrade(X2ItemTemplateManager ItemTemplateMana
 	local X2WeaponUpgradeTemplate Template;
 
 	Template = X2WeaponUpgradeTemplate(ItemTemplateManager.FindItemTemplate(TemplateName));
-	if(Template == none) 
+	if(Template == none)
 	{
 		`Redscreen("LW SMGPack : Failed to find upgrade template " $ string(TemplateName));
 		return;
@@ -544,14 +544,14 @@ static function AddLaserMissDamageUpgrade(X2ItemTemplateManager ItemTemplateMana
 
 	// Cannon
 	Template.AddUpgradeAttachment('Stock', 'UIPawnLocation_WeaponUpgrade_Cannon_Stock', "LWCannon_LS.Meshes.SK_LaserCannon_Stock_B", "", 'Cannon_LS', , "img:///UILibrary_LW_LaserPack.LaserCannon_StockB", "img:///UILibrary_LW_LaserPack.Inv_LaserCannon_StockB", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_stock");
-} 
+}
 
 static function AddLaserFreeKillUpgrade(X2ItemTemplateManager ItemTemplateManager, Name TemplateName)
 {
 	local X2WeaponUpgradeTemplate Template;
 
 	Template = X2WeaponUpgradeTemplate(ItemTemplateManager.FindItemTemplate(TemplateName));
-	if(Template == none) 
+	if(Template == none)
 	{
 		`Redscreen("LW SMGPack : Failed to find upgrade template " $ string(TemplateName));
 		return;
@@ -569,10 +569,10 @@ static function AddLaserFreeKillUpgrade(X2ItemTemplateManager ItemTemplateManage
 
 	// Sniper Rifle
 	Template.AddUpgradeAttachment('Suppressor', 'UIPawnLocation_WeaponUpgrade_Sniper_Suppressor', "LWSniperRifle_LS.Meshes.SK_LaserSniper_Suppressor", "", 'SniperRifle_LS', , "img:///UILibrary_LW_LaserPack.LaserSniper_Suppressor", "img:///UILibrary_LW_LaserPack.Inv_LaserSniper_Suppressor", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_barrel");
-	
+
 	// Cannon
 	Template.AddUpgradeAttachment('Suppressor', 'UIPawnLocation_WeaponUpgrade_Cannon_Suppressor', "LWCannon_LS.Meshes.SK_LaserCannon_Suppressor", "", 'Cannon_LS', , "img:///UILibrary_LW_LaserPack.LaserCannon_Suppressor", "img:///UILibrary_LW_LaserPack.Inv_LaserCannon_Suppressor", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_barrel");
-} 
+}
 
 // This handles creating necessary XCGS_Tech items, which are used to load templates in various places
 static function AddLaserTechGameStates()
@@ -758,7 +758,7 @@ static function UpdateSchematicTemplate(X2ItemTemplateManager ItemTemplateMgr, n
 		SchematicTemplate = X2SchematicTemplate(ItemTemplate);
 		if(SchematicTemplate!=none)
 		{
-			SchematicTemplate.HideIfPurchased = HideIfPurchased; 
+			SchematicTemplate.HideIfPurchased = HideIfPurchased;
 		}
 	}
 }
