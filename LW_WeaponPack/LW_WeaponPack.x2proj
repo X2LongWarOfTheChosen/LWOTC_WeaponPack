@@ -191,22 +191,37 @@
     <Content Include="Src\LW_WeaponPack\Classes\X2DownloadableContentInfo_LWWeaponPack.uc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Src\LW_WeaponPack\Classes\X2Item_Coilguns.uc">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Src\LW_WeaponPack\Classes\X2Item_LaserSchematics.uc">
+    <Content Include="Src\LW_WeaponPack\Classes\X2Item_LWConventionalWeapons.uc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LW_WeaponPack\Classes\X2Item_LaserWeapons.uc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Src\LW_WeaponPack\Classes\X2Item_SMGSchematics.uc">
+    <Content Include="Src\LW_WeaponPack\Classes\X2Item_LWMagneticWeapons.uc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Src\LW_WeaponPack\Classes\X2Item_SMGWeapon.uc">
+    <Content Include="Src\LW_WeaponPack\Classes\X2Item_CoilWeapons.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_WeaponPack\Classes\X2Item_LWBeamWeapons.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_WeaponPack\Classes\X2Item_LaserSchematics.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_WeaponPack\Classes\X2Item_LWMagneticSchematics.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_WeaponPack\Classes\X2Item_CoilSchematics.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_WeaponPack\Classes\X2Item_LWBeamSchematics.uc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LW_WeaponPack\Classes\X2StrategyElement_LaserTechs.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_WeaponPack\Classes\X2StrategyElement_CoilTechs.uc">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>

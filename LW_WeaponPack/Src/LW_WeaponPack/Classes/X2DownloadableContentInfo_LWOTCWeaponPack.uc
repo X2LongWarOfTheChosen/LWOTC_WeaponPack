@@ -4,7 +4,7 @@
 //  PURPOSE: Initializes Officer mod settings on campaign start or when loading campaign without mod previously active
 //---------------------------------------------------------------------------------------
 
-class X2DownloadableContentInfo_LWOTCWeaponPack extends X2DownloadableContentInfo;	
+class X2DownloadableContentInfo_LWOTCWeaponPack extends X2DownloadableContentInfo;
 
 /// <summary>
 /// This method is run if the player loads a saved game that was created prior to this DLC / Mod being installed, and allows the
@@ -13,17 +13,16 @@ class X2DownloadableContentInfo_LWOTCWeaponPack extends X2DownloadableContentInf
 /// </summary>
 static event OnLoadedSavedGame()
 {
-	UpdateSMGStorage();
+	UpdateConventionalStorage();
 
-	AddLaserTechGameStates();
-
+	AddLaserAndCoilTechGameStates();
 }
 /// <summary>
 /// This method is run when the player loads a saved game directly into Strategy while this DLC is installed
 /// </summary>
 static event OnLoadedSavedGameToStrategy()
 {
-	AddLaserTechGameStates();
+	AddLaserAndCoilTechGameStates();
 }
 
 /// <summary>
@@ -36,15 +35,14 @@ static event OnLoadedSavedGameToStrategy()
 
 
 // ******** HANDLE UPDATING STORAGE ************* //
-// This handles updating storage in order to create variations of various SMGs based on techs unlocked
-static function UpdateSMGStorage()
+// This handles updating storage in order to create conventional weapons
+static function UpdateConventionalStorage()
 {
 	local XComGameState NewGameState;
 	local XComGameStateHistory History;
 	local XComGameState_HeadquartersXCom XComHQ;
 	local X2ItemTemplateManager ItemTemplateMgr;
 	local X2ItemTemplate ItemTemplate;
-	//local X2SchematicTemplate SchematicTemplate_MG, SchematicTemplate_BM;
 	local XComGameState_Item NewItemState;
 
 	History = `XCOMHISTORY;
@@ -74,9 +72,6 @@ static function UpdateSMGStorage()
 	}
 
 	//schematics should be handled already, as the BuildItem UI draws from ItemTemplates, which are automatically loaded
-
-
-
 }
 
 /// <summary>
@@ -87,10 +82,52 @@ static event OnPostTemplatesCreated()
 	UpdateSMGAttachmentTemplates();
 
 	UpdateLaserAttachmentTemplates();
-	UpdateBaseGameLaserTechTemplates();
+	UpdateBaseGameLaserAndCoilTechTemplates();
 	UpdateLaserWeaponTemplates();
 
 	UpdateCoilAttachmentTemplates();
+
+}
+
+static function CopySchematicLoc (X2ItemTemplateManager ItemTemplateMgr, Name NewItem, Name BaseItem)
+{
+	local X2SchematicTemplate NewTemplate, BaseTemplate;
+
+	BaseTemplate = X2SchematicTemplate (ItemTemplateMgr.FindItemTemplate (BaseItem));
+	NewTemplate = X2SchematicTemplate (ItemTemplateMgr.FindItemTemplate (NewItem));
+
+	if (NewTemplate != none && BaseTemplate != none)
+	{
+		NewTemplate.m_strClassLabel = BaseTemplate.m_strClassLabel;
+	}
+	else
+	{
+		`REDSCREEN ("Missing something from" @ NewItem @ BaseItem);
+	}
+}
+
+// This adds the soldier class to the schematic string [SHARPSHOOTER UPGRADE] draws from vanilla so we don't have to rewrite a ton of loc
+static function AddSchematicLoc (X2ItemTemplateManager ItemTemplateMgr)
+{
+	CopySchematicLoc (ItemTemplateMgr, 'AssaultRifle_LS_Schematic', 'AssaultRifle_MG_Schematic');
+	CopySchematicLoc (ItemTemplateMgr, 'AssaultRifle_CG_Schematic', 'AssaultRifle_MG_Schematic');
+
+	CopySchematicLoc (ItemTemplateMgr, 'Cannon_LS_Schematic', 'Cannon_MG_Schematic');
+	CopySchematicLoc (ItemTemplateMgr, 'Cannon_CG_Schematic', 'Cannon_MG_Schematic');
+
+	CopySchematicLoc (ItemTemplateMgr, 'SniperRifle_LS_Schematic', 'SniperRifle_MG_Schematic');
+	CopySchematicLoc (ItemTemplateMgr, 'SniperRifle_CG_Schematic', 'SniperRifle_MG_Schematic');
+
+	CopySchematicLoc (ItemTemplateMgr, 'Shotgun_LS_Schematic', 'SniperRifle_MG_Schematic');
+	CopySchematicLoc (ItemTemplateMgr, 'Shotgun_CG_Schematic', 'SniperRifle_MG_Schematic');
+
+	CopySchematicLoc (ItemTemplateMgr, 'Pistol_LS_Schematic', 'Pistol_MG_Schematic');
+	CopySchematicLoc (ItemTemplateMgr, 'Pistol_CG_Schematic', 'Pistol_MG_Schematic');
+
+	CopySchematicLoc (ItemTemplateMgr, 'SMG_LS_Schematic', 'AssaultRifle_MG_Schematic');
+	CopySchematicLoc (ItemTemplateMgr, 'SMG_MG_Schematic', 'AssaultRifle_MG_Schematic');
+	CopySchematicLoc (ItemTemplateMgr, 'SMG_CG_Schematic', 'AssaultRifle_MG_Schematic');
+	CopySchematicLoc (ItemTemplateMgr, 'SMG_BM_Schematic', 'AssaultRifle_MG_Schematic');
 
 }
 
@@ -145,49 +182,6 @@ static function UpdateSMGAttachmentTemplates()
 		AddSchematicLoc (ItemTemplateManager);
 	}
 }
-
-static function CopySchematicLoc (X2ItemTemplateManager ItemTemplateMgr, Name NewItem, Name BaseItem)
-{
-	local X2SchematicTemplate NewTemplate, BaseTemplate;
-
-	BaseTemplate = X2SchematicTemplate (ItemTemplateMgr.FindItemTemplate (BaseItem));
-	NewTemplate = X2SchematicTemplate (ItemTemplateMgr.FindItemTemplate (NewItem));
-
-	if (NewTemplate != none && BaseTemplate != none)
-	{
-		NewTemplate.m_strClassLabel = BaseTemplate.m_strClassLabel;
-	}
-	else
-	{
-		`REDSCREEN ("Missing something from" @ NewItem @ BaseItem);
-	}
-}
-
-// This adds the soldier class to the schematic string [SHARPSHOOTER UPGRADE] draws from vanilla so we don't have to rewrite a ton of loc
-static function AddSchematicLoc (X2ItemTemplateManager ItemTemplateMgr)
-{
-	CopySchematicLoc (ItemTemplateMgr, 'AssaultRifle_LS_Schematic', 'AssaultRifle_MG_Schematic');
-	CopySchematicLoc (ItemTemplateMgr, 'AssaultRifle_CG_Schematic', 'AssaultRifle_MG_Schematic');
-
-	CopySchematicLoc (ItemTemplateMgr, 'Cannon_LS_Schematic', 'Cannon_MG_Schematic');
-	CopySchematicLoc (ItemTemplateMgr, 'Cannon_CG_Schematic', 'Cannon_MG_Schematic');
-
-	CopySchematicLoc (ItemTemplateMgr, 'SniperRifle_LS_Schematic', 'SniperRifle_MG_Schematic');
-	CopySchematicLoc (ItemTemplateMgr, 'SniperRifle_CG_Schematic', 'SniperRifle_MG_Schematic');
-
-	CopySchematicLoc (ItemTemplateMgr, 'Shotgun_LS_Schematic', 'SniperRifle_MG_Schematic');
-	CopySchematicLoc (ItemTemplateMgr, 'Shotgun_CG_Schematic', 'SniperRifle_MG_Schematic');
-
-	CopySchematicLoc (ItemTemplateMgr, 'Pistol_LS_Schematic', 'Pistol_MG_Schematic');
-	CopySchematicLoc (ItemTemplateMgr, 'Pistol_CG_Schematic', 'Pistol_MG_Schematic');
-
-	CopySchematicLoc (ItemTemplateMgr, 'SMG_LS_Schematic', 'AssaultRifle_MG_Schematic');
-	CopySchematicLoc (ItemTemplateMgr, 'SMG_MG_Schematic', 'AssaultRifle_MG_Schematic');
-	CopySchematicLoc (ItemTemplateMgr, 'SMG_CG_Schematic', 'AssaultRifle_MG_Schematic');
-	CopySchematicLoc (ItemTemplateMgr, 'SMG_BM_Schematic', 'AssaultRifle_MG_Schematic');
-
-}
-
 
 static function AddSMGCritUpgrade(X2ItemTemplateManager ItemTemplateManager, Name TemplateName)
 {
@@ -575,7 +569,7 @@ static function AddLaserFreeKillUpgrade(X2ItemTemplateManager ItemTemplateManage
 }
 
 // This handles creating necessary XCGS_Tech items, which are used to load templates in various places
-static function AddLaserTechGameStates()
+static function AddLaserAndCoilTechGameStates()
 {
 	local XComGameStateHistory History;
 	local XComGameState NewGameState;
@@ -619,7 +613,7 @@ static function AddLaserTechGameStates()
 	}
 
 	// Grab all new Tech Templates
-	foreach class'X2StrategyElement_LaserTechs'.default.CoilWeaponTech_Tier(TechName)
+	foreach class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier(TechName)
 	{
 		bFoundTech = false;
 		TechTemplate = X2TechTemplate(StrategyElementTemplateMgr.FindStrategyElementTemplate(TechName));
@@ -652,7 +646,8 @@ static function AddLaserTechGameStates()
 		History.CleanupPendingGameState(NewGameState);
 }
 
-static function UpdateBaseGameLaserTechTemplates()
+// Rewire tech tree
+static function UpdateBaseGameLaserAndCoilTechTemplates()
 {
 	local X2TechTemplate TechTemplate;
 	local array<X2TechTemplate> TechTemplates;
@@ -670,6 +665,15 @@ static function UpdateBaseGameLaserTechTemplates()
 		foreach TechTemplates(TechTemplate)
 		{
 			TechTemplate.Requirements.RequiredTechs[0] = class'X2StrategyElement_LaserTechs'.default.CoilWeaponTech_Tier[class'X2StrategyElement_LaserTechs'.default.CoilWeaponTech_Tier.Length - 1];
+		}
+	}
+
+	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
+	{
+		FindTechTemplateAllDifficulties('PlasmaRifle', TechTemplates);
+		foreach TechTemplates(TechTemplate)
+		{
+			TechTemplate.Requirements.RequiredTechs[0] = class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier.Length - 1];
 		}
 	}
 	//`LOG("LW LaserPack: Updated PlasmaRifle Tech");
@@ -696,24 +700,35 @@ static function UpdateLaserWeaponTemplates()
 	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
 	{
 		UpdateWeaponTemplate(ItemTemplateManager, 'AssaultRifle_MG', 'AssaultRifle_LS');
-		UpdateWeaponTemplate(ItemTemplateManager, 'AssaultRifle_BM', 'AssaultRifle_CG');
 
 		if(HasSMG)
 		{
 			UpdateWeaponTemplate(ItemTemplateManager, 'SMG_MG', 'SMG_LS');
-			UpdateWeaponTemplate(ItemTemplateManager, 'SMG_BM', 'SMG_CG');
 		}
 
 		UpdateWeaponTemplate(ItemTemplateManager, 'Shotgun_MG', 'Shotgun_LS');
-		UpdateWeaponTemplate(ItemTemplateManager, 'Shotgun_BM', 'Shotgun_CG');
 
 		UpdateWeaponTemplate(ItemTemplateManager, 'SniperRifle_MG', 'SniperRifle_LS');
-		UpdateWeaponTemplate(ItemTemplateManager, 'SniperRifle_BM', 'SniperRifle_CG');
 
 		UpdateWeaponTemplate(ItemTemplateManager, 'Cannon_MG', 'Cannon_LS');
-		UpdateWeaponTemplate(ItemTemplateManager, 'Cannon_BM', 'Cannon_CG');
 
 		UpdateWeaponTemplate(ItemTemplateManager, 'Pistol_MG', 'Pistol_LS');
+	}
+
+	//update weapon templates so they upgrade from the correct weapon
+	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
+	{
+		if(HasSMG)
+		{
+			UpdateWeaponTemplate(ItemTemplateManager, 'SMG_BM', 'SMG_CG');
+		}
+
+		UpdateWeaponTemplate(ItemTemplateManager, 'Shotgun_BM', 'Shotgun_CG');
+
+		UpdateWeaponTemplate(ItemTemplateManager, 'SniperRifle_BM', 'SniperRifle_CG');
+
+		UpdateWeaponTemplate(ItemTemplateManager, 'Cannon_BM', 'Cannon_CG');
+
 		UpdateWeaponTemplate(ItemTemplateManager, 'Pistol_BM', 'Pistol_CG');
 
 		//update magnetic schematics so they are hidden if Coil tier is purchased

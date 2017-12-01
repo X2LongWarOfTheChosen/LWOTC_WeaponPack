@@ -36,7 +36,7 @@ static function X2DataTemplate CreateLaserWeaponsTemplate()
 	Template.PointsToComplete = default.LASER_WEAPONS_RESEARCH_POINTS;
 	Template.SortingTier = 1;
 	Template.strImage = "img:///UILibrary_LW_LaserPack.TECH_LaserWeapons";
-    Template.bWeaponTech = true;
+	Template.bWeaponTech = true;
 
 	// Requirements
 	Template.Requirements.RequiredTechs.AddItem('ModularWeapons');
