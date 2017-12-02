@@ -6,6 +6,7 @@ var config WeaponDamageValue CANNON_COIL_BASEDAMAGE;
 var config WeaponDamageValue SHOTGUN_COIL_BASEDAMAGE;
 var config WeaponDamageValue SNIPERRIFLE_COIL_BASEDAMAGE;
 var config WeaponDamageValue PISTOL_COIL_BASEDAMAGE;
+var config WeaponDamageValue BULLPUP_COIL_BASEDAMAGE;
 
 var config array<int> SHORT_COIL_RANGE;
 var config array<int> MIDSHORT_COIL_RANGE;
