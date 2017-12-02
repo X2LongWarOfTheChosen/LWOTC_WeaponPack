@@ -664,7 +664,7 @@ static function UpdateBaseGameLaserAndCoilTechTemplates()
 		FindTechTemplateAllDifficulties('PlasmaRifle', TechTemplates);
 		foreach TechTemplates(TechTemplate)
 		{
-			TechTemplate.Requirements.RequiredTechs[0] = class'X2StrategyElement_LaserTechs'.default.CoilWeaponTech_Tier[class'X2StrategyElement_LaserTechs'.default.CoilWeaponTech_Tier.Length - 1];
+			TechTemplate.Requirements.RequiredTechs[0] = class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier.Length - 1];
 		}
 	}
 

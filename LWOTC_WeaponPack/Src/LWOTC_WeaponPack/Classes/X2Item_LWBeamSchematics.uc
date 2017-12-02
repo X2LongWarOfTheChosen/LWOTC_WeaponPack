@@ -4,7 +4,7 @@
 //  PURPOSE: Configures schematic upgrades for Beam
 //
 //---------------------------------------------------------------------------------------
-class X2Item_SMGBeamSchematics extends X2Item config(LW_WeaponPack);
+class X2Item_LWBeamSchematics extends X2Item config(LW_WeaponPack);
 
 var config int SMG_BEAM_SCHEMATIC_SUPPLYCOST;
 

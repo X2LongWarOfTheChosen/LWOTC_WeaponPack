@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ProjectGuid>{e52e5707-f661-465f-8de3-c3bc46fd4fa0}</ProjectGuid>
     <Name>LWOTC_WeaponPack</Name>
-    <Description>Long war of the chosen weapon pack. SMG, laser, and coil weapons.</Description>
+    <Description>Long war of the chosen weapon pack. Includes two new weapon tiers: laser, and coil weapons. Adds new weapons including the SMG.</Description>
     <Guid>002c1ba4-4d70-4911-937f-5f7305a1f09c</Guid>
   </PropertyGroup>
   <ItemGroup>

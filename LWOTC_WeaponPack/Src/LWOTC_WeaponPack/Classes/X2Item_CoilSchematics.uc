@@ -74,7 +74,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Coil_Schematic()
 	Template.HideIfPurchased = 'AssaultRifle_BM';
 
 	// Requirements
-	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.CoilWeaponTech_Tier[0]);
+	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
 	Template.Requirements.RequiredEngineeringScore = 15;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 
@@ -117,7 +117,7 @@ static function X2DataTemplate CreateTemplate_SMG_Coil_Schematic()
 	Template.HideIfPurchased = 'SMG_BM';
 
 	// Requirements
-	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.CoilWeaponTech_Tier[0]);
+	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
 	Template.Requirements.RequiredEngineeringScore = 15;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 
@@ -162,7 +162,7 @@ static function X2DataTemplate CreateTemplate_Shotgun_Coil_Schematic()
 	Template.HideIfPurchased = 'Shotgun_BM';
 
 	// Requirements
-	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.CoilWeaponTech_Tier[1]);
+	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]);
 	Template.Requirements.RequiredEngineeringScore = 20;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 
@@ -207,7 +207,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Coil_Schematic()
 	Template.HideIfPurchased = 'Cannon_BM';
 
 	// Requirements
-	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.CoilWeaponTech_Tier[1]);
+	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]);
 	Template.Requirements.RequiredEngineeringScore = 20;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 
@@ -252,7 +252,7 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Coil_Schematic()
 	Template.HideIfPurchased = 'SniperRifle_BM';
 
 	// Requirements
-	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.CoilWeaponTech_Tier[1]);
+	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]);
 	Template.Requirements.RequiredEngineeringScore = 20;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 
@@ -297,7 +297,7 @@ static function X2DataTemplate CreateTemplate_Pistol_Coil_Schematic()
 	Template.HideIfPurchased = 'Pistol_BM';
 
 	// Requirements
-	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.CoilWeaponTech_Tier[0]);
+	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
 	Template.Requirements.RequiredEngineeringScore = 15;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 
