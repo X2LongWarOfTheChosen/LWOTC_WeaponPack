@@ -53,11 +53,19 @@ var config int PISTOL_COIL_ICLIPSIZE;
 var config int PISTOL_COIL_ISOUNDRANGE;
 var config int PISTOL_COIL_IENVIRONMENTDAMAGE;
 
+var config int BULLPUP_COIL_AIM;
+var config int BULLPUP_COIL_CRITCHANCE;
+var config int BULLPUP_COIL_ICLIPSIZE;
+var config int BULLPUP_COIL_ISOUNDRANGE;
+var config int BULLPUP_COIL_IENVIRONMENTDAMAGE;
+var config int BULLPUP_COIL_UPGRADESLOTS;
+
 var config string AssaultRifle_Coil_ImagePath;
 var config string SMG_Coil_ImagePath;
 var config string Cannon_Coil_ImagePath;
 var config string Shotgun_Coil_ImagePath;
 var config string SniperRifle_Coil_ImagePath;
+var config string Bullpup_Coil_ImagePath;
 
 // if not using templates
 var config int ASSAULTRIFLE_CG_SUPPLYCOST;
@@ -83,6 +91,10 @@ var config int SNIPERRIFLE_CG_ELERIUMCOST;
 var config int PISTOL_CG_SUPPLYCOST;
 var config int PISTOL_CG_ALLOYCOST;
 var config int PISTOL_CG_ELERIUMCOST;
+
+var config int BULLPUP_CG_SUPPLYCOST;
+var config int BULLPUP_CG_ALLOYCOST;
+var config int BULLPUP_CG_ELERIUMCOST;
 
 static function array<X2DataTemplate> CreateTemplates()
 {
