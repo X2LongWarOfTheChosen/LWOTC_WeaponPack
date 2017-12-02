@@ -333,7 +333,8 @@ static function X2DataTemplate CreateTemplate_Bullpup_Coil_Schematic()
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'Bullpup_CG_Schematic');
 
 	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///UILibrary_LW_Coilguns.InventoryArt.Inv_Coil_Bullpup";
+	// Placeholder image for Laser Bullpup: Mag Bullpup, replace once image is available
+	Template.strImage = "img:///UILibrary_XPACK_StrategyImages.Inv_BeamSMG";
 	Template.CanBeBuilt = true;
 	Template.bOneTimeBuild = true;
 	Template.HideInInventory = true;

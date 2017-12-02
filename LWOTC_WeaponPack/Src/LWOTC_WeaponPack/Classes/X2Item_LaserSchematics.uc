@@ -336,7 +336,8 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser_Schematic()
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'Bullpup_LS_Schematic');
 
 	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///UILibrary_LW_LaserPack.Inv_Laser_Bullpup";
+	// Placeholder image for Laser Bullpup: Mag Bullpup, replace once image is available
+	Template.strImage = "img:///UILibrary_XPACK_StrategyImages.Inv_MagSMG";
 	Template.CanBeBuilt = true;
 	Template.bOneTimeBuild = true;
 	Template.HideInInventory = true;
