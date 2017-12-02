@@ -33,6 +33,10 @@ var config int Pistol_COIL_SCHEMATIC_SUPPLYCOST;
 var config int Pistol_COIL_SCHEMATIC_ALLOYCOST;
 var config int Pistol_COIL_SCHEMATIC_ELERIUMCOST;
 
+var config int Bullpup_COIL_SCHEMATIC_SUPPLYCOST;
+var config int Bullpup_COIL_SCHEMATIC_ALLOYCOST;
+var config int Bullpup_COIL_SCHEMATIC_ELERIUMCOST;
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Schematics;
@@ -47,6 +51,7 @@ static function array<X2DataTemplate> CreateTemplates()
 		Schematics.AddItem(CreateTemplate_Cannon_Coil_Schematic());
 		Schematics.AddItem(CreateTemplate_SniperRifle_Coil_Schematic());
 		Schematics.AddItem(CreateTemplate_Pistol_Coil_Schematic());
+		Schematics.AddItem(CreateTemplate_Bullpup_Coil_Schematic());
 
 		return Schematics;
 	}
@@ -317,5 +322,49 @@ static function X2DataTemplate CreateTemplate_Pistol_Coil_Schematic()
 		Template.Cost.ResourceCosts.AddItem(Artifacts);
 	}
 
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_Bullpup_Coil_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local ArtifactCost Resources, Artifacts;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'Bullpup_CG_Schematic');
+
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///UILibrary_LW_Coilguns.InventoryArt.Inv_Coil_Bullpup";
+	Template.CanBeBuilt = true;
+	Template.bOneTimeBuild = true;
+	Template.HideInInventory = true;
+	Template.HideInLootRecovered = true;
+	Template.PointsToComplete = 0;
+	Template.Tier = 3;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'Bullpup_CG';
+	Template.HideIfPurchased = 'Bullpup_BM';
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
+	Template.Requirements.RequiredEngineeringScore = 15;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+
+	// Cost
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.Bullpup_COIL_SCHEMATIC_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Artifacts.ItemTemplateName = 'AlienAlloy';
+	Artifacts.Quantity = default.Bullpup_COIL_SCHEMATIC_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Artifacts);
+
+	// only add elerium cost if configured value greater than 0
+	if (default.Bullpup_COIL_SCHEMATIC_ELERIUMCOST > 0) {
+		Artifacts.ItemTemplateName = 'EleriumDust';
+		Artifacts.Quantity = default.Bullpup_COIL_SCHEMATIC_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Artifacts);
+	}
 	return Template;
 }

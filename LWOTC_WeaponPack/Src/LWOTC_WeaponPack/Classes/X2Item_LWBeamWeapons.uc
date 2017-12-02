@@ -4,7 +4,7 @@
 //  PURPOSE: Defines weapon templates and updates base-game upgrade templates for SMGs
 //
 //---------------------------------------------------------------------------------------
-class X2Item_LWBeamWeapon extends X2Item config(LW_WeaponPack);
+class X2Item_LWBeamWeapons extends X2Item config(LW_WeaponPack);
 
 // Variables from config - GameData_WeaponData.ini
 // ***** Damage arrays for attack actions  *****

@@ -32,6 +32,9 @@ var config int Pistol_LASER_SCHEMATIC_SUPPLYCOST;
 var config int Pistol_LASER_SCHEMATIC_ALLOYCOST;
 var config int Pistol_LASER_SCHEMATIC_ELERIUMCOST;
 
+var config int Bullpup_LASER_SCHEMATIC_SUPPLYCOST;
+var config int Bullpup_LASER_SCHEMATIC_ALLOYCOST;
+var config int Bullpup_LASER_SCHEMATIC_ELERIUMCOST;
 
 static function array<X2DataTemplate> CreateTemplates()
 {
@@ -48,6 +51,7 @@ static function array<X2DataTemplate> CreateTemplates()
 		Schematics.AddItem(CreateTemplate_Cannon_Laser_Schematic());
 		Schematics.AddItem(CreateTemplate_SniperRifle_Laser_Schematic());
 		Schematics.AddItem(CreateTemplate_Pistol_Laser_Schematic());
+		Schematics.AddItem(CreateTemplate_Bullpup_Laser_Schematic());
 
 		return Schematics;
 	}
@@ -321,5 +325,49 @@ static function X2DataTemplate CreateTemplate_Pistol_Laser_Schematic()
 
 	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
 
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_Bullpup_Laser_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local ArtifactCost Resources, Artifacts;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'Bullpup_LS_Schematic');
+
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///UILibrary_LW_LaserPack.Inv_Laser_Bullpup";
+	Template.CanBeBuilt = true;
+	Template.bOneTimeBuild = true;
+	Template.HideInInventory = true;
+	Template.HideInLootRecovered = true;
+	Template.PointsToComplete = 0;
+	Template.Tier = 1;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'Bullpup_LS';
+	Template.HideIfPurchased = 'Bullpup_MG';
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
+	Template.Requirements.RequiredEngineeringScore = 5;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+
+	// Cost
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.Bullpup_LASER_SCHEMATIC_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Artifacts.ItemTemplateName = 'AlienAlloy';
+	Artifacts.Quantity = default.Bullpup_LASER_SCHEMATIC_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Artifacts);
+
+	// only add elerium cost if configured value greater than 0
+	if (default.Bullpup_LASER_SCHEMATIC_ELERIUMCOST > 0) {
+		Artifacts.ItemTemplateName = 'EleriumDust';
+		Artifacts.Quantity = default.Bullpup_LASER_SCHEMATIC_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Artifacts);
+	}
 	return Template;
 }
