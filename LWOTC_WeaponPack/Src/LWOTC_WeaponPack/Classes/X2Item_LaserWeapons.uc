@@ -666,23 +666,23 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser()
 
 	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
 	{
-		Template.CreatorTemplateName = 'AssaultRifle_LS_Schematic'; // The schematic which creates this item
-		Template.BaseItem = 'AssaultRifle_CV'; // Which item this will be upgraded from		
+		Template.CreatorTemplateName = 'Bullpup_LS_Schematic'; // The schematic which creates this item
+		Template.BaseItem = 'Bullpup_CV'; // Which item this will be upgraded from		
 	}
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]); 
 
 		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.ASSAULTRIFLE_LS_SUPPLYCOST;
+		Resources.Quantity = default.BULLPUP_LS_SUPPLYCOST;
 		Template.Cost.ResourceCosts.AddItem(Resources);
 
 		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.ASSAULTRIFLE_LS_ALLOYCOST;
+		Resources.Quantity = default.BULLPUP_LS_ALLOYCOST;
 		Template.Cost.ResourceCosts.AddItem(Resources);
 
 		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.ASSAULTRIFLE_LS_ELERIUMCOST;
+		Resources.Quantity = default.BULLPUP_LS_ELERIUMCOST;
 		Template.Cost.ResourceCosts.AddItem(Resources);
 
 		Template.Requirements.RequiredEngineeringScore = 5;
