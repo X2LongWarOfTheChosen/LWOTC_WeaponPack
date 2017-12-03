@@ -351,6 +351,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Coil_Schematic()
 	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
 	Template.Requirements.RequiredEngineeringScore = 15;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+	Template.Requirements.RequiredSoldierClass = 'Skirmisher';
 
 	// Cost
 	Resources.ItemTemplateName = 'Supplies';

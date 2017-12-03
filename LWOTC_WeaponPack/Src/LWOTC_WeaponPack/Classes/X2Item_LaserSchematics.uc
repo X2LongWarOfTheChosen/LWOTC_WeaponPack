@@ -354,6 +354,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser_Schematic()
 	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
 	Template.Requirements.RequiredEngineeringScore = 5;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+	Template.Requirements.RequiredSoldierClass = 'Skirmisher';
 
 	// Cost
 	Resources.ItemTemplateName = 'Supplies';
