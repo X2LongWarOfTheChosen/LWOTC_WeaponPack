@@ -628,7 +628,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser()
 	Template.EquipSound = "Beam_Weapon_Equip";
 	Template.Tier = 2;
 
-	Template.RangeAccuracy = default.MEDIUM_LASER_RANGE;
+	Template.RangeAccuracy = default.SHORT_LASER_RANGE;
 	Template.BaseDamage = default.BULLPUP_LASER_BASEDAMAGE;
 	Template.Aim = default.BULLPUP_LASER_AIM;
 	Template.CritChance = default.BULLPUP_LASER_CRITCHANCE;
@@ -637,7 +637,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser()
 	Template.iEnvironmentDamage = default.BULLPUP_LASER_IENVIRONMENTDAMAGE;
 
 	Template.NumUpgradeSlots = default.BULLPUP_LASER_UPGRADESLOTS; 
-	
+
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
 	Template.Abilities.AddItem('Overwatch');
@@ -645,14 +645,14 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser()
 	Template.Abilities.AddItem('PistolReturnFire');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	
+
 	// This all the resources; sounds, animations, models, physics, the works.
-	// Placeholder: mag bullpup, replace with assets once completed
+	// TODO: Placeholder, replace with assets when completed
 	Template.GameArchetype = "WP_SkirmisherSMG_MG.WP_SkirmisherSMG_MG";
 
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Shotgun'; // the base game does this as well
 	
-	// Placeholders: mag bullpup, replace with assets once completed
+	// TODO: Placeholders, replace with assets when completed
 	Template.AddDefaultAttachment('Mag', "MagSMG.Meshes.SM_HOR_Mag_SMG_MagA", , "img:///UILibrary_XPACK_Common.MagSMG_MagazineA");
 	Template.AddDefaultAttachment('Reargrip', "CnvSMG.Meshes.SM_HOR_Cnv_SMG_ReargripA");
 	Template.AddDefaultAttachment('Stock', "CnvSMG.Meshes.SM_HOR_Cnv_SMG_StockA", , "img:///UILibrary_XPACK_Common.MagSMG_StockA");

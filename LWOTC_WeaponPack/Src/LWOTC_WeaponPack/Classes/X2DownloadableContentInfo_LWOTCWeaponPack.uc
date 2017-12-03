@@ -736,7 +736,7 @@ static function UpdateLaserWeaponTemplates()
 		UpdateWeaponTemplate(ItemTemplateManager, 'SniperRifle_MG', 'SniperRifle_LS');
 
 		UpdateWeaponTemplate(ItemTemplateManager, 'Cannon_MG', 'Cannon_LS');
-		
+
 		UpdateWeaponTemplate(ItemTemplateManager, 'Pistol_MG', 'Pistol_LS');
 
 		UpdateWeaponTemplate(ItemTemplateManager, 'Bullpup_MG', 'Bullpup_LS');
@@ -755,7 +755,7 @@ static function UpdateLaserWeaponTemplates()
 		UpdateWeaponTemplate(ItemTemplateManager, 'SniperRifle_BM', 'SniperRifle_CG');
 
 		UpdateWeaponTemplate(ItemTemplateManager, 'Cannon_BM', 'Cannon_CG');
-		
+
 		UpdateWeaponTemplate(ItemTemplateManager, 'Pistol_BM', 'Pistol_CG');
 
 		UpdateWeaponTemplate(ItemTemplateManager, 'Bullpup_BM', 'Bullpup_CG');
@@ -845,7 +845,6 @@ static function UpdateCoilAttachmentTemplates()
 	AddCoilFreeKillUpgrade(ItemTemplateManager, 'FreeKillUpgrade_Bsc');
 	AddCoilFreeKillUpgrade(ItemTemplateManager, 'FreeKillUpgrade_Adv');
 	AddCoilFreeKillUpgrade(ItemTemplateManager, 'FreeKillUpgrade_Sup');
-
 }
 
 static function AddCoilCritUpgrade(X2ItemTemplateManager ItemTemplateManager, Name TemplateName)
@@ -903,10 +902,10 @@ static function AddCoilAimBonusUpgrade(X2ItemTemplateManager ItemTemplateManager
 
 	// Cannon
 	Template.AddUpgradeAttachment('Optic', 'UIPawnLocation_WeaponUpgrade_Cannon_Optic', "LWCannon_CG.Meshes.LW_CoilCannon_OpticC", "", 'Cannon_CG', , "img:///UILibrary_LW_Coilguns.InventoryArt.CoilCannon_OpticC", "img:///UILibrary_LW_Coilguns.InventoryArt.Inv_CoilCannon_OpticC", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_scope");
-	
+
 	// Bullpup
 	Template.AddUpgradeAttachment('Optic', 'UIPawnLocation_WeaponUpgrade_Shotgun_Optic', "MagSMG.Meshes.SM_HOR_Mag_SMG_OpticC", "", 'Bullpup_CG', , "img:///UILibrary_XPACK_Common.MagSMG_OpticC", "img:///UILibrary_XPACK_StrategyImages.MagSMG_OpticC_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_scope");
-}	
+}
 
 
 static function AddCoilClipSizeBonusUpgrade(X2ItemTemplateManager ItemTemplateManager, Name TemplateName)
@@ -936,7 +935,7 @@ static function AddCoilClipSizeBonusUpgrade(X2ItemTemplateManager ItemTemplateMa
 	// Cannon
 	//Template.AddUpgradeAttachment('Mag', 'UIPawnLocation_WeaponUpgrade_Cannon_Mag', "LWCannon_CG.Meshes.LW_CoilCannon_MagB", "", 'Cannon_CG', , "img:///UILibrary_LW_Coilguns.InventoryArt.CoilCannon_MagB", "img:///UILibrary_LW_Coilguns.InventoryArt.Inv_CoilCannon_MagB", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_clip");
 	Template.AddUpgradeAttachment('Mag', 'UIPawnLocation_WeaponUpgrade_Cannon_Mag', "LWCannon_CG.Meshes.LW_CoilCannon_MagB", "", 'Cannon_CG', , "img:///UILibrary_LW_Coilguns.InventoryArt.CoilCannon_MagB", "img:///UILibrary_LW_Coilguns.InventoryArt.Inv_CoilCannon_MagB", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_clip", class'X2Item_DefaultUpgrades'.static.NoReloadUpgradePresent);
-	
+
 	// Bullpup
 	Template.AddUpgradeAttachment('Mag', 'UIPawnLocation_WeaponUpgrade_Shotgun_Mag', "MagSMG.Meshes.SM_HOR_Mag_SMG_MagB", "", 'Bullpup_CG', , "img:///UILibrary_XPACK_Common.MagSMG_MagazineB", "img:///UILibrary_XPACK_StrategyImages.MagSMG_MagB_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_clip", class'X2Item_DefaultUpgrades'.static.NoReloadUpgradePresent);
 }
@@ -966,7 +965,7 @@ static function AddCoilFreeFireBonusUpgrade(X2ItemTemplateManager ItemTemplateMa
 
 	// Cannon
 	Template.AddUpgradeAttachment('Reargrip', 'UIPawnLocation_WeaponUpgrade_Cannon_Mag', "LWCannon_CG.Meshes.LW_CoilCannon_ReargripB", "", 'Cannon_CG', , "img:///UILibrary_LW_Coilguns.InventoryArt.CoilCannon_ReargripB", "img:///UILibrary_LW_Coilguns.InventoryArt.Inv_CoilCannon_ReargripB", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_trigger");
-	
+
 	// Bullpup
 	Template.AddUpgradeAttachment('Reargrip', 'UIPawnLocation_WeaponUpgrade_Shotgun_Stock', "CnvSMG.Meshes.SM_HOR_Cnv_SMG_ReargripB", "", 'Bullpup_CG', , "img:///UILibrary_XPACK_Common.MagSMG_TriggerB", "img:///UILibrary_XPACK_StrategyImages.MagSMG_TriggerB_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_trigger");
 }
@@ -1035,7 +1034,7 @@ static function AddCoilMissDamageUpgrade(X2ItemTemplateManager ItemTemplateManag
 	// Cannon
 	Template.AddUpgradeAttachment('Stock', 'UIPawnLocation_WeaponUpgrade_Cannon_Stock', "LWCannon_CG.Meshes.LW_CoilCannon_StockB", "", 'Cannon_CG', , "img:///UILibrary_LW_Coilguns.InventoryArt.CoilCannon_StockB", "img:///UILibrary_LW_Coilguns.InventoryArt.Inv_CoilCannon_StockB", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_stock");
 	Template.AddUpgradeAttachment('StockSupport', '', "LWCannon_CG.Meshes.LW_CoilCannon_StockSupportB", "", 'Cannon_CG');
-	
+
 	// Bullpup
 	Template.AddUpgradeAttachment('Stock', 'UIPawnLocation_WeaponUpgrade_AssaultRifle_Stock', "LWAccessories_CG.Meshes.LW_Coil_StockB", "", 'Bullpup_CG', , "img:///UILibrary_LW_Coilguns.InventoryArt.CoilSMG_StockB", "img:///UILibrary_LW_Coilguns.InventoryArt.Inv_CoilRifleSMGShotgun_StockB", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_stock");
 }

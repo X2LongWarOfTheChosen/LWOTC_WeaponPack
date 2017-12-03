@@ -570,13 +570,13 @@ static function X2DataTemplate CreateBullpup_Coil_Template()
 	Template.WeaponCat = 'bullpup';
 	Template.WeaponTech = 'coilgun_lw';
 	Template.ItemCat = 'weapon';
-	// Placeholder: mag bullpup, replace with assets once completed
+	// TODO: Placeholder, replace with assets when completed
 	Template.strImage = "img:///UILibrary_XPACK_Common.MagSMG_Base";
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
 	Template.Tier = 4;
 
-	Template.RangeAccuracy = default.MEDIUM_COIL_RANGE;
+	Template.RangeAccuracy = default.SHORT_COIL_RANGE;
 	Template.BaseDamage = default.BULLPUP_COIL_BASEDAMAGE;
 	Template.Aim = default.BULLPUP_COIL_AIM;
 	Template.CritChance = default.BULLPUP_COIL_CRITCHANCE;
@@ -586,11 +586,11 @@ static function X2DataTemplate CreateBullpup_Coil_Template()
 
 	Template.NumUpgradeSlots = default.BULLPUP_COIL_UPGRADESLOTS; 
 	
-	// Placeholder: mag bullpup, replace with assets once completed
+	// TODO: Placeholder, replace with assets when completed
 	Template.GameArchetype = "WP_SkirmisherSMG_MG.WP_SkirmisherSMG_MG";
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Shotgun'; // the base game does this as well
 
-	// Placeholders: mag bullpup, replace with assets once completed
+	// TODO: Placeholders, replace with assets when completed
 	Template.AddDefaultAttachment('Mag', "MagSMG.Meshes.SM_HOR_Mag_SMG_MagA", , "img:///UILibrary_XPACK_Common.MagSMG_MagazineA");
 	Template.AddDefaultAttachment('Reargrip', "CnvSMG.Meshes.SM_HOR_Cnv_SMG_ReargripA");
 	Template.AddDefaultAttachment('Stock', "CnvSMG.Meshes.SM_HOR_Cnv_SMG_StockA", , "img:///UILibrary_XPACK_Common.MagSMG_StockA");
