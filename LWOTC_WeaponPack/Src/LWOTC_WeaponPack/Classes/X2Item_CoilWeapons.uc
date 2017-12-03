@@ -6,6 +6,7 @@ var config WeaponDamageValue CANNON_COIL_BASEDAMAGE;
 var config WeaponDamageValue SHOTGUN_COIL_BASEDAMAGE;
 var config WeaponDamageValue SNIPERRIFLE_COIL_BASEDAMAGE;
 var config WeaponDamageValue PISTOL_COIL_BASEDAMAGE;
+var config WeaponDamageValue BULLPUP_COIL_BASEDAMAGE;
 
 var config array<int> SHORT_COIL_RANGE;
 var config array<int> MIDSHORT_COIL_RANGE;
@@ -53,11 +54,19 @@ var config int PISTOL_COIL_ICLIPSIZE;
 var config int PISTOL_COIL_ISOUNDRANGE;
 var config int PISTOL_COIL_IENVIRONMENTDAMAGE;
 
+var config int BULLPUP_COIL_AIM;
+var config int BULLPUP_COIL_CRITCHANCE;
+var config int BULLPUP_COIL_ICLIPSIZE;
+var config int BULLPUP_COIL_ISOUNDRANGE;
+var config int BULLPUP_COIL_IENVIRONMENTDAMAGE;
+var config int BULLPUP_COIL_UPGRADESLOTS;
+
 var config string AssaultRifle_Coil_ImagePath;
 var config string SMG_Coil_ImagePath;
 var config string Cannon_Coil_ImagePath;
 var config string Shotgun_Coil_ImagePath;
 var config string SniperRifle_Coil_ImagePath;
+var config string Bullpup_Coil_ImagePath;
 
 // if not using templates
 var config int ASSAULTRIFLE_CG_SUPPLYCOST;
@@ -84,6 +93,10 @@ var config int PISTOL_CG_SUPPLYCOST;
 var config int PISTOL_CG_ALLOYCOST;
 var config int PISTOL_CG_ELERIUMCOST;
 
+var config int BULLPUP_CG_SUPPLYCOST;
+var config int BULLPUP_CG_ALLOYCOST;
+var config int BULLPUP_CG_ELERIUMCOST;
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Weapons;
@@ -94,6 +107,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateShotgun_Coil_Template());
 	Weapons.AddItem(CreateSniperRifle_Coil_Template());
 	Weapons.AddItem(CreatePistol_Coil_Template());
+	Weapons.AddItem(CreateBullpup_Coil_Template());
 
 	return Weapons;
 }
@@ -542,6 +556,86 @@ static function X2DataTemplate CreatePistol_Coil_Template()
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';  // TODO : update with new damage type
 
 	Template.bHideClipSizeStat = true;
+
+	return Template;
+}
+
+static function X2DataTemplate CreateBullpup_Coil_Template()
+{
+	local X2WeaponTemplate Template;
+	local ArtifactCost Resources;
+
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Bullpup_CG');
+
+	Template.WeaponCat = 'bullpup';
+	Template.WeaponTech = 'coilgun_lw';
+	Template.ItemCat = 'weapon';
+	// TODO: Placeholder, replace with assets when completed
+	Template.strImage = "img:///UILibrary_XPACK_Common.MagSMG_Base";
+	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
+	Template.EquipSound = "Beam_Weapon_Equip";
+	Template.Tier = 4;
+
+	Template.RangeAccuracy = default.SHORT_COIL_RANGE;
+	Template.BaseDamage = default.BULLPUP_COIL_BASEDAMAGE;
+	Template.Aim = default.BULLPUP_COIL_AIM;
+	Template.CritChance = default.BULLPUP_COIL_CRITCHANCE;
+	Template.iClipSize = default.BULLPUP_COIL_ICLIPSIZE;
+	Template.iSoundRange = default.BULLPUP_COIL_ISOUNDRANGE;
+	Template.iEnvironmentDamage = default.BULLPUP_COIL_IENVIRONMENTDAMAGE;
+
+	Template.NumUpgradeSlots = default.BULLPUP_COIL_UPGRADESLOTS; 
+	
+	// TODO: Placeholder, replace with assets when completed
+	Template.GameArchetype = "WP_SkirmisherSMG_MG.WP_SkirmisherSMG_MG";
+	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Shotgun'; // the base game does this as well
+
+	// TODO: Placeholders, replace with assets when completed
+	Template.AddDefaultAttachment('Mag', "MagSMG.Meshes.SM_HOR_Mag_SMG_MagA", , "img:///UILibrary_XPACK_Common.MagSMG_MagazineA");
+	Template.AddDefaultAttachment('Reargrip', "CnvSMG.Meshes.SM_HOR_Cnv_SMG_ReargripA");
+	Template.AddDefaultAttachment('Stock', "CnvSMG.Meshes.SM_HOR_Cnv_SMG_StockA", , "img:///UILibrary_XPACK_Common.MagSMG_StockA");
+	Template.AddDefaultAttachment('Trigger', "CnvSMG.Meshes.SM_HOR_Cnv_SMG_TriggerA", , "img:///UILibrary_XPACK_Common.MagSMG_TriggerA");
+	Template.AddDefaultAttachment('Light', "ConvAttachments.Meshes.SM_ConvFlashLight");
+
+	Template.InventorySlot = eInvSlot_PrimaryWeapon;
+	Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('Overwatch');
+	Template.Abilities.AddItem('OverwatchShot');
+	Template.Abilities.AddItem('PistolReturnFire');
+	Template.Abilities.AddItem('Reload');
+	Template.Abilities.AddItem('HotLoadAmmo');
+
+	Template.iPhysicsImpulse = 5;
+
+	Template.CanBeBuilt = !class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+
+	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
+	{
+		Template.CreatorTemplateName = 'BULLPUP_CG_Schematic'; // The schematic which creates this item
+		Template.BaseItem = 'BULLPUP_MG'; // Which item this will be upgraded from
+	}
+	else
+	{
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
+
+		Resources.ItemTemplateName = 'Supplies';
+		Resources.Quantity = default.BULLPUP_CG_SUPPLYCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Resources.ItemTemplateName = 'AlienAlloy';
+		Resources.Quantity = default.BULLPUP_CG_ALLOYCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Resources.ItemTemplateName = 'EleriumDust';
+		Resources.Quantity = default.BULLPUP_CG_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Template.Requirements.RequiredEngineeringScore = 15;
+	}
+
+
+	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
 	return Template;
 }
