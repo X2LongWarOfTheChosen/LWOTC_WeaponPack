@@ -1,373 +1,805 @@
-//---------------------------------------------------------------------------------------
-//  FILE:    X2Item_LaserSchematics.uc
-//  AUTHOR:  Amineri (Pavonis Interactive)
-//  PURPOSE: Configures schematic upgrades for Laser Weapons
-//
-//---------------------------------------------------------------------------------------
-class X2Item_LaserSchematics extends X2Item config(LW_WeaponPack);
-
-var config bool USE_SCHEMATICS;
-
-var config int AssaultRifle_LASER_SCHEMATIC_SUPPLYCOST;
-var config int AssaultRifle_LASER_SCHEMATIC_ALLOYCOST;
-var config int AssaultRifle_LASER_SCHEMATIC_ELERIUMCOST;
-
-var config int SMG_LASER_SCHEMATIC_SUPPLYCOST;
-var config int SMG_LASER_SCHEMATIC_ALLOYCOST;
-var config int SMG_LASER_SCHEMATIC_ELERIUMCOST;
-
-var config int Shotgun_LASER_SCHEMATIC_SUPPLYCOST;
-var config int Shotgun_LASER_SCHEMATIC_ALLOYCOST;
-var config int Shotgun_LASER_SCHEMATIC_ELERIUMCOST;
-
-var config int Cannon_LASER_SCHEMATIC_SUPPLYCOST;
-var config int Cannon_LASER_SCHEMATIC_ALLOYCOST;
-var config int Cannon_LASER_SCHEMATIC_ELERIUMCOST;
-
-var config int SniperRifle_LASER_SCHEMATIC_SUPPLYCOST;
-var config int SniperRifle_LASER_SCHEMATIC_ALLOYCOST;
-var config int SniperRifle_LASER_SCHEMATIC_ELERIUMCOST;
-
-var config int Pistol_LASER_SCHEMATIC_SUPPLYCOST;
-var config int Pistol_LASER_SCHEMATIC_ALLOYCOST;
-var config int Pistol_LASER_SCHEMATIC_ELERIUMCOST;
-
-var config int Bullpup_LASER_SCHEMATIC_SUPPLYCOST;
-var config int Bullpup_LASER_SCHEMATIC_ALLOYCOST;
-var config int Bullpup_LASER_SCHEMATIC_ELERIUMCOST;
-
-static function array<X2DataTemplate> CreateTemplates()
-{
-	local array<X2DataTemplate> Schematics;
-
-	// Weapon Schematics
-
-	if (default.USE_SCHEMATICS)
-	{
-
-		Schematics.AddItem(CreateTemplate_AssaultRifle_Laser_Schematic());
-		Schematics.AddItem(CreateTemplate_SMG_Laser_Schematic());
-		Schematics.AddItem(CreateTemplate_Shotgun_Laser_Schematic());
-		Schematics.AddItem(CreateTemplate_Cannon_Laser_Schematic());
-		Schematics.AddItem(CreateTemplate_SniperRifle_Laser_Schematic());
-		Schematics.AddItem(CreateTemplate_Pistol_Laser_Schematic());
-		Schematics.AddItem(CreateTemplate_Bullpup_Laser_Schematic());
-
-		return Schematics;
-	}
-}
-
-static function X2DataTemplate CreateTemplate_AssaultRifle_Laser_Schematic()
-{
-	local X2SchematicTemplate Template;
-	local ArtifactCost Resources, Artifacts;
-
-	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'AssaultRifle_LS_Schematic');
-
-	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///UILibrary_LW_LaserPack.Inv_Laser_Assault_Rifle";
-	Template.CanBeBuilt = true;
-	Template.bOneTimeBuild = true;
-	Template.HideInInventory = true;
-	Template.HideInLootRecovered = true;
-	Template.PointsToComplete = 0;
-	Template.Tier = 1;
-	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
-
-	// Reference Item
-	Template.ReferenceItemTemplate = 'AssaultRifle_LS';
-	Template.HideIfPurchased = 'AssaultRifle_MG';
-
-	// Requirements
-	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-	Template.Requirements.RequiredEngineeringScore = 5;
-	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
-
-	// Cost
-	Resources.ItemTemplateName = 'Supplies';
-	Resources.Quantity = default.AssaultRifle_LASER_SCHEMATIC_SUPPLYCOST;
-	Template.Cost.ResourceCosts.AddItem(Resources);
-
-	Artifacts.ItemTemplateName = 'AlienAlloy';
-	Artifacts.Quantity = default.AssaultRifle_LASER_SCHEMATIC_ALLOYCOST;
-	Template.Cost.ResourceCosts.AddItem(Artifacts);
-
-	// only add elerium cost if configured value greater than 0
-	if (default.AssaultRifle_LASER_SCHEMATIC_ELERIUMCOST > 0) {
-		Artifacts.ItemTemplateName = 'EleriumDust';
-		Artifacts.Quantity = default.AssaultRifle_LASER_SCHEMATIC_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Artifacts);
-	}
-
-	return Template;
-}
-
-static function X2DataTemplate CreateTemplate_SMG_Laser_Schematic()
-{
-	local X2SchematicTemplate Template;
-	local ArtifactCost Resources, Artifacts;
-
-	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'SMG_LS_Schematic');
-
-	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///UILibrary_LW_LaserPack.Inv_Laser_SMG";
-	Template.CanBeBuilt = true;
-	Template.bOneTimeBuild = true;
-	Template.HideInInventory = true;
-	Template.PointsToComplete = 0;
-	Template.Tier = 1;
-	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
-
-	// Reference Item
-	Template.ReferenceItemTemplate = 'SMG_LS';
-	Template.HideIfPurchased = 'SMG_MG';
-
-	// Requirements
-	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-	Template.Requirements.RequiredEngineeringScore = 5;
-	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
-
-	// Cost
-	Resources.ItemTemplateName = 'Supplies';
-	Resources.Quantity = default.SMG_LASER_SCHEMATIC_SUPPLYCOST;
-	Template.Cost.ResourceCosts.AddItem(Resources);
-
-	Artifacts.ItemTemplateName = 'AlienAlloy';
-	Artifacts.Quantity = default.SMG_LASER_SCHEMATIC_ALLOYCOST;
-	Template.Cost.ResourceCosts.AddItem(Artifacts);
-
-	// only add elerium cost if configured value greater than 0
-	if (default.SMG_LASER_SCHEMATIC_ELERIUMCOST > 0) {
-		Artifacts.ItemTemplateName = 'EleriumDust';
-		Artifacts.Quantity = default.SMG_LASER_SCHEMATIC_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Artifacts);
-	}
-
-	return Template;
-}
-
-static function X2DataTemplate CreateTemplate_Shotgun_Laser_Schematic()
-{
-	local X2SchematicTemplate Template;
-	local ArtifactCost Resources, Artifacts;
-
-	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'Shotgun_LS_Schematic');
-
-	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///UILibrary_LW_LaserPack.Inv_Laser_Shotgun";
-	Template.CanBeBuilt = true;
-	Template.bOneTimeBuild = true;
-	Template.HideInInventory = true;
-	Template.HideInLootRecovered = true;
-	Template.PointsToComplete = 0;
-	Template.Tier = 1;
-	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
-
-	// Reference Item
-	Template.ReferenceItemTemplate = 'Shotgun_LS';
-	Template.HideIfPurchased = 'Shotgun_MG';
-
-	// Requirements
-	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[1]);
-	Template.Requirements.RequiredEngineeringScore = 10;
-	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
-
-	// Cost
-	Resources.ItemTemplateName = 'Supplies';
-	Resources.Quantity = default.Shotgun_LASER_SCHEMATIC_SUPPLYCOST;
-	Template.Cost.ResourceCosts.AddItem(Resources);
-
-	Artifacts.ItemTemplateName = 'AlienAlloy';
-	Artifacts.Quantity = default.Shotgun_LASER_SCHEMATIC_ALLOYCOST;
-	Template.Cost.ResourceCosts.AddItem(Artifacts);
-
-	// only add elerium cost if configured value greater than 0
-	if (default.Shotgun_LASER_SCHEMATIC_ELERIUMCOST > 0) {
-		Artifacts.ItemTemplateName = 'EleriumDust';
-		Artifacts.Quantity = default.Shotgun_LASER_SCHEMATIC_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Artifacts);
-	}
-
-	return Template;
-}
-
-static function X2DataTemplate CreateTemplate_Cannon_Laser_Schematic()
-{
-	local X2SchematicTemplate Template;
-	local ArtifactCost Resources, Artifacts;
-
-	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'Cannon_LS_Schematic');
-
-	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///UILibrary_LW_LaserPack.Inv_Laser_Cannon";
-	Template.CanBeBuilt = true;
-	Template.bOneTimeBuild = true;
-	Template.HideInInventory = true;
-	Template.HideInLootRecovered = true;
-	Template.PointsToComplete = 0;
-	Template.Tier = 3;
-	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
-
-	// Reference Item
-	Template.ReferenceItemTemplate = 'Cannon_LS';
-	Template.HideIfPurchased = 'Cannon_MG';
-
-	// Requirements
-	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[1]);
-	Template.Requirements.RequiredEngineeringScore = 10;
-	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
-
-	// Cost
-	Resources.ItemTemplateName = 'Supplies';
-	Resources.Quantity = default.Cannon_LASER_SCHEMATIC_SUPPLYCOST;
-	Template.Cost.ResourceCosts.AddItem(Resources);
-
-	Artifacts.ItemTemplateName = 'AlienAlloy';
-	Artifacts.Quantity = default.Cannon_LASER_SCHEMATIC_ALLOYCOST;
-	Template.Cost.ResourceCosts.AddItem(Artifacts);
-
-	// only add elerium cost if configured value greater than 0
-	if (default.Cannon_LASER_SCHEMATIC_ELERIUMCOST > 0) {
-		Artifacts.ItemTemplateName = 'EleriumDust';
-		Artifacts.Quantity = default.Cannon_LASER_SCHEMATIC_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Artifacts);
-	}
-
-	return Template;
-}
-
-static function X2DataTemplate CreateTemplate_SniperRifle_Laser_Schematic()
-{
-	local X2SchematicTemplate Template;
-	local ArtifactCost Resources, Artifacts;
-
-	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'SniperRifle_LS_Schematic');
-
-	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///UILibrary_LW_LaserPack.Inv_Laser_Sniper_Rifle";
-	Template.CanBeBuilt = true;
-	Template.bOneTimeBuild = true;
-	Template.HideInInventory = true;
-	Template.HideInLootRecovered = true;
-	Template.PointsToComplete = 0;
-	Template.Tier = 3;
-	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
-
-	// Reference Item
-	Template.ReferenceItemTemplate = 'SniperRifle_LS';
-	Template.HideIfPurchased = 'SniperRifle_MG';
-
-	// Requirements
-	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[1]);
-	Template.Requirements.RequiredEngineeringScore = 10;
-	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
-
-	// Cost
-	Resources.ItemTemplateName = 'Supplies';
-	Resources.Quantity = default.SniperRifle_LASER_SCHEMATIC_SUPPLYCOST;
-	Template.Cost.ResourceCosts.AddItem(Resources);
-
-	Artifacts.ItemTemplateName = 'AlienAlloy';
-	Artifacts.Quantity = default.SniperRifle_LASER_SCHEMATIC_ALLOYCOST;
-	Template.Cost.ResourceCosts.AddItem(Artifacts);
-
-	// only add elerium cost if configured value greater than 0
-	if (default.SniperRifle_LASER_SCHEMATIC_ELERIUMCOST > 0) {
-		Artifacts.ItemTemplateName = 'EleriumDust';
-		Artifacts.Quantity = default.SniperRifle_LASER_SCHEMATIC_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Artifacts);
-	}
-
-	return Template;
-}
-
-static function X2DataTemplate CreateTemplate_Pistol_Laser_Schematic()
-{
-	local X2SchematicTemplate Template;
-	local ArtifactCost Resources, Artifacts;
-
-	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'Pistol_LS_Schematic');
-
-	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///UILibrary_LW_LaserPack.Inv_Laser_Pistol";
-	Template.CanBeBuilt = true;
-	Template.bOneTimeBuild = true;
-	Template.HideInInventory = true;
-	Template.HideInLootRecovered = true;
-	Template.PointsToComplete = 0;
-	Template.Tier = 1;
-	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
-
-	// Reference Item
-	Template.ReferenceItemTemplate = 'Pistol_LS';
-	Template.HideIfPurchased = 'Pistol_MG';
-
-	// Requirements
-	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-	Template.Requirements.RequiredEngineeringScore = 5;
-	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
-
-	// Cost
-	Resources.ItemTemplateName = 'Supplies';
-	Resources.Quantity = default.Pistol_LASER_SCHEMATIC_SUPPLYCOST;
-	Template.Cost.ResourceCosts.AddItem(Resources);
-
-	Artifacts.ItemTemplateName = 'AlienAlloy';
-	Artifacts.Quantity = default.Pistol_LASER_SCHEMATIC_ALLOYCOST;
-	Template.Cost.ResourceCosts.AddItem(Artifacts);
-
-	// only add elerium cost if configured value greater than 0
-	if (default.Pistol_LASER_SCHEMATIC_ELERIUMCOST > 0) {
-		Artifacts.ItemTemplateName = 'EleriumDust';
-		Artifacts.Quantity = default.Pistol_LASER_SCHEMATIC_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Artifacts);
-	}
-
-	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-
-	return Template;
-}
-
-static function X2DataTemplate CreateTemplate_Bullpup_Laser_Schematic()
-{
-	local X2SchematicTemplate Template;
-	local ArtifactCost Resources, Artifacts;
-
-	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'Bullpup_LS_Schematic');
-
-	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///UILibrary_LW_LaserPack.Inv_Laser_Bullpup";
-	Template.CanBeBuilt = true;
-	Template.bOneTimeBuild = true;
-	Template.HideInInventory = true;
-	Template.HideInLootRecovered = true;
-	Template.PointsToComplete = 0;
-	Template.Tier = 1;
-	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
-
-	// Reference Item
-	Template.ReferenceItemTemplate = 'Bullpup_LS';
-	Template.HideIfPurchased = 'Bullpup_MG';
-
-	// Requirements
-	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-	Template.Requirements.RequiredEngineeringScore = 5;
-	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
-
-	// Cost
-	Resources.ItemTemplateName = 'Supplies';
-	Resources.Quantity = default.Bullpup_LASER_SCHEMATIC_SUPPLYCOST;
-	Template.Cost.ResourceCosts.AddItem(Resources);
-
-	Artifacts.ItemTemplateName = 'AlienAlloy';
-	Artifacts.Quantity = default.Bullpup_LASER_SCHEMATIC_ALLOYCOST;
-	Template.Cost.ResourceCosts.AddItem(Artifacts);
-
-	// only add elerium cost if configured value greater than 0
-	if (default.Bullpup_LASER_SCHEMATIC_ELERIUMCOST > 0) {
-		Artifacts.ItemTemplateName = 'EleriumDust';
-		Artifacts.Quantity = default.Bullpup_LASER_SCHEMATIC_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Artifacts);
-	}
-	return Template;
-}
+[LW_WeaponPack.X2StrategyElement_LaserTechs]
+
+LASER_WEAPONS_SUPPLYCOST=0
+LASER_WEAPONS_ALLOYCOST=0
+LASER_WEAPONS_ELERIUMCOST=0
+LASER_WEAPONS_RESEARCH_POINTS=4500
+
+PULSE_LASER_WEAPONS_SUPPLYCOST=0
+PULSE_LASER_WEAPONS_ALLOYCOST=0
+PULSE_LASER_WEAPONS_ELERIUMCOST=0
+PULSE_LASER_WEAPONS_RESEARCH_POINTS=2500
+
+COIL_WEAPONS_SUPPLYCOST=0
+COIL_WEAPONS_ALLOYCOST=0
+COIL_WEAPONS_ELERIUMCOST=0
+COIL_RESEARCH_POINTS=9000
+
+ADVANCED_COIL_WEAPONS_SUPPLYCOST=0
+ADVANCED_COIL_WEAPONS_ALLOYCOST=0
+ADVANCED_COIL_WEAPONS_ELERIUMCOST=0
+ADVANCED_COIL_RESEARCH_POINTS=5000
+
+[LW_WeaponPack.X2Item_LaserSchematics]
+
+USE_SCHEMATICS=TRUE
+; If set to true, lasers and coil weapons will be placed as schematic upgrades between CV and MG and MG and BM, respectively, and techs will be ordered lasers-mag-coil-plasma. 
+; If false, lasers and coil weapons function as optional sidegrades to research and build. They are built individually and are never converted to other weapon techs.
+
+AssaultRifle_LASER_SCHEMATIC_SUPPLYCOST=30
+AssaultRifle_LASER_SCHEMATIC_ALLOYCOST=5
+AssaultRifle_LASER_SCHEMATIC_ELERIUMCOST=0
+
+BattleRifle_LASER_SCHEMATIC_SUPPLYCOST=30
+BattleRifle_LASER_SCHEMATIC_ALLOYCOST=5
+BattleRifle_LASER_SCHEMATIC_ELERIUMCOST=0
+
+SMG_LASER_SCHEMATIC_SUPPLYCOST=20
+SMG_LASER_SCHEMATIC_ALLOYCOST=4
+SMG_LASER_SCHEMATIC_ELERIUMCOST=0
+
+Shotgun_LASER_SCHEMATIC_SUPPLYCOST=30
+Shotgun_LASER_SCHEMATIC_ALLOYCOST=5
+Shotgun_LASER_SCHEMATIC_ELERIUMCOST=0
+
+Cannon_LASER_SCHEMATIC_SUPPLYCOST=30
+Cannon_LASER_SCHEMATIC_ALLOYCOST=5
+Cannon_LASER_SCHEMATIC_ELERIUMCOST=0
+
+SniperRifle_LASER_SCHEMATIC_SUPPLYCOST=30
+SniperRifle_LASER_SCHEMATIC_ALLOYCOST=5
+SniperRifle_LASER_SCHEMATIC_ELERIUMCOST=0
+
+MarksmanRifle_LASER_SCHEMATIC_SUPPLYCOST=30
+MarksmanRifle_LASER_SCHEMATIC_ALLOYCOST=5
+SniperRifle_LASER_SCHEMATIC_ELERIUMCOST=0
+
+Pistol_LASER_SCHEMATIC_SUPPLYCOST=10
+Pistol_LASER_SCHEMATIC_ALLOYCOST=2
+Pistol_LASER_SCHEMATIC_ELERIUMCOST=0
+
+AssaultRifle_COIL_SCHEMATIC_SUPPLYCOST=125
+AssaultRifle_COIL_SCHEMATIC_ALLOYCOST=15
+AssaultRifle_COIL_SCHEMATIC_ELERIUMCOST=5
+
+BattleRifle_COIL_SCHEMATIC_SUPPLYCOST=125
+BattleRifle_COIL_SCHEMATIC_ALLOYCOST=15
+BattleRifle_COIL_SCHEMATIC_ELERIUMCOST=5
+
+SMG_COIL_SCHEMATIC_SUPPLYCOST=100
+SMG_COIL_SCHEMATIC_ALLOYCOST=10
+SMG_COIL_SCHEMATIC_ELERIUMCOST=5
+
+Shotgun_COIL_SCHEMATIC_SUPPLYCOST=125
+Shotgun_COIL_SCHEMATIC_ALLOYCOST=15
+Shotgun_COIL_SCHEMATIC_ELERIUMCOST=5
+
+Cannon_COIL_SCHEMATIC_SUPPLYCOST=125
+Cannon_COIL_SCHEMATIC_ALLOYCOST=15
+Cannon_COIL_SCHEMATIC_ELERIUMCOST=5
+
+SniperRifle_COIL_SCHEMATIC_SUPPLYCOST=125
+SniperRifle_COIL_SCHEMATIC_ALLOYCOST=15
+SniperRifle_COIL_SCHEMATIC_ELERIUMCOST=5
+
+MarksmanRifle_COIL_SCHEMATIC_SUPPLYCOST=125
+MarksmanRifle_COIL_SCHEMATIC_ALLOYCOST=15
+MarksmanRifle_COIL_SCHEMATIC_ELERIUMCOST=5
+
+Pistol_COIL_SCHEMATIC_SUPPLYCOST=40
+Pistol_COIL_SCHEMATIC_ALLOYCOST=10
+Pistol_COIL_SCHEMATIC_ELERIUMCOST=5
+
+[LW_WeaponPack.X2Item_LaserWeapons]
+; ***** ImagePaths *****
+AssaultRifle_Laser_ImagePath="UILibrary_LW_LaserPack.LaserRifle_Base"
+BattleRifle_Laser_ImagePath="UILibrary_LW_LaserPack.LaserRifle_Base"
+SMG_Laser_ImagePath="UILibrary_LW_LaserPack.LaserSMG_Base"
+Cannon_Laser_ImagePath="UILibrary_LW_LaserPack.LaserCannon_Base"
+Shotgun_Laser_ImagePath="UILibrary_LW_LaserPack.LaserShotgun_Base"
+SniperRifle_Laser_ImagePath="UILibrary_LW_LaserPack.LaserSniper_Base"
+MarksmanRifle_Laser_ImagePath="UILibrary_LW_LaserPack.LaserSniper_Base"
+Pistol_Laser_ImagePath="UILibrary_LW_LaserPack.Inv_Laser_Pistol"
+
+; ***** Damage arrays for attack actions  *****
+ASSAULTRIFLE_LASER_BASEDAMAGE=	(Damage=5, Spread=1, PlusOne=0, Crit=2, Pierce=0, Shred=0, Tag="", DamageType="Projectile_BeamXCom")
+BATTLERIFLE_LASER_BASEDAMAGE=	(Damage=6, Spread=1, PlusOne=0, Crit=2, Pierce=0, Shred=0, Tag="", DamageType="Projectile_BeamXCom")
+SMG_LASER_BASEDAMAGE=			(Damage=4, Spread=1, PlusOne=0, Crit=2, Pierce=0, Shred=0, Tag="", DamageType="Projectile_BeamXCom")
+LMG_LASER_BASEDAMAGE=			(Damage=6, Spread=1, PlusOne=0, Crit=3, Pierce=0, Shred=0, Tag="", DamageType="Projectile_BeamXCom")
+SHOTGUN_LASER_BASEDAMAGE=		(Damage=6, Spread=1, PlusOne=0, Crit=3, Pierce=0, Shred=0, Tag="", DamageType="Projectile_BeamXCom")
+SNIPERRIFLE_LASER_BASEDAMAGE=	(Damage=6, Spread=1, PlusOne=0, Crit=3, Pierce=0, Shred=0, Tag="", DamageType="Projectile_BeamXCom")
+MARKSMANRIFLE_LASER_BASEDAMAGE=	(Damage=5, Spread=1, PlusOne=0, Crit=3, Pierce=0, Shred=0, Tag="", DamageType="Projectile_BeamXCom")
+PISTOL_LASER_BASEDAMAGE=		(Damage=2, Spread=1, PlusOne=50, Crit=1, Pierce=0, Shred=0, Tag="", DamageType="Projectile_BeamXCom")
+
+; ***** Core properties and variables for XCom Laser Weapons *****
+ASSAULTRIFLE_LASER_AIM = 5
+ASSAULTRIFLE_LASER_CRITCHANCE = 0
+ASSAULTRIFLE_LASER_ICLIPSIZE = 4
+ASSAULTRIFLE_LASER_ISOUNDRANGE = 27
+ASSAULTRIFLE_LASER_IENVIRONMENTDAMAGE = 10
+ASSAULTRIFLE_LASER_UPGRADESLOTS = 2
+
+BATTLERIFLE_LASER_AIM = 5
+BATTLERIFLE_LASER_CRITCHANCE = 0
+BATTLERIFLE_LASER_ICLIPSIZE = 3
+BATTLERIFLE_LASER_ISOUNDRANGE = 27
+BATTLERIFLE_LASER_IENVIRONMENTDAMAGE = 10
+BATTLERIFLE_LASER_UPGRADESLOTS = 2
+
+SMG_LASER_AIM = 5
+SMG_LASER_CRITCHANCE = 0
+SMG_LASER_ICLIPSIZE = 3
+SMG_LASER_ISOUNDRANGE = 27
+SMG_LASER_IENVIRONMENTDAMAGE = 10
+SMG_LASER_UPGRADESLOTS = 2
+
+LMG_LASER_AIM = 5
+LMG_LASER_CRITCHANCE = 0
+LMG_LASER_ICLIPSIZE = 3
+LMG_LASER_ISOUNDRANGE = 30
+LMG_LASER_IENVIRONMENTDAMAGE = 10
+LMG_LASER_UPGRADESLOTS = 2
+
+SHOTGUN_LASER_AIM = 5
+SHOTGUN_LASER_CRITCHANCE = 15
+SHOTGUN_LASER_ICLIPSIZE = 4
+SHOTGUN_LASER_ISOUNDRANGE = 30
+SHOTGUN_LASER_IENVIRONMENTDAMAGE = 10
+SHOTGUN_LASER_UPGRADESLOTS = 2
+
+SNIPERRIFLE_LASER_AIM = 5
+SNIPERRIFLE_LASER_CRITCHANCE = 10
+SNIPERRIFLE_LASER_ICLIPSIZE = 3
+SNIPERRIFLE_LASER_ISOUNDRANGE = 27
+SNIPERRIFLE_LASER_IENVIRONMENTDAMAGE = 10
+SNIPERRIFLE_LASER_UPGRADESLOTS = 2
+
+MARKSMANRIFLE_LASER_AIM = 5
+MARKSMANRIFLE_LASER_CRITCHANCE = 10
+MARKSMANRIFLE_LASER_ICLIPSIZE = 3
+MARKSMANRIFLE_LASER_ISOUNDRANGE = 27
+MARKSMANRIFLE_LASER_IENVIRONMENTDAMAGE = 10
+MARKSMANRIFLE_LASER_UPGRADESLOTS = 2
+
+PISTOL_LASER_AIM = 5
+PISTOL_LASER_CRITCHANCE = 0
+PISTOL_LASER_ICLIPSIZE = 99
+PISTOL_LASER_ISOUNDRANGE = 15
+PISTOL_LASER_IENVIRONMENTDAMAGE = 5
+
+; range profiles for laser
+SHORT_LASER_RANGE[0] = 0
+SHORT_LASER_RANGE[1] = 40
+SHORT_LASER_RANGE[2] = 35
+SHORT_LASER_RANGE[3] = 32
+SHORT_LASER_RANGE[4] = 28
+SHORT_LASER_RANGE[5] = 23
+SHORT_LASER_RANGE[6] = 19
+SHORT_LASER_RANGE[7] = 16
+SHORT_LASER_RANGE[8] = 12
+SHORT_LASER_RANGE[9] = 6
+SHORT_LASER_RANGE[10] = 3
+SHORT_LASER_RANGE[11] = 0
+SHORT_LASER_RANGE[12] = -2
+SHORT_LASER_RANGE[13] = -4
+SHORT_LASER_RANGE[14] = -7
+SHORT_LASER_RANGE[15] = -10
+SHORT_LASER_RANGE[16] = -12
+SHORT_LASER_RANGE[17] = -15
+SHORT_LASER_RANGE[18] = -17
+SHORT_LASER_RANGE[19] = -18
+SHORT_LASER_RANGE[20] = -18
+SHORT_LASER_RANGE[21] = -19
+SHORT_LASER_RANGE[22] = -19
+SHORT_LASER_RANGE[23] = -21
+SHORT_LASER_RANGE[24] = -25
+SHORT_LASER_RANGE[25] = -30
+
+MIDSHORT_LASER_RANGE[0] = 30
+MIDSHORT_LASER_RANGE[1] = 30
+MIDSHORT_LASER_RANGE[2] = 25
+MIDSHORT_LASER_RANGE[3] = 20
+MIDSHORT_LASER_RANGE[4] = 15
+MIDSHORT_LASER_RANGE[5] = 10
+MIDSHORT_LASER_RANGE[6] = 5
+MIDSHORT_LASER_RANGE[7] = 0
+MIDSHORT_LASER_RANGE[8] = 0
+MIDSHORT_LASER_RANGE[9] = 0
+MIDSHORT_LASER_RANGE[10] = 0
+MIDSHORT_LASER_RANGE[11] = 0
+MIDSHORT_LASER_RANGE[12] = -4
+MIDSHORT_LASER_RANGE[13] = -8
+MIDSHORT_LASER_RANGE[14] = -12
+MIDSHORT_LASER_RANGE[15] = -16
+MIDSHORT_LASER_RANGE[16] = -20
+
+MEDIUM_LASER_RANGE[0] = 0
+MEDIUM_LASER_RANGE[1] = 21
+MEDIUM_LASER_RANGE[2] = 20
+MEDIUM_LASER_RANGE[3] = 19
+MEDIUM_LASER_RANGE[4] = 17
+MEDIUM_LASER_RANGE[5] = 16
+MEDIUM_LASER_RANGE[6] = 14
+MEDIUM_LASER_RANGE[7] = 11
+MEDIUM_LASER_RANGE[8] = 9
+MEDIUM_LASER_RANGE[9] = 7
+MEDIUM_LASER_RANGE[10] = 5
+MEDIUM_LASER_RANGE[11] = 4
+MEDIUM_LASER_RANGE[12] = 3
+MEDIUM_LASER_RANGE[13] = 2
+MEDIUM_LASER_RANGE[14] = 1
+MEDIUM_LASER_RANGE[15] = 1
+MEDIUM_LASER_RANGE[16] = 1
+MEDIUM_LASER_RANGE[17] = 1
+MEDIUM_LASER_RANGE[18] = 1
+MEDIUM_LASER_RANGE[19] = 0
+MEDIUM_LASER_RANGE[20] = 0
+MEDIUM_LASER_RANGE[21] = 0
+MEDIUM_LASER_RANGE[22] = 0
+MEDIUM_LASER_RANGE[23] = 0
+MEDIUM_LASER_RANGE[24] = 0
+MEDIUM_LASER_RANGE[25] = 0
+
+MEDLONG_LASER_RANGE[0] = 0
+MEDLONG_LASER_RANGE[1] = -15
+MEDLONG_LASER_RANGE[2] = -13
+MEDLONG_LASER_RANGE[3] = -12
+MEDLONG_LASER_RANGE[4] = -10
+MEDLONG_LASER_RANGE[5] = -9
+MEDLONG_LASER_RANGE[6] = -6
+MEDLONG_LASER_RANGE[7] = -3
+MEDLONG_LASER_RANGE[8] = 0
+MEDLONG_LASER_RANGE[9] = 0
+MEDLONG_LASER_RANGE[10] = 0
+MEDLONG_LASER_RANGE[11] = 0
+MEDLONG_LASER_RANGE[12] = 0
+MEDLONG_LASER_RANGE[13] = 0
+MEDLONG_LASER_RANGE[14] = 0
+MEDLONG_LASER_RANGE[15] = 0
+MEDLONG_LASER_RANGE[16] = 0
+MEDLONG_LASER_RANGE[17] = 0
+MEDLONG_LASER_RANGE[18] = 0
+MEDLONG_LASER_RANGE[19] = 0
+MEDLONG_LASER_RANGE[20] = 0
+MEDLONG_LASER_RANGE[21] = 0
+MEDLONG_LASER_RANGE[22] = 0
+MEDLONG_LASER_RANGE[23] = 0
+MEDLONG_LASER_RANGE[24] = 0
+MEDLONG_LASER_RANGE[25] = 0
+
+LONG_LASER_RANGE[0] = 0
+LONG_LASER_RANGE[1] = -30
+LONG_LASER_RANGE[2] = -27
+LONG_LASER_RANGE[3] = -24
+LONG_LASER_RANGE[4] = -21
+LONG_LASER_RANGE[5] = -18
+LONG_LASER_RANGE[6] = -15
+LONG_LASER_RANGE[7] = -12
+LONG_LASER_RANGE[8] = -9
+LONG_LASER_RANGE[9] = -6
+LONG_LASER_RANGE[10] = -3
+LONG_LASER_RANGE[11] = 0
+LONG_LASER_RANGE[12] = 0
+LONG_LASER_RANGE[13] = 0
+LONG_LASER_RANGE[14] = 0
+LONG_LASER_RANGE[15] = 0
+LONG_LASER_RANGE[16] = 0
+LONG_LASER_RANGE[17] = 0
+LONG_LASER_RANGE[18] = 0
+LONG_LASER_RANGE[19] = 0
+LONG_LASER_RANGE[20] = 0
+LONG_LASER_RANGE[21] = 0
+LONG_LASER_RANGE[22] = 0
+LONG_LASER_RANGE[23] = 0
+LONG_LASER_RANGE[24] = 0
+LONG_LASER_RANGE[25] = 0
+
+ASSAULTRIFLE_LS_SUPPLYCOST=10
+ASSAULTRIFLE_LS_ALLOYCOST=1
+ASSAULTRIFLE_LS_ELERIUMCOST=0
+
+BATTLERIFLE_LS_SUPPLYCOST=10
+BATTLERIFLE_LS_ALLOYCOST=1
+BATTLERIFLE_LS_ELERIUMCOST=0
+
+SMG_LS_SUPPLYCOST=10
+SMG_LS_ALLOYCOST=1
+SMG_LS_ELERIUMCOST=0
+
+CANNON_LS_SUPPLYCOST=15
+CANNON_LS_ALLOYCOST=1
+CANNON_LS_ELERIUMCOST=0
+
+SHOTGUN_LS_SUPPLYCOST=15
+SHOTGUN_LS_ALLOYCOST=1
+SHOTGUN_LS_ELERIUMCOST=0
+
+SNIPERRIFLE_LS_SUPPLYCOST=15
+SNIPERRIFLE_LS_ALLOYCOST=1
+SNIPERRIFLE_LS_ELERIUMCOST=0
+
+MARKSMANRIFLE_LS_SUPPLYCOST=15
+MARKSMANRIFLE_LS_ALLOYCOST=1
+MARKSMANRIFLE_LS_ELERIUMCOST=0
+
+PISTOL_LS_SUPPLYCOST=5
+PISTOL_LS_ALLOYCOST=1
+PISTOL_LS_ELERIUMCOST=0
+
+[LW_WeaponPack.X2Item_Coilguns]
+
+ASSAULTRIFLE_COIL_BASEDAMAGE=			(Damage=7,	Spread=2, PlusOne=0,	Crit=3, Pierce=1, Shred=0, Tag="", DamageType="Projectile_MagXCom")
+BATTLERIFLE_COIL_BASEDAMAGE=			(Damage=8,	Spread=2, PlusOne=0,	Crit=3, Pierce=1, Shred=0, Tag="", DamageType="Projectile_MagXCom")
+CANNON_COIL_BASEDAMAGE=					(Damage=8,	Spread=2, PlusOne=0,	Crit=4, Pierce=1, Shred=0, Tag="", DamageType="Projectile_MagXCom")
+SHOTGUN_COIL_BASEDAMAGE=				(Damage=8,	Spread=2, PlusOne=0,	Crit=4, Pierce=1, Shred=0, Tag="", DamageType="Projectile_MagXCom")
+SNIPERRIFLE_COIL_BASEDAMAGE=			(Damage=8,	Spread=2, PlusOne=0,	Crit=4, Pierce=1, Shred=0, Tag="", DamageType="Projectile_MagXCom")
+MARKSMANRIFLE_COIL_BASEDAMAGE=			(Damage=7,	Spread=2, PlusOne=0,	Crit=4, Pierce=1, Shred=0, Tag="", DamageType="Projectile_MagXCom")
+SMG_COIL_BASEDAMAGE=					(Damage=6,	Spread=2, PlusOne=0,	Crit=3, Pierce=1, Shred=0, Tag="", DamageType="Projectile_MagXCom")
+PISTOL_COIL_BASEDAMAGE=					(Damage=3,	Spread=1, PlusOne=50,	Crit=1, Pierce=1, Shred=0, Tag="", DamageType="Projectile_MagXCom")
+
+ASSAULTRIFLE_COIL_AIM=0
+ASSAULTRIFLE_COIL_CRITCHANCE=0
+ASSAULTRIFLE_COIL_ICLIPSIZE=4
+ASSAULTRIFLE_COIL_ISOUNDRANGE=30
+ASSAULTRIFLE_COIL_IENVIRONMENTDAMAGE=10
+ASSAULTRIFLE_COIL_UPGRADESLOTS=2
+
+BATTLERIFLE_COIL_AIM=0
+BATTLERIFLE_COIL_CRITCHANCE=0
+BATTLERIFLE_COIL_ICLIPSIZE=3
+BATTLERIFLE_COIL_ISOUNDRANGE=30
+BATTLERIFLE_COIL_IENVIRONMENTDAMAGE=10
+BATTLERIFLE_COIL_UPGRADESLOTS=2
+
+SMG_COIL_AIM=0
+SMG_COIL_CRITCHANCE=0
+SMG_COIL_ICLIPSIZE=3
+SMG_COIL_ISOUNDRANGE=28
+SMG_COIL_IENVIRONMENTDAMAGE=5
+SMG_COIL_UPGRADESLOTS=2
+
+CANNON_COIL_AIM=0
+CANNON_COIL_CRITCHANCE=0
+CANNON_COIL_ICLIPSIZE=3
+CANNON_COIL_ISOUNDRANGE=36
+CANNON_COIL_IENVIRONMENTDAMAGE=10
+CANNON_COIL_UPGRADESLOTS=2
+
+SHOTGUN_COIL_AIM=0
+SHOTGUN_COIL_CRITCHANCE=15
+SHOTGUN_COIL_ICLIPSIZE=4
+SHOTGUN_COIL_ISOUNDRANGE=30
+SHOTGUN_COIL_IENVIRONMENTDAMAGE=10
+SHOTGUN_COIL_UPGRADESLOTS=2
+
+SNIPERRIFLE_COIL_AIM=0
+SNIPERRIFLE_COIL_CRITCHANCE=10
+SNIPERRIFLE_COIL_ICLIPSIZE=4
+SNIPERRIFLE_COIL_ISOUNDRANGE=30
+SNIPERRIFLE_COIL_IENVIRONMENTDAMAGE=10
+SNIPERRIFLE_COIL_UPGRADESLOTS=2
+
+MARKSMANRIFLE_COIL_AIM=0
+MARKSMANRIFLE_COIL_CRITCHANCE=10
+MARKSMANRIFLE_COIL_ICLIPSIZE=4
+MARKSMANRIFLE_COIL_ISOUNDRANGE=30
+MARKSMANRIFLE_COIL_IENVIRONMENTDAMAGE=10
+MARKSMANRIFLE_COIL_UPGRADESLOTS=2
+
+PISTOL_COIL_AIM=0
+PISTOL_COIL_CRITCHANCE=0
+PISTOL_COIL_ICLIPSIZE=99
+PISTOL_COIL_ISOUNDRANGE=26
+PISTOL_COIL_IENVIRONMENTDAMAGE=5
+
+AssaultRifle_Coil_ImagePath="UILibrary_LW_Coilguns.InventoryArt.CoilRifle_Base"
+SMG_Coil_ImagePath="UILibrary_LW_Coilguns.InventoryArt.CoilSMG_Base"
+Cannon_Coil_ImagePath="UILibrary_LW_Coilguns.InventoryArt.CoilCannon_Base"
+Shotgun_Coil_ImagePath="UILibrary_LW_Coilguns.InventoryArt.CoilShotgun_Base"
+SniperRifle_Coil_ImagePath="UILibrary_LW_Coilguns.InventoryArt.CoilSniperRifle_Base"
+
+SHORT_COIL_RANGE[0] = 0
+SHORT_COIL_RANGE[1] = 40
+SHORT_COIL_RANGE[2] = 35
+SHORT_COIL_RANGE[3] = 32
+SHORT_COIL_RANGE[4] = 28
+SHORT_COIL_RANGE[5] = 23
+SHORT_COIL_RANGE[6] = 19
+SHORT_COIL_RANGE[7] = 16
+SHORT_COIL_RANGE[8] = 12
+SHORT_COIL_RANGE[9] = 6
+SHORT_COIL_RANGE[10] = 3
+SHORT_COIL_RANGE[11] = 0
+SHORT_COIL_RANGE[12] = -2
+SHORT_COIL_RANGE[13] = -4
+SHORT_COIL_RANGE[14] = -7
+SHORT_COIL_RANGE[15] = -10
+SHORT_COIL_RANGE[16] = -12
+SHORT_COIL_RANGE[17] = -15
+SHORT_COIL_RANGE[18] = -17
+SHORT_COIL_RANGE[19] = -18
+SHORT_COIL_RANGE[20] = -18
+SHORT_COIL_RANGE[21] = -19
+SHORT_COIL_RANGE[22] = -19
+SHORT_COIL_RANGE[23] = -21
+SHORT_COIL_RANGE[24] = -25
+SHORT_COIL_RANGE[25] = -30
+
+MIDSHORT_COIL_RANGE[0] = 30
+MIDSHORT_COIL_RANGE[1] = 30
+MIDSHORT_COIL_RANGE[2] = 25
+MIDSHORT_COIL_RANGE[3] = 20
+MIDSHORT_COIL_RANGE[4] = 15
+MIDSHORT_COIL_RANGE[5] = 10
+MIDSHORT_COIL_RANGE[6] = 5
+MIDSHORT_COIL_RANGE[7] = 0
+MIDSHORT_COIL_RANGE[8] = 0
+MIDSHORT_COIL_RANGE[9] = 0
+MIDSHORT_COIL_RANGE[10] = 0
+MIDSHORT_COIL_RANGE[11] = 0
+MIDSHORT_COIL_RANGE[12] = -4
+MIDSHORT_COIL_RANGE[13] = -8
+MIDSHORT_COIL_RANGE[14] = -12
+MIDSHORT_COIL_RANGE[15] = -16
+MIDSHORT_COIL_RANGE[16] = -20
+
+MEDIUM_COIL_RANGE[0] = 0
+MEDIUM_COIL_RANGE[1] = 21
+MEDIUM_COIL_RANGE[2] = 20
+MEDIUM_COIL_RANGE[3] = 19
+MEDIUM_COIL_RANGE[4] = 17
+MEDIUM_COIL_RANGE[5] = 16
+MEDIUM_COIL_RANGE[6] = 14
+MEDIUM_COIL_RANGE[7] = 11
+MEDIUM_COIL_RANGE[8] = 9
+MEDIUM_COIL_RANGE[9] = 7
+MEDIUM_COIL_RANGE[10] = 5
+MEDIUM_COIL_RANGE[11] = 4
+MEDIUM_COIL_RANGE[12] = 3
+MEDIUM_COIL_RANGE[13] = 2
+MEDIUM_COIL_RANGE[14] = 1
+MEDIUM_COIL_RANGE[15] = 1
+MEDIUM_COIL_RANGE[16] = 1
+MEDIUM_COIL_RANGE[17] = 1
+MEDIUM_COIL_RANGE[18] = 1
+MEDIUM_COIL_RANGE[19] = 0
+MEDIUM_COIL_RANGE[20] = 0
+MEDIUM_COIL_RANGE[21] = 0
+MEDIUM_COIL_RANGE[22] = 0
+MEDIUM_COIL_RANGE[23] = 0
+MEDIUM_COIL_RANGE[24] = 0
+MEDIUM_COIL_RANGE[25] = 0
+
+MEDLONG_COIL_RANGE[0] = 0
+MEDLONG_COIL_RANGE[1] = -15
+MEDLONG_COIL_RANGE[2] = -13
+MEDLONG_COIL_RANGE[3] = -12
+MEDLONG_COIL_RANGE[4] = -10
+MEDLONG_COIL_RANGE[5] = -9
+MEDLONG_COIL_RANGE[6] = -6
+MEDLONG_COIL_RANGE[7] = -3
+MEDLONG_COIL_RANGE[8] = 0
+MEDLONG_COIL_RANGE[9] = 0
+MEDLONG_COIL_RANGE[10] = 0
+MEDLONG_COIL_RANGE[11] = 0
+MEDLONG_COIL_RANGE[12] = 0
+MEDLONG_COIL_RANGE[13] = 0
+MEDLONG_COIL_RANGE[14] = 0
+MEDLONG_COIL_RANGE[15] = 0
+MEDLONG_COIL_RANGE[16] = 0
+MEDLONG_COIL_RANGE[17] = 0
+MEDLONG_COIL_RANGE[18] = 0
+MEDLONG_COIL_RANGE[19] = 0
+MEDLONG_COIL_RANGE[20] = 0
+MEDLONG_COIL_RANGE[21] = 0
+MEDLONG_COIL_RANGE[22] = 0
+MEDLONG_COIL_RANGE[23] = 0
+MEDLONG_COIL_RANGE[24] = 0
+MEDLONG_COIL_RANGE[25] = 0
+
+LONG_COIL_RANGE[0] = 0
+LONG_COIL_RANGE[1] = -30
+LONG_COIL_RANGE[2] = -27
+LONG_COIL_RANGE[3] = -24
+LONG_COIL_RANGE[4] = -21
+LONG_COIL_RANGE[5] = -18
+LONG_COIL_RANGE[6] = -15
+LONG_COIL_RANGE[7] = -12
+LONG_COIL_RANGE[8] = -9
+LONG_COIL_RANGE[9] = -6
+LONG_COIL_RANGE[10] = -3
+LONG_COIL_RANGE[11] = 0
+LONG_COIL_RANGE[12] = 0
+LONG_COIL_RANGE[13] = 0
+LONG_COIL_RANGE[14] = 0
+LONG_COIL_RANGE[15] = 0
+LONG_COIL_RANGE[16] = 0
+LONG_COIL_RANGE[17] = 0
+LONG_COIL_RANGE[18] = 0
+LONG_COIL_RANGE[19] = 0
+LONG_COIL_RANGE[20] = 0
+LONG_COIL_RANGE[21] = 0
+LONG_COIL_RANGE[22] = 0
+LONG_COIL_RANGE[23] = 0
+LONG_COIL_RANGE[24] = 0
+LONG_COIL_RANGE[25] = 0
+
+ASSAULTRIFLE_CG_SUPPLYCOST=20
+ASSAULTRIFLE_CG_ALLOYCOST=2
+ASSAULTRIFLE_CG_ELERIUMCOST=2
+
+BATTLERIFLE_CG_SUPPLYCOST=20
+BATTLERIFLE_CG_ALLOYCOST=2
+BATTLERIFLE_CG_ELERIUMCOST=2
+
+SMG_CG_SUPPLYCOST=20
+SMG_CG_ALLOYCOST=2
+SMG_CG_ELERIUMCOST=2
+
+CANNON_CG_SUPPLYCOST=25
+CANNON_CG_ALLOYCOST=3
+CANNON_CG_ELERIUMCOST=3
+
+SHOTGUN_CG_SUPPLYCOST=25
+SHOTGUN_CG_ALLOYCOST=2
+SHOTGUN_CG_ELERIUMCOST=2
+
+SNIPERRIFLE_CG_SUPPLYCOST=25
+SNIPERRIFLE_CG_ALLOYCOST=3
+SNIPERRIFLE_CG_ELERIUMCOST=3
+
+MARKSMANRIFLE_CG_SUPPLYCOST=25
+MARKSMANRIFLE_CG_ALLOYCOST=3
+MARKSMANRIFLE_CG_ELERIUMCOST=3
+
+PISTOL_CG_SUPPLYCOST=15
+PISTOL_CG_ALLOYCOST=1
+PISTOL_CG_ELERIUMCOST=1
+ 
+[LW_WeaponPack.X2Ability_SMGAbilities]
+SMG_CONVENTIONAL_MOBILITY_BONUS = 3
+SMG_LASER_MOBILITY_BONUS=3
+SMG_MAGNETIC_MOBILITY_BONUS = 3
+SMG_COIL_MOBILITY_BONUS = 3
+SMG_BEAM_MOBILITY_BONUS = 3
+
+SMG_CONVENTIONAL_DETECTIONRADIUSMODIFER = 0.2f
+SMG_LASER_DETECTIONRADIUSMODIFER=0.2f
+SMG_MAGNETIC_DETECTIONRADIUSMODIFER = 0.2f
+SMG_COIL_DETECTIONRADIUSMODIFER = 0.2f
+SMG_BEAM_DETECTIONRADIUSMODIFER = 0.2f
+
+[LW_WeaponPack.X2Ability_BRAbilities]
+BR_CONVENTIONAL_MOBILITY_BONUS = -1
+BR_LASER_MOBILITY_BONUS = -1
+BR_MAGNETIC_MOBILITY_BONUS = -1
+BR_COIL_MOBILITY_BONUS = -1
+BR_BEAM_MOBILITY_BONUS = -1
+
+[LW_WeaponPack.X2Item_SMGSchematics]
+SMG_MAGNETIC_SCHEMATIC_SUPPLYCOST = 125
+SMG_MAGNETIC_SCHEMATIC_ALLOYCOST = 10
+SMG_MAGNETIC_SCHEMATIC_ELERIUMCOST = 0
+
+SMG_BEAM_SCHEMATIC_SUPPLYCOST = 250
+SMG_BEAM_SCHEMATIC_ALLOYCOST = 20
+SMG_BEAM_SCHEMATIC_ELERIUMCOST = 10
+
+[LW_WeaponPack.X2Item_BRSchematics]
+BATTLERIFLE_MAGNETIC_SCHEMATIC_SUPPLYCOST = 125
+BATTLERIFLE_MAGNETIC_SCHEMATIC_ALLOYCOST = 10
+BATTLERIFLE_MAGNETIC_SCHEMATIC_ELERIUMCOST = 0
+
+BATTLERIFLE_BEAM_SCHEMATIC_SUPPLYCOST = 250
+BATTLERIFLE_BEAM_SCHEMATIC_ALLOYCOST = 20
+BATTLERIFLE_BEAM_SCHEMATIC_ELERIUMCOST = 10
+
+MARKSMANRIFLE_MAGNETIC_SCHEMATIC_SUPPLYCOST = 125
+MARKSMANRIFLE_MAGNETIC_SCHEMATIC_ALLOYCOST = 10
+MARKSMANRIFLE_MAGNETIC_SCHEMATIC_ELERIUMCOST = 0
+
+MARKSMANRIFLE_BEAM_SCHEMATIC_SUPPLYCOST = 250
+MARKSMANRIFLE_BEAM_SCHEMATIC_ALLOYCOST = 20
+MARKSMANRIFLE_BEAM_SCHEMATIC_ELERIUMCOST = 10
+
+[LW_WeaponPack.X2Item_SMGWeapon]
+SMG_CONVENTIONAL_BASEDAMAGE=	(Damage=3, Spread=1, PlusOne=0, Crit=2, Pierce=0, Shred=0, Tag="", DamageType="Projectile_Conventional")
+SMG_MAGNETIC_BASEDAMAGE=		(Damage=5, Spread=1, PlusOne=0, Crit=2, Pierce=0, Shred=0, Tag="", DamageType="Projectile_MagXCom")
+SMG_BEAM_BASEDAMAGE=			(Damage=7, Spread=1, PlusOne=0, Crit=2, Pierce=0, Shred=0, Tag="", DamageType="Projectile_BeamXCom")
+
+; ***** Core properties and variables for XCom SMG *****
+; *** CONVENTIONAL ***
+SMG_CONVENTIONAL_AIM = 0
+SMG_CONVENTIONAL_CRITCHANCE = 0
+SMG_CONVENTIONAL_ICLIPSIZE = 3
+SMG_CONVENTIONAL_ISOUNDRANGE = 27
+SMG_CONVENTIONAL_IENVIRONMENTDAMAGE = 5
+SMG_CONVENTIONAL_UPGRADESLOTS = 1
+
+; *** MAGNETIC ***
+SMG_MAGNETIC_AIM = 0
+SMG_MAGNETIC_CRITCHANCE = 0
+SMG_MAGNETIC_ICLIPSIZE = 3
+SMG_MAGNETIC_ISOUNDRANGE = 27
+SMG_MAGNETIC_IENVIRONMENTDAMAGE = 10
+SMG_MAGNETIC_UPGRADESLOTS = 2
+
+; *** BEAM ***
+SMG_BEAM_AIM = 0
+SMG_BEAM_CRITCHANCE = 0
+SMG_BEAM_ICLIPSIZE = 3
+SMG_BEAM_ISOUNDRANGE = 27
+SMG_BEAM_IENVIRONMENTDAMAGE = 10
+SMG_BEAM_UPGRADESLOTS = 2
+
+; **** WEAPON RANGE TABLES ****
+MIDSHORT_CONVENTIONAL_RANGE[0] = 30
+MIDSHORT_CONVENTIONAL_RANGE[1] = 30
+MIDSHORT_CONVENTIONAL_RANGE[2] = 25
+MIDSHORT_CONVENTIONAL_RANGE[3] = 20
+MIDSHORT_CONVENTIONAL_RANGE[4] = 15
+MIDSHORT_CONVENTIONAL_RANGE[5] = 10
+MIDSHORT_CONVENTIONAL_RANGE[6] = 5
+MIDSHORT_CONVENTIONAL_RANGE[7] = 0
+MIDSHORT_CONVENTIONAL_RANGE[8] = 0
+MIDSHORT_CONVENTIONAL_RANGE[9] = 0
+MIDSHORT_CONVENTIONAL_RANGE[10] = 0
+MIDSHORT_CONVENTIONAL_RANGE[11] = 0
+MIDSHORT_CONVENTIONAL_RANGE[12] = -4
+MIDSHORT_CONVENTIONAL_RANGE[13] = -8
+MIDSHORT_CONVENTIONAL_RANGE[14] = -12
+MIDSHORT_CONVENTIONAL_RANGE[15] = -16
+MIDSHORT_CONVENTIONAL_RANGE[16] = -20
+
+; range profiles for magnetic
+MIDSHORT_MAGNETIC_RANGE[0] = 30
+MIDSHORT_MAGNETIC_RANGE[1] = 30
+MIDSHORT_MAGNETIC_RANGE[2] = 25
+MIDSHORT_MAGNETIC_RANGE[3] = 20
+MIDSHORT_MAGNETIC_RANGE[4] = 15
+MIDSHORT_MAGNETIC_RANGE[5] = 10
+MIDSHORT_MAGNETIC_RANGE[6] = 5
+MIDSHORT_MAGNETIC_RANGE[7] = 0
+MIDSHORT_MAGNETIC_RANGE[8] = 0
+MIDSHORT_MAGNETIC_RANGE[9] = 0
+MIDSHORT_MAGNETIC_RANGE[10] = 0
+MIDSHORT_MAGNETIC_RANGE[11] = 0
+MIDSHORT_MAGNETIC_RANGE[12] = -4
+MIDSHORT_MAGNETIC_RANGE[13] = -8
+MIDSHORT_MAGNETIC_RANGE[14] = -12
+MIDSHORT_MAGNETIC_RANGE[15] = -16
+MIDSHORT_MAGNETIC_RANGE[16] = -20
+
+; range profiles for beam
+MIDSHORT_BEAM_RANGE[0] = 30
+MIDSHORT_BEAM_RANGE[1] = 30
+MIDSHORT_BEAM_RANGE[2] = 25
+MIDSHORT_BEAM_RANGE[3] = 20
+MIDSHORT_BEAM_RANGE[4] = 15
+MIDSHORT_BEAM_RANGE[5] = 10
+MIDSHORT_BEAM_RANGE[6] = 5
+MIDSHORT_BEAM_RANGE[7] = 0
+MIDSHORT_BEAM_RANGE[8] = 0
+MIDSHORT_BEAM_RANGE[9] = 0
+MIDSHORT_BEAM_RANGE[10] = 0
+MIDSHORT_BEAM_RANGE[11] = 0
+MIDSHORT_BEAM_RANGE[12] = -4
+MIDSHORT_BEAM_RANGE[13] = -8
+MIDSHORT_BEAM_RANGE[14] = -12
+MIDSHORT_BEAM_RANGE[15] = -16
+MIDSHORT_BEAM_RANGE[16] = -20
+
+[LW_WeaponPack.X2Item_BR_MR_Pack]
+BATTLERIFLE_CONVENTIONAL_BASEDAMAGE=	(Damage=3, Spread=1, PlusOne=0, Crit=2, Pierce=0, Shred=0, Tag="", DamageType="Projectile_Conventional")
+BATTLERIFLE_MAGNETIC_BASEDAMAGE=		(Damage=5, Spread=1, PlusOne=0, Crit=2, Pierce=0, Shred=0, Tag="", DamageType="Projectile_MagXCom")
+BATTLERIFLE_BEAM_BASEDAMAGE=			(Damage=7, Spread=1, PlusOne=0, Crit=2, Pierce=0, Shred=0, Tag="", DamageType="Projectile_BeamXCom")
+
+MARKSMANRIFLE_CONVENTIONAL_BASEDAMAGE=	(Damage=3, Spread=1, PlusOne=0, Crit=2, Pierce=0, Shred=0, Tag="", DamageType="Projectile_Conventional")
+MARKSMANRIFLE_MAGNETIC_BASEDAMAGE=		(Damage=5, Spread=1, PlusOne=0, Crit=2, Pierce=0, Shred=0, Tag="", DamageType="Projectile_MagXCom")
+MARKSMANRIFLE_BEAM_BASEDAMAGE=			(Damage=7, Spread=1, PlusOne=0, Crit=2, Pierce=0, Shred=0, Tag="", DamageType="Projectile_BeamXCom")
+
+; ***** Core properties and variables for XCom SMG *****
+; *** CONVENTIONAL ***
+BATTLERIFLE_CONVENTIONAL_AIM = 0
+BATTLERIFLE_CONVENTIONAL_CRITCHANCE = 0
+SBATTLERIFLE_CONVENTIONAL_ICLIPSIZE = 3
+BATTLERIFLE_CONVENTIONAL_ISOUNDRANGE = 27
+BATTLERIFLE_CONVENTIONAL_IENVIRONMENTDAMAGE = 5
+BATTLERIFLE_CONVENTIONAL_UPGRADESLOTS = 1
+
+; *** MAGNETIC ***
+BATTLERIFLE_MAGNETIC_AIM = 0
+BATTLERIFLE_MAGNETIC_CRITCHANCE = 0
+BATTLERIFLE_MAGNETIC_ICLIPSIZE = 3
+BATTLERIFLE_MAGNETIC_ISOUNDRANGE = 27
+BATTLERIFLE_MAGNETIC_IENVIRONMENTDAMAGE = 10
+BATTLERIFLE_MAGNETIC_UPGRADESLOTS = 2
+
+; *** BEAM ***
+BATTLERIFLE_BEAM_AIM = 0
+BATTLERIFLE_BEAM_CRITCHANCE = 0
+BATTLERIFLE_BEAM_ICLIPSIZE = 3
+BATTLERIFLE_BEAM_ISOUNDRANGE = 27
+BATTLERIFLE_BEAM_IENVIRONMENTDAMAGE = 10
+BATTLERIFLE_BEAM_UPGRADESLOTS = 2
+
+; *** CONVENTIONAL ***
+MARKSMANRIFLE_CONVENTIONAL_AIM = 0
+MARKSMANRIFLE_CONVENTIONAL_CRITCHANCE = 0
+MARKSMANRIFLE_CONVENTIONAL_ICLIPSIZE = 3
+MARKSMANRIFLE_CONVENTIONAL_ISOUNDRANGE = 27
+MARKSMANRIFLE_CONVENTIONAL_IENVIRONMENTDAMAGE = 5
+MARKSMANRIFLE_CONVENTIONAL_UPGRADESLOTS = 1
+
+; *** MAGNETIC ***
+MARKSMANRIFLE_MAGNETIC_AIM = 0
+MARKSMANRIFLE_MAGNETIC_CRITCHANCE = 0
+MARKSMANRIFLE_MAGNETIC_ICLIPSIZE = 3
+MARKSMANRIFLE_MAGNETIC_ISOUNDRANGE = 27
+MARKSMANRIFLE_MAGNETIC_IENVIRONMENTDAMAGE = 10
+MARKSMANRIFLE_MAGNETIC_UPGRADESLOTS = 2
+
+; *** BEAM ***
+MARKSMANRIFLE_BEAM_AIM = 0
+MARKSMANRIFLE_BEAM_CRITCHANCE = 0
+MARKSMANRIFLE_BEAM_ICLIPSIZE = 3
+MARKSMANRIFLE_BEAM_ISOUNDRANGE = 27
+MARKSMANRIFLE_BEAM_IENVIRONMENTDAMAGE = 10
+MARKSMANRIFLE_BEAM_UPGRADESLOTS = 2
+
+; **** WEAPON RANGE TABLES ****
+MEDLONG_CONVENTIONAL_RANGE[0] = 0
+MEDLONG_CONVENTIONAL_RANGE[1] = -15
+MEDLONG_CONVENTIONAL_RANGE[2] = -13
+MEDLONG_CONVENTIONAL_RANGE[3] = -12
+MEDLONG_CONVENTIONAL_RANGE[4] = -10
+MEDLONG_CONVENTIONAL_RANGE[5] = -9
+MEDLONG_CONVENTIONAL_RANGE[6] = -6
+MEDLONG_CONVENTIONAL_RANGE[7] = -3
+MEDLONG_CONVENTIONAL_RANGE[8] = 0
+MEDLONG_CONVENTIONAL_RANGE[9] = 0
+MEDLONG_CONVENTIONAL_RANGE[10] = 0
+MEDLONG_CONVENTIONAL_RANGE[11] = 0
+MEDLONG_CONVENTIONAL_RANGE[12] = 0
+MEDLONG_CONVENTIONAL_RANGE[13] = 0
+MEDLONG_CONVENTIONAL_RANGE[14] = 0
+MEDLONG_CONVENTIONAL_RANGE[15] = 0
+MEDLONG_CONVENTIONAL_RANGE[16] = 0
+
+; range profiles for magnetic
+MEDLONG_MAGNETIC_RANGE[0] = 0
+MEDLONG_MAGNETIC_RANGE[1] = -15
+MEDLONG_MAGNETIC_RANGE[2] = -13
+MEDLONG_MAGNETIC_RANGE[3] = -12
+MEDLONG_MAGNETIC_RANGE[4] = -10
+MEDLONG_MAGNETIC_RANGE[5] = -9
+MEDLONG_MAGNETIC_RANGE[6] = -6
+MEDLONG_MAGNETIC_RANGE[7] = -3
+MEDLONG_MAGNETIC_RANGE[8] = 0
+MEDLONG_MAGNETIC_RANGE[9] = 0
+MEDLONG_MAGNETIC_RANGE[10] = 0
+MEDLONG_MAGNETIC_RANGE[11] = 0
+MEDLONG_MAGNETIC_RANGE[12] = 0
+MEDLONG_MAGNETIC_RANGE[13] = 0
+MEDLONG_MAGNETIC_RANGE[14] = 0
+MEDLONG_MAGNETIC_RANGE[15] = 0
+MEDLONG_MAGNETIC_RANGE[16] = 0
+
+; range profiles for beam
+MEDLONG_BEAM_RANGE[0] = 0
+MEDLONG_BEAM_RANGE[1] = -15
+MEDLONG_BEAM_RANGE[2] = -13
+MEDLONG_BEAM_RANGE[3] = -12
+MEDLONG_BEAM_RANGE[4] = -10
+MEDLONG_BEAM_RANGE[5] = -9
+MEDLONG_BEAM_RANGE[6] = -6
+MEDLONG_BEAM_RANGE[7] = -3
+MEDLONG_BEAM_RANGE[8] = 0
+MEDLONG_BEAM_RANGE[9] = 0
+MEDLONG_BEAM_RANGE[10] = 0
+MEDLONG_BEAM_RANGE[11] = 0
+MEDLONG_BEAM_RANGE[12] = 0
+MEDLONG_BEAM_RANGE[13] = 0
+MEDLONG_BEAM_RANGE[14] = 0
+MEDLONG_BEAM_RANGE[15] = 0
+MEDLONG_BEAM_RANGE[16] = 0
