@@ -180,10 +180,10 @@ static function X2DataTemplate CreateAssaultRifle_Coil_Template()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.CanBeBuilt = !class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
-	Template.bInfiniteItem = class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
+	Template.CanBeBuilt = !class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
 
-	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
+	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'AssaultRifle_CG_Schematic'; // The schematic which creates this item
 		Template.BaseItem = 'AssaultRifle_MG'; // Which item this will be upgraded from		
@@ -253,10 +253,10 @@ static function X2DataTemplate CreateBattleRifle_Coil_Template()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.CanBeBuilt = !class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
-	Template.bInfiniteItem = class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
+	Template.CanBeBuilt = !class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
 
-	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
+	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'BattleRifle_CG_Schematic'; // The schematic which creates this item
 		Template.BaseItem = 'BR_MG'; // Which item this will be upgraded from		
@@ -328,10 +328,10 @@ static function X2DataTemplate CreateSMG_Coil_Template()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.CanBeBuilt = !class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
-	Template.bInfiniteItem = class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
+	Template.CanBeBuilt = !class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
 
-	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
+	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'SMG_CG_Schematic'; // The schematic which creates this item
 		Template.BaseItem = 'SMG_MG'; // Which item this will be upgraded from		
@@ -403,10 +403,10 @@ static function X2DataTemplate CreateCannon_Coil_Template()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.CanBeBuilt = !class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
-	Template.bInfiniteItem = class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
+	Template.CanBeBuilt = !class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
 
-	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
+	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'Cannon_CG_Schematic'; // The schematic which creates this item
 		Template.BaseItem = 'Cannon_MG'; // Which item this will be upgraded from		
@@ -476,10 +476,10 @@ static function X2DataTemplate CreateShotgun_Coil_Template()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.CanBeBuilt = !class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
-	Template.bInfiniteItem = class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
+	Template.CanBeBuilt = !class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
 
-	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
+	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'Shotgun_CG_Schematic'; // The schematic which creates this item
 		Template.BaseItem = 'Shotgun_MG'; // Which item this will be upgraded from		
@@ -552,10 +552,10 @@ static function X2DataTemplate CreateSniperRifle_Coil_Template()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.CanBeBuilt = !class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
-	Template.bInfiniteItem = class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
+	Template.CanBeBuilt = !class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
 
-	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
+	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'SniperRifle_CG_Schematic'; // The schematic which creates this item
 		Template.BaseItem = 'SniperRifle_MG'; // Which item this will be upgraded from		
@@ -627,10 +627,10 @@ static function X2DataTemplate CreateMarksmanRifle_Coil_Template()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.CanBeBuilt = !class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
-	Template.bInfiniteItem = class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
+	Template.CanBeBuilt = !class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
 
-	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
+	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'MarksmanRifle_CG_Schematic'; // The schematic which creates this item
 		Template.BaseItem = 'MR_MG'; // Which item this will be upgraded from		
@@ -701,10 +701,10 @@ static function X2DataTemplate CreatePistol_Coil_Template()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.CanBeBuilt = !class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
-	Template.bInfiniteItem = class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
+	Template.CanBeBuilt = !class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
 
-	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
+	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'PISTOL_CG_Schematic'; // The schematic which creates this item
 		Template.BaseItem = 'PISTOL_MG'; // Which item this will be upgraded from		
