@@ -156,8 +156,8 @@ static function AddSchematicLoc (X2ItemTemplateManager ItemTemplateMgr)
 	CopySchematicLoc (ItemTemplateMgr, 'SniperRifle_LS_Schematic', 'SniperRifle_MG_Schematic');
 	CopySchematicLoc (ItemTemplateMgr, 'SniperRifle_CG_Schematic', 'SniperRifle_MG_Schematic');
 
-	CopySchematicLoc (ItemTemplateMgr, 'Shotgun_LS_Schematic', 'SniperRifle_MG_Schematic');
-	CopySchematicLoc (ItemTemplateMgr, 'Shotgun_CG_Schematic', 'SniperRifle_MG_Schematic');
+	CopySchematicLoc (ItemTemplateMgr, 'Shotgun_LS_Schematic', 'Shotgun_MG_Schematic');
+	CopySchematicLoc (ItemTemplateMgr, 'Shotgun_CG_Schematic', 'Shotgun_MG_Schematic');
 
 	CopySchematicLoc (ItemTemplateMgr, 'Pistol_LS_Schematic', 'Pistol_MG_Schematic');
 	CopySchematicLoc (ItemTemplateMgr, 'Pistol_CG_Schematic', 'Pistol_MG_Schematic');
