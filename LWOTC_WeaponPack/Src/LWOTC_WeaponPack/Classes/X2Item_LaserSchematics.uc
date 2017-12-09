@@ -36,6 +36,10 @@ var config int Bullpup_LASER_SCHEMATIC_SUPPLYCOST;
 var config int Bullpup_LASER_SCHEMATIC_ALLOYCOST;
 var config int Bullpup_LASER_SCHEMATIC_ELERIUMCOST;
 
+var config int Vektor_LASER_SCHEMATIC_SUPPLYCOST;
+var config int Vektor_LASER_SCHEMATIC_ALLOYCOST;
+var config int Vektor_LASER_SCHEMATIC_ELERIUMCOST;
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Schematics;
@@ -52,6 +56,7 @@ static function array<X2DataTemplate> CreateTemplates()
 		Schematics.AddItem(CreateTemplate_SniperRifle_Laser_Schematic());
 		Schematics.AddItem(CreateTemplate_Pistol_Laser_Schematic());
 		Schematics.AddItem(CreateTemplate_Bullpup_Laser_Schematic());
+		Schematics.AddItem(CreateTemplate_Vektor_Laser_Schematic());
 
 		return Schematics;
 	}
@@ -369,6 +374,52 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser_Schematic()
 	if (default.Bullpup_LASER_SCHEMATIC_ELERIUMCOST > 0) {
 		Artifacts.ItemTemplateName = 'EleriumDust';
 		Artifacts.Quantity = default.Bullpup_LASER_SCHEMATIC_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Artifacts);
+	}
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_Vektor_Laser_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local ArtifactCost Resources, Artifacts;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'Vektor_LS_Schematic');
+
+	Template.ItemCat = 'weapon';
+	// Placeholder image for Laser Vektor: Mag Vektor, replace once image is available
+	Template.strImage = "img:///UILibrary_XPACK_StrategyImages.Inv_MagVektor";
+	Template.CanBeBuilt = true;
+	Template.bOneTimeBuild = true;
+	Template.HideInInventory = true;
+	Template.HideInLootRecovered = true;
+	Template.PointsToComplete = 0;
+	Template.Tier = 1;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'VektorRifle_LS';
+	Template.HideIfPurchased = 'VektorRifle_MG';
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
+	Template.Requirements.RequiredEngineeringScore = 5;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+	Template.Requirements.RequiredSoldierClass = 'Reaper';
+
+	// Cost
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.Vektor_LASER_SCHEMATIC_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Artifacts.ItemTemplateName = 'AlienAlloy';
+	Artifacts.Quantity = default.Vektor_LASER_SCHEMATIC_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Artifacts);
+
+	// only add elerium cost if configured value greater than 0
+	if (default.Vektor_LASER_SCHEMATIC_ELERIUMCOST > 0) {
+		Artifacts.ItemTemplateName = 'EleriumDust';
+		Artifacts.Quantity = default.Vektor_LASER_SCHEMATIC_ELERIUMCOST;
 		Template.Cost.ResourceCosts.AddItem(Artifacts);
 	}
 	return Template;
