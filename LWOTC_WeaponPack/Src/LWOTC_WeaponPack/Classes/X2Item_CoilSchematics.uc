@@ -13,6 +13,10 @@ var config int AssaultRifle_COIL_SCHEMATIC_SUPPLYCOST;
 var config int AssaultRifle_COIL_SCHEMATIC_ALLOYCOST;
 var config int AssaultRifle_COIL_SCHEMATIC_ELERIUMCOST;
 
+var config int BattleRifle_COIL_SCHEMATIC_SUPPLYCOST;
+var config int BattleRifle_COIL_SCHEMATIC_ALLOYCOST;
+var config int BattleRifle_COIL_SCHEMATIC_ELERIUMCOST;
+
 var config int SMG_COIL_SCHEMATIC_SUPPLYCOST;
 var config int SMG_COIL_SCHEMATIC_ALLOYCOST;
 var config int SMG_COIL_SCHEMATIC_ELERIUMCOST;
@@ -28,6 +32,10 @@ var config int Cannon_COIL_SCHEMATIC_ELERIUMCOST;
 var config int SniperRifle_COIL_SCHEMATIC_SUPPLYCOST;
 var config int SniperRifle_COIL_SCHEMATIC_ALLOYCOST;
 var config int SniperRifle_COIL_SCHEMATIC_ELERIUMCOST;
+
+var config int MarksmanRifle_COIL_SCHEMATIC_SUPPLYCOST;
+var config int MarksmanRifle_COIL_SCHEMATIC_ALLOYCOST;
+var config int MarksmanRifle_COIL_SCHEMATIC_ELERIUMCOST;
 
 var config int Pistol_COIL_SCHEMATIC_SUPPLYCOST;
 var config int Pistol_COIL_SCHEMATIC_ALLOYCOST;
@@ -46,10 +54,12 @@ static function array<X2DataTemplate> CreateTemplates()
 	if (default.USE_SCHEMATICS)
 	{
 		Schematics.AddItem(CreateTemplate_AssaultRifle_Coil_Schematic());
+		Schematics.AddItem(CreateTemplate_BattleRifle_Coil_Schematic());
 		Schematics.AddItem(CreateTemplate_SMG_Coil_Schematic());
 		Schematics.AddItem(CreateTemplate_Shotgun_Coil_Schematic());
 		Schematics.AddItem(CreateTemplate_Cannon_Coil_Schematic());
 		Schematics.AddItem(CreateTemplate_SniperRifle_Coil_Schematic());
+		Schematics.AddItem(CreateTemplate_MarksmanRifle_Coil_Schematic());
 		Schematics.AddItem(CreateTemplate_Pistol_Coil_Schematic());
 		Schematics.AddItem(CreateTemplate_Bullpup_Coil_Schematic());
 
@@ -96,6 +106,50 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Coil_Schematic()
 	if (default.AssaultRifle_Coil_SCHEMATIC_ELERIUMCOST > 0) {
 		Artifacts.ItemTemplateName = 'EleriumDust';
 		Artifacts.Quantity = default.AssaultRifle_Coil_SCHEMATIC_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Artifacts);
+	}
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_BattleRifle_Coil_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local ArtifactCost Resources, Artifacts;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'BattleRifle_CG_Schematic');
+
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///UILibrary_LW_Coilguns.InventoryArt.Inv_Coil_AssaultRifle"; 
+	Template.CanBeBuilt = true;
+	Template.bOneTimeBuild = true;
+	Template.HideInInventory = true;
+	Template.HideInLootRecovered = true;
+	Template.PointsToComplete = 0;
+	Template.Tier = 3;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'BattleRifle_CG';
+	Template.HideIfPurchased = 'BattleRifle_BM';
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
+	Template.Requirements.RequiredEngineeringScore = 15;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+
+	// Cost
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.BattleRifle_Coil_SCHEMATIC_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Artifacts.ItemTemplateName = 'AlienAlloy';
+	Artifacts.Quantity = default.BattleRifle_Coil_SCHEMATIC_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Artifacts);
+	
+	// only add elerium cost if configured value greater than 0
+	if (default.BattleRifle_Coil_SCHEMATIC_ELERIUMCOST > 0) {
+		Artifacts.ItemTemplateName = 'EleriumDust';
+		Artifacts.Quantity = default.BattleRifle_Coil_SCHEMATIC_ELERIUMCOST;
 		Template.Cost.ResourceCosts.AddItem(Artifacts);
 	}
 	return Template;
@@ -274,6 +328,51 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Coil_Schematic()
 	if (default.SniperRifle_Coil_SCHEMATIC_ELERIUMCOST > 0) {
 		Artifacts.ItemTemplateName = 'EleriumDust';
 		Artifacts.Quantity = default.SniperRifle_Coil_SCHEMATIC_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Artifacts);
+	}
+
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_MarksmanRifle_Coil_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local ArtifactCost Resources, Artifacts;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'MarksmanRifle_CG_Schematic');
+
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///UILibrary_LW_Coilguns.InventoryArt.Inv_Coil_SniperRifle"; 
+	Template.CanBeBuilt = true;
+	Template.bOneTimeBuild = true;
+	Template.HideInInventory = true;
+	Template.HideInLootRecovered = true;
+	Template.PointsToComplete = 0;
+	Template.Tier = 3;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'MarksmanRifle_CG';
+	Template.HideIfPurchased = 'MarksmanRifle_BM';
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]); 
+	Template.Requirements.RequiredEngineeringScore = 20;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+
+	// Cost
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.MarksmanRifle_Coil_SCHEMATIC_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Artifacts.ItemTemplateName = 'AlienAlloy';
+	Artifacts.Quantity = default.MarksmanRifle_Coil_SCHEMATIC_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Artifacts);
+	
+	// only add elerium cost if configured value greater than 0
+	if (default.MarksmanRifle_Coil_SCHEMATIC_ELERIUMCOST > 0) {
+		Artifacts.ItemTemplateName = 'EleriumDust';
+		Artifacts.Quantity = default.MarksmanRifle_Coil_SCHEMATIC_ELERIUMCOST;
 		Template.Cost.ResourceCosts.AddItem(Artifacts);
 	}
 
