@@ -67,14 +67,14 @@ BriefSummary="A powerful, coil-tech sidearm that can punch through enemy armor."
 TacticalText="<Bullet/> Coil weapons automatically pierce 1 enemy armor.\n<Bullet/> Pistols can be fired with a single action.\n<Bullet/> Soldiers can train several abilities that dramatically enhance their use of pistols.\n<Bullet/> Pistols lose accuracy at long ranges."
 AbilityDescName="pistol"
 
-[Bullpup_CV X2WeaponTemplate]
+[Bullpup_CG X2WeaponTemplate]
 FriendlyName="Kal-66 Bullpup"
 FriendlyNamePlural="Kal-66 Bullpups"
 BriefSummary="An intense, compact weapon that takes full advantage of the coilgun technology to give the Skirmishers a highly-powerful, armor-piercing bullpup."
 TacticalText="<Bullet/> Coil weapons automatically pierce 1 enemy armor.\n<Bullet/> Firing the Bullpup does not end the Skirmisher's turn, and it can be fired twice in a single turn.\n<Bullet/> Bullpups are extremely effective at close range, but their accuracy drops off quickly at longer range.\n<Bullet/> Use upgrades looted from enemies to improve the Bullpup's tactical effectiveness."
 AbilityDescName="bullpup"
 
-[VektorRifle_CV X2WeaponTemplate]
+[VektorRifle_CG X2WeaponTemplate]
 FriendlyName="Silovik Rifle"
 FriendlyNamePlural="Silovik Rifles"
 BriefSummary="An elite, compact version of the Gauss Long Rifle made with the Reapers in mind."
