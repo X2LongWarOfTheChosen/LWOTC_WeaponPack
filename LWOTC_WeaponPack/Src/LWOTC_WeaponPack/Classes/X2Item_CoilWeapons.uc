@@ -124,7 +124,7 @@ var config int BULLPUP_CG_ELERIUMCOST;
 
 static function array<X2DataTemplate> CreateTemplates()
 {
-    local array<X2DataTemplate> Weapons;
+	local array<X2DataTemplate> Weapons;
 
 	Weapons.AddItem(CreateAssaultRifle_Coil_Template());
 	Weapons.AddItem(CreateBattleRifle_Coil_Template());
@@ -186,11 +186,11 @@ static function X2DataTemplate CreateAssaultRifle_Coil_Template()
 	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'AssaultRifle_CG_Schematic'; // The schematic which creates this item
-		Template.BaseItem = 'AssaultRifle_MG'; // Which item this will be upgraded from		
+		Template.BaseItem = 'AssaultRifle_MG'; // Which item this will be upgraded from
 	}
 	else
 	{
-		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]); 
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
 
 		Resources.ItemTemplateName = 'Supplies';
 		Resources.Quantity = default.ASSAULTRIFLE_CG_SUPPLYCOST;
@@ -334,11 +334,11 @@ static function X2DataTemplate CreateSMG_Coil_Template()
 	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'SMG_CG_Schematic'; // The schematic which creates this item
-		Template.BaseItem = 'SMG_MG'; // Which item this will be upgraded from		
+		Template.BaseItem = 'SMG_MG'; // Which item this will be upgraded from
 	}
 	else
 	{
-		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]); 
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
 
 		Resources.ItemTemplateName = 'Supplies';
 		Resources.Quantity = default.SMG_CG_SUPPLYCOST;
@@ -409,11 +409,11 @@ static function X2DataTemplate CreateCannon_Coil_Template()
 	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'Cannon_CG_Schematic'; // The schematic which creates this item
-		Template.BaseItem = 'Cannon_MG'; // Which item this will be upgraded from		
+		Template.BaseItem = 'Cannon_MG'; // Which item this will be upgraded from
 	}
 	else
 	{
-		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]); 
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]);
 
 		Resources.ItemTemplateName = 'Supplies';
 		Resources.Quantity = default.CANNON_CG_SUPPLYCOST;
@@ -482,11 +482,11 @@ static function X2DataTemplate CreateShotgun_Coil_Template()
 	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'Shotgun_CG_Schematic'; // The schematic which creates this item
-		Template.BaseItem = 'Shotgun_MG'; // Which item this will be upgraded from		
+		Template.BaseItem = 'Shotgun_MG'; // Which item this will be upgraded from
 	}
 	else
 	{
-		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]); 
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]);
 
 		Resources.ItemTemplateName = 'Supplies';
 		Resources.Quantity = default.SHOTGUN_CG_SUPPLYCOST;
@@ -558,11 +558,11 @@ static function X2DataTemplate CreateSniperRifle_Coil_Template()
 	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'SniperRifle_CG_Schematic'; // The schematic which creates this item
-		Template.BaseItem = 'SniperRifle_MG'; // Which item this will be upgraded from		
+		Template.BaseItem = 'SniperRifle_MG'; // Which item this will be upgraded from
 	}
 	else
 	{
-		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]); 
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]);
 
 		Resources.ItemTemplateName = 'Supplies';
 		Resources.Quantity = default.SNIPERRIFLE_CG_SUPPLYCOST;
@@ -668,7 +668,7 @@ static function X2DataTemplate CreatePistol_Coil_Template()
 	Template.WeaponPanelImage = "_Pistol";                       // used by the UI. Probably determines iconview of the weapon.
 
 	Template.ItemCat = 'weapon';
-	Template.WeaponCat = 'pistol'; 
+	Template.WeaponCat = 'pistol';
 	Template.WeaponTech = 'magnetic';
 	Template.strImage = "img:///UILibrary_LW_Coilguns.InventoryArt.Inv_Coil_Pistol";
 	Template.EquipSound = "Secondary_Weapon_Equip_Beam"; // TODO: update with new equip sound
@@ -686,7 +686,7 @@ static function X2DataTemplate CreatePistol_Coil_Template()
 
 	Template.OverwatchActionPoint = class'X2CharacterTemplateManager'.default.PistolOverwatchReserveActionPoint;
 	Template.InfiniteAmmo = true;
-	
+
 	Template.InventorySlot = eInvSlot_SecondaryWeapon;
 	Template.Abilities.AddItem('PistolOverwatch');
 	Template.Abilities.AddItem('PistolOverwatchShot');
@@ -695,7 +695,7 @@ static function X2DataTemplate CreatePistol_Coil_Template()
 	Template.Abilities.AddItem('Reload');
 
 	Template.SetAnimationNameForAbility('FanFire', 'FF_FireMultiShotBeamA'); // TODO : update with new animation if necessary
-	
+
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "LWPistol_CG.Archetypes.WP_Pistol_CG";
 
@@ -707,11 +707,11 @@ static function X2DataTemplate CreatePistol_Coil_Template()
 	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'PISTOL_CG_Schematic'; // The schematic which creates this item
-		Template.BaseItem = 'PISTOL_MG'; // Which item this will be upgraded from		
+		Template.BaseItem = 'PISTOL_MG'; // Which item this will be upgraded from
 	}
 	else
 	{
-		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]); 
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
 
 		Resources.ItemTemplateName = 'Supplies';
 		Resources.Quantity = default.PISTOL_CG_SUPPLYCOST;
@@ -727,7 +727,7 @@ static function X2DataTemplate CreatePistol_Coil_Template()
 
 		Template.Requirements.RequiredEngineeringScore = 15;
 	}
-	
+
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';  // TODO : update with new damage type
 
 	Template.bHideClipSizeStat = true;
