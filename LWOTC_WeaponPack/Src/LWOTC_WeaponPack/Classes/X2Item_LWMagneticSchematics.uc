@@ -38,10 +38,11 @@ static function X2DataTemplate CreateTemplate_BR_Magnetic_Schematic()
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'BR_MG_Schematic');
 
 	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_Mag_Rifle"; // Don't know what img to use here
+	Template.strImage = "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_Mag_Rifle";
 	Template.CanBeBuilt = true;
 	Template.bOneTimeBuild = true;
 	Template.HideInInventory = true;
+	Template.HideInLootRecovered = true;
 	Template.PointsToComplete = 0;
 	Template.Tier = 1;
 	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
@@ -66,7 +67,7 @@ static function X2DataTemplate CreateTemplate_BR_Magnetic_Schematic()
 	Artifacts.ItemTemplateName = 'AlienAlloy';
 	Artifacts.Quantity = default.BR_MAGNETIC_SCHEMATIC_ALLOYCOST;
 	Template.Cost.ResourceCosts.AddItem(Artifacts);
-	
+
 	// only add elerium cost if configured value greater than 0
 	if (default.BR_MAGNETIC_SCHEMATIC_ELERIUMCOST > 0) {
 		Artifacts.ItemTemplateName = 'EleriumDust';
@@ -136,6 +137,7 @@ static function X2DataTemplate CreateTemplate_MR_Magnetic_Schematic()
 	Template.CanBeBuilt = true;
 	Template.bOneTimeBuild = true;
 	Template.HideInInventory = true;
+	Template.HideInLootRecovered = true;
 	Template.PointsToComplete = 0;
 	Template.Tier = 1;
 	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
@@ -160,7 +162,7 @@ static function X2DataTemplate CreateTemplate_MR_Magnetic_Schematic()
 	Artifacts.ItemTemplateName = 'AlienAlloy';
 	Artifacts.Quantity = default.MR_MAGNETIC_SCHEMATIC_ALLOYCOST;
 	Template.Cost.ResourceCosts.AddItem(Artifacts);
-	
+
 	// only add elerium cost if configured value greater than 0
 	if (default.MR_MAGNETIC_SCHEMATIC_ELERIUMCOST > 0) {
 		Artifacts.ItemTemplateName = 'EleriumDust';

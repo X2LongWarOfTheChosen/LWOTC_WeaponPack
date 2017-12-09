@@ -38,10 +38,11 @@ static function X2DataTemplate CreateTemplate_BR_Beam_Schematic()
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'BR_BM_Schematic');
 
 	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_Beam_Rifle"; // Don't know what img to use here
+	Template.strImage = "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_Beam_Rifle"; // TODO
 	Template.CanBeBuilt = true;
 	Template.bOneTimeBuild = true;
 	Template.HideInInventory = true;
+	Template.HideInLootRecovered = true;
 	Template.PointsToComplete = 0;
 	Template.Tier = 3;
 	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
@@ -130,6 +131,7 @@ static function X2DataTemplate CreateTemplate_MR_Beam_Schematic()
 	Template.CanBeBuilt = true;
 	Template.bOneTimeBuild = true;
 	Template.HideInInventory = true;
+	Template.HideInLootRecovered = true;
 	Template.PointsToComplete = 0;
 	Template.Tier = 3;
 	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;

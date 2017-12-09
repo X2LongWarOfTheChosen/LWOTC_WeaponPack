@@ -77,7 +77,7 @@ static function X2DataTemplate CreateTemplate_BR_Beam()
 	Template.strImage = "img:///UILibrary_Common.UI_BeamAssaultRifle.BeamAssaultRifle_Base";
 	Template.EquipSound = "Beam_Weapon_Equip";
 	Template.Tier = 4;
-	
+
 	Template.RangeAccuracy = default.MEDIUM_BEAM_RANGE;
 	Template.BaseDamage = default.BATTLERIFLE_BEAM_BASEDAMAGE;
 	Template.Aim = default.BATTLERIFLE_BEAM_AIM;
@@ -86,10 +86,10 @@ static function X2DataTemplate CreateTemplate_BR_Beam()
 	Template.iSoundRange = default.BATTLERIFLE_BEAM_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.BATTLERIFLE_BEAM_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = default.BATTLERIFLE_BEAM_UPGRADESLOTS;
-	
+
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('StandardShot');	
-	Template.Abilities.AddItem('Overwatch');	
+	Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
@@ -107,13 +107,13 @@ static function X2DataTemplate CreateTemplate_BR_Beam()
 
 	Template.CreatorTemplateName = 'BR_BM_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'BR_MG'; // Which item this will be upgraded from
-	
+
 	Template.CanBeBuilt = false;
 	Template.bInfiniteItem = true;
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';
-	
-	Template.Abilities.AddItem('BR_BM_Stat_Bonus');
+
+	Template.Abilities.AddItem('BR_BM_StatBonus');
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_BRAbilities'.default.BR_BEAM_MOBILITY_BONUS);
 
 	return Template;
@@ -189,7 +189,7 @@ static function X2DataTemplate CreateTemplate_MR_Beam()
 	Template.strImage = "img:///UILibrary_Common.UI_BeamAssaultRifle.BeamAssaultRifle_Base";
 	Template.EquipSound = "Beam_Weapon_Equip";
 	Template.Tier = 4;
-	
+
 	Template.RangeAccuracy = default.MEDLONG_BEAM_RANGE;
 	Template.BaseDamage = default.MARKSMANRIFLE_BEAM_BASEDAMAGE;
 	Template.Aim = default.MARKSMANRIFLE_BEAM_AIM;
@@ -198,11 +198,10 @@ static function X2DataTemplate CreateTemplate_MR_Beam()
 	Template.iSoundRange = default.MARKSMANRIFLE_BEAM_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.MARKSMANRIFLE_BEAM_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = default.MARKSMANRIFLE_BEAM_UPGRADESLOTS;
-	Template.iTypicalActionCost = 1;
-	
+
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('SniperStandardFire');	
-	Template.Abilities.AddItem('SniperRifleOverwatch');	
+	Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
@@ -218,9 +217,9 @@ static function X2DataTemplate CreateTemplate_MR_Beam()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.CreatorTemplateName = 'BR_BM_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'MR_BM_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'MR_MG'; // Which item this will be upgraded from
-	
+
 	Template.CanBeBuilt = false;
 	Template.bInfiniteItem = true;
 
