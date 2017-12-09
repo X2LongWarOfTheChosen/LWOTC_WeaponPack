@@ -70,7 +70,7 @@ static function UpdateConventionalStorage()
 			History.CleanupPendingGameState(NewGameState);
 		}
 	}
-			
+
 	//add Conventional Battle Rifle always
 	`Log("LWOTC WeaponPack : Updated Conventional BR");
 	ItemTemplate = ItemTemplateMgr.FindItemTemplate('BR_CV');
@@ -89,7 +89,7 @@ static function UpdateConventionalStorage()
 			History.CleanupPendingGameState(NewGameState);
 		}
 	}
-			
+
 	//add Conventional Marksman Rifle always
 	`Log("LWOTC WeaponPack : Updated Conventional MR");
 	ItemTemplate = ItemTemplateMgr.FindItemTemplate('MR_CV');
@@ -169,16 +169,16 @@ static function AddSchematicLoc (X2ItemTemplateManager ItemTemplateMgr)
 	CopySchematicLoc (ItemTemplateMgr, 'SMG_MG_Schematic', 'AssaultRifle_MG_Schematic');
 	CopySchematicLoc (ItemTemplateMgr, 'SMG_CG_Schematic', 'AssaultRifle_MG_Schematic');
 	CopySchematicLoc (ItemTemplateMgr, 'SMG_BM_Schematic', 'AssaultRifle_MG_Schematic');
-	
+
 	CopySchematicLoc (ItemTemplateMgr, 'BattleRifle_LS_Schematic', 'AssaultRifle_MG_Schematic');
-	CopySchematicLoc (ItemTemplateMgr, 'BattleRifle_MG_Schematic', 'AssaultRifle_MG_Schematic');
+	CopySchematicLoc (ItemTemplateMgr, 'BR_MG_Schematic', 'AssaultRifle_MG_Schematic');
 	CopySchematicLoc (ItemTemplateMgr, 'BattleRifle_CG_Schematic', 'AssaultRifle_MG_Schematic');
-	CopySchematicLoc (ItemTemplateMgr, 'BattleRifle_BM_Schematic', 'AssaultRifle_MG_Schematic');
-	
+	CopySchematicLoc (ItemTemplateMgr, 'BR_BM_Schematic', 'AssaultRifle_MG_Schematic');
+
 	CopySchematicLoc (ItemTemplateMgr, 'MarksmanRifle_LS_Schematic', 'SniperRifle_MG_Schematic');
-	CopySchematicLoc (ItemTemplateMgr, 'MarksmanRifle_MG_Schematic', 'SniperRifle_MG_Schematic');
+	CopySchematicLoc (ItemTemplateMgr, 'MR_MG_Schematic', 'SniperRifle_MG_Schematic');
 	CopySchematicLoc (ItemTemplateMgr, 'MarksmanRifle_CG_Schematic', 'SniperRifle_MG_Schematic');
-	CopySchematicLoc (ItemTemplateMgr, 'MarksmanRifle_BM_Schematic', 'SniperRifle_MG_Schematic');
+	CopySchematicLoc (ItemTemplateMgr, 'MR_BM_Schematic', 'SniperRifle_MG_Schematic');
 
 }
 
@@ -506,7 +506,7 @@ static function AddLaserClipSizeBonusUpgrade(X2ItemTemplateManager ItemTemplateM
 
 	// Cannon
 	Template.AddUpgradeAttachment('Mag', 'UIPawnLocation_WeaponUpgrade_Cannon_Mag', "LWCannon_LS.Meshes.SK_LaserCannon_Mag_B", "", 'Cannon_LS', , "img:///UILibrary_LW_LaserPack.LaserCannon_MagB", "img:///UILibrary_LW_LaserPack.Inv_LaserCannon_MagB", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_clip");
-	
+
 	// Bullpup
 	Template.AddUpgradeAttachment('Mag', 'UIPawnLocation_WeaponUpgrade_Shotgun_Mag', "MagSMG.Meshes.SM_HOR_Mag_SMG_MagB", "", 'Bullpup_LS', , "img:///UILibrary_XPACK_Common.MagSMG_MagazineB", "img:///UILibrary_XPACK_StrategyImages.MagSMG_MagB_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_clip");
 }
@@ -537,7 +537,7 @@ static function AddLaserFreeFireBonusUpgrade(X2ItemTemplateManager ItemTemplateM
 
 	// Cannon
 	Template.AddUpgradeAttachment('Reargrip', 'UIPawnLocation_WeaponUpgrade_Cannon_Mag', "LWCannon_LS.Meshes.SK_LaserCannon_Trigger_B", "", 'Cannon_LS', , "img:///UILibrary_LW_LaserPack.LaserCannon_TriggerB", "img:///UILibrary_LW_LaserPack.Inv_LaserCannon_TriggerB", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_trigger");
-	
+
 	// Bullpup
 	Template.AddUpgradeAttachment('Reargrip', 'UIPawnLocation_WeaponUpgrade_Shotgun_Stock', "CnvSMG.Meshes.SM_HOR_Cnv_SMG_ReargripB", "", 'Bullpup_LS', , "img:///UILibrary_XPACK_Common.MagSMG_TriggerB", "img:///UILibrary_XPACK_StrategyImages.MagSMG_TriggerB_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_trigger");
 }

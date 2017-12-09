@@ -217,7 +217,7 @@ static function X2DataTemplate CreateTemplate_MR_Beam()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.CreatorTemplateName = 'BR_BM_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'MR_BM_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'MR_MG'; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
