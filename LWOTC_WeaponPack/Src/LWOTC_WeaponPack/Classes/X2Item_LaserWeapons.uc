@@ -19,6 +19,7 @@ var config WeaponDamageValue MARKSMANRIFLE_LASER_BASEDAMAGE;
 var config WeaponDamageValue PISTOL_LASER_BASEDAMAGE;
 var config WeaponDamageValue BULLPUP_LASER_BASEDAMAGE;
 var config WeaponDamageValue VEKTORRIFLE_LASER_BASEDAMAGE;
+var config WeaponDamageValue SIDEARM_LASER_BASEDAMAGE;
 
 // ***** Core properties and variables for weapons *****
 var config int ASSAULTRIFLE_LASER_AIM;
@@ -120,6 +121,15 @@ var config int VEKTORRIFLE_LASER_TRADINGPOSTVALUE;
 var config int VEKTORRIFLE_LASER_IPOINTS;
 var config int VEKTORRIFLE_LASER_UPGRADESLOTS;
 
+var config int SIDEARM_LASER_AIM;
+var config int SIDEARM_LASER_CRITCHANCE;
+var config int SIDEARM_LASER_ICLIPSIZE;
+var config int SIDEARM_LASER_ISOUNDRANGE;
+var config int SIDEARM_LASER_IENVIRONMENTDAMAGE;
+var config int SIDEARM_LASER_TRADINGPOSTVALUE;
+var config int SIDEARM_LASER_IPOINTS;
+var config int SIDEARM_LASER_UPGRADESLOTS;
+
 var config array<int> SHORT_LASER_RANGE;
 var config array<int> MIDSHORT_LASER_RANGE;
 var config array<int> MEDIUM_LASER_RANGE;
@@ -167,6 +177,10 @@ var config int VEKTORRIFLE_LS_SUPPLYCOST;
 var config int VEKTORRIFLE_LS_ALLOYCOST;
 var config int VEKTORRIFLE_LS_ELERIUMCOST;
 
+var config int SIDEARM_LS_SUPPLYCOST;
+var config int SIDEARM_LS_ALLOYCOST;
+var config int SIDEARM_LS_ELERIUMCOST;
+
 var config string AssaultRifle_Laser_ImagePath;
 var config string BattleRifle_Laser_ImagePath;
 var config string SMG_Laser_ImagePath;
@@ -178,6 +192,7 @@ var config string Pistol_Laser_ImagePath;
 var config string Sword_Laser_ImagePath;
 var config string Bullpup_Laser_ImagePath;
 var config string VektorRifle_Laser_ImagePath;
+var config string Sidearm_Laser_ImagePath;
 
 static function array<X2DataTemplate> CreateTemplates()
 {
@@ -194,8 +209,14 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateTemplate_Pistol_Laser());
 	Weapons.AddItem(CreateTemplate_Bullpup_Laser());
 	Weapons.AddItem(CreateTemplate_Vektor_Laser());
+	Weapons.AddItem(CreateTemplate_Sidearm_Laser());
 
 	return Weapons;
+}
+
+defaultproperties
+{
+	bShouldCreateDifficultyVariants = true
 }
 
 // **********************************************************************************************************
@@ -980,7 +1001,83 @@ static function X2DataTemplate CreateTemplate_Vektor_Laser()
 	return Template;
 }
 
-defaultproperties
+static function X2DataTemplate CreateTemplate_Sidearm_Laser()
 {
-	bShouldCreateDifficultyVariants = true
+	local X2WeaponTemplate Template;
+	local ArtifactCost Resources;
+
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Sidearm_LS');
+
+	Template.WeaponCat = 'sidearm';
+	Template.WeaponTech = 'beam'; //'pulse'; // TODO: fix up any effects that rely on hard-coded techs
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///" $ default.Sidearm_Laser_ImagePath;
+	Template.WeaponPanelImage = "_Pistol";                       // used by the UI. Probably determines iconview of the weapon.
+	Template.EquipSound = "Secondary_Weapon_Equip_Beam";
+	Template.Tier = 2;
+
+	Template.RangeAccuracy = default.SHORT_LASER_RANGE;
+	Template.BaseDamage = default.SIDEARM_LASER_BASEDAMAGE;
+	Template.Aim = default.SIDEARM_LASER_AIM;
+	Template.CritChance = default.SIDEARM_LASER_CRITCHANCE;
+	Template.iClipSize = default.SIDEARM_LASER_ICLIPSIZE;
+	Template.iSoundRange = default.SIDEARM_LASER_ISOUNDRANGE;
+	Template.iEnvironmentDamage = default.SIDEARM_LASER_IENVIRONMENTDAMAGE;
+
+	Template.NumUpgradeSlots = default.SIDEARM_LASER_UPGRADESLOTS;
+
+	Template.InfiniteAmmo = true;
+	Template.OverwatchActionPoint = class'X2CharacterTemplateManager'.default.PistolOverwatchReserveActionPoint;
+
+	Template.InventorySlot = eInvSlot_SecondaryWeapon;
+	Template.Abilities.AddItem('PistolStandardShot');
+	Template.Abilities.AddItem('PistolOverwatch');
+	Template.Abilities.AddItem('PistolOverwatchShot');
+	Template.Abilities.AddItem('PistolReturnFire');
+	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('Reload');
+
+	Template.SetAnimationNameForAbility('FanFire', 'FF_FireMultiShotConvA');
+
+	// This all the resources; sounds, animations, models, physics, the works.
+	// TODO: Placeholder, replace with assets when completed
+	Template.GameArchetype = "WP_TemplarAutoPistol_MG.WP_TemplarAutoPistol_MG";
+
+	Template.iPhysicsImpulse = 5;
+
+	Template.StartingItem = false;
+
+	Template.CanBeBuilt = !class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
+
+	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
+	{
+		Template.CreatorTemplateName = 'Sidearm_LS_Schematic'; // The schematic which creates this item
+		Template.BaseItem = 'Sidearm_CV'; // Which item this will be upgraded from
+	}
+	else
+	{
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
+
+		Resources.ItemTemplateName = 'Supplies';
+		Resources.Quantity = default.SIDEARM_LS_SUPPLYCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Resources.ItemTemplateName = 'AlienAlloy';
+		Resources.Quantity = default.SIDEARM_LS_ALLOYCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Resources.ItemTemplateName = 'EleriumDust';
+		Resources.Quantity = default.SIDEARM_LS_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Template.Requirements.RequiredEngineeringScore = 5;
+
+	}
+
+	Template.bHideClipSizeStat = true;
+
+	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type
+
+	return Template;
 }

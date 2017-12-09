@@ -10,6 +10,7 @@ var config WeaponDamageValue MARKSMANRIFLE_COIL_BASEDAMAGE;
 var config WeaponDamageValue PISTOL_COIL_BASEDAMAGE;
 var config WeaponDamageValue BULLPUP_COIL_BASEDAMAGE;
 var config WeaponDamageValue VEKTORRIFLE_COIL_BASEDAMAGE;
+var config WeaponDamageValue SIDEARM_COIL_BASEDAMAGE;
 
 var config array<int> SHORT_COIL_RANGE;
 var config array<int> MIDSHORT_COIL_RANGE;
@@ -89,6 +90,15 @@ var config int VEKTORRIFLE_COIL_TRADINGPOSTVALUE;
 var config int VEKTORRIFLE_COIL_IPOINTS;
 var config int VEKTORRIFLE_COIL_UPGRADESLOTS;
 
+var config int SIDEARM_COIL_AIM;
+var config int SIDEARM_COIL_CRITCHANCE;
+var config int SIDEARM_COIL_ICLIPSIZE;
+var config int SIDEARM_COIL_ISOUNDRANGE;
+var config int SIDEARM_COIL_IENVIRONMENTDAMAGE;
+var config int SIDEARM_COIL_TRADINGPOSTVALUE;
+var config int SIDEARM_COIL_IPOINTS;
+var config int SIDEARM_COIL_UPGRADESLOTS;
+
 var config string AssaultRifle_Coil_ImagePath;
 var config string SMG_Coil_ImagePath;
 var config string Cannon_Coil_ImagePath;
@@ -96,6 +106,7 @@ var config string Shotgun_Coil_ImagePath;
 var config string SniperRifle_Coil_ImagePath;
 var config string Bullpup_Coil_ImagePath;
 var config string VektorRifle_Coil_ImagePath;
+var config string Sidearm_Coil_ImagePath;
 
 // if not using templates
 var config int ASSAULTRIFLE_CG_SUPPLYCOST;
@@ -138,6 +149,10 @@ var config int VEKTORRIFLE_CG_SUPPLYCOST;
 var config int VEKTORRIFLE_CG_ALLOYCOST;
 var config int VEKTORRIFLE_CG_ELERIUMCOST;
 
+var config int SIDEARM_CG_SUPPLYCOST;
+var config int SIDEARM_CG_ALLOYCOST;
+var config int SIDEARM_CG_ELERIUMCOST;
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Weapons;
@@ -152,6 +167,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreatePistol_Coil_Template());
 	Weapons.AddItem(CreateBullpup_Coil_Template());
 	Weapons.AddItem(CreateVektor_Coil_Template());
+	Weapons.AddItem(CreateSidearm_Coil_Template());
 
 	return Weapons;
 }
@@ -902,6 +918,85 @@ static function X2DataTemplate CreateVektor_Coil_Template()
 		Template.Requirements.RequiredEngineeringScore = 15;
 	}
 
+
+	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateSidearm_Coil_Template()
+{
+	local X2WeaponTemplate Template;
+	local ArtifactCost Resources;
+
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Sidearm_CG');
+
+	Template.WeaponCat = 'sidearm';
+	Template.WeaponTech = 'coilgun_lw';
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///" $ default.Sidearm_Coil_ImagePath;
+	Template.WeaponPanelImage = "_Pistol";                       // used by the UI. Probably determines iconview of the weapon.
+	Template.EquipSound = "Secondary_Weapon_Equip_Beam";
+	Template.Tier = 4;
+
+	Template.RangeAccuracy = default.SHORT_COIL_RANGE;
+	Template.BaseDamage = default.SIDEARM_COIL_BASEDAMAGE;
+	Template.Aim = default.SIDEARM_COIL_AIM;
+	Template.CritChance = default.SIDEARM_COIL_CRITCHANCE;
+	Template.iClipSize = default.SIDEARM_COIL_ICLIPSIZE;
+	Template.iSoundRange = default.SIDEARM_COIL_ISOUNDRANGE;
+	Template.iEnvironmentDamage = default.SIDEARM_COIL_IENVIRONMENTDAMAGE;
+
+	Template.NumUpgradeSlots = default.SIDEARM_COIL_UPGRADESLOTS;
+
+	Template.InfiniteAmmo = true;
+	Template.OverwatchActionPoint = class'X2CharacterTemplateManager'.default.PistolOverwatchReserveActionPoint;
+
+	Template.InventorySlot = eInvSlot_SecondaryWeapon;
+	Template.Abilities.AddItem('PistolStandardShot');
+	Template.Abilities.AddItem('PistolOverwatch');
+	Template.Abilities.AddItem('PistolOverwatchShot');
+	Template.Abilities.AddItem('PistolReturnFire');
+	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('Reload');
+
+	Template.SetAnimationNameForAbility('FanFire', 'FF_FireMultiShotConvA');
+	
+	// TODO: Placeholder, replace with assets when completed
+	Template.GameArchetype = "WP_TemplarAutoPistol_MG.WP_TemplarAutoPistol_MG";
+
+	Template.iPhysicsImpulse = 5;
+
+	Template.StartingItem = false;
+
+	Template.CanBeBuilt = !class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+
+	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
+	{
+		Template.CreatorTemplateName = 'Sidearm_CG_Schematic'; // The schematic which creates this item
+		Template.BaseItem = 'Sidearm_MG'; // Which item this will be upgraded from
+	}
+	else
+	{
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
+
+		Resources.ItemTemplateName = 'Supplies';
+		Resources.Quantity = default.SIDEARM_CG_SUPPLYCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Resources.ItemTemplateName = 'AlienAlloy';
+		Resources.Quantity = default.SIDEARM_CG_ALLOYCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Resources.ItemTemplateName = 'EleriumDust';
+		Resources.Quantity = default.SIDEARM_CG_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Template.Requirements.RequiredEngineeringScore = 15;
+	}
+
+	Template.bHideClipSizeStat = true;
 
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
