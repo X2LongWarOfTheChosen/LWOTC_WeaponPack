@@ -81,6 +81,13 @@ BriefSummary="An elite, compact version of the Gauss Long Rifle made with the Re
 TacticalText="<Bullet/> Coil weapons automatically pierce 1 enemy armor.\n<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> The Silovik Rifle is effective at all ranges.\n<Bullet/> Use upgrades looted from enemies to improve the Silovik Rifle's tactical effectiveness."
 AbilityDescName="vektor rifle"
 
+[Sidearm_CG X2WeaponTemplate]
+FriendlyName="Autopistol"
+FriendlyNamePlural="Autopistol"
+BriefSummary="Should their power fail them for some reason, the Templars rely on a relatively conventional pistol arrangement that has been modified to specifically enhance its rate of fire and overall handling. This straightforward design contributes to the weapon's reliability in spite of the inconsistent material quality found in its construction."
+TacticalText="<Bullet/> The Autopistol gives the Templar the flexibility to combat the enemy in a conventional manner when not using their Psionic abilities.\n<Bullet/> Autopistols can be fired with a single action."
+AbilityDescName="autopistol"
+
 [AssaultRifle_MG X2WeaponTemplate]
 FriendlyName="Mag Rifle"
 FriendlyNamePlural="Mag Rifles"
