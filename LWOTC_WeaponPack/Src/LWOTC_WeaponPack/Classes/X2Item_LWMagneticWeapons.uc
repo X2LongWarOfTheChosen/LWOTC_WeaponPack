@@ -76,7 +76,7 @@ static function X2DataTemplate CreateTemplate_BR_Magnetic()
 	Template.strImage = "img:///UILibrary_Common.UI_MagAssaultRifle.MagAssaultRifle_Base";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
 	Template.Tier = 2;
-	
+
 	Template.Abilities.AddItem('BR_MG_StatBonus');
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_BRAbilities'.default.BR_MAGNETIC_MOBILITY_BONUS);
 
@@ -88,10 +88,10 @@ static function X2DataTemplate CreateTemplate_BR_Magnetic()
 	Template.iSoundRange = default.BATTLERIFLE_MAGNETIC_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.BATTLERIFLE_MAGNETIC_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = default.BATTLERIFLE_MAGNETIC_UPGRADESLOTS;
-	
+
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('StandardShot');	
-	Template.Abilities.AddItem('Overwatch');	
+	Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
@@ -107,7 +107,7 @@ static function X2DataTemplate CreateTemplate_BR_Magnetic()
 	Template.AddDefaultAttachment('Light', "ConvAttachments.Meshes.SM_ConvFlashLight");
 
 	Template.iPhysicsImpulse = 5;
-	
+
 	Template.CreatorTemplateName = 'BR_MG_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'BR_CV'; // Which item this will be upgraded from
 
@@ -209,11 +209,10 @@ static function X2DataTemplate CreateTemplate_MR_Magnetic()
 	Template.iSoundRange = default.MARKSMANRIFLE_MAGNETIC_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.MARKSMANRIFLE_MAGNETIC_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = default.MARKSMANRIFLE_MAGNETIC_UPGRADESLOTS;
-	Template.iTypicalActionCost = 1;
 	
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('SniperStandardFire');	
-	Template.Abilities.AddItem('SniperRifleOverwatch');	
+	Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
@@ -232,7 +231,7 @@ static function X2DataTemplate CreateTemplate_MR_Magnetic()
 
 	Template.CreatorTemplateName = 'BR_MG_Schematic'; // The schematic which creates this item
 	Template.BaseItem = 'MR_CV'; // Which item this will be upgraded from
-	
+
 	Template.CanBeBuilt = false;
 	Template.bInfiniteItem = true;
 

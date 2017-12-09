@@ -60,10 +60,6 @@ static function array<X2DataTemplate> CreateTemplates()
 // ***                                            Player Weapons                                          ***
 // **********************************************************************************************************
 
-// **************************************************************************
-// ***                          SMG                                        ***
-// **************************************************************************
-
 static function X2DataTemplate CreateTemplate_BR_Conventional()
 {
 	local X2WeaponTemplate Template;
@@ -75,9 +71,9 @@ static function X2DataTemplate CreateTemplate_BR_Conventional()
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'rifle';
 	Template.WeaponTech = 'conventional';
-	Template.strImage = "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_Base";   
+	Template.strImage = "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_Base";
 	Template.Tier = 0;
-	
+
 	Template.Abilities.AddItem('BR_CV_StatBonus');
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_BRAbilities'.default.BR_CONVENTIONAL_MOBILITY_BONUS);
 
@@ -89,10 +85,10 @@ static function X2DataTemplate CreateTemplate_BR_Conventional()
 	Template.iSoundRange = default.BATTLERIFLE_CONVENTIONAL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.BATTLERIFLE_CONVENTIONAL_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = default.BATTLERIFLE_CONVENTIONAL_UPGRADESLOTS;
-	
+
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('StandardShot');	
-	Template.Abilities.AddItem('Overwatch');	
+	Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
@@ -116,7 +112,7 @@ static function X2DataTemplate CreateTemplate_BR_Conventional()
 	Template.fKnockbackDamageRadius = 0.0f;
 
 	Template.DamageTypeTemplateName = 'Projectile_Conventional';
-		
+
 	return Template;
 }
 
@@ -205,11 +201,10 @@ static function X2DataTemplate CreateTemplate_MR_Conventional()
 	Template.iSoundRange = default.MARKSMANRIFLE_CONVENTIONAL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.MARKSMANRIFLE_CONVENTIONAL_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = default.MARKSMANRIFLE_CONVENTIONAL_UPGRADESLOTS;
-	Template.iTypicalActionCost = 1;
-	
+
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('SniperStandardFire');	
-	Template.Abilities.AddItem('SniperRifleOverwatch');	
+	Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');

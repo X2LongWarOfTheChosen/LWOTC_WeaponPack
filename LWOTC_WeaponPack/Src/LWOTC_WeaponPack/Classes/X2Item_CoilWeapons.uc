@@ -239,8 +239,8 @@ static function X2DataTemplate CreateBattleRifle_Coil_Template()
 	Template.GameArchetype = "RM_BattleRiflePack.Archetypes.WP_BattleRifle_CG";
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
 	Template.AddDefaultAttachment('Mag', "LWSniperRifle_CG.Meshes.LW_CoilSniper_MagA", , "img:///UILibrary_LW_Overhaul.InventoryArt.CoilRifle_MagA");
-	Template.AddDefaultAttachment('Stock', "LWAccessories_CG.Meshes.LW_Coil_StockB", , "img:///UILibrary_LW_Overhaul.InventoryArt.CoilRifle_StockA"); 
-	Template.AddDefaultAttachment('Reargrip', "LWAccessories_CG.Meshes.LW_Coil_ReargripA", , "img:///UILibrary_LW_Overhaul.InventoryArt.CoilRifle_ReargripA"); 
+	Template.AddDefaultAttachment('Stock', "LWAccessories_CG.Meshes.LW_Coil_StockB", , "img:///UILibrary_LW_Overhaul.InventoryArt.CoilRifle_StockA");
+	Template.AddDefaultAttachment('Reargrip', "LWAccessories_CG.Meshes.LW_Coil_ReargripA", , "img:///UILibrary_LW_Overhaul.InventoryArt.CoilRifle_ReargripA");
 	Template.AddDefaultAttachment('Light', "BeamAttachments.Meshes.BeamFlashLight"); //, , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_LightA");  // re-use common conventional flashlight
 	Template.AddDefaultAttachment('Optic', "BeamSniper.Meshes.SM_BeamSniper_OpticA", , "img:///UILibrary_LW_Overhaul.InventoryArt.CoilSniperRifle_OpticA");
 
@@ -259,11 +259,11 @@ static function X2DataTemplate CreateBattleRifle_Coil_Template()
 	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'BattleRifle_CG_Schematic'; // The schematic which creates this item
-		Template.BaseItem = 'BR_MG'; // Which item this will be upgraded from		
+		Template.BaseItem = 'BR_MG'; // Which item this will be upgraded from
 	}
 	else
 	{
-		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]); 
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
 
 		Resources.ItemTemplateName = 'Supplies';
 		Resources.Quantity = default.BATTLERIFLE_CG_SUPPLYCOST;
@@ -575,7 +575,7 @@ static function X2DataTemplate CreateSniperRifle_Coil_Template()
 		Resources.ItemTemplateName = 'EleriumDust';
 		Resources.Quantity = default.SNIPERRIFLE_CG_ELERIUMCOST;
 		Template.Cost.ResourceCosts.AddItem(Resources);
-		
+
 		Template.Requirements.RequiredEngineeringScore = 20;
 	}
 
@@ -606,21 +606,19 @@ static function X2DataTemplate CreateMarksmanRifle_Coil_Template()
 	Template.iClipSize = default.MARKSMANRIFLE_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.MARKSMANRIFLE_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.MARKSMANRIFLE_COIL_IENVIRONMENTDAMAGE;
-	Template.iTypicalActionCost = 1;
-	
 	Template.NumUpgradeSlots = default.MARKSMANRIFLE_COIL_UPGRADESLOTS;
 
 	Template.GameArchetype = "RM_BattleRiflePack.Archetypes.WP_BattleRifle_CG";
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
 	Template.AddDefaultAttachment('Mag', "LWSniperRifle_CG.Meshes.LW_CoilSniper_MagA", , "img:///UILibrary_LW_Overhaul.InventoryArt.CoilRifle_MagA");
-	Template.AddDefaultAttachment('Stock', "LWAccessories_CG.Meshes.LW_Coil_StockB", , "img:///UILibrary_LW_Overhaul.InventoryArt.CoilRifle_StockA"); 
-	Template.AddDefaultAttachment('Reargrip', "LWAccessories_CG.Meshes.LW_Coil_ReargripA", , "img:///UILibrary_LW_Overhaul.InventoryArt.CoilRifle_ReargripA"); 
+	Template.AddDefaultAttachment('Stock', "LWAccessories_CG.Meshes.LW_Coil_StockB", , "img:///UILibrary_LW_Overhaul.InventoryArt.CoilRifle_StockA");
+	Template.AddDefaultAttachment('Reargrip', "LWAccessories_CG.Meshes.LW_Coil_ReargripA", , "img:///UILibrary_LW_Overhaul.InventoryArt.CoilRifle_ReargripA");
 	Template.AddDefaultAttachment('Light', "BeamAttachments.Meshes.BeamFlashLight"); //, , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_LightA");  // re-use common conventional flashlight
 	Template.AddDefaultAttachment('Optic', "BeamSniper.Meshes.SM_BeamSniper_OpticA", , "img:///UILibrary_LW_Overhaul.InventoryArt.CoilSniperRifle_OpticA");
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('SniperStandardFire');	
-	Template.Abilities.AddItem('SniperRifleOverwatch');	
+	Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('Overwatch');	
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
@@ -633,11 +631,11 @@ static function X2DataTemplate CreateMarksmanRifle_Coil_Template()
 	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'MarksmanRifle_CG_Schematic'; // The schematic which creates this item
-		Template.BaseItem = 'MR_MG'; // Which item this will be upgraded from		
+		Template.BaseItem = 'MR_MG'; // Which item this will be upgraded from
 	}
 	else
 	{
-		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]); 
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]);
 
 		Resources.ItemTemplateName = 'Supplies';
 		Resources.Quantity = default.MARKSMANRIFLE_CG_SUPPLYCOST;
@@ -650,7 +648,7 @@ static function X2DataTemplate CreateMarksmanRifle_Coil_Template()
 		Resources.ItemTemplateName = 'EleriumDust';
 		Resources.Quantity = default.MARKSMANRIFLE_CG_ELERIUMCOST;
 		Template.Cost.ResourceCosts.AddItem(Resources);
-		
+
 		Template.Requirements.RequiredEngineeringScore = 20;
 	}
 
@@ -758,8 +756,8 @@ static function X2DataTemplate CreateBullpup_Coil_Template()
 	Template.iSoundRange = default.BULLPUP_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.BULLPUP_COIL_IENVIRONMENTDAMAGE;
 
-	Template.NumUpgradeSlots = default.BULLPUP_COIL_UPGRADESLOTS; 
-	
+	Template.NumUpgradeSlots = default.BULLPUP_COIL_UPGRADESLOTS;
+
 	// TODO: Placeholder, replace with assets when completed
 	Template.GameArchetype = "WP_SkirmisherSMG_MG.WP_SkirmisherSMG_MG";
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Shotgun'; // the base game does this as well

@@ -42,6 +42,7 @@ static function X2DataTemplate CreateTemplate_BR_Beam_Schematic()
 	Template.CanBeBuilt = true;
 	Template.bOneTimeBuild = true;
 	Template.HideInInventory = true;
+	Template.HideInLootRecovered = true;
 	Template.PointsToComplete = 0;
 	Template.Tier = 3;
 	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
@@ -130,6 +131,7 @@ static function X2DataTemplate CreateTemplate_MR_Beam_Schematic()
 	Template.CanBeBuilt = true;
 	Template.bOneTimeBuild = true;
 	Template.HideInInventory = true;
+	Template.HideInLootRecovered = true;
 	Template.PointsToComplete = 0;
 	Template.Tier = 3;
 	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;

@@ -2,7 +2,7 @@
 //  FILE:    X2Item_LaserWeapons.uc
 //  AUTHOR:  Amineri (Pavonis Interactive)
 //  PURPOSE: Defines weapon templates and updates base-game upgrade templates for Laser Weapons
-//           
+//
 //---------------------------------------------------------------------------------------
 class X2Item_LaserWeapons extends X2Item config(LW_WeaponPack);
 
@@ -195,7 +195,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Laser()
 	Template.WeaponCat = 'rifle';
 	Template.WeaponTech = 'beam'; //'pulse'; // TODO: fix up any effects that rely on hard-coded techs
 	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///" $ default.AssaultRifle_Laser_ImagePath; 
+	Template.strImage = "img:///" $ default.AssaultRifle_Laser_ImagePath;
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
 	Template.Tier = 2;
@@ -208,15 +208,15 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Laser()
 	Template.iSoundRange = default.ASSAULTRIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.ASSAULTRIFLE_LASER_IENVIRONMENTDAMAGE;
 
-	Template.NumUpgradeSlots = default.ASSAULTRIFLE_LASER_UPGRADESLOTS; 
-	
+	Template.NumUpgradeSlots = default.ASSAULTRIFLE_LASER_UPGRADESLOTS;
+
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
 	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	
+
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "LWAssaultRifle_LS.Archetype.WP_AssaultRifle_LS";
 
@@ -235,11 +235,11 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Laser()
 	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'AssaultRifle_LS_Schematic'; // The schematic which creates this item
-		Template.BaseItem = 'AssaultRifle_CV'; // Which item this will be upgraded from		
+		Template.BaseItem = 'AssaultRifle_CV'; // Which item this will be upgraded from
 	}
 	else
 	{
-		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]); 
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
 
 		Resources.ItemTemplateName = 'Supplies';
 		Resources.Quantity = default.ASSAULTRIFLE_LS_SUPPLYCOST;
@@ -272,7 +272,7 @@ static function X2DataTemplate CreateTemplate_BattleRifle_Laser()
 	Template.WeaponCat = 'rifle';
 	Template.WeaponTech = 'beam'; //'pulse'; // TODO: fix up any effects that rely on hard-coded techs
 	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///" $ default.BattleRifle_Laser_ImagePath; 
+	Template.strImage = "img:///" $ default.BattleRifle_Laser_ImagePath;
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
 	Template.Tier = 2;
@@ -285,15 +285,15 @@ static function X2DataTemplate CreateTemplate_BattleRifle_Laser()
 	Template.iSoundRange = default.BATTLERIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.BATTLERIFLE_LASER_IENVIRONMENTDAMAGE;
 
-	Template.NumUpgradeSlots = default.BATTLERIFLE_LASER_UPGRADESLOTS; 
-	
+	Template.NumUpgradeSlots = default.BATTLERIFLE_LASER_UPGRADESLOTS;
+
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
 	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	
+
 // This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "LWAssaultRifle_LS.Archetype.WP_AssaultRifle_LS";
 
@@ -312,11 +312,11 @@ static function X2DataTemplate CreateTemplate_BattleRifle_Laser()
 	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'BattleRifle_LS_Schematic'; // The schematic which creates this item
-		Template.BaseItem = 'BR_CV'; // Which item this will be upgraded from		
+		Template.BaseItem = 'BR_CV'; // Which item this will be upgraded from
 	}
 	else
 	{
-		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]); 
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
 
 		Resources.ItemTemplateName = 'Supplies';
 		Resources.Quantity = default.BATTLERIFLE_LS_SUPPLYCOST;
@@ -349,7 +349,7 @@ static function X2DataTemplate CreateTemplate_SMG_Laser()
 	Template.WeaponCat = 'rifle';
 	Template.WeaponTech = 'beam'; //'pulse'; // TODO: fix up any effects that rely on hard-coded techs
 	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///" $ default.SMG_Laser_ImagePath; 
+	Template.strImage = "img:///" $ default.SMG_Laser_ImagePath;
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
 	Template.Tier = 2;
@@ -365,15 +365,15 @@ static function X2DataTemplate CreateTemplate_SMG_Laser()
 	Template.iSoundRange = default.SMG_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SMG_LASER_IENVIRONMENTDAMAGE;
 
-	Template.NumUpgradeSlots = default.SMG_LASER_UPGRADESLOTS; 
-	
+	Template.NumUpgradeSlots = default.SMG_LASER_UPGRADESLOTS;
+
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
 	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	
+
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "LWSMG_LS.Archetype.WP_SMG_LS";
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
@@ -392,11 +392,11 @@ static function X2DataTemplate CreateTemplate_SMG_Laser()
 	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'SMG_LS_Schematic'; // The schematic which creates this item
-		Template.BaseItem = 'SMG_CV'; // Which item this will be upgraded from		
+		Template.BaseItem = 'SMG_CV'; // Which item this will be upgraded from
 	}
 	else
 	{
-		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]); 
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
 
 		Resources.ItemTemplateName = 'Supplies';
 		Resources.Quantity = default.SMG_LS_SUPPLYCOST;
@@ -442,15 +442,15 @@ static function X2DataTemplate CreateTemplate_Cannon_Laser()
 	Template.iSoundRange = default.LMG_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.LMG_LASER_IENVIRONMENTDAMAGE;
 
-	Template.NumUpgradeSlots = default.LMG_LASER_UPGRADESLOTS; 
-	
+	Template.NumUpgradeSlots = default.LMG_LASER_UPGRADESLOTS;
+
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
 	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	
+
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "LWCannon_LS.Archetype.WP_Cannon_LS";
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Cannon';
@@ -467,11 +467,11 @@ static function X2DataTemplate CreateTemplate_Cannon_Laser()
 	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'Cannon_LS_Schematic'; // The schematic which creates this item
-		Template.BaseItem = 'Cannon_CV'; // Which item this will be upgraded from		
+		Template.BaseItem = 'Cannon_CV'; // Which item this will be upgraded from
 	}
 	else
 	{
-		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[1]); 
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[1]);
 
 		Resources.ItemTemplateName = 'Supplies';
 		Resources.Quantity = default.CANNON_LS_SUPPLYCOST;
@@ -517,15 +517,15 @@ static function X2DataTemplate CreateTemplate_Shotgun_Laser()
 	Template.iSoundRange = default.SHOTGUN_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SHOTGUN_LASER_IENVIRONMENTDAMAGE;
 
-	Template.NumUpgradeSlots = default.SHOTGUN_LASER_UPGRADESLOTS; 
-	
+	Template.NumUpgradeSlots = default.SHOTGUN_LASER_UPGRADESLOTS;
+
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
 	Template.Abilities.AddItem('Overwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	
+
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "LWShotgun_LS.Archetype.WP_Shotgun_LS";
 
@@ -534,7 +534,7 @@ static function X2DataTemplate CreateTemplate_Shotgun_Laser()
 	Template.AddDefaultAttachment('Stock', "LWShotgun_LS.Meshes.SK_LaserShotgun_Stock_A", , "img:///UILibrary_LW_LaserPack.LaserShotgun_StockA");
 	Template.AddDefaultAttachment('Reargrip', "LWAttachments_LS.Meshes.SK_Laser_Trigger_A", , "img:///UILibrary_LW_LaserPack.LaserShotgun_TriggerA");
 	Template.AddDefaultAttachment('Foregrip', "LWAttachments_LS.Meshes.SK_Laser_Foregrip_A", , "img:///UILibrary_LW_LaserPack.LaserShotgun_ForegripA");
-	
+
 	Template.iPhysicsImpulse = 5;
 
 	Template.CanBeBuilt = !class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
@@ -543,11 +543,11 @@ static function X2DataTemplate CreateTemplate_Shotgun_Laser()
 	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'Shotgun_LS_Schematic'; // The schematic which creates this item
-		Template.BaseItem = 'Shotgun_CV'; // Which item this will be upgraded from		
+		Template.BaseItem = 'Shotgun_CV'; // Which item this will be upgraded from
 	}
 	else
 	{
-		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]); 
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
 
 		Resources.ItemTemplateName = 'Supplies';
 		Resources.Quantity = default.SHOTGUN_LS_SUPPLYCOST;
@@ -593,16 +593,16 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Laser()
 	Template.iSoundRange = default.SNIPERRIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SNIPERRIFLE_LASER_IENVIRONMENTDAMAGE;
 
-	Template.NumUpgradeSlots = default.SNIPERRIFLE_LASER_UPGRADESLOTS; 
+	Template.NumUpgradeSlots = default.SNIPERRIFLE_LASER_UPGRADESLOTS;
 	Template.iTypicalActionCost = 2;
-	
+
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('SniperStandardFire');
 	Template.Abilities.AddItem('SniperRifleOverwatch');
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	
+
 	// This all the resources; sounds, animations, models, physics, the works.
 	// TODO : update for Sniper Rifle laser model and default attachments
 	Template.GameArchetype = "LWSniperRifle_LS.Archetype.WP_SniperRifle_LS";
@@ -621,11 +621,11 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Laser()
 	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'SniperRifle_LS_Schematic'; // The schematic which creates this item
-		Template.BaseItem = 'SniperRifle_CV'; // Which item this will be upgraded from		
+		Template.BaseItem = 'SniperRifle_CV'; // Which item this will be upgraded from
 	}
 	else
 	{
-		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[1]); 
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[1]);
 
 		Resources.ItemTemplateName = 'Supplies';
 		Resources.Quantity = default.SNIPERRIFLE_LS_SUPPLYCOST;
@@ -669,17 +669,15 @@ static function X2DataTemplate CreateTemplate_MarksmanRifle_Laser()
 	Template.iClipSize = default.MARKSMANRIFLE_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.MARKSMANRIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.MARKSMANRIFLE_LASER_IENVIRONMENTDAMAGE;
-	Template.iTypicalActionCost = 1;
+	Template.NumUpgradeSlots = default.MARKSMANRIFLE_LASER_UPGRADESLOTS;
 
-	Template.NumUpgradeSlots = default.MARKSMANRIFLE_LASER_UPGRADESLOTS; 
-	
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('SniperStandardFire');	
+	Template.Abilities.AddItem('StandardShot');
 	Template.Abilities.AddItem('Overwatch');	
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	
+
 	// This all the resources; sounds, animations, models, physics, the works.
 	// TODO : update for Sniper Rifle laser model and default attachments
 		// This all the resources; sounds, animations, models, physics, the works.
@@ -700,11 +698,11 @@ static function X2DataTemplate CreateTemplate_MarksmanRifle_Laser()
 	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'MarksmanRifle_LS_Schematic'; // The schematic which creates this item
-		Template.BaseItem = 'MR_CV'; // Which item this will be upgraded from		
+		Template.BaseItem = 'MR_CV'; // Which item this will be upgraded from
 	}
 	else
 	{
-		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[1]); 
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[1]);
 
 		Resources.ItemTemplateName = 'Supplies';
 		Resources.Quantity = default.MARKSMANRIFLE_LS_SUPPLYCOST;
@@ -737,7 +735,7 @@ static function X2DataTemplate CreateTemplate_Pistol_Laser()
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'pistol'; //'pulse'; // TODO: fix up any effects that rely on hard-coded techs
 	Template.WeaponTech = 'beam';
-	Template.strImage = "img:///" $ default.Pistol_Laser_ImagePath; 
+	Template.strImage = "img:///" $ default.Pistol_Laser_ImagePath;
 	Template.EquipSound = "Secondary_Weapon_Equip_Beam"; // TODO: update with new equip sound
 	Template.Tier = 2;
 
@@ -753,7 +751,7 @@ static function X2DataTemplate CreateTemplate_Pistol_Laser()
 
 	Template.OverwatchActionPoint = class'X2CharacterTemplateManager'.default.PistolOverwatchReserveActionPoint;
 	Template.InfiniteAmmo = true;
-	
+
 	Template.InventorySlot = eInvSlot_SecondaryWeapon;
 	Template.Abilities.AddItem('PistolOverwatch');
 	Template.Abilities.AddItem('PistolOverwatchShot');
@@ -762,7 +760,7 @@ static function X2DataTemplate CreateTemplate_Pistol_Laser()
 	Template.Abilities.AddItem('Reload');
 
 	Template.SetAnimationNameForAbility('FanFire', 'FF_FireMultiShotBeamA'); // TODO : update with new animation if necessary
-	
+
 	// This all the resources; sounds, animations, models, physics, the works.
 	Template.GameArchetype = "LWPistol_LS.Archetype.WP_Pistol_LS";
 
@@ -774,11 +772,11 @@ static function X2DataTemplate CreateTemplate_Pistol_Laser()
 	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'Pistol_LS_Schematic'; // The schematic which creates this item
-		Template.BaseItem = 'Pistol_CV'; // Which item this will be upgraded from		
+		Template.BaseItem = 'Pistol_CV'; // Which item this will be upgraded from
 	}
 	else
 	{
-		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]); 
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
 
 		Resources.ItemTemplateName = 'Supplies';
 		Resources.Quantity = default.PISTOL_LS_SUPPLYCOST;
@@ -827,7 +825,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser()
 	Template.iSoundRange = default.BULLPUP_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.BULLPUP_LASER_IENVIRONMENTDAMAGE;
 
-	Template.NumUpgradeSlots = default.BULLPUP_LASER_UPGRADESLOTS; 
+	Template.NumUpgradeSlots = default.BULLPUP_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
@@ -842,7 +840,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser()
 	Template.GameArchetype = "WP_SkirmisherSMG_MG.WP_SkirmisherSMG_MG";
 
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Shotgun'; // the base game does this as well
-	
+
 	// TODO: Placeholders, replace with assets when completed
 	Template.AddDefaultAttachment('Mag', "MagSMG.Meshes.SM_HOR_Mag_SMG_MagA", , "img:///UILibrary_XPACK_Common.MagSMG_MagazineA");
 	Template.AddDefaultAttachment('Reargrip', "CnvSMG.Meshes.SM_HOR_Cnv_SMG_ReargripA");
@@ -858,11 +856,11 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser()
 	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
 	{
 		Template.CreatorTemplateName = 'Bullpup_LS_Schematic'; // The schematic which creates this item
-		Template.BaseItem = 'Bullpup_CV'; // Which item this will be upgraded from		
+		Template.BaseItem = 'Bullpup_CV'; // Which item this will be upgraded from
 	}
 	else
 	{
-		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]); 
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
 
 		Resources.ItemTemplateName = 'Supplies';
 		Resources.Quantity = default.BULLPUP_LS_SUPPLYCOST;
