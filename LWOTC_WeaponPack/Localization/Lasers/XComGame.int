@@ -69,6 +69,13 @@ BriefSummary="The Energiya Rifle is an effective and highly sought-after applica
 TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> The Energiya Rifle is effective at all ranges.\n<Bullet/> Use upgrades looted from enemies to improve the Energiya Rifle's tactical effectiveness."
 AbilityDescName="vektor rifle"
 
+[Sidearm_LS X2WeaponTemplate]
+FriendlyName="Autopistol"
+FriendlyNamePlural="Autopistol"
+BriefSummary="Should their power fail them for some reason, the Templars rely on a relatively conventional pistol arrangement that has been modified to specifically enhance its rate of fire and overall handling. This straightforward design contributes to the weapon's reliability in spite of the inconsistent material quality found in its construction."
+TacticalText="<Bullet/> The Autopistol gives the Templar the flexibility to combat the enemy in a conventional manner when not using their Psionic abilities.\n<Bullet/> Autopistols can be fired with a single action."
+AbilityDescName="autopistol"
+
 [LaserWeaponsTech_LW X2TechTemplate]
 DisplayName="Laser Weapons"
 Summary="Using our new understanding of alien weapon systems, we should be able develop designs for powerful laser weaponry."
