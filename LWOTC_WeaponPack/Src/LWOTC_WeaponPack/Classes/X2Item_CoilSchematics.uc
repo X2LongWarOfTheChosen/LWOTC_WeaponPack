@@ -49,6 +49,10 @@ var config int Vektor_COIL_SCHEMATIC_SUPPLYCOST;
 var config int Vektor_COIL_SCHEMATIC_ALLOYCOST;
 var config int Vektor_COIL_SCHEMATIC_ELERIUMCOST;
 
+var config int Sidearm_COIL_SCHEMATIC_SUPPLYCOST;
+var config int Sidearm_COIL_SCHEMATIC_ALLOYCOST;
+var config int Sidearm_COIL_SCHEMATIC_ELERIUMCOST;
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Schematics;
@@ -67,6 +71,7 @@ static function array<X2DataTemplate> CreateTemplates()
 		Schematics.AddItem(CreateTemplate_Pistol_Coil_Schematic());
 		Schematics.AddItem(CreateTemplate_Bullpup_Coil_Schematic());
 		Schematics.AddItem(CreateTemplate_Vektor_Coil_Schematic());
+		Schematics.AddItem(CreateTemplate_Sidearm_Coil_Schematic());
 
 		return Schematics;
 	}
@@ -516,6 +521,52 @@ static function X2DataTemplate CreateTemplate_Vektor_Coil_Schematic()
 	if (default.Bullpup_COIL_SCHEMATIC_ELERIUMCOST > 0) {
 		Artifacts.ItemTemplateName = 'EleriumDust';
 		Artifacts.Quantity = default.Vektor_COIL_SCHEMATIC_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Artifacts);
+	}
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_Sidearm_Coil_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local ArtifactCost Resources, Artifacts;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'Sidearm_CG_Schematic');
+
+	Template.ItemCat = 'weapon';
+	// Placeholder image for Laser Bullpup: Mag Bullpup, replace once image is available
+	Template.strImage = "img:///UILibrary_XPACK_StrategyImages.Inv_MagTPistol_Base";
+	Template.CanBeBuilt = true;
+	Template.bOneTimeBuild = true;
+	Template.HideInInventory = true;
+	Template.HideInLootRecovered = true;
+	Template.PointsToComplete = 0;
+	Template.Tier = 3;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'Sidearm_CG';
+	Template.HideIfPurchased = 'Sidearm_BM';
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
+	Template.Requirements.RequiredEngineeringScore = 15;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+	Template.Requirements.RequiredSoldierClass = 'Templar';
+
+	// Cost
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.Sidearm_COIL_SCHEMATIC_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Artifacts.ItemTemplateName = 'AlienAlloy';
+	Artifacts.Quantity = default.Sidearm_COIL_SCHEMATIC_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Artifacts);
+
+	// only add elerium cost if configured value greater than 0
+	if (default.Bullpup_COIL_SCHEMATIC_ELERIUMCOST > 0) {
+		Artifacts.ItemTemplateName = 'EleriumDust';
+		Artifacts.Quantity = default.Sidearm_COIL_SCHEMATIC_ELERIUMCOST;
 		Template.Cost.ResourceCosts.AddItem(Artifacts);
 	}
 	return Template;
