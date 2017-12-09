@@ -164,7 +164,7 @@ static function AddSchematicLoc (X2ItemTemplateManager ItemTemplateMgr)
 
 	CopySchematicLoc (ItemTemplateMgr, 'Bullpup_LS_Schematic', 'Bullpup_MG_Schematic');
 	CopySchematicLoc (ItemTemplateMgr, 'Bullpup_CG_Schematic', 'Bullpup_MG_Schematic');
-	
+
 	CopySchematicLoc (ItemTemplateMgr, 'SMG_LS_Schematic', 'AssaultRifle_MG_Schematic');
 	CopySchematicLoc (ItemTemplateMgr, 'SMG_MG_Schematic', 'AssaultRifle_MG_Schematic');
 	CopySchematicLoc (ItemTemplateMgr, 'SMG_CG_Schematic', 'AssaultRifle_MG_Schematic');
@@ -444,7 +444,7 @@ static function AddLaserCritUpgrade(X2ItemTemplateManager ItemTemplateManager, N
 
 	// Cannon
 	Template.AddUpgradeAttachment('Optic', 'UIPawnLocation_WeaponUpgrade_Cannon_Optic', "LWCannon_LS.Meshes.SK_LaserCannon_Optic_B", "", 'Cannon_LS', , "img:///UILibrary_LW_LaserPack.LaserCannon_OpticB", "img:///UILibrary_LW_LaserPack.Inv_Laser_OpticC", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_scope");
-	
+
 	// Bullpup
 	Template.AddUpgradeAttachment('Optic', 'UIPawnLocation_WeaponUpgrade_Shotgun_Optic', "MagSMG.Meshes.SM_HOR_Mag_SMG_OpticB", "", 'Bullpup_LS', , "img:///UILibrary_XPACK_Common.MagSMG_OpticB", "img:///UILibrary_XPACK_StrategyImages.MagSMG_OpticB_inv", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_scope");
 }
@@ -1082,6 +1082,8 @@ static function AddCoilMissDamageUpgrade(X2ItemTemplateManager ItemTemplateManag
 	Template.AddUpgradeAttachment('Stock', 'UIPawnLocation_WeaponUpgrade_Cannon_Stock', "LWCannon_CG.Meshes.LW_CoilCannon_StockB", "", 'Cannon_CG', , "img:///UILibrary_LW_Coilguns.InventoryArt.CoilCannon_StockB", "img:///UILibrary_LW_Coilguns.InventoryArt.Inv_CoilCannon_StockB", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_stock");
 	Template.AddUpgradeAttachment('StockSupport', '', "LWCannon_CG.Meshes.LW_CoilCannon_StockSupportB", "", 'Cannon_CG');
 
+	// Bullpup
+	Template.AddUpgradeAttachment('Stock', 'UIPawnLocation_WeaponUpgrade_AssaultRifle_Stock', "LWAccessories_CG.Meshes.LW_Coil_StockB", "", 'Bullpup_CG', , "img:///UILibrary_LW_Coilguns.InventoryArt.CoilSMG_StockB", "img:///UILibrary_LW_Coilguns.InventoryArt.Inv_CoilRifleSMGShotgun_StockB", "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_weaponIcon_stock");
 }
 
 static function AddCoilFreeKillUpgrade(X2ItemTemplateManager ItemTemplateManager, Name TemplateName)
