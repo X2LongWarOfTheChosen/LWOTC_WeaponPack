@@ -1,0 +1,95 @@
+[Coilguns X2TechTemplate]
+DisplayName="Coilguns"
+CodeName="Laertes"
+Summary="It is now time to move beyond reverse-engineering captured weapons to develop a new line of magnetic weaponry superior to what ADVENT utilizes."
+LongDescription="The principles of coil-type magnetic weapons have long been known, but it has taken our understanding of alien materials and energy supplies to make that a reality. And the reality is we have developed weaponry that exceed the firepower of ADVENT troops and approach that of some alien weaponry. Our coilguns fire rounds sheathed in ablative plastic that melts away as the round travels through the gun barrel at speeds even greater than those achieved by the aliens' railgun-based systems. The round itself can punch through thin armor, as well. R. Tygan."
+
+[AdvancedCoilguns X2TechTemplate]
+DisplayName="Advanced Coilguns"
+CodeName="Firefox"
+Summary="We can now turn our attention to developing specialized coil weaponry."
+LongDescription="The challenges in adapting our new coilgun designs to fit our defined combat roles were not insigificant; the coils themselves must be precisely machined so the round doesn't lose its way in the barrel, which could have catastrophic consequences for the gun and the user. This may explain why ADVENT never adopted this style of weaponry; they are too expensive and labor-intensive to produce, not really suited for industrial-scale production for a worldwide army of poorly trained clones. They are, however, an excellent fit for a small cadre of expert soldiers. R. Tygan."
+
+[AssaultRifle_CG X2WeaponTemplate]
+FriendlyName="Coil Rifle"
+FriendlyNamePlural="Coil Rifles"
+BriefSummary="A powerful, mid-range, armor-piercing coilgun that fills the assault rifle role."
+TacticalText="<Bullet/> Coil weapons automatically pierce (ignore) 1 enemy armor.<br/><Bullet/> Firing the primary weapon ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Coil Rifles's tactical effectiveness.<br/>"
+AbilityDescName="assault rifle"
+
+[BattleRifle_CG X2WeaponTemplate]
+FriendlyName="Guerrilla Rifle"
+FriendlyNamePlural="Guerrilla Rifles"
+BriefSummary="The Guerrilla Rifle is a high-caliber coilgun that fills the battle rifle role."
+TacticalText="<Bullet/> Coil weapons automatically pierce (ignore) 1 enemy armor.<br/><Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Guerrilla Rifle's tactical effectiveness. \n<Bullet/> Battle-Rifle-style weapons offer increased damage relative to assault rifles, but they decrease the soldier's mobility and ammo capacity in exchange."
+AbilityDescName="battle rifle"
+
+[Cannon_CG X2WeaponTemplate]
+FriendlyName="Gauss Cannon"
+FriendlyNamePlural="Gauss Cannons"
+BriefSummary="A heavy duty, automatic coilgun with a huge rate of fire."
+TacticalText="<Bullet/> Coil weapons automatically pierce (ignore) 1 enemy armor.<br/><Bullet/> The cannon serves in a squad automatic weapon role, has more ammo and does more damage than its rifle counterpart, but it is cumbersome to carry.<br/><Bullet/> Use upgrades recovered from ADVENT enemies to improve the Gauss Cannon's tactical effectiveness.<br/>"
+AbilityDescName="cannon"
+
+[SniperRifle_CG X2WeaponTemplate]
+FriendlyName="Gauss Long Rifle"
+FriendlyNamePlural="Gauss Long Rifles"
+BriefSummary="An extended coil rifle that may be employed by our Sharpshooters."
+TacticalText="<Bullet/> Coil weapons automatically pierce (ignore) 1 enemy armor.<br/><Bullet/> Sniper rifles typically require both actions to fire without special training.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the Gauss Long Rifle's tactical effectiveness."
+AbilityDescName="sniper rifle"
+
+[MarksmanRifle_CG X2WeaponTemplate]
+FriendlyName="Gauss Striker"
+FriendlyNamePlural="Gauss Strikers"
+BriefSummary="The Gauss Striker is a lightweight alternative to the Gauss Long Rifle."
+TacticalText="<Bullet/> Coil weapons automatically pierce (ignore) 1 enemy armor.<br/><Bullet/> Marksman's Rifles are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Gauss Striker's tactical effectiveness. \n<Bullet/> Marksman's-Rifle-style weapons offer a shot that requires only 1 AP, as well as reduced aim penalties for shooting nearby enemies, though they deal reduced damage."
+AbilityDescName="marksman's rifle"
+
+[Shotgun_CG X2WeaponTemplate]
+FriendlyName="Scattergun"
+FriendlyNamePlural="Scatterguns"
+BriefSummary="A close-quarters coil-tech weapon that fills the shotgun role."
+TacticalText="<Bullet/> Coil weapons automatically pierce (ignore) 1 enemy armor.<br/><Bullet/> Shotgun-style weapons are extremely effective at close range, but their accuracy drops off quickly at longer range.\n<Bullet/> Use upgrades looted from enemies to improve the Scattergun's tactical effectiveness."
+AbilityDescName="shotgun"
+
+[SMG_CG X2WeaponTemplate]
+FriendlyName="Subcoiler"
+FriendlyNamePlural="Subcoiler"
+BriefSummary="A lightweight version of the coil rifle that fires a smaller round but grants its user more mobility on the battlefield."
+TacticalText="<Bullet/> Coil weapons automatically pierce (ignore) 1 enemy armor.<br/><Bullet/> SMG-style weapons offer bonus mobility, close-quarters accuracy and concealment relative to assault rifles, but they do less damage, have less ammo, and suffer accuracy penalties at long range.<br/>"
+AbilityDescName="SMG"
+
+[Pistol_CG X2WeaponTemplate]
+FriendlyName="Gauss Pistol"
+FriendlyNamePlural="Gauss Pistols"
+UnknownUtilityCategory="Pistol"
+BriefSummary="A powerful, coil-tech sidearm that can punch through enemy armor."
+TacticalText="<Bullet/> Coil weapons automatically pierce 1 enemy armor.\n<Bullet/> Pistols can be fired with a single action.\n<Bullet/> Soldiers can train several abilities that dramatically enhance their use of pistols.\n<Bullet/> Pistols lose accuracy at long ranges."
+AbilityDescName="pistol"
+
+[Bullpup_CV X2WeaponTemplate]
+FriendlyName="Kal-66 Bullpup"
+FriendlyNamePlural="Kal-66 Bullpups"
+BriefSummary="An intense, compact weapon that takes full advantage of the coilgun technology to give the Skirmishers a highly-powerful, armor-piercing bullpup."
+TacticalText="<Bullet/> Coil weapons automatically pierce 1 enemy armor.\n<Bullet/> Firing the Bullpup does not end the Skirmisher's turn, and it can be fired twice in a single turn.\n<Bullet/> Bullpups are extremely effective at close range, but their accuracy drops off quickly at longer range.\n<Bullet/> Use upgrades looted from enemies to improve the Bullpup's tactical effectiveness."
+AbilityDescName="bullpup"
+
+[VektorRifle_CV X2WeaponTemplate]
+FriendlyName="Silovik Rifle"
+FriendlyNamePlural="Silovik Rifles"
+BriefSummary="An elite, compact version of the Gauss Long Rifle made with the Reapers in mind."
+TacticalText="<Bullet/> Coil weapons automatically pierce 1 enemy armor.\n<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> The Silovik Rifle is effective at all ranges.\n<Bullet/> Use upgrades looted from enemies to improve the Silovik Rifle's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
+[AssaultRifle_MG X2WeaponTemplate]
+FriendlyName="Mag Rifle"
+FriendlyNamePlural="Mag Rifles"
+
+[SniperRifle_MG X2WeaponTemplate]
+FriendlyName="Mag Long Rifle"
+FriendlyNamePlural="Mag Long Rifles"
+BriefSummary="Magnetic weapons technology has particular utility for precision slow-fire weapons like sniper rifles. The Mag Long Rifle will enable our Sharpshooters to cause greater damage at extended range."
+TacticalText="<Bullet/> Sniper rifles typically require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the Mag Long Rifle's tactical effectiveness."
+
+[GaussWeapons X2TechTemplate]
+DisplayName="Advanced Magnetic Weaponry"
