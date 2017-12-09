@@ -12,6 +12,10 @@ var config int AssaultRifle_LASER_SCHEMATIC_SUPPLYCOST;
 var config int AssaultRifle_LASER_SCHEMATIC_ALLOYCOST;
 var config int AssaultRifle_LASER_SCHEMATIC_ELERIUMCOST;
 
+var config int BattleRifle_LASER_SCHEMATIC_SUPPLYCOST;
+var config int BattleRifle_LASER_SCHEMATIC_ALLOYCOST;
+var config int BattleRifle_LASER_SCHEMATIC_ELERIUMCOST;
+
 var config int SMG_LASER_SCHEMATIC_SUPPLYCOST;
 var config int SMG_LASER_SCHEMATIC_ALLOYCOST;
 var config int SMG_LASER_SCHEMATIC_ELERIUMCOST;
@@ -27,6 +31,10 @@ var config int Cannon_LASER_SCHEMATIC_ELERIUMCOST;
 var config int SniperRifle_LASER_SCHEMATIC_SUPPLYCOST;
 var config int SniperRifle_LASER_SCHEMATIC_ALLOYCOST;
 var config int SniperRifle_LASER_SCHEMATIC_ELERIUMCOST;
+
+var config int MarksmanRifle_LASER_SCHEMATIC_SUPPLYCOST;
+var config int MarksmanRifle_LASER_SCHEMATIC_ALLOYCOST;
+var config int MarksmanRifle_LASER_SCHEMATIC_ELERIUMCOST;
 
 var config int Pistol_LASER_SCHEMATIC_SUPPLYCOST;
 var config int Pistol_LASER_SCHEMATIC_ALLOYCOST;
@@ -50,10 +58,12 @@ static function array<X2DataTemplate> CreateTemplates()
 	{
 
 		Schematics.AddItem(CreateTemplate_AssaultRifle_Laser_Schematic());
+		Schematics.AddItem(CreateTemplate_BattleRifle_Laser_Schematic());
 		Schematics.AddItem(CreateTemplate_SMG_Laser_Schematic());
 		Schematics.AddItem(CreateTemplate_Shotgun_Laser_Schematic());
 		Schematics.AddItem(CreateTemplate_Cannon_Laser_Schematic());
 		Schematics.AddItem(CreateTemplate_SniperRifle_Laser_Schematic());
+		Schematics.AddItem(CreateTemplate_MarksmanRifle_Laser_Schematic());
 		Schematics.AddItem(CreateTemplate_Pistol_Laser_Schematic());
 		Schematics.AddItem(CreateTemplate_Bullpup_Laser_Schematic());
 		Schematics.AddItem(CreateTemplate_Vektor_Laser_Schematic());
@@ -104,6 +114,51 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Laser_Schematic()
 		Template.Cost.ResourceCosts.AddItem(Artifacts);
 	}
 
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_BattleRifle_Laser_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local ArtifactCost Resources, Artifacts;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'BattleRifle_LS_Schematic');
+
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///UILibrary_LW_LaserPack.Inv_Laser_Assault_Rifle"; 
+	Template.CanBeBuilt = true;
+	Template.bOneTimeBuild = true;
+	Template.HideInInventory = true;
+	Template.HideInLootRecovered = true;
+	Template.PointsToComplete = 0;
+	Template.Tier = 1;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'BattleRifle_LS';
+	Template.HideIfPurchased = 'BattleRifle_MG';
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
+	Template.Requirements.RequiredEngineeringScore = 5;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+
+	// Cost
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.BattleRifle_LASER_SCHEMATIC_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Artifacts.ItemTemplateName = 'AlienAlloy';
+	Artifacts.Quantity = default.BattleRifle_LASER_SCHEMATIC_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Artifacts);
+	
+	// only add elerium cost if configured value greater than 0
+	if (default.BattleRifle_LASER_SCHEMATIC_ELERIUMCOST > 0) {
+		Artifacts.ItemTemplateName = 'EleriumDust';
+		Artifacts.Quantity = default.BattleRifle_LASER_SCHEMATIC_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Artifacts);
+	}
+	
 	return Template;
 }
 
@@ -173,7 +228,7 @@ static function X2DataTemplate CreateTemplate_Shotgun_Laser_Schematic()
 	Template.HideIfPurchased = 'Shotgun_MG';
 
 	// Requirements
-	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[1]);
+	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
 	Template.Requirements.RequiredEngineeringScore = 10;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 
@@ -280,6 +335,51 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Laser_Schematic()
 	if (default.SniperRifle_LASER_SCHEMATIC_ELERIUMCOST > 0) {
 		Artifacts.ItemTemplateName = 'EleriumDust';
 		Artifacts.Quantity = default.SniperRifle_LASER_SCHEMATIC_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Artifacts);
+	}
+
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_MarksmanRifle_Laser_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local ArtifactCost Resources, Artifacts;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'MarksmanRifle_LS_Schematic');
+
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///UILibrary_LW_LaserPack.Inv_Laser_Sniper_Rifle";
+	Template.CanBeBuilt = true;
+	Template.bOneTimeBuild = true;
+	Template.HideInInventory = true;
+	Template.HideInLootRecovered = true;
+	Template.PointsToComplete = 0;
+	Template.Tier = 3;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'MarksmanRifle_LS';
+	Template.HideIfPurchased = 'MarksmanRifle_MG';
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[1]); 
+	Template.Requirements.RequiredEngineeringScore = 10;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+
+	// Cost
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.MarksmanRifle_LASER_SCHEMATIC_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Artifacts.ItemTemplateName = 'AlienAlloy';
+	Artifacts.Quantity = default.MarksmanRifle_LASER_SCHEMATIC_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Artifacts);
+	
+	// only add elerium cost if configured value greater than 0
+	if (default.MarksmanRifle_LASER_SCHEMATIC_ELERIUMCOST > 0) {
+		Artifacts.ItemTemplateName = 'EleriumDust';
+		Artifacts.Quantity = default.MarksmanRifle_LASER_SCHEMATIC_ELERIUMCOST;
 		Template.Cost.ResourceCosts.AddItem(Artifacts);
 	}
 
