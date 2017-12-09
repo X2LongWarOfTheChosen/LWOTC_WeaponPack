@@ -55,6 +55,20 @@ BriefSummary="Based on the advances in beam weapons tech we've achieved, this ne
 TacticalText="<Bullet/> Laser pistols are substantially more effective and accurate than their conventional precursors.\n<Bullet/> Lasers receive bonus aim.\n<Bullet/> Pistols can be fired with a single action.\n<Bullet/> Soldiers can train several abilities that dramatically enhance their use of pistols.\n<Bullet/> Pistols lose accuracy at long ranges."
 AbilityDescName="pistol"
 
+[Bullpup_CV X2WeaponTemplate]
+FriendlyName="Kal-12 Bullpup"
+FriendlyNamePlural="Kal-12 Bullpups"
+BriefSummary="The addition of an effulgence alternator to the standard bullpup design has only enhanced the Skirmishers' destructive potential."
+TacticalText="<Bullet/> Firing the Bullpup does not end the Skirmisher's turn, and it can be fired twice in a single turn.\n<Bullet/> Bullpups are extremely effective at close range, but their accuracy drops off quickly at longer range.\n<Bullet/> Use upgrades looted from enemies to improve the Bullpup's tactical effectiveness."
+AbilityDescName="bullpup"
+
+[VektorRifle_CV X2WeaponTemplate]
+FriendlyName="Energiya Rifle"
+FriendlyNamePlural="Energiya Rifles"
+BriefSummary="The Energiya Rifle is an effective and highly sought-after application of the laser technology, for the Reapers live their lives in the shadows and the light of the laser only deepens the shadows of war."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> The Energiya Rifle is effective at all ranges.\n<Bullet/> Use upgrades looted from enemies to improve the Energiya Rifle's tactical effectiveness."
+AbilityDescName="vektor rifle"
+
 [LaserWeaponsTech_LW X2TechTemplate]
 DisplayName="Laser Weapons"
 Summary="Using our new understanding of alien weapon systems, we should be able develop designs for powerful laser weaponry."
