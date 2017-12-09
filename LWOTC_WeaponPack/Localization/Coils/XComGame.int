@@ -1,69 +1,81 @@
-[AssaultRifle_LS X2WeaponTemplate]
-FriendlyName="Laser Rifle"
-FriendlyNamePlural="Laser Rifles"
-BriefSummary="The Laser Rifle emits a series of microsecond-duration blasts of light that destroy chemical bonds in targets."
-TacticalText="<Bullet/> Firing the primary weapon ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the laser rifles's tactical effectiveness.\n<Bullet/> The high-energy output of these laser weapons is derived from integrating alien technology into discovered pre-war laser weaponry.\n<Bullet/> Lasers receive bonus aim."
+[Coilguns X2TechTemplate]
+DisplayName="Coilguns"
+CodeName="Laertes"
+Summary="It is now time to move beyond reverse-engineering captured weapons to develop a new line of magnetic weaponry superior to what ADVENT utilizes."
+LongDescription="The principles of coil-type magnetic weapons have long been known, but it has taken our understanding of alien materials and energy supplies to make that a reality. And the reality is we have developed weaponry that exceed the firepower of ADVENT troops and approach that of some alien weaponry. Our coilguns fire rounds sheathed in ablative plastic that melts away as the round travels through the gun barrel at speeds even greater than those achieved by the aliens' railgun-based systems. The round itself can punch through thin armor, as well. R. Tygan."
+
+[AdvancedCoilguns X2TechTemplate]
+DisplayName="Advanced Coilguns"
+CodeName="Firefox"
+Summary="We can now turn our attention to developing specialized coil weaponry."
+LongDescription="The challenges in adapting our new coilgun designs to fit our defined combat roles were not insigificant; the coils themselves must be precisely machined so the round doesn't lose its way in the barrel, which could have catastrophic consequences for the gun and the user. This may explain why ADVENT never adopted this style of weaponry; they are too expensive and labor-intensive to produce, not really suited for industrial-scale production for a worldwide army of poorly trained clones. They are, however, an excellent fit for a small cadre of expert soldiers. R. Tygan."
+
+[AssaultRifle_CG X2WeaponTemplate]
+FriendlyName="Coil Rifle"
+FriendlyNamePlural="Coil Rifles"
+BriefSummary="A powerful, mid-range, armor-piercing coilgun that fills the assault rifle role."
+TacticalText="<Bullet/> Coil weapons automatically pierce (ignore) 1 enemy armor.<br/><Bullet/> Firing the primary weapon ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Coil Rifles's tactical effectiveness.<br/>"
 AbilityDescName="assault rifle"
 
-[BattleRifle_LS X2WeaponTemplate]
-FriendlyName="Blitz Rifle"
-FriendlyNamePlural="Blitz Rifles"
-BriefSummary="The Blitz Rifle expands on the Laser Rifle design by adding a focusing chamber that increases both the intensity and duration of the beam, though it is heavier and cannot fire as often."
-TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Blitz Rifle's tactical effectiveness. \n<Bullet/> Battle-Rifle-style weapons offer increased damage relative to assault rifles, but they decrease the soldier's mobility and ammo capacity in exchange.\n<Bullet/> Lasers receive bonus aim."
+[BattleRifle_CG X2WeaponTemplate]
+FriendlyName="Guerrilla Rifle"
+FriendlyNamePlural="Guerrilla Rifles"
+BriefSummary="The Guerrilla Rifle is a high-caliber coilgun that fills the battle rifle role."
+TacticalText="<Bullet/> Coil weapons automatically pierce (ignore) 1 enemy armor.<br/><Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Guerrilla Rifle's tactical effectiveness. \n<Bullet/> Battle-Rifle-style weapons offer increased damage relative to assault rifles, but they decrease the soldier's mobility and ammo capacity in exchange."
 AbilityDescName="battle rifle"
 
-[SMG_LS X2WeaponTemplate]
-FriendlyName="Laser Stengun"
-FriendlyNamePlural="Laser Stenguns"
-BriefSummary="A lightweight version of the Laser Rifle, this fills a similar role to the SMG, trading power, ammo and accuracy at range for increased soldier mobility and concealment."
-TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Stengun's tactical effectiveness. \n<Bullet/> SMG-style weapons offer bonus mobility, close-quarters accuracy and concealment relative to assault rifles, but they do less damage, have less ammo, and suffer accuracy penalties at long range.\n<Bullet/> Lasers receive bonus aim."
-AbilityDescName="SMG"
-
-[Cannon_LS X2WeaponTemplate]
-FriendlyName="Laser Cannon"
-FriendlyNamePlural="Laser Cannons"
-BriefSummary="Laser weapons tech combined with an improved cooling system will let us deploy a rapid-fire version of the cannon, able to lay down a much deadlier volume of fire."
-TacticalText="<Bullet/> The Laser Cannon is a much more powerful, yet equally deployable, version of the conventional Cannon.\n<Bullet/> Use upgrades looted from enemies to improve the Laser Cannon's tactical effectiveness.\n<Bullet/> Lasers receive bonus aim."
+[Cannon_CG X2WeaponTemplate]
+FriendlyName="Gauss Cannon"
+FriendlyNamePlural="Gauss Cannons"
+BriefSummary="A heavy duty, automatic coilgun with a huge rate of fire."
+TacticalText="<Bullet/> Coil weapons automatically pierce (ignore) 1 enemy armor.<br/><Bullet/> The cannon serves in a squad automatic weapon role, has more ammo and does more damage than its rifle counterpart, but it is cumbersome to carry.<br/><Bullet/> Use upgrades recovered from ADVENT enemies to improve the Gauss Cannon's tactical effectiveness.<br/>"
 AbilityDescName="cannon"
 
-[Shotgun_LS X2WeaponTemplate]
-FriendlyName="Scatterray"
-FriendlyNamePlural="Scatterray"
-BriefSummary="The Scatterray is an application of laser technology to provide shotgun-like effects; it is most effective at close range due to beam diffusion."
-TacticalText="<Bullet/> Shotgun-style weapons are extremely effective at close range, but their accuracy drops off quickly at longer range.\n<Bullet/> Use upgrades looted from enemies to improve the Scatterray's tactical effectiveness.\n<Bullet/> Lasers receive bonus aim."
-AbilityDescName="shotgun"
-
-[SniperRifle_LS X2WeaponTemplate]
-FriendlyName="Laser Lance"
-FriendlyNamePlural="Laser Lances"
-BriefSummary="A long rifle version of the Laser Rifle, the Laser Lance incorporates extremely high-energy flash capacitors, resulting in a high-precision long-range laser weapon."
-TacticalText="Sniper rifles always require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the Laser Lance's tactical effectiveness.\n<Bullet/> Lasers receive bonus aim."
+[SniperRifle_CG X2WeaponTemplate]
+FriendlyName="Gauss Long Rifle"
+FriendlyNamePlural="Gauss Long Rifles"
+BriefSummary="An extended coil rifle that may be employed by our Sharpshooters."
+TacticalText="<Bullet/> Coil weapons automatically pierce (ignore) 1 enemy armor.<br/><Bullet/> Sniper rifles typically require both actions to fire without special training.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the Gauss Long Rifle's tactical effectiveness."
 AbilityDescName="sniper rifle"
 
-[MarksmanRifle_LS X2WeaponTemplate]
-FriendlyName="Laser Striker"
-FriendlyNamePlural="Laser Strikers"
-BriefSummary="The Laser Striker utilizes a slightly modified high-energy flash capacitor from the Laser Lance, reducing its impact slightly as a trade for ease-of-use, allowing a sharpshooter to act before firing."
-TacticalText="<Bullet/> Marksman's Rifles are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Laser Striker's tactical effectiveness. \n<Bullet/> Marksman's-Rifle-style weapons offer a shot that requires only 1 AP, as well as reduced aim penalties for shooting nearby enemies, though they deal reduced damage.\n<Bullet/> Lasers receive bonus aim."
+[MarksmanRifle_CG X2WeaponTemplate]
+FriendlyName="Gauss Striker"
+FriendlyNamePlural="Gauss Strikers"
+BriefSummary="The Gauss Striker is a lightweight alternative to the Gauss Long Rifle."
+TacticalText="<Bullet/> Coil weapons automatically pierce (ignore) 1 enemy armor.<br/><Bullet/> Marksman's Rifles are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Gauss Striker's tactical effectiveness. \n<Bullet/> Marksman's-Rifle-style weapons offer a shot that requires only 1 AP, as well as reduced aim penalties for shooting nearby enemies, though they deal reduced damage."
 AbilityDescName="marksman's rifle"
 
-[Pistol_LS X2WeaponTemplate]
-FriendlyName="Laser Pistol"
-FriendlyNamePlural="Laser Pistols"
+[Shotgun_CG X2WeaponTemplate]
+FriendlyName="Scattergun"
+FriendlyNamePlural="Scatterguns"
+BriefSummary="A close-quarters coil-tech weapon that fills the shotgun role."
+TacticalText="<Bullet/> Coil weapons automatically pierce (ignore) 1 enemy armor.<br/><Bullet/> Shotgun-style weapons are extremely effective at close range, but their accuracy drops off quickly at longer range.\n<Bullet/> Use upgrades looted from enemies to improve the Scattergun's tactical effectiveness."
+AbilityDescName="shotgun"
+
+[SMG_CG X2WeaponTemplate]
+FriendlyName="Subcoiler"
+FriendlyNamePlural="Subcoiler"
+BriefSummary="A lightweight version of the coil rifle that fires a smaller round but grants its user more mobility on the battlefield."
+TacticalText="<Bullet/> Coil weapons automatically pierce (ignore) 1 enemy armor.<br/><Bullet/> SMG-style weapons offer bonus mobility, close-quarters accuracy and concealment relative to assault rifles, but they do less damage, have less ammo, and suffer accuracy penalties at long range.<br/>"
+AbilityDescName="SMG"
+
+[Pistol_CG X2WeaponTemplate]
+FriendlyName="Gauss Pistol"
+FriendlyNamePlural="Gauss Pistols"
 UnknownUtilityCategory="Pistol"
-BriefSummary="Based on the advances in beam weapons tech we've achieved, this new pistol boasts a substantial improvement in power over our conventional pistol."
-TacticalText="<Bullet/> Laser pistols are substantially more effective and accurate than their conventional precursors.\n<Bullet/> Lasers receive bonus aim.\n<Bullet/> Pistols can be fired with a single action.\n<Bullet/> Soldiers can train several abilities that dramatically enhance their use of pistols.\n<Bullet/> Pistols lose accuracy at long ranges."
+BriefSummary="A powerful, coil-tech sidearm that can punch through enemy armor."
+TacticalText="<Bullet/> Coil weapons automatically pierce 1 enemy armor.\n<Bullet/> Pistols can be fired with a single action.\n<Bullet/> Soldiers can train several abilities that dramatically enhance their use of pistols.\n<Bullet/> Pistols lose accuracy at long ranges."
 AbilityDescName="pistol"
 
-[LaserWeaponsTech_LW X2TechTemplate]
-DisplayName="Laser Weapons"
-Summary="Using our new understanding of alien weapon systems, we should be able develop designs for powerful laser weaponry."
-CodeName="Linebacker"
-LongDescription="By studying the methods used by the aliens to manage energy consumption and heat dissipation in their weapons, we've built a working prototype of what we're calling a pulsed laser weapon, although some of the troops prefer to call them 'blasters' for reasons that are obscure to me. The power we are able to put through these weapons is immense, but the system cannot maintain a continuous beam of such massive energies, so it instead relies on a series of picosecond-long pulses of intense energy density to break down any chemical bonds the beam encounters. These weapons should be more accurate and do more damage, on average, than the ballistic weapons we have been using, although they don't quite match the firepower of the weaponry we have seen the aliens operating. R. Tygan."
+[AssaultRifle_MG X2WeaponTemplate]
+FriendlyName="Mag Rifle"
+FriendlyNamePlural="Mag Rifles"
 
-[AdvancedLaserWeaponsTech_LW X2TechTemplate]
-DisplayName="Advanced Laser Weapons"
-Summary="With the basics of combat laser technology fully understood, we believe we can now develop specialized weapons for the troops."
-CodeName="Fulcrum"
-LongDescription="With a fuller understanding of laser weapon technology thanks to feedback from the troops and the engineering team, we were able to refine our weapon designs with a variety of changes to optics, pulse rate and capacitors to develop a series of specialty weapons usable in a variety of roles in the field. R. Tygan."
+[SniperRifle_MG X2WeaponTemplate]
+FriendlyName="Mag Long Rifle"
+FriendlyNamePlural="Mag Long Rifles"
+BriefSummary="Magnetic weapons technology has particular utility for precision slow-fire weapons like sniper rifles. The Mag Long Rifle will enable our Sharpshooters to cause greater damage at extended range."
+TacticalText="<Bullet/> Sniper rifles typically require both actions to fire.\n<Bullet/> They are less accurate at close range, but deadly at a distance.\n<Bullet/> Use upgrades looted from enemies to improve the Mag Long Rifle's tactical effectiveness."
 
+[GaussWeapons X2TechTemplate]
+DisplayName="Advanced Magnetic Weaponry"
