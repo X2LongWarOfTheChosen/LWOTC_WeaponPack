@@ -9,12 +9,14 @@ var config WeaponDamageValue SNIPERRIFLE_COIL_BASEDAMAGE;
 var config WeaponDamageValue MARKSMANRIFLE_COIL_BASEDAMAGE;
 var config WeaponDamageValue PISTOL_COIL_BASEDAMAGE;
 var config WeaponDamageValue BULLPUP_COIL_BASEDAMAGE;
+var config WeaponDamageValue VEKTORRIFLE_COIL_BASEDAMAGE;
 
 var config array<int> SHORT_COIL_RANGE;
 var config array<int> MIDSHORT_COIL_RANGE;
 var config array<int> MEDIUM_COIL_RANGE;
 var config array<int> MEDLONG_COIL_RANGE;
 var config array<int> LONG_COIL_RANGE;
+var config array<int> VEKTOR_COIL_RANGE;
 
 var config int ASSAULTRIFLE_COIL_AIM;
 var config int ASSAULTRIFLE_COIL_CRITCHANCE;
@@ -78,12 +80,22 @@ var config int BULLPUP_COIL_ISOUNDRANGE;
 var config int BULLPUP_COIL_IENVIRONMENTDAMAGE;
 var config int BULLPUP_COIL_UPGRADESLOTS;
 
+var config int VEKTORRIFLE_COIL_AIM;
+var config int VEKTORRIFLE_COIL_CRITCHANCE;
+var config int VEKTORRIFLE_COIL_ICLIPSIZE;
+var config int VEKTORRIFLE_COIL_ISOUNDRANGE;
+var config int VEKTORRIFLE_COIL_IENVIRONMENTDAMAGE;
+var config int VEKTORRIFLE_COIL_TRADINGPOSTVALUE;
+var config int VEKTORRIFLE_COIL_IPOINTS;
+var config int VEKTORRIFLE_COIL_UPGRADESLOTS;
+
 var config string AssaultRifle_Coil_ImagePath;
 var config string SMG_Coil_ImagePath;
 var config string Cannon_Coil_ImagePath;
 var config string Shotgun_Coil_ImagePath;
 var config string SniperRifle_Coil_ImagePath;
 var config string Bullpup_Coil_ImagePath;
+var config string VektorRifle_Coil_ImagePath;
 
 // if not using templates
 var config int ASSAULTRIFLE_CG_SUPPLYCOST;
@@ -122,6 +134,10 @@ var config int BULLPUP_CG_SUPPLYCOST;
 var config int BULLPUP_CG_ALLOYCOST;
 var config int BULLPUP_CG_ELERIUMCOST;
 
+var config int VEKTORRIFLE_CG_SUPPLYCOST;
+var config int VEKTORRIFLE_CG_ALLOYCOST;
+var config int VEKTORRIFLE_CG_ELERIUMCOST;
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Weapons;
@@ -135,6 +151,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateMarksmanRifle_Coil_Template());
 	Weapons.AddItem(CreatePistol_Coil_Template());
 	Weapons.AddItem(CreateBullpup_Coil_Template());
+	Weapons.AddItem(CreateVektor_Coil_Template());
 
 	return Weapons;
 }
@@ -801,6 +818,85 @@ static function X2DataTemplate CreateBullpup_Coil_Template()
 
 		Resources.ItemTemplateName = 'EleriumDust';
 		Resources.Quantity = default.BULLPUP_CG_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Template.Requirements.RequiredEngineeringScore = 15;
+	}
+
+
+	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateVektor_Coil_Template()
+{
+	local X2WeaponTemplate Template;
+	local ArtifactCost Resources;
+
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'VektorRifle_CG');
+
+	Template.WeaponCat = 'vektor_rifle';
+	Template.WeaponTech = 'coilgun_lw';
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///" $ default.VektorRifle_Coil_ImagePath;
+	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
+	Template.EquipSound = "Beam_Weapon_Equip";
+	Template.Tier = 4;
+
+	Template.RangeAccuracy = default.VEKTOR_COIL_RANGE;
+	Template.BaseDamage = default.VEKTORRIFLE_COIL_BASEDAMAGE;
+	Template.Aim = default.VEKTORRIFLE_COIL_AIM;
+	Template.CritChance = default.VEKTORRIFLE_COIL_CRITCHANCE;
+	Template.iClipSize = default.VEKTORRIFLE_COIL_ICLIPSIZE;
+	Template.iSoundRange = default.VEKTORRIFLE_COIL_ISOUNDRANGE;
+	Template.iEnvironmentDamage = default.VEKTORRIFLE_COIL_IENVIRONMENTDAMAGE;
+
+	Template.NumUpgradeSlots = default.VEKTORRIFLE_COIL_UPGRADESLOTS; 
+	
+	// TODO: Placeholder, replace with assets when completed
+	Template.GameArchetype = "WP_ReaperRifle_MG.WP_ReaperRifle_MG";
+	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Sniper';
+
+	// TODO: Placeholders, replace with assets when completed
+	Template.AddDefaultAttachment('Mag', "MagReaperRifle.Meshes.SM_HOR_Mag_ReaperRifle_MagA", , "img:///UILibrary_XPACK_Common.MagVektor_MagazineA");
+	Template.AddDefaultAttachment('Optic', "MagReaperRifle.Meshes.SM_HOR_Mag_ReaperRifle_OpticA", , "img:///UILibrary_XPACK_Common.MagVektor_OpticA");
+	Template.AddDefaultAttachment('Reargrip', "CnvReaperRifle.Meshes.SM_HOR_Cnv_ReaperRifle_ReargripA");
+	Template.AddDefaultAttachment('Stock', "CnvReaperRifle.Meshes.SM_HOR_Cnv_ReaperRifle_StockA", , "img:///UILibrary_XPACK_Common.MagVektor_StockA");
+	Template.AddDefaultAttachment('Trigger', "CnvReaperRifle.Meshes.SM_HOR_Cnv_ReaperRifle_TriggerA", , "img:///UILibrary_XPACK_Common.MagVektor_TriggerA");
+	Template.AddDefaultAttachment('Light', "ConvAttachments.Meshes.SM_ConvFlashLight");
+
+	Template.InventorySlot = eInvSlot_PrimaryWeapon;
+	Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('Overwatch');
+	Template.Abilities.AddItem('OverwatchShot');
+	Template.Abilities.AddItem('Reload');
+	Template.Abilities.AddItem('HotLoadAmmo');
+
+	Template.iPhysicsImpulse = 5;
+
+	Template.CanBeBuilt = !class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+
+	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
+	{
+		Template.CreatorTemplateName = 'Vektor_CG_Schematic'; // The schematic which creates this item
+		Template.BaseItem = 'VektorRifle_MG'; // Which item this will be upgraded from
+	}
+	else
+	{
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
+
+		Resources.ItemTemplateName = 'Supplies';
+		Resources.Quantity = default.VEKTORRIFLE_CG_SUPPLYCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Resources.ItemTemplateName = 'AlienAlloy';
+		Resources.Quantity = default.VEKTORRIFLE_CG_ALLOYCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Resources.ItemTemplateName = 'EleriumDust';
+		Resources.Quantity = default.VEKTORRIFLE_CG_ELERIUMCOST;
 		Template.Cost.ResourceCosts.AddItem(Resources);
 
 		Template.Requirements.RequiredEngineeringScore = 15;

@@ -18,6 +18,7 @@ var config WeaponDamageValue SNIPERRIFLE_LASER_BASEDAMAGE;
 var config WeaponDamageValue MARKSMANRIFLE_LASER_BASEDAMAGE;
 var config WeaponDamageValue PISTOL_LASER_BASEDAMAGE;
 var config WeaponDamageValue BULLPUP_LASER_BASEDAMAGE;
+var config WeaponDamageValue VEKTORRIFLE_LASER_BASEDAMAGE;
 
 // ***** Core properties and variables for weapons *****
 var config int ASSAULTRIFLE_LASER_AIM;
@@ -110,11 +111,21 @@ var config int BULLPUP_LASER_TRADINGPOSTVALUE;
 var config int BULLPUP_LASER_IPOINTS;
 var config int BULLPUP_LASER_UPGRADESLOTS;
 
+var config int VEKTORRIFLE_LASER_AIM;
+var config int VEKTORRIFLE_LASER_CRITCHANCE;
+var config int VEKTORRIFLE_LASER_ICLIPSIZE;
+var config int VEKTORRIFLE_LASER_ISOUNDRANGE;
+var config int VEKTORRIFLE_LASER_IENVIRONMENTDAMAGE;
+var config int VEKTORRIFLE_LASER_TRADINGPOSTVALUE;
+var config int VEKTORRIFLE_LASER_IPOINTS;
+var config int VEKTORRIFLE_LASER_UPGRADESLOTS;
+
 var config array<int> SHORT_LASER_RANGE;
 var config array<int> MIDSHORT_LASER_RANGE;
 var config array<int> MEDIUM_LASER_RANGE;
 var config array<int> MEDLONG_LASER_RANGE;
 var config array<int> LONG_LASER_RANGE;
+var config array<int> VEKTOR_LASER_RANGE;
 
 var config int ASSAULTRIFLE_LS_SUPPLYCOST;
 var config int ASSAULTRIFLE_LS_ALLOYCOST;
@@ -152,6 +163,10 @@ var config int BULLPUP_LS_SUPPLYCOST;
 var config int BULLPUP_LS_ALLOYCOST;
 var config int BULLPUP_LS_ELERIUMCOST;
 
+var config int VEKTORRIFLE_LS_SUPPLYCOST;
+var config int VEKTORRIFLE_LS_ALLOYCOST;
+var config int VEKTORRIFLE_LS_ELERIUMCOST;
+
 var config string AssaultRifle_Laser_ImagePath;
 var config string BattleRifle_Laser_ImagePath;
 var config string SMG_Laser_ImagePath;
@@ -162,6 +177,7 @@ var config string MarksmanRifle_Laser_ImagePath;
 var config string Pistol_Laser_ImagePath;
 var config string Sword_Laser_ImagePath;
 var config string Bullpup_Laser_ImagePath;
+var config string VektorRifle_Laser_ImagePath;
 
 static function array<X2DataTemplate> CreateTemplates()
 {
@@ -177,6 +193,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateTemplate_MarksmanRifle_Laser());
 	Weapons.AddItem(CreateTemplate_Pistol_Laser());
 	Weapons.AddItem(CreateTemplate_Bullpup_Laser());
+	Weapons.AddItem(CreateTemplate_Vektor_Laser());
 
 	return Weapons;
 }
@@ -872,6 +889,86 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser()
 
 		Resources.ItemTemplateName = 'EleriumDust';
 		Resources.Quantity = default.BULLPUP_LS_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Template.Requirements.RequiredEngineeringScore = 5;
+
+	}
+
+	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type
+
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_Vektor_Laser()
+{
+	local X2WeaponTemplate Template;
+	local ArtifactCost Resources;
+
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'VektorRifle_LS');
+
+	Template.WeaponCat = 'vektor_rifle';
+	Template.WeaponTech = 'beam'; //'pulse'; // TODO: fix up any effects that rely on hard-coded techs
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///" $ default.VektorRifle_Laser_ImagePath;
+	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
+	Template.EquipSound = "Beam_Weapon_Equip";
+	Template.Tier = 2;
+
+	Template.RangeAccuracy = default.VEKTOR_LASER_RANGE;
+	Template.BaseDamage = default.VEKTORRIFLE_LASER_BASEDAMAGE;
+	Template.Aim = default.VEKTORRIFLE_LASER_AIM;
+	Template.CritChance = default.VEKTORRIFLE_LASER_CRITCHANCE;
+	Template.iClipSize = default.VEKTORRIFLE_LASER_ICLIPSIZE;
+	Template.iSoundRange = default.VEKTORRIFLE_LASER_ISOUNDRANGE;
+	Template.iEnvironmentDamage = default.VEKTORRIFLE_LASER_IENVIRONMENTDAMAGE;
+
+	Template.NumUpgradeSlots = default.VEKTORRIFLE_LASER_UPGRADESLOTS; 
+
+	Template.InventorySlot = eInvSlot_PrimaryWeapon;
+	Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('Overwatch');
+	Template.Abilities.AddItem('OverwatchShot');
+	Template.Abilities.AddItem('Reload');
+	Template.Abilities.AddItem('HotLoadAmmo');
+
+	// This all the resources; sounds, animations, models, physics, the works.
+	// TODO: Placeholder, replace with assets when completed
+	Template.GameArchetype = "WP_ReaperRifle_MG.WP_ReaperRifle_MG";
+	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Sniper';
+	
+	// TODO: Placeholders, replace with assets when completed
+	Template.AddDefaultAttachment('Mag', "MagReaperRifle.Meshes.SM_HOR_Mag_ReaperRifle_MagA", , "img:///UILibrary_XPACK_Common.MagVektor_MagazineA");
+	Template.AddDefaultAttachment('Optic', "MagReaperRifle.Meshes.SM_HOR_Mag_ReaperRifle_OpticA", , "img:///UILibrary_XPACK_Common.MagVektor_OpticA");
+	Template.AddDefaultAttachment('Reargrip', "CnvReaperRifle.Meshes.SM_HOR_Cnv_ReaperRifle_ReargripA");
+	Template.AddDefaultAttachment('Stock', "CnvReaperRifle.Meshes.SM_HOR_Cnv_ReaperRifle_StockA", , "img:///UILibrary_XPACK_Common.MagVektor_StockA");
+	Template.AddDefaultAttachment('Trigger', "CnvReaperRifle.Meshes.SM_HOR_Cnv_ReaperRifle_TriggerA", , "img:///UILibrary_XPACK_Common.MagVektor_TriggerA");
+	Template.AddDefaultAttachment('Light', "ConvAttachments.Meshes.SM_ConvFlashLight");
+
+	Template.iPhysicsImpulse = 5;
+
+	Template.CanBeBuilt = !class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
+
+	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
+	{
+		Template.CreatorTemplateName = 'Vektor_LS_Schematic'; // The schematic which creates this item
+		Template.BaseItem = 'VektorRifle_CV'; // Which item this will be upgraded from
+	}
+	else
+	{
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
+
+		Resources.ItemTemplateName = 'Supplies';
+		Resources.Quantity = default.VEKTORRIFLE_LS_SUPPLYCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Resources.ItemTemplateName = 'AlienAlloy';
+		Resources.Quantity = default.VEKTORRIFLE_LS_ALLOYCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Resources.ItemTemplateName = 'EleriumDust';
+		Resources.Quantity = default.VEKTORRIFLE_LS_ELERIUMCOST;
 		Template.Cost.ResourceCosts.AddItem(Resources);
 
 		Template.Requirements.RequiredEngineeringScore = 5;
