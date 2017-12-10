@@ -11,6 +11,7 @@ var config WeaponDamageValue PISTOL_COIL_BASEDAMAGE;
 var config WeaponDamageValue BULLPUP_COIL_BASEDAMAGE;
 var config WeaponDamageValue VEKTORRIFLE_COIL_BASEDAMAGE;
 var config WeaponDamageValue SIDEARM_COIL_BASEDAMAGE;
+var config WeaponDamageValue SPARKRIFLE_COIL_BASEDAMAGE;
 
 var config array<int> SHORT_COIL_RANGE;
 var config array<int> MIDSHORT_COIL_RANGE;
@@ -99,6 +100,15 @@ var config int SIDEARM_COIL_TRADINGPOSTVALUE;
 var config int SIDEARM_COIL_IPOINTS;
 var config int SIDEARM_COIL_UPGRADESLOTS;
 
+var config int SPARKRIFLE_COIL_AIM;
+var config int SPARKRIFLE_COIL_CRITCHANCE;
+var config int SPARKRIFLE_COIL_ICLIPSIZE;
+var config int SPARKRIFLE_COIL_ISOUNDRANGE;
+var config int SPARKRIFLE_COIL_IENVIRONMENTDAMAGE;
+var config int SPARKRIFLE_COIL_TRADINGPOSTVALUE;
+var config int SPARKRIFLE_COIL_IPOINTS;
+var config int SPARKRIFLE_COIL_UPGRADESLOTS;
+
 var config string AssaultRifle_Coil_ImagePath;
 var config string SMG_Coil_ImagePath;
 var config string Cannon_Coil_ImagePath;
@@ -107,6 +117,7 @@ var config string SniperRifle_Coil_ImagePath;
 var config string Bullpup_Coil_ImagePath;
 var config string VektorRifle_Coil_ImagePath;
 var config string Sidearm_Coil_ImagePath;
+var config string SparkRifle_Coil_ImagePath;
 
 // if not using templates
 var config int ASSAULTRIFLE_CG_SUPPLYCOST;
@@ -153,6 +164,10 @@ var config int SIDEARM_CG_SUPPLYCOST;
 var config int SIDEARM_CG_ALLOYCOST;
 var config int SIDEARM_CG_ELERIUMCOST;
 
+var config int SPARKRIFLE_CG_SUPPLYCOST;
+var config int SPARKRIFLE_CG_ALLOYCOST;
+var config int SPARKRIFLE_CG_ELERIUMCOST;
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Weapons;
@@ -168,6 +183,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateBullpup_Coil_Template());
 	Weapons.AddItem(CreateVektor_Coil_Template());
 	Weapons.AddItem(CreateSidearm_Coil_Template());
+	Weapons.AddItem(CreateSparkRifle_Coil_Template());
 
 	return Weapons;
 }
@@ -997,6 +1013,77 @@ static function X2DataTemplate CreateSidearm_Coil_Template()
 	}
 
 	Template.bHideClipSizeStat = true;
+
+	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateSparkRifle_Coil_Template()
+{
+	local X2WeaponTemplate Template;
+	local ArtifactCost Resources;
+
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SparkRifle_CG');
+
+	Template.WeaponCat = 'sparkrifle';
+	Template.WeaponTech = 'coilgun_lw';
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///" $ default.SparkRifle_Coil_ImagePath;
+	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
+	Template.EquipSound = "Beam_Weapon_Equip";
+	Template.Tier = 4;
+
+	Template.RangeAccuracy = default.MEDIUM_COIL_RANGE;
+	Template.BaseDamage = default.SPARKRIFLE_COIL_BASEDAMAGE;
+	Template.Aim = default.SPARKRIFLE_COIL_AIM;
+	Template.CritChance = default.SPARKRIFLE_COIL_CRITCHANCE;
+	Template.iClipSize = default.SPARKRIFLE_COIL_ICLIPSIZE;
+	Template.iSoundRange = default.SPARKRIFLE_COIL_ISOUNDRANGE;
+	Template.iEnvironmentDamage = default.SPARKRIFLE_COIL_IENVIRONMENTDAMAGE;
+
+	Template.NumUpgradeSlots = default.SPARKRIFLE_COIL_UPGRADESLOTS; 
+	
+	// TODO: Placeholder, replace with assets when completed
+	Template.GameArchetype = "DLC_3_WP_SparkRifle_MG.WP_SparkRifle_MG";
+	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
+
+	Template.InventorySlot = eInvSlot_PrimaryWeapon;
+	Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('Overwatch');
+	Template.Abilities.AddItem('OverwatchShot');
+	Template.Abilities.AddItem('Reload');
+	Template.Abilities.AddItem('HotLoadAmmo');
+
+	Template.iPhysicsImpulse = 5;
+
+	Template.CanBeBuilt = !class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+
+	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
+	{
+		Template.CreatorTemplateName = 'SparkRifle_CG_Schematic'; // The schematic which creates this item
+		Template.BaseItem = 'SparkRifle_MG'; // Which item this will be upgraded from
+	}
+	else
+	{
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
+
+		Resources.ItemTemplateName = 'Supplies';
+		Resources.Quantity = default.SPARKRIFLE_CG_SUPPLYCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Resources.ItemTemplateName = 'AlienAlloy';
+		Resources.Quantity = default.SPARKRIFLE_CG_ALLOYCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Resources.ItemTemplateName = 'EleriumDust';
+		Resources.Quantity = default.SPARKRIFLE_CG_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+
+		Template.Requirements.RequiredEngineeringScore = 15;
+	}
+
 
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
