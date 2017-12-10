@@ -9,6 +9,7 @@ class X2Item_LWConventionalWeapons extends X2Item config(LW_WeaponPack);
 // Variables from config - GameData_WeaponData.ini
 // ***** Damage arrays for attack actions  *****
 var config WeaponDamageValue SMG_CONVENTIONAL_BASEDAMAGE;
+var config WeaponDamageValue Carbine_CONVENTIONAL_BASEDAMAGE;
 
 // ***** Core properties and variables for weapons *****
 var config int SMG_CONVENTIONAL_AIM;
@@ -21,6 +22,16 @@ var config int SMG_CONVENTIONAL_TRADINGPOSTVALUE;
 var config int SMG_CONVENTIONAL_IPOINTS;
 var config int SMG_CONVENTIONAL_UPGRADESLOTS;
 
+var config int Carbine_CONVENTIONAL_AIM;
+var config int Carbine_CONVENTIONAL_CRITCHANCE;
+var config int Carbine_CONVENTIONAL_ICLIPSIZE;
+var config int Carbine_CONVENTIONAL_ISOUNDRANGE;
+var config int Carbine_CONVENTIONAL_IENVIRONMENTDAMAGE;
+var config int Carbine_CONVENTIONAL_ISUPPLIES;
+var config int Carbine_CONVENTIONAL_TRADINGPOSTVALUE;
+var config int Carbine_CONVENTIONAL_IPOINTS;
+var config int Carbine_CONVENTIONAL_UPGRADESLOTS;
+
 // ***** Range Modifier Tables *****
 var config array<int> MIDSHORT_CONVENTIONAL_RANGE;
 
@@ -30,6 +41,7 @@ static function array<X2DataTemplate> CreateTemplates()
 
 	//create all three tech tiers of weapons
 	Weapons.AddItem(CreateTemplate_SMG_Conventional());
+	Weapons.AddItem(CreateTemplate_Carbine_Conventional());
 
 	return Weapons;
 }
@@ -96,6 +108,73 @@ static function X2DataTemplate CreateTemplate_SMG_Conventional()
 	Template.CanBeBuilt = false;
 
 	//Template.UpgradeItem = 'SMG_MG';
+
+	Template.fKnockbackDamageAmount = 4.0f;
+	Template.fKnockbackDamageRadius = 0.0f;
+
+	Template.DamageTypeTemplateName = 'Projectile_Conventional';
+
+	return Template;
+}
+
+// **************************************************************************
+// ***                          Carbine                                        ***
+// **************************************************************************
+
+// Initial Carbine uses Assault Rifle model and artwork until new artwork is complete
+static function X2DataTemplate CreateTemplate_Carbine_Conventional()
+{
+	local X2WeaponTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Carbine_CV');
+	Template.EquipSound = "Conventional_Weapon_Equip";
+
+	Template.ItemCat = 'weapon';
+	Template.WeaponCat = 'rifle';
+	Template.WeaponTech = 'conventional';
+	Template.strImage = "img:///UILibrary_SMG.conventional.LWConvSMG_Base";
+	Template.WeaponPanelImage = "_ConventionalRifle";                       // used by the UI. Probably determines iconview of the weapon.
+	Template.Tier = 0;
+
+	Template.Abilities.AddItem('Carbine_CV_StatBonus');
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_CarbineAbilities'.default.Carbine_CONVENTIONAL_MOBILITY_BONUS);
+
+	Template.RangeAccuracy = default.MIDSHORT_CONVENTIONAL_RANGE;
+	Template.BaseDamage = default.Carbine_CONVENTIONAL_BASEDAMAGE;
+	Template.Aim = default.Carbine_CONVENTIONAL_AIM;
+	Template.CritChance = default.Carbine_CONVENTIONAL_CRITCHANCE;
+	Template.iClipSize = default.Carbine_CONVENTIONAL_ICLIPSIZE;
+	Template.iSoundRange = default.Carbine_CONVENTIONAL_ISOUNDRANGE;
+	Template.iEnvironmentDamage = default.Carbine_CONVENTIONAL_IENVIRONMENTDAMAGE;
+
+	Template.NumUpgradeSlots = default.Carbine_CONVENTIONAL_UPGRADESLOTS;
+
+	Template.InventorySlot = eInvSlot_PrimaryWeapon;
+	Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('Overwatch');
+	Template.Abilities.AddItem('OverwatchShot');
+	Template.Abilities.AddItem('Reload');
+	Template.Abilities.AddItem('HotLoadAmmo');
+
+	// This all the resources; sounds, animations, models, physics, the works.
+	Template.GameArchetype = "LWSMG_CV.WP_SMG_CV";
+
+	//Parameters are : 	AttachSocket, UIArmoryCameraPointTag, MeshName, ProjectileName, MatchWeaponTemplate, AttachToPawn, IconName, InventoryIconName, InventoryCategoryIcon, ValidateAttachmentFn
+	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
+	Template.AddDefaultAttachment('Mag', "LWSMG_CV.Meshes.SK_LWConvSMG_MagA", , "img:///UILibrary_SMG.conventional.LWConvSMG_MagA");
+	Template.AddDefaultAttachment('Optic', "LWSMG_CV.Meshes.SK_LWConvSMG_OpticA", , "img:///UILibrary_SMG.conventional.LWConvSMG_OpticA");
+	Template.AddDefaultAttachment('Stock', "LWSMG_CV.Meshes.SK_LWConvSMG_Stock");  // renamed to just 'Stock' when fixing seaming issues for TTP 52
+	Template.AddDefaultAttachment('StockB', "", , "img:///UILibrary_SMG.conventional.LWConvSMG_StockA");  // attach image to StockB so it gets replaced with ugprade
+	Template.AddDefaultAttachment('Trigger', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_TriggerA", , "img:///UILibrary_SMG.conventional.LWConvSMG_TriggerA"); // re-use Assault Rifle trigger
+	Template.AddDefaultAttachment('Light', "ConvAttachments.Meshes.SM_ConvFlashLight"); //, , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_LightA");  // re-use common conventional flashlight
+
+	Template.iPhysicsImpulse = 5;
+
+	Template.StartingItem = true;
+	Template.bInfiniteItem = true;  // post-AlienHunters, Starting items are no longer assumed to be infinite
+	Template.CanBeBuilt = false;
+
+	//Template.UpgradeItem = 'Carbine_MG';
 
 	Template.fKnockbackDamageAmount = 4.0f;
 	Template.fKnockbackDamageRadius = 0.0f;
