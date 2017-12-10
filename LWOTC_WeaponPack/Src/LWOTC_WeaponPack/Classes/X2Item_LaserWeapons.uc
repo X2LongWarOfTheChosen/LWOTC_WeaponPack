@@ -251,7 +251,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Laser()
 	Template.iClipSize = default.ASSAULTRIFLE_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.ASSAULTRIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.ASSAULTRIFLE_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.ASSAULTRIFLE_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.ASSAULTRIFLE_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -328,7 +328,7 @@ static function X2DataTemplate CreateTemplate_BattleRifle_Laser()
 	Template.iClipSize = default.BATTLERIFLE_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.BATTLERIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.BATTLERIFLE_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.BATTLERIFLE_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.BATTLERIFLE_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -408,7 +408,7 @@ static function X2DataTemplate CreateTemplate_SMG_Laser()
 	Template.iClipSize = default.SMG_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.SMG_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SMG_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SMG_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.SMG_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -485,7 +485,7 @@ static function X2DataTemplate CreateTemplate_Cannon_Laser()
 	Template.iClipSize = default.LMG_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.LMG_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.LMG_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.LMG_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.LMG_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -560,7 +560,7 @@ static function X2DataTemplate CreateTemplate_Shotgun_Laser()
 	Template.iClipSize = default.SHOTGUN_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.SHOTGUN_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SHOTGUN_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SHOTGUN_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.SHOTGUN_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -636,7 +636,7 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Laser()
 	Template.iClipSize = default.SNIPERRIFLE_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.SNIPERRIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SNIPERRIFLE_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SNIPERRIFLE_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.SNIPERRIFLE_LASER_UPGRADESLOTS;
 	Template.iTypicalActionCost = 2;
 
@@ -714,6 +714,7 @@ static function X2DataTemplate CreateTemplate_MarksmanRifle_Laser()
 	Template.iSoundRange = default.MARKSMANRIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.MARKSMANRIFLE_LASER_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = default.MARKSMANRIFLE_LASER_UPGRADESLOTS;
+	Template.TradingPostValue = default.MARKSMANRIFLE_LASER_TRADINGPOSTVALUE;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
@@ -790,6 +791,7 @@ static function X2DataTemplate CreateTemplate_Pistol_Laser()
 	Template.iClipSize = default.PISTOL_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.PISTOL_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.PISTOL_LASER_IENVIRONMENTDAMAGE;
+	Template.TradingPostValue = default.PISTOL_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.PISTOL_LASER_UPGRADESLOTS;
 
 	Template.OverwatchActionPoint = class'X2CharacterTemplateManager'.default.PistolOverwatchReserveActionPoint;
@@ -866,7 +868,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser()
 	Template.iClipSize = default.BULLPUP_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.BULLPUP_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.BULLPUP_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.BULLPUP_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.BULLPUP_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -947,7 +949,7 @@ static function X2DataTemplate CreateTemplate_Vektor_Laser()
 	Template.iClipSize = default.VEKTORRIFLE_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.VEKTORRIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.VEKTORRIFLE_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.VEKTORRIFLE_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.VEKTORRIFLE_LASER_UPGRADESLOTS; 
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -1027,7 +1029,7 @@ static function X2DataTemplate CreateTemplate_Sidearm_Laser()
 	Template.iClipSize = default.SIDEARM_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.SIDEARM_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SIDEARM_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SIDEARM_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.SIDEARM_LASER_UPGRADESLOTS;
 
 	Template.InfiniteAmmo = true;
@@ -1108,7 +1110,7 @@ static function X2DataTemplate CreateTemplate_SparkRifle_Laser()
 	Template.iClipSize = default.SPARKRIFLE_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.SPARKRIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SPARKRIFLE_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SPARKRIFLE_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.SPARKRIFLE_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
