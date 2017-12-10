@@ -128,10 +128,13 @@ var config int SPARKRIFLE_COIL_IPOINTS;
 var config int SPARKRIFLE_COIL_UPGRADESLOTS;
 
 var config string AssaultRifle_Coil_ImagePath;
+var config string BattleRifle_Coil_ImagePath;
 var config string SMG_Coil_ImagePath;
 var config string Cannon_Coil_ImagePath;
 var config string Shotgun_Coil_ImagePath;
 var config string SniperRifle_Coil_ImagePath;
+var config string MarksmanRifle_Coil_ImagePath;
+var config string Pistol_Coil_ImagePath;
 var config string Bullpup_Coil_ImagePath;
 var config string VektorRifle_Coil_ImagePath;
 var config string Sidearm_Coil_ImagePath;
@@ -289,7 +292,7 @@ static function X2DataTemplate CreateBattleRifle_Coil_Template()
 	Template.WeaponCat = 'rifle';
 	Template.WeaponTech = 'coilgun_lw';
 	Template.ItemCat = 'weapon';
-	Template.strImage ="img:///UILibrary_LW_Overhaul.InventoryArt.CoilRifle_Base";
+	Template.strImage = "img:///" $ default.BattleRifle_Coil_ImagePath;
 	Template.WeaponPanelImage = "";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
 	Template.Tier = 4;
@@ -661,7 +664,7 @@ static function X2DataTemplate CreateMarksmanRifle_Coil_Template()
 	Template.WeaponCat = 'sniper_rifle';
 	Template.WeaponTech = 'coilgun_lw';
 	Template.ItemCat = 'weapon';
-	Template.strImage ="img:///" $ default.SniperRifle_Coil_ImagePath;
+	Template.strImage ="img:///" $ default.MarksmanRifle_Coil_ImagePath;
 	Template.WeaponPanelImage = "";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
 	Template.Tier = 4;
@@ -735,7 +738,7 @@ static function X2DataTemplate CreatePistol_Coil_Template()
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'pistol';
 	Template.WeaponTech = 'magnetic';
-	Template.strImage = "img:///UILibrary_LW_Coilguns.InventoryArt.Inv_Coil_Pistol";
+	Template.strImage = "img:///" $ default.Pistol_Coil_ImagePath;
 	Template.EquipSound = "Secondary_Weapon_Equip_Beam"; // TODO: update with new equip sound
 	Template.Tier = 4;
 
@@ -809,8 +812,7 @@ static function X2DataTemplate CreateBullpup_Coil_Template()
 	Template.WeaponCat = 'bullpup';
 	Template.WeaponTech = 'coilgun_lw';
 	Template.ItemCat = 'weapon';
-	// TODO: Placeholder, replace with assets when completed
-	Template.strImage = "img:///UILibrary_XPACK_Common.MagSMG_Base";
+	Template.strImage = "img:///" $ default.Bullpup_Coil_ImagePath;
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
 	Template.Tier = 4;

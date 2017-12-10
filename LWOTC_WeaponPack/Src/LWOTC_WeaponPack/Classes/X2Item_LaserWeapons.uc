@@ -865,8 +865,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser()
 	Template.WeaponCat = 'bullpup';
 	Template.WeaponTech = 'beam'; //'pulse'; // TODO: fix up any effects that rely on hard-coded techs
 	Template.ItemCat = 'weapon';
-	// Placeholder: mag bullpup, replace with assets once completed
-	Template.strImage = "img:///UILibrary_XPACK_Common.MagSMG_Base";
+	Template.strImage = "img:///" $ default.Bullpup_Laser_ImagePath;
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
 	Template.Tier = 2;
