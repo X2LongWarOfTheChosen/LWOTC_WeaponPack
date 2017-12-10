@@ -573,7 +573,7 @@ static function X2DataTemplate CreateTemplate_Sidearm_Laser_Schematic()
 	Template.Cost.ResourceCosts.AddItem(Artifacts);
 
 	// only add elerium cost if configured value greater than 0
-	if (default.Vektor_LASER_SCHEMATIC_ELERIUMCOST > 0) {
+	if (default.Sidearm_LASER_SCHEMATIC_ELERIUMCOST > 0) {
 		Artifacts.ItemTemplateName = 'EleriumDust';
 		Artifacts.Quantity = default.Sidearm_LASER_SCHEMATIC_ELERIUMCOST;
 		Template.Cost.ResourceCosts.AddItem(Artifacts);

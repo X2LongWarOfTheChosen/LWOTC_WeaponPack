@@ -523,7 +523,7 @@ static function X2DataTemplate CreateTemplate_Vektor_Coil_Schematic()
 	Template.Cost.ResourceCosts.AddItem(Artifacts);
 
 	// only add elerium cost if configured value greater than 0
-	if (default.Bullpup_COIL_SCHEMATIC_ELERIUMCOST > 0) {
+	if (default.Vektor_COIL_SCHEMATIC_ELERIUMCOST > 0) {
 		Artifacts.ItemTemplateName = 'EleriumDust';
 		Artifacts.Quantity = default.Vektor_COIL_SCHEMATIC_ELERIUMCOST;
 		Template.Cost.ResourceCosts.AddItem(Artifacts);
@@ -569,7 +569,7 @@ static function X2DataTemplate CreateTemplate_Sidearm_Coil_Schematic()
 	Template.Cost.ResourceCosts.AddItem(Artifacts);
 
 	// only add elerium cost if configured value greater than 0
-	if (default.Bullpup_COIL_SCHEMATIC_ELERIUMCOST > 0) {
+	if (default.Sidearm_COIL_SCHEMATIC_ELERIUMCOST > 0) {
 		Artifacts.ItemTemplateName = 'EleriumDust';
 		Artifacts.Quantity = default.Sidearm_COIL_SCHEMATIC_ELERIUMCOST;
 		Template.Cost.ResourceCosts.AddItem(Artifacts);
