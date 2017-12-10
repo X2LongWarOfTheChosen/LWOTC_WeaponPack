@@ -77,11 +77,11 @@ TacticalText="<Bullet/> The Autopistol gives the Templar the flexibility to comb
 AbilityDescName="autopistol"
 
 [SparkRifle_LS X2WeaponTemplate]
-FriendlyName="Laser Spark Rifle"
-FriendlyNamePlural="Laser Spark Rifles"
-BriefSummary=""
-TacticalText=""
-AbilityDescName="spark rifle"
+FriendlyName="Laser Heavy Autocannon"
+FriendlyNamePlural="Heavy Autocannon"
+BriefSummary="A powerful but physically-heavy cannon designed specifically for use by SPARK units."
+TacticalText="<Bullet/> Firing the primary weapon ends the soldier's turn, in the absence of special training."
+AbilityDescName="heavy autocannon"
 
 [LaserWeaponsTech_LW X2TechTemplate]
 DisplayName="Laser Weapons"

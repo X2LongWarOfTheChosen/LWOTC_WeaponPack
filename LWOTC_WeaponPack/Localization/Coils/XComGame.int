@@ -89,11 +89,11 @@ TacticalText="<Bullet/> The Autopistol gives the Templar the flexibility to comb
 AbilityDescName="autopistol"
 
 [SparkRifle_CG X2WeaponTemplate]
-FriendlyName="Coil Spark Rifle"
-FriendlyNamePlural="Coil Spark Rifles"
-BriefSummary=""
-TacticalText=""
-AbilityDescName="spark rifle"
+FriendlyName="Coil Heavy Autocannon"
+FriendlyNamePlural="Heavy Autocannon"
+BriefSummary="A powerful but physically-heavy cannon designed specifically for use by SPARK units."
+TacticalText="<Bullet/> Firing the primary weapon ends the soldier's turn, in the absence of special training."
+AbilityDescName="heavy autocannon"
 
 [AssaultRifle_MG X2WeaponTemplate]
 FriendlyName="Mag Rifle"
