@@ -790,8 +790,7 @@ static function X2DataTemplate CreateTemplate_Pistol_Laser()
 	Template.iClipSize = default.PISTOL_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.PISTOL_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.PISTOL_LASER_IENVIRONMENTDAMAGE;
-
-	Template.NumUpgradeSlots = 2;
+	Template.NumUpgradeSlots = default.PISTOL_LASER_UPGRADESLOTS;
 
 	Template.OverwatchActionPoint = class'X2CharacterTemplateManager'.default.PistolOverwatchReserveActionPoint;
 	Template.InfiniteAmmo = true;

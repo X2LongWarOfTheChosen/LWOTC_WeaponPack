@@ -90,6 +90,7 @@ var config int PISTOL_COIL_ISOUNDRANGE;
 var config int PISTOL_COIL_TRADINGPOST;
 var config int PISTOL_COIL_IPOINTS;
 var config int PISTOL_COIL_IENVIRONMENTDAMAGE;
+var config int PISTOL_COIL_UPGRADESLOTS;
 
 var config int BULLPUP_COIL_AIM;
 var config int BULLPUP_COIL_CRITCHANCE;
@@ -749,8 +750,7 @@ static function X2DataTemplate CreatePistol_Coil_Template()
 	Template.iClipSize = default.Pistol_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.Pistol_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.Pistol_COIL_IENVIRONMENTDAMAGE;
-
-	Template.NumUpgradeSlots = 0;
+	Template.NumUpgradeSlots = default.PISTOL_COIL_UPGRADESLOTS;
 
 	Template.OverwatchActionPoint = class'X2CharacterTemplateManager'.default.PistolOverwatchReserveActionPoint;
 	Template.InfiniteAmmo = true;
