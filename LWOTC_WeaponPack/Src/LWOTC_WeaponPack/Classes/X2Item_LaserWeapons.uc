@@ -12,7 +12,7 @@ class X2Item_LaserWeapons extends X2Item config(LW_WeaponPack);
 var config WeaponDamageValue ASSAULTRIFLE_LASER_BASEDAMAGE;
 var config WeaponDamageValue BATTLERIFLE_LASER_BASEDAMAGE;
 var config WeaponDamageValue SMG_LASER_BASEDAMAGE;
-var config WeaponDamageValue LMG_LASER_BASEDAMAGE;
+var config WeaponDamageValue CANNON_LASER_BASEDAMAGE;
 var config WeaponDamageValue SHOTGUN_LASER_BASEDAMAGE;
 var config WeaponDamageValue SNIPERRIFLE_LASER_BASEDAMAGE;
 var config WeaponDamageValue MARKSMANRIFLE_LASER_BASEDAMAGE;
@@ -50,14 +50,14 @@ var config int SMG_LASER_TRADINGPOSTVALUE;
 var config int SMG_LASER_IPOINTS;
 var config int SMG_LASER_UPGRADESLOTS;
 
-var config int LMG_LASER_AIM;
-var config int LMG_LASER_CRITCHANCE;
-var config int LMG_LASER_ICLIPSIZE;
-var config int LMG_LASER_ISOUNDRANGE;
-var config int LMG_LASER_IENVIRONMENTDAMAGE;
-var config int LMG_LASER_TRADINGPOSTVALUE;
-var config int LMG_LASER_IPOINTS;
-var config int LMG_LASER_UPGRADESLOTS;
+var config int CANNON_LASER_AIM;
+var config int CANNON_LASER_CRITCHANCE;
+var config int CANNON_LASER_ICLIPSIZE;
+var config int CANNON_LASER_ISOUNDRANGE;
+var config int CANNON_LASER_IENVIRONMENTDAMAGE;
+var config int CANNON_LASER_TRADINGPOSTVALUE;
+var config int CANNON_LASER_IPOINTS;
+var config int CANNON_LASER_UPGRADESLOTS;
 
 var config int SHOTGUN_LASER_AIM;
 var config int SHOTGUN_LASER_CRITCHANCE;
@@ -479,14 +479,14 @@ static function X2DataTemplate CreateTemplate_Cannon_Laser()
 	Template.Tier = 2;
 
 	Template.RangeAccuracy = default.MEDIUM_LASER_RANGE;
-	Template.BaseDamage = default.LMG_LASER_BASEDAMAGE;
-	Template.Aim = default.LMG_LASER_AIM;
-	Template.CritChance = default.LMG_LASER_CRITCHANCE;
-	Template.iClipSize = default.LMG_LASER_ICLIPSIZE;
-	Template.iSoundRange = default.LMG_LASER_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.LMG_LASER_IENVIRONMENTDAMAGE;
-	Template.TradingPostValue = default.LMG_LASER_TRADINGPOSTVALUE;
-	Template.NumUpgradeSlots = default.LMG_LASER_UPGRADESLOTS;
+	Template.BaseDamage = default.CANNON_LASER_BASEDAMAGE;
+	Template.Aim = default.CANNON_LASER_AIM;
+	Template.CritChance = default.CANNON_LASER_CRITCHANCE;
+	Template.iClipSize = default.CANNON_LASER_ICLIPSIZE;
+	Template.iSoundRange = default.CANNON_LASER_ISOUNDRANGE;
+	Template.iEnvironmentDamage = default.CANNON_LASER_IENVIRONMENTDAMAGE;
+	Template.TradingPostValue = default.CANNON_LASER_TRADINGPOSTVALUE;
+	Template.NumUpgradeSlots = default.CANNON_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
