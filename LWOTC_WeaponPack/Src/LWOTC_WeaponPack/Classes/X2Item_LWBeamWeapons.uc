@@ -19,6 +19,8 @@ var config int BATTLERIFLE_BEAM_CRITCHANCE;
 var config int BATTLERIFLE_BEAM_ICLIPSIZE;
 var config int BATTLERIFLE_BEAM_ISOUNDRANGE;
 var config int BATTLERIFLE_BEAM_IENVIRONMENTDAMAGE;
+var config int BATTLERIFLE_BEAM_TRADINGPOST;
+var config int BATTLERIFLE_BEAM_IPOINTS;
 var config int BATTLERIFLE_BEAM_UPGRADESLOTS;
 
 var config int SMG_BEAM_AIM;
@@ -36,6 +38,8 @@ var config int MARKSMANRIFLE_BEAM_CRITCHANCE;
 var config int MARKSMANRIFLE_BEAM_ICLIPSIZE;
 var config int MARKSMANRIFLE_BEAM_ISOUNDRANGE;
 var config int MARKSMANRIFLE_BEAM_IENVIRONMENTDAMAGE;
+var config int MARKSMANRIFLE_BEAM_TRADINGPOST;
+var config int MARKSMANRIFLE_BEAM_IPOINTS;
 var config int MARKSMANRIFLE_BEAM_UPGRADESLOTS;
 
 // ***** Range Modifier Tables *****
@@ -232,3 +236,4 @@ defaultproperties
 {
 	bShouldCreateDifficultyVariants = true
 }
+
