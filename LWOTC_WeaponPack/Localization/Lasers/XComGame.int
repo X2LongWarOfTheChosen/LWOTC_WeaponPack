@@ -76,6 +76,13 @@ BriefSummary="Should their power fail them for some reason, the Templars rely on
 TacticalText="<Bullet/> The Autopistol gives the Templar the flexibility to combat the enemy in a conventional manner when not using their Psionic abilities.\n<Bullet/> Autopistols can be fired with a single action."
 AbilityDescName="autopistol"
 
+[SparkRifle_LS X2WeaponTemplate]
+FriendlyName="Laser Spark Rifle"
+FriendlyNamePlural="Laser Spark Rifles"
+BriefSummary=""
+TacticalText=""
+AbilityDescName="spark rifle"
+
 [LaserWeaponsTech_LW X2TechTemplate]
 DisplayName="Laser Weapons"
 Summary="Using our new understanding of alien weapon systems, we should be able develop designs for powerful laser weaponry."

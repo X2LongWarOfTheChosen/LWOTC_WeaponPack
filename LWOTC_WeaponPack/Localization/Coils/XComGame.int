@@ -88,6 +88,13 @@ BriefSummary="Should their power fail them for some reason, the Templars rely on
 TacticalText="<Bullet/> The Autopistol gives the Templar the flexibility to combat the enemy in a conventional manner when not using their Psionic abilities.\n<Bullet/> Autopistols can be fired with a single action."
 AbilityDescName="autopistol"
 
+[SparkRifle_CG X2WeaponTemplate]
+FriendlyName="Coil Spark Rifle"
+FriendlyNamePlural="Coil Spark Rifles"
+BriefSummary=""
+TacticalText=""
+AbilityDescName="spark rifle"
+
 [AssaultRifle_MG X2WeaponTemplate]
 FriendlyName="Mag Rifle"
 FriendlyNamePlural="Mag Rifles"

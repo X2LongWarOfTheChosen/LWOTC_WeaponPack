@@ -52,6 +52,10 @@ var config int Sidearm_LASER_SCHEMATIC_SUPPLYCOST;
 var config int Sidearm_LASER_SCHEMATIC_ALLOYCOST;
 var config int Sidearm_LASER_SCHEMATIC_ELERIUMCOST;
 
+var config int SparkRifle_LASER_SCHEMATIC_SUPPLYCOST;
+var config int SparkRifle_LASER_SCHEMATIC_ALLOYCOST;
+var config int SparkRifle_LASER_SCHEMATIC_ELERIUMCOST;
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Schematics;
@@ -72,6 +76,7 @@ static function array<X2DataTemplate> CreateTemplates()
 		Schematics.AddItem(CreateTemplate_Bullpup_Laser_Schematic());
 		Schematics.AddItem(CreateTemplate_Vektor_Laser_Schematic());
 		Schematics.AddItem(CreateTemplate_Sidearm_Laser_Schematic());
+		Schematics.AddItem(CreateTemplate_SparkRifle_Laser_Schematic());
 
 		return Schematics;
 	}
@@ -571,6 +576,62 @@ static function X2DataTemplate CreateTemplate_Sidearm_Laser_Schematic()
 	if (default.Vektor_LASER_SCHEMATIC_ELERIUMCOST > 0) {
 		Artifacts.ItemTemplateName = 'EleriumDust';
 		Artifacts.Quantity = default.Sidearm_LASER_SCHEMATIC_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Artifacts);
+	}
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_SparkRifle_Laser_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local StrategyRequirement AltReq;
+	local ArtifactCost Resources, Artifacts;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'SparkRifle_LS_Schematic');
+
+	Template.ItemCat = 'weapon';
+	// Placeholder image for Laser Vektor: Mag Vektor, replace once image is available
+	Template.strImage = "img:///UILibrary_DLC3Images.MagSparkRifle";
+	Template.CanBeBuilt = true;
+	Template.bOneTimeBuild = true;
+	Template.HideInInventory = true;
+	Template.HideInLootRecovered = true;
+	Template.PointsToComplete = 0;
+	Template.Tier = 1;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'SparkRifle_LS';
+	Template.HideIfPurchased = 'SparkRifle_MG';
+
+	// Narrative Requirements
+	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
+	Template.Requirements.RequiredEngineeringScore = 5;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+	Template.Requirements.RequiredSoldierClass = 'Spark';
+	Template.Requirements.SpecialRequirementsFn = class'X2Helpers_DLC_Day90'.static.IsLostTowersNarrativeContentComplete;
+
+	// Non-Narrative Requirements
+	AltReq.RequiredTechs.AddItem('MechanizedWarfare');
+	AltReq.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
+	AltReq.RequiredEngineeringScore = 10;
+	AltReq.RequiredSoldierClass = 'Spark';
+	AltReq.bVisibleIfPersonnelGatesNotMet = true;
+	Template.AlternateRequirements.AddItem(AltReq);
+
+	// Cost
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.SparkRifle_LASER_SCHEMATIC_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Artifacts.ItemTemplateName = 'AlienAlloy';
+	Artifacts.Quantity = default.SparkRifle_LASER_SCHEMATIC_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Artifacts);
+
+	// only add elerium cost if configured value greater than 0
+	if (default.SparkRifle_LASER_SCHEMATIC_ELERIUMCOST > 0) {
+		Artifacts.ItemTemplateName = 'EleriumDust';
+		Artifacts.Quantity = default.SparkRifle_LASER_SCHEMATIC_ELERIUMCOST;
 		Template.Cost.ResourceCosts.AddItem(Artifacts);
 	}
 	return Template;
