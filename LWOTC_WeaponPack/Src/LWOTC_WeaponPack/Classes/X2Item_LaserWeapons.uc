@@ -12,7 +12,7 @@ class X2Item_LaserWeapons extends X2Item config(LW_WeaponPack);
 var config WeaponDamageValue ASSAULTRIFLE_LASER_BASEDAMAGE;
 var config WeaponDamageValue BATTLERIFLE_LASER_BASEDAMAGE;
 var config WeaponDamageValue SMG_LASER_BASEDAMAGE;
-var config WeaponDamageValue LMG_LASER_BASEDAMAGE;
+var config WeaponDamageValue CANNON_LASER_BASEDAMAGE;
 var config WeaponDamageValue SHOTGUN_LASER_BASEDAMAGE;
 var config WeaponDamageValue SNIPERRIFLE_LASER_BASEDAMAGE;
 var config WeaponDamageValue MARKSMANRIFLE_LASER_BASEDAMAGE;
@@ -28,7 +28,6 @@ var config int ASSAULTRIFLE_LASER_CRITCHANCE;
 var config int ASSAULTRIFLE_LASER_ICLIPSIZE;
 var config int ASSAULTRIFLE_LASER_ISOUNDRANGE;
 var config int ASSAULTRIFLE_LASER_IENVIRONMENTDAMAGE;
-var config int ASSAULTRIFLE_LASER_ISUPPLIES;
 var config int ASSAULTRIFLE_LASER_TRADINGPOSTVALUE;
 var config int ASSAULTRIFLE_LASER_IPOINTS;
 var config int ASSAULTRIFLE_LASER_UPGRADESLOTS;
@@ -38,7 +37,6 @@ var config int BATTLERIFLE_LASER_CRITCHANCE;
 var config int BATTLERIFLE_LASER_ICLIPSIZE;
 var config int BATTLERIFLE_LASER_ISOUNDRANGE;
 var config int BATTLERIFLE_LASER_IENVIRONMENTDAMAGE;
-var config int BATTLERIFLE_LASER_ISUPPLIES;
 var config int BATTLERIFLE_LASER_TRADINGPOSTVALUE;
 var config int BATTLERIFLE_LASER_IPOINTS;
 var config int BATTLERIFLE_LASER_UPGRADESLOTS;
@@ -48,27 +46,24 @@ var config int SMG_LASER_CRITCHANCE;
 var config int SMG_LASER_ICLIPSIZE;
 var config int SMG_LASER_ISOUNDRANGE;
 var config int SMG_LASER_IENVIRONMENTDAMAGE;
-var config int SMG_LASER_ISUPPLIES;
 var config int SMG_LASER_TRADINGPOSTVALUE;
 var config int SMG_LASER_IPOINTS;
 var config int SMG_LASER_UPGRADESLOTS;
 
-var config int LMG_LASER_AIM;
-var config int LMG_LASER_CRITCHANCE;
-var config int LMG_LASER_ICLIPSIZE;
-var config int LMG_LASER_ISOUNDRANGE;
-var config int LMG_LASER_IENVIRONMENTDAMAGE;
-var config int LMG_LASER_ISUPPLIES;
-var config int LMG_LASER_TRADINGPOSTVALUE;
-var config int LMG_LASER_IPOINTS;
-var config int LMG_LASER_UPGRADESLOTS;
+var config int CANNON_LASER_AIM;
+var config int CANNON_LASER_CRITCHANCE;
+var config int CANNON_LASER_ICLIPSIZE;
+var config int CANNON_LASER_ISOUNDRANGE;
+var config int CANNON_LASER_IENVIRONMENTDAMAGE;
+var config int CANNON_LASER_TRADINGPOSTVALUE;
+var config int CANNON_LASER_IPOINTS;
+var config int CANNON_LASER_UPGRADESLOTS;
 
 var config int SHOTGUN_LASER_AIM;
 var config int SHOTGUN_LASER_CRITCHANCE;
 var config int SHOTGUN_LASER_ICLIPSIZE;
 var config int SHOTGUN_LASER_ISOUNDRANGE;
 var config int SHOTGUN_LASER_IENVIRONMENTDAMAGE;
-var config int SHOTGUN_LASER_ISUPPLIES;
 var config int SHOTGUN_LASER_TRADINGPOSTVALUE;
 var config int SHOTGUN_LASER_IPOINTS;
 var config int SHOTGUN_LASER_UPGRADESLOTS;
@@ -78,7 +73,6 @@ var config int SNIPERRIFLE_LASER_CRITCHANCE;
 var config int SNIPERRIFLE_LASER_ICLIPSIZE;
 var config int SNIPERRIFLE_LASER_ISOUNDRANGE;
 var config int SNIPERRIFLE_LASER_IENVIRONMENTDAMAGE;
-var config int SNIPERRIFLE_LASER_ISUPPLIES;
 var config int SNIPERRIFLE_LASER_TRADINGPOSTVALUE;
 var config int SNIPERRIFLE_LASER_IPOINTS;
 var config int SNIPERRIFLE_LASER_UPGRADESLOTS;
@@ -88,7 +82,6 @@ var config int MARKSMANRIFLE_LASER_CRITCHANCE;
 var config int MARKSMANRIFLE_LASER_ICLIPSIZE;
 var config int MARKSMANRIFLE_LASER_ISOUNDRANGE;
 var config int MARKSMANRIFLE_LASER_IENVIRONMENTDAMAGE;
-var config int MARKSMANRIFLE_LASER_ISUPPLIES;
 var config int MARKSMANRIFLE_LASER_TRADINGPOSTVALUE;
 var config int MARKSMANRIFLE_LASER_IPOINTS;
 var config int MARKSMANRIFLE_LASER_UPGRADESLOTS;
@@ -98,7 +91,6 @@ var config int PISTOL_LASER_CRITCHANCE;
 var config int PISTOL_LASER_ICLIPSIZE;
 var config int PISTOL_LASER_ISOUNDRANGE;
 var config int PISTOL_LASER_IENVIRONMENTDAMAGE;
-var config int PISTOL_LASER_ISUPPLIES;
 var config int PISTOL_LASER_TRADINGPOSTVALUE;
 var config int PISTOL_LASER_IPOINTS;
 var config int PISTOL_LASER_UPGRADESLOTS;
@@ -108,7 +100,6 @@ var config int BULLPUP_LASER_CRITCHANCE;
 var config int BULLPUP_LASER_ICLIPSIZE;
 var config int BULLPUP_LASER_ISOUNDRANGE;
 var config int BULLPUP_LASER_IENVIRONMENTDAMAGE;
-var config int BULLPUP_LASER_ISUPPLIES;
 var config int BULLPUP_LASER_TRADINGPOSTVALUE;
 var config int BULLPUP_LASER_IPOINTS;
 var config int BULLPUP_LASER_UPGRADESLOTS;
@@ -203,7 +194,6 @@ var config string Shotgun_Laser_ImagePath;
 var config string SniperRifle_Laser_ImagePath;
 var config string MarksmanRifle_Laser_ImagePath;
 var config string Pistol_Laser_ImagePath;
-var config string Sword_Laser_ImagePath;
 var config string Bullpup_Laser_ImagePath;
 var config string VektorRifle_Laser_ImagePath;
 var config string Sidearm_Laser_ImagePath;
@@ -261,7 +251,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Laser()
 	Template.iClipSize = default.ASSAULTRIFLE_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.ASSAULTRIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.ASSAULTRIFLE_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.ASSAULTRIFLE_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.ASSAULTRIFLE_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -338,7 +328,7 @@ static function X2DataTemplate CreateTemplate_BattleRifle_Laser()
 	Template.iClipSize = default.BATTLERIFLE_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.BATTLERIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.BATTLERIFLE_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.BATTLERIFLE_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.BATTLERIFLE_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -418,7 +408,7 @@ static function X2DataTemplate CreateTemplate_SMG_Laser()
 	Template.iClipSize = default.SMG_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.SMG_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SMG_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SMG_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.SMG_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -489,14 +479,14 @@ static function X2DataTemplate CreateTemplate_Cannon_Laser()
 	Template.Tier = 2;
 
 	Template.RangeAccuracy = default.MEDIUM_LASER_RANGE;
-	Template.BaseDamage = default.LMG_LASER_BASEDAMAGE;
-	Template.Aim = default.LMG_LASER_AIM;
-	Template.CritChance = default.LMG_LASER_CRITCHANCE;
-	Template.iClipSize = default.LMG_LASER_ICLIPSIZE;
-	Template.iSoundRange = default.LMG_LASER_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.LMG_LASER_IENVIRONMENTDAMAGE;
-
-	Template.NumUpgradeSlots = default.LMG_LASER_UPGRADESLOTS;
+	Template.BaseDamage = default.CANNON_LASER_BASEDAMAGE;
+	Template.Aim = default.CANNON_LASER_AIM;
+	Template.CritChance = default.CANNON_LASER_CRITCHANCE;
+	Template.iClipSize = default.CANNON_LASER_ICLIPSIZE;
+	Template.iSoundRange = default.CANNON_LASER_ISOUNDRANGE;
+	Template.iEnvironmentDamage = default.CANNON_LASER_IENVIRONMENTDAMAGE;
+	Template.TradingPostValue = default.CANNON_LASER_TRADINGPOSTVALUE;
+	Template.NumUpgradeSlots = default.CANNON_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
@@ -570,7 +560,7 @@ static function X2DataTemplate CreateTemplate_Shotgun_Laser()
 	Template.iClipSize = default.SHOTGUN_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.SHOTGUN_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SHOTGUN_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SHOTGUN_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.SHOTGUN_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -646,7 +636,7 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Laser()
 	Template.iClipSize = default.SNIPERRIFLE_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.SNIPERRIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SNIPERRIFLE_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SNIPERRIFLE_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.SNIPERRIFLE_LASER_UPGRADESLOTS;
 	Template.iTypicalActionCost = 2;
 
@@ -724,6 +714,7 @@ static function X2DataTemplate CreateTemplate_MarksmanRifle_Laser()
 	Template.iSoundRange = default.MARKSMANRIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.MARKSMANRIFLE_LASER_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = default.MARKSMANRIFLE_LASER_UPGRADESLOTS;
+	Template.TradingPostValue = default.MARKSMANRIFLE_LASER_TRADINGPOSTVALUE;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
@@ -800,8 +791,8 @@ static function X2DataTemplate CreateTemplate_Pistol_Laser()
 	Template.iClipSize = default.PISTOL_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.PISTOL_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.PISTOL_LASER_IENVIRONMENTDAMAGE;
-
-	Template.NumUpgradeSlots = 2;
+	Template.TradingPostValue = default.PISTOL_LASER_TRADINGPOSTVALUE;
+	Template.NumUpgradeSlots = default.PISTOL_LASER_UPGRADESLOTS;
 
 	Template.OverwatchActionPoint = class'X2CharacterTemplateManager'.default.PistolOverwatchReserveActionPoint;
 	Template.InfiniteAmmo = true;
@@ -865,8 +856,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser()
 	Template.WeaponCat = 'bullpup';
 	Template.WeaponTech = 'beam'; //'pulse'; // TODO: fix up any effects that rely on hard-coded techs
 	Template.ItemCat = 'weapon';
-	// Placeholder: mag bullpup, replace with assets once completed
-	Template.strImage = "img:///UILibrary_XPACK_Common.MagSMG_Base";
+	Template.strImage = "img:///" $ default.Bullpup_Laser_ImagePath;
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
 	Template.Tier = 2;
@@ -878,7 +868,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser()
 	Template.iClipSize = default.BULLPUP_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.BULLPUP_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.BULLPUP_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.BULLPUP_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.BULLPUP_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -959,7 +949,7 @@ static function X2DataTemplate CreateTemplate_Vektor_Laser()
 	Template.iClipSize = default.VEKTORRIFLE_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.VEKTORRIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.VEKTORRIFLE_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.VEKTORRIFLE_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.VEKTORRIFLE_LASER_UPGRADESLOTS; 
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -1039,7 +1029,7 @@ static function X2DataTemplate CreateTemplate_Sidearm_Laser()
 	Template.iClipSize = default.SIDEARM_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.SIDEARM_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SIDEARM_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SIDEARM_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.SIDEARM_LASER_UPGRADESLOTS;
 
 	Template.InfiniteAmmo = true;
@@ -1120,7 +1110,7 @@ static function X2DataTemplate CreateTemplate_SparkRifle_Laser()
 	Template.iClipSize = default.SPARKRIFLE_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.SPARKRIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SPARKRIFLE_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SPARKRIFLE_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.SPARKRIFLE_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;

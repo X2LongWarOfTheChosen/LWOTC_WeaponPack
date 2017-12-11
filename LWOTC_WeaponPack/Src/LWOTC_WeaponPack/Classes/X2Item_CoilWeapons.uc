@@ -90,6 +90,7 @@ var config int PISTOL_COIL_ISOUNDRANGE;
 var config int PISTOL_COIL_TRADINGPOST;
 var config int PISTOL_COIL_IPOINTS;
 var config int PISTOL_COIL_IENVIRONMENTDAMAGE;
+var config int PISTOL_COIL_UPGRADESLOTS;
 
 var config int BULLPUP_COIL_AIM;
 var config int BULLPUP_COIL_CRITCHANCE;
@@ -128,10 +129,13 @@ var config int SPARKRIFLE_COIL_IPOINTS;
 var config int SPARKRIFLE_COIL_UPGRADESLOTS;
 
 var config string AssaultRifle_Coil_ImagePath;
+var config string BattleRifle_Coil_ImagePath;
 var config string SMG_Coil_ImagePath;
 var config string Cannon_Coil_ImagePath;
 var config string Shotgun_Coil_ImagePath;
 var config string SniperRifle_Coil_ImagePath;
+var config string MarksmanRifle_Coil_ImagePath;
+var config string Pistol_Coil_ImagePath;
 var config string Bullpup_Coil_ImagePath;
 var config string VektorRifle_Coil_ImagePath;
 var config string Sidearm_Coil_ImagePath;
@@ -228,7 +232,7 @@ static function X2DataTemplate CreateAssaultRifle_Coil_Template()
 	Template.iClipSize = default.ASSAULTRIFLE_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.ASSAULTRIFLE_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.ASSAULTRIFLE_COIL_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.ASSAULTRIFLE_COIL_TRADINGPOST;
 	Template.NumUpgradeSlots = default.ASSAULTRIFLE_COIL_UPGRADESLOTS;
 
 	Template.GameArchetype = "LWAssaultRifle_CG.Archetypes.WP_AssaultRifle_CG";
@@ -289,7 +293,7 @@ static function X2DataTemplate CreateBattleRifle_Coil_Template()
 	Template.WeaponCat = 'rifle';
 	Template.WeaponTech = 'coilgun_lw';
 	Template.ItemCat = 'weapon';
-	Template.strImage ="img:///UILibrary_LW_Overhaul.InventoryArt.CoilRifle_Base";
+	Template.strImage = "img:///" $ default.BattleRifle_Coil_ImagePath;
 	Template.WeaponPanelImage = "";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
 	Template.Tier = 4;
@@ -302,6 +306,7 @@ static function X2DataTemplate CreateBattleRifle_Coil_Template()
 	Template.iSoundRange = default.BATTLERIFLE_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.BATTLERIFLE_COIL_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = default.BATTLERIFLE_COIL_UPGRADESLOTS;
+	Template.TradingPostValue = default.BATTLERIFLE_COIL_TRADINGPOST;
 
 	Template.GameArchetype = "RM_BattleRiflePack.Archetypes.WP_BattleRifle_CG";
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
@@ -376,7 +381,7 @@ static function X2DataTemplate CreateSMG_Coil_Template()
 	Template.iClipSize = default.SMG_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.SMG_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SMG_COIL_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SMG_COIL_TRADINGPOST;
 	Template.NumUpgradeSlots = default.SMG_COIL_UPGRADESLOTS;
 
 	Template.GameArchetype = "LWSMG_CG.Archetypes.WP_SMG_CG";
@@ -450,7 +455,7 @@ static function X2DataTemplate CreateCannon_Coil_Template()
 	Template.iClipSize = default.CANNON_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.CANNON_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.CANNON_COIL_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.CANNON_COIL_TRADINGPOST;
 	Template.NumUpgradeSlots = default.CANNON_COIL_UPGRADESLOTS;
 
 	Template.GameArchetype = "LWCannon_CG.Archetypes.WP_Cannon_CG";
@@ -525,7 +530,7 @@ static function X2DataTemplate CreateShotgun_Coil_Template()
 	Template.iClipSize = default.SHOTGUN_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.SHOTGUN_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SHOTGUN_COIL_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SHOTGUN_COIL_TRADINGPOST;
 	Template.NumUpgradeSlots = default.SHOTGUN_COIL_UPGRADESLOTS;
 
 	Template.GameArchetype = "LWShotgun_CG.Archetypes.WP_Shotgun_CG";
@@ -599,7 +604,7 @@ static function X2DataTemplate CreateSniperRifle_Coil_Template()
 	Template.iClipSize = default.SNIPERRIFLE_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.SNIPERRIFLE_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SNIPERRIFLE_COIL_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SNIPERRIFLE_COIL_TRADINGPOST;
 	Template.NumUpgradeSlots = default.SNIPERRIFLE_COIL_UPGRADESLOTS;
 
 	Template.GameArchetype = "LWSniperRifle_CG.Archetypes.WP_SniperRifle_CG";
@@ -661,7 +666,7 @@ static function X2DataTemplate CreateMarksmanRifle_Coil_Template()
 	Template.WeaponCat = 'sniper_rifle';
 	Template.WeaponTech = 'coilgun_lw';
 	Template.ItemCat = 'weapon';
-	Template.strImage ="img:///" $ default.SniperRifle_Coil_ImagePath;
+	Template.strImage ="img:///" $ default.MarksmanRifle_Coil_ImagePath;
 	Template.WeaponPanelImage = "";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
 	Template.Tier = 4;
@@ -674,6 +679,7 @@ static function X2DataTemplate CreateMarksmanRifle_Coil_Template()
 	Template.iSoundRange = default.MARKSMANRIFLE_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.MARKSMANRIFLE_COIL_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = default.MARKSMANRIFLE_COIL_UPGRADESLOTS;
+	Template.TradingPostValue = default.MARKSMANRIFLE_COIL_TRADINGPOST;
 
 	Template.GameArchetype = "RM_BattleRiflePack.Archetypes.WP_BattleRifle_CG";
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
@@ -735,7 +741,7 @@ static function X2DataTemplate CreatePistol_Coil_Template()
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'pistol';
 	Template.WeaponTech = 'magnetic';
-	Template.strImage = "img:///UILibrary_LW_Coilguns.InventoryArt.Inv_Coil_Pistol";
+	Template.strImage = "img:///" $ default.Pistol_Coil_ImagePath;
 	Template.EquipSound = "Secondary_Weapon_Equip_Beam"; // TODO: update with new equip sound
 	Template.Tier = 4;
 
@@ -746,8 +752,8 @@ static function X2DataTemplate CreatePistol_Coil_Template()
 	Template.iClipSize = default.Pistol_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.Pistol_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.Pistol_COIL_IENVIRONMENTDAMAGE;
-
-	Template.NumUpgradeSlots = 0;
+	Template.TradingPostValue = default.PISTOL_COIL_TRADINGPOST;
+	Template.NumUpgradeSlots = default.PISTOL_COIL_UPGRADESLOTS;
 
 	Template.OverwatchActionPoint = class'X2CharacterTemplateManager'.default.PistolOverwatchReserveActionPoint;
 	Template.InfiniteAmmo = true;
@@ -809,8 +815,7 @@ static function X2DataTemplate CreateBullpup_Coil_Template()
 	Template.WeaponCat = 'bullpup';
 	Template.WeaponTech = 'coilgun_lw';
 	Template.ItemCat = 'weapon';
-	// TODO: Placeholder, replace with assets when completed
-	Template.strImage = "img:///UILibrary_XPACK_Common.MagSMG_Base";
+	Template.strImage = "img:///" $ default.Bullpup_Coil_ImagePath;
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
 	Template.Tier = 4;
@@ -822,7 +827,7 @@ static function X2DataTemplate CreateBullpup_Coil_Template()
 	Template.iClipSize = default.BULLPUP_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.BULLPUP_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.BULLPUP_COIL_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.BULLPUP_COIL_TRADINGPOST;
 	Template.NumUpgradeSlots = default.BULLPUP_COIL_UPGRADESLOTS;
 
 	// TODO: Placeholder, replace with assets when completed
@@ -901,7 +906,7 @@ static function X2DataTemplate CreateVektor_Coil_Template()
 	Template.iClipSize = default.VEKTORRIFLE_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.VEKTORRIFLE_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.VEKTORRIFLE_COIL_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.VEKTORRIFLE_COIL_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.VEKTORRIFLE_COIL_UPGRADESLOTS; 
 	
 	// TODO: Placeholder, replace with assets when completed
@@ -980,7 +985,7 @@ static function X2DataTemplate CreateSidearm_Coil_Template()
 	Template.iClipSize = default.SIDEARM_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.SIDEARM_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SIDEARM_COIL_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SIDEARM_COIL_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.SIDEARM_COIL_UPGRADESLOTS;
 
 	Template.InfiniteAmmo = true;
@@ -1059,7 +1064,7 @@ static function X2DataTemplate CreateSparkRifle_Coil_Template()
 	Template.iClipSize = default.SPARKRIFLE_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.SPARKRIFLE_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SPARKRIFLE_COIL_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SPARKRIFLE_COIL_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.SPARKRIFLE_COIL_UPGRADESLOTS; 
 	
 	// TODO: Placeholder, replace with assets when completed
