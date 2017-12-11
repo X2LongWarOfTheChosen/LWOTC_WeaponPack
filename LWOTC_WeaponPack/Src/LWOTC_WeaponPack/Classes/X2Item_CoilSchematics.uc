@@ -84,7 +84,7 @@ static function array<X2DataTemplate> CreateTemplates()
 
 static function CreateTemplateCost(out X2SchematicTemplate Template, int supplyCost, int alloyCost, int eleriumCost)
 {
-	local ArtifactCost Resources, Artifacts;
+	local ArtifactCost Resources;
 
 	if (supplyCost > 0)
 	{
@@ -95,16 +95,16 @@ static function CreateTemplateCost(out X2SchematicTemplate Template, int supplyC
 
 	if (alloyCost > 0)
 	{
-		Artifacts.ItemTemplateName = 'AlienAlloy';
-		Artifacts.Quantity = alloyCost;
-		Template.Cost.ResourceCosts.AddItem(Artifacts);
+		Resources.ItemTemplateName = 'AlienAlloy';
+		Resources.Quantity = alloyCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
 	}
 
 	if (eleriumCost > 0)
 	{
-		Artifacts.ItemTemplateName = 'EleriumDust';
-		Artifacts.Quantity = eleriumCost;
-		Template.Cost.ResourceCosts.AddItem(Artifacts);
+		Resources.ItemTemplateName = 'EleriumDust';
+		Resources.Quantity = eleriumCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
 	}
 }
 
