@@ -27,10 +27,35 @@ static function array<X2DataTemplate> CreateTemplates()
 	return Techs;
 }
 
+static function CreateTemplateCost(out X2TechTemplate Template, int supplyCost, int alloyCost, int eleriumCost)
+{
+	local ArtifactCost Resources;
+
+	if (supplyCost > 0)
+	{
+		Resources.ItemTemplateName = 'Supplies';
+		Resources.Quantity = supplyCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
+
+	if (alloyCost > 0)
+	{
+		Resources.ItemTemplateName = 'AlienAlloy';
+		Resources.Quantity = alloyCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
+
+	if (eleriumCost > 0)
+	{
+		Resources.ItemTemplateName = 'EleriumDust';
+		Resources.Quantity = eleriumCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
+}
+
 static function X2DataTemplate CreateLaserWeaponsTemplate()
 {
 	local X2TechTemplate Template;
-	local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, default.LaserWeaponTech_Tier[0]);
 	Template.PointsToComplete = default.LASER_WEAPONS_RESEARCH_POINTS;
@@ -41,28 +66,7 @@ static function X2DataTemplate CreateLaserWeaponsTemplate()
 	// Requirements
 	Template.Requirements.RequiredTechs.AddItem('ModularWeapons');
 
-	// Cost
-	// only add if configured value greater than 0
-	if (default.LASER_WEAPONS_SUPPLYCOST > 0)
-	{
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.LASER_WEAPONS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-	}
-	// only add if configured value greater than 0
-	if (default.LASER_WEAPONS_ALLOYCOST > 0)
-	{
-		Artifacts.ItemTemplateName = 'AlienAlloy';
-		Artifacts.Quantity = default.LASER_WEAPONS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Artifacts);
-	}
-	// only add if configured value greater than 0
-	if (default.LASER_WEAPONS_ELERIUMCOST > 0)
-	{
-		Artifacts.ItemTemplateName = 'EleriumDust';
-		Artifacts.Quantity = default.LASER_WEAPONS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Artifacts);
-	}
+	CreateTemplateCost(Template, default.LASER_WEAPONS_SUPPLYCOST, default.LASER_WEAPONS_ALLOYCOST, default.LASER_WEAPONS_ELERIUMCOST);
 
 	return Template;
 }
@@ -70,7 +74,6 @@ static function X2DataTemplate CreateLaserWeaponsTemplate()
 static function X2DataTemplate CreatePulseLaserWeaponsTemplate()
 {
 	local X2TechTemplate Template;
-	local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, default.LaserWeaponTech_Tier[1]);
 	Template.PointsToComplete = default.PULSE_LASER_WEAPONS_RESEARCH_POINTS;
@@ -81,28 +84,7 @@ static function X2DataTemplate CreatePulseLaserWeaponsTemplate()
 	// Requirements
 	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
 
-	// Cost
-	// only add if configured value greater than 0
-	if (default.PULSE_LASER_WEAPONS_SUPPLYCOST > 0)
-	{
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.PULSE_LASER_WEAPONS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-	}
-	// only add if configured value greater than 0
-	if (default.PULSE_LASER_WEAPONS_ALLOYCOST > 0)
-	{
-		Artifacts.ItemTemplateName = 'AlienAlloy';
-		Artifacts.Quantity = default.PULSE_LASER_WEAPONS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Artifacts);
-	}
-	// only add if configured value greater than 0
-	if (default.PULSE_LASER_WEAPONS_ELERIUMCOST > 0)
-	{
-		Artifacts.ItemTemplateName = 'EleriumDust';
-		Artifacts.Quantity = default.PULSE_LASER_WEAPONS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Artifacts);
-	}
+	CreateTemplateCost(Template, default.PULSE_LASER_WEAPONS_SUPPLYCOST, default.PULSE_LASER_WEAPONS_ALLOYCOST, default.PULSE_LASER_WEAPONS_ELERIUMCOST);
 
 	return Template;
 }

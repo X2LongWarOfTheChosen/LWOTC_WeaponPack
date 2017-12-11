@@ -225,6 +225,32 @@ defaultproperties
 	bShouldCreateDifficultyVariants = true
 }
 
+static function CreateTemplateCost(out X2WeaponTemplate Template, int supplyCost, int alloyCost, int eleriumCost)
+{
+	local ArtifactCost Resources;
+
+	if (supplyCost > 0)
+	{
+		Resources.ItemTemplateName = 'Supplies';
+		Resources.Quantity = supplyCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
+
+	if (alloyCost > 0)
+	{
+		Resources.ItemTemplateName = 'AlienAlloy';
+		Resources.Quantity = alloyCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
+
+	if (eleriumCost > 0)
+	{
+		Resources.ItemTemplateName = 'EleriumDust';
+		Resources.Quantity = eleriumCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
+}
+
 // **********************************************************************************************************
 // ***                                            Laser Weapons                                           ***
 // **********************************************************************************************************
@@ -232,7 +258,6 @@ defaultproperties
 static function X2DataTemplate CreateTemplate_AssaultRifle_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'AssaultRifle_LS');
 
@@ -284,21 +309,8 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.ASSAULTRIFLE_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.ASSAULTRIFLE_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.ASSAULTRIFLE_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.ASSAULTRIFLE_LS_SUPPLYCOST, default.ASSAULTRIFLE_LS_ALLOYCOST, default.ASSAULTRIFLE_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 5;
-
 	}
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type
@@ -309,7 +321,6 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Laser()
 static function X2DataTemplate CreateTemplate_BattleRifle_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'BattleRifle_LS');
 
@@ -361,19 +372,7 @@ static function X2DataTemplate CreateTemplate_BattleRifle_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.BATTLERIFLE_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.BATTLERIFLE_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.BATTLERIFLE_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.BATTLERIFLE_LS_SUPPLYCOST, default.BATTLERIFLE_LS_ALLOYCOST, default.BATTLERIFLE_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 5;
 
 	}
@@ -386,7 +385,6 @@ static function X2DataTemplate CreateTemplate_BattleRifle_Laser()
 static function X2DataTemplate CreateTemplate_SMG_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SMG_LS');
 
@@ -441,21 +439,8 @@ static function X2DataTemplate CreateTemplate_SMG_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.SMG_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.SMG_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.SMG_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.SMG_LS_SUPPLYCOST, default.SMG_LS_ALLOYCOST, default.SMG_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 5;
-
 	}
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type
@@ -466,7 +451,6 @@ static function X2DataTemplate CreateTemplate_SMG_Laser()
 static function X2DataTemplate CreateTemplate_Cannon_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Cannon_LS');
 
@@ -516,21 +500,8 @@ static function X2DataTemplate CreateTemplate_Cannon_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[1]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.CANNON_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.CANNON_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.CANNON_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.CANNON_LS_SUPPLYCOST, default.CANNON_LS_ALLOYCOST, default.CANNON_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 10;
-
 	}
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type
@@ -541,7 +512,6 @@ static function X2DataTemplate CreateTemplate_Cannon_Laser()
 static function X2DataTemplate CreateTemplate_Shotgun_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Shotgun_LS');
 
@@ -592,19 +562,7 @@ static function X2DataTemplate CreateTemplate_Shotgun_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.SHOTGUN_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.SHOTGUN_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.SHOTGUN_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.SHOTGUN_LS_SUPPLYCOST, default.SHOTGUN_LS_ALLOYCOST, default.SHOTGUN_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 10;
 	}
 
@@ -617,7 +575,6 @@ static function X2DataTemplate CreateTemplate_Shotgun_Laser()
 static function X2DataTemplate CreateTemplate_SniperRifle_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SniperRifle_LS');
 
@@ -670,19 +627,7 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[1]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.SNIPERRIFLE_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.SNIPERRIFLE_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.SNIPERRIFLE_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.SNIPERRIFLE_LS_SUPPLYCOST, default.SNIPERRIFLE_LS_ALLOYCOST, default.SNIPERRIFLE_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 10;
 	}
 
@@ -694,7 +639,6 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Laser()
 static function X2DataTemplate CreateTemplate_MarksmanRifle_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'MarksmanRifle_LS');
 
@@ -748,19 +692,7 @@ static function X2DataTemplate CreateTemplate_MarksmanRifle_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[1]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.MARKSMANRIFLE_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.MARKSMANRIFLE_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.MARKSMANRIFLE_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.MARKSMANRIFLE_LS_SUPPLYCOST, default.MARKSMANRIFLE_LS_ALLOYCOST, default.MARKSMANRIFLE_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 10;
 	}
 
@@ -772,7 +704,6 @@ static function X2DataTemplate CreateTemplate_MarksmanRifle_Laser()
 static function X2DataTemplate CreateTemplate_Pistol_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Pistol_LS');
 	Template.WeaponPanelImage = "_Pistol";                       // used by the UI. Probably determines iconview of the weapon.
@@ -822,21 +753,8 @@ static function X2DataTemplate CreateTemplate_Pistol_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.PISTOL_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.PISTOL_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.PISTOL_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.PISTOL_LS_SUPPLYCOST, default.PISTOL_LS_ALLOYCOST, default.PISTOL_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 10;
-
 	}
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type
@@ -849,7 +767,6 @@ static function X2DataTemplate CreateTemplate_Pistol_Laser()
 static function X2DataTemplate CreateTemplate_Bullpup_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Bullpup_LS');
 
@@ -905,21 +822,8 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.BULLPUP_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.BULLPUP_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.BULLPUP_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.BULLPUP_LS_SUPPLYCOST, default.BULLPUP_LS_ALLOYCOST, default.BULLPUP_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 5;
-
 	}
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type
@@ -930,7 +834,6 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser()
 static function X2DataTemplate CreateTemplate_Vektor_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'VektorRifle_LS');
 
@@ -985,21 +888,8 @@ static function X2DataTemplate CreateTemplate_Vektor_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.VEKTORRIFLE_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.VEKTORRIFLE_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.VEKTORRIFLE_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.VEKTORRIFLE_LS_SUPPLYCOST, default.VEKTORRIFLE_LS_ALLOYCOST, default.VEKTORRIFLE_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 5;
-
 	}
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type
@@ -1010,7 +900,6 @@ static function X2DataTemplate CreateTemplate_Vektor_Laser()
 static function X2DataTemplate CreateTemplate_Sidearm_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Sidearm_LS');
 
@@ -1064,21 +953,8 @@ static function X2DataTemplate CreateTemplate_Sidearm_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.SIDEARM_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.SIDEARM_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.SIDEARM_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.SIDEARM_LS_SUPPLYCOST, default.SIDEARM_LS_ALLOYCOST, default.SIDEARM_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 5;
-
 	}
 
 	Template.bHideClipSizeStat = true;
@@ -1091,7 +967,6 @@ static function X2DataTemplate CreateTemplate_Sidearm_Laser()
 static function X2DataTemplate CreateTemplate_SparkRifle_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SparkRifle_LS');
 
@@ -1139,21 +1014,8 @@ static function X2DataTemplate CreateTemplate_SparkRifle_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.SPARKRIFLE_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.SPARKRIFLE_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.SPARKRIFLE_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.SPARKRIFLE_LS_SUPPLYCOST, default.SPARKRIFLE_LS_ALLOYCOST, default.SPARKRIFLE_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 5;
-
 	}
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type

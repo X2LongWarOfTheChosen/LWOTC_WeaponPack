@@ -27,10 +27,35 @@ static function array<X2DataTemplate> CreateTemplates()
 	return Techs;
 }
 
+static function CreateTemplateCost(out X2TechTemplate Template, int supplyCost, int alloyCost, int eleriumCost)
+{
+	local ArtifactCost Resources;
+
+	if (supplyCost > 0)
+	{
+		Resources.ItemTemplateName = 'Supplies';
+		Resources.Quantity = supplyCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
+
+	if (alloyCost > 0)
+	{
+		Resources.ItemTemplateName = 'AlienAlloy';
+		Resources.Quantity = alloyCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
+
+	if (eleriumCost > 0)
+	{
+		Resources.ItemTemplateName = 'EleriumDust';
+		Resources.Quantity = eleriumCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
+}
+
 static function X2DataTemplate CreateCoilWeaponsTemplate()
 {
 	local X2TechTemplate Template;
-	local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, default.CoilWeaponTech_Tier[0]);
 	Template.PointsToComplete = default.COIL_RESEARCH_POINTS;
@@ -42,28 +67,7 @@ static function X2DataTemplate CreateCoilWeaponsTemplate()
 	// Requirements
 	Template.Requirements.RequiredTechs.AddItem('GaussWeapons');
 
-	// Cost
-	// only add if configured value greater than 0
-	if (default.COIL_WEAPONS_SUPPLYCOST > 0)
-	{
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.COIL_WEAPONS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-	}
-	// only add if configured value greater than 0
-	if (default.COIL_WEAPONS_ALLOYCOST > 0)
-	{
-		Artifacts.ItemTemplateName = 'AlienAlloy';
-		Artifacts.Quantity = default.COIL_WEAPONS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Artifacts);
-	}
-	// only add if configured value greater than 0
-	if (default.COIL_WEAPONS_ELERIUMCOST > 0)
-	{
-		Artifacts.ItemTemplateName = 'EleriumDust';
-		Artifacts.Quantity = default.COIL_WEAPONS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Artifacts);
-	}
+	CreateTemplateCost(Template, default.COIL_WEAPONS_SUPPLYCOST, default.COIL_WEAPONS_ALLOYCOST, default.COIL_WEAPONS_ELERIUMCOST);
 
 	return Template;
 }
@@ -71,7 +75,6 @@ static function X2DataTemplate CreateCoilWeaponsTemplate()
 static function X2DataTemplate CreateAdvancedCoilWeaponsTemplate()
 {
 	local X2TechTemplate Template;
-	local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2TechTemplate', Template, default.CoilWeaponTech_Tier[1]);
 	Template.PointsToComplete = default.ADVANCED_COIL_RESEARCH_POINTS;
@@ -82,28 +85,7 @@ static function X2DataTemplate CreateAdvancedCoilWeaponsTemplate()
 	// Requirements
 	Template.Requirements.RequiredTechs.AddItem(default.CoilWeaponTech_Tier[0]);
 
-	// Cost
-	// only add if configured value greater than 0
-	if (default.ADVANCED_COIL_WEAPONS_SUPPLYCOST > 0)
-	{
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.ADVANCED_COIL_WEAPONS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-	}
-	// only add if configured value greater than 0
-	if (default.ADVANCED_COIL_WEAPONS_ALLOYCOST > 0)
-	{
-		Artifacts.ItemTemplateName = 'AlienAlloy';
-		Artifacts.Quantity = default.ADVANCED_COIL_WEAPONS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Artifacts);
-	}
-	// only add if configured value greater than 0
-	if (default.ADVANCED_COIL_WEAPONS_ELERIUMCOST > 0)
-	{
-		Artifacts.ItemTemplateName = 'EleriumDust';
-		Artifacts.Quantity = default.ADVANCED_COIL_WEAPONS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Artifacts);
-	}
+	CreateTemplateCost(Template, default.ADVANCED_COIL_WEAPONS_SUPPLYCOST, default.ADVANCED_COIL_WEAPONS_ALLOYCOST, default.ADVANCED_COIL_WEAPONS_ELERIUMCOST);
 
 	return Template;
 }
