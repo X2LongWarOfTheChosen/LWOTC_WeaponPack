@@ -210,10 +210,35 @@ static function array<X2DataTemplate> CreateTemplates()
 	return Weapons;
 }
 
+static function CreateTemplateCost(out X2WeaponTemplate Template, int supplyCost, int alloyCost, int eleriumCost)
+{
+	local ArtifactCost Resources;
+
+	if (supplyCost > 0)
+	{
+		Resources.ItemTemplateName = 'Supplies';
+		Resources.Quantity = supplyCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
+
+	if (alloyCost > 0)
+	{
+		Resources.ItemTemplateName = 'AlienAlloy';
+		Resources.Quantity = alloyCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
+
+	if (eleriumCost > 0)
+	{
+		Resources.ItemTemplateName = 'EleriumDust';
+		Resources.Quantity = eleriumCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
+}
+
 static function X2DataTemplate CreateAssaultRifle_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'AssaultRifle_CG');
 
@@ -262,19 +287,7 @@ static function X2DataTemplate CreateAssaultRifle_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.ASSAULTRIFLE_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.ASSAULTRIFLE_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.ASSAULTRIFLE_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.ASSAULTRIFLE_CG_SUPPLYCOST, default.ASSAULTRIFLE_CG_ALLOYCOST, default.ASSAULTRIFLE_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 15;
 	}
 
@@ -286,7 +299,6 @@ static function X2DataTemplate CreateAssaultRifle_Coil_Template()
 static function X2DataTemplate CreateBattleRifle_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'BattleRifle_CG');
 
@@ -336,19 +348,7 @@ static function X2DataTemplate CreateBattleRifle_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.BATTLERIFLE_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.BATTLERIFLE_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.BATTLERIFLE_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.BATTLERIFLE_CG_SUPPLYCOST, default.BATTLERIFLE_CG_ALLOYCOST, default.BATTLERIFLE_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 15;
 	}
 
@@ -360,7 +360,6 @@ static function X2DataTemplate CreateBattleRifle_Coil_Template()
 static function X2DataTemplate CreateSMG_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SMG_CG');
 
@@ -411,19 +410,7 @@ static function X2DataTemplate CreateSMG_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.SMG_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.SMG_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.SMG_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.SMG_CG_SUPPLYCOST, default.SMG_CG_ALLOYCOST, default.SMG_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 15;
 	}
 
@@ -436,7 +423,6 @@ static function X2DataTemplate CreateSMG_Coil_Template()
 static function X2DataTemplate CreateCannon_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Cannon_CG');
 
@@ -486,22 +472,9 @@ static function X2DataTemplate CreateCannon_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.CANNON_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.CANNON_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.CANNON_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.CANNON_CG_SUPPLYCOST, default.CANNON_CG_ALLOYCOST, default.CANNON_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 20;
 	}
-
 
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
@@ -511,7 +484,6 @@ static function X2DataTemplate CreateCannon_Coil_Template()
 static function X2DataTemplate CreateShotgun_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Shotgun_CG');
 
@@ -559,19 +531,7 @@ static function X2DataTemplate CreateShotgun_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.SHOTGUN_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.SHOTGUN_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.SHOTGUN_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.SHOTGUN_CG_SUPPLYCOST, default.SHOTGUN_CG_ALLOYCOST, default.SHOTGUN_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 20;
 
 	}
@@ -584,7 +544,6 @@ static function X2DataTemplate CreateShotgun_Coil_Template()
 static function X2DataTemplate CreateSniperRifle_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SniperRifle_CG');
 
@@ -635,19 +594,7 @@ static function X2DataTemplate CreateSniperRifle_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.SNIPERRIFLE_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.SNIPERRIFLE_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.SNIPERRIFLE_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.SNIPERRIFLE_CG_SUPPLYCOST, default.SNIPERRIFLE_CG_ALLOYCOST, default.SNIPERRIFLE_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 20;
 	}
 
@@ -659,7 +606,6 @@ static function X2DataTemplate CreateSniperRifle_Coil_Template()
 static function X2DataTemplate CreateMarksmanRifle_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'MarksmanRifle_CG');
 
@@ -709,19 +655,7 @@ static function X2DataTemplate CreateMarksmanRifle_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.MARKSMANRIFLE_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.MARKSMANRIFLE_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.MARKSMANRIFLE_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.MARKSMANRIFLE_CG_SUPPLYCOST, default.MARKSMANRIFLE_CG_ALLOYCOST, default.MARKSMANRIFLE_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 20;
 	}
 
@@ -733,7 +667,6 @@ static function X2DataTemplate CreateMarksmanRifle_Coil_Template()
 static function X2DataTemplate CreatePistol_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Pistol_CG');
 	Template.WeaponPanelImage = "_Pistol";                       // used by the UI. Probably determines iconview of the weapon.
@@ -783,19 +716,7 @@ static function X2DataTemplate CreatePistol_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.PISTOL_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.PISTOL_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.PISTOL_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.PISTOL_CG_SUPPLYCOST, default.PISTOL_CG_ALLOYCOST, default.PISTOL_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 15;
 	}
 
@@ -808,7 +729,6 @@ static function X2DataTemplate CreatePistol_Coil_Template()
 static function X2DataTemplate CreateBullpup_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Bullpup_CG');
 
@@ -862,22 +782,9 @@ static function X2DataTemplate CreateBullpup_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.BULLPUP_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.BULLPUP_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.BULLPUP_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.BULLPUP_CG_SUPPLYCOST, default.BULLPUP_CG_ALLOYCOST, default.BULLPUP_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 15;
 	}
-
 
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
@@ -887,7 +794,6 @@ static function X2DataTemplate CreateBullpup_Coil_Template()
 static function X2DataTemplate CreateVektor_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'VektorRifle_CG');
 
@@ -941,22 +847,9 @@ static function X2DataTemplate CreateVektor_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.VEKTORRIFLE_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.VEKTORRIFLE_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.VEKTORRIFLE_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.VEKTORRIFLE_CG_SUPPLYCOST, default.VEKTORRIFLE_CG_ALLOYCOST, default.VEKTORRIFLE_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 15;
 	}
-
 
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
@@ -966,7 +859,6 @@ static function X2DataTemplate CreateVektor_Coil_Template()
 static function X2DataTemplate CreateSidearm_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Sidearm_CG');
 
@@ -1019,19 +911,7 @@ static function X2DataTemplate CreateSidearm_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.SIDEARM_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.SIDEARM_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.SIDEARM_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.SIDEARM_CG_SUPPLYCOST, default.SIDEARM_CG_ALLOYCOST, default.SIDEARM_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 15;
 	}
 
@@ -1045,7 +925,6 @@ static function X2DataTemplate CreateSidearm_Coil_Template()
 static function X2DataTemplate CreateSparkRifle_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SparkRifle_CG');
 
@@ -1091,22 +970,9 @@ static function X2DataTemplate CreateSparkRifle_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.SPARKRIFLE_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.SPARKRIFLE_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.SPARKRIFLE_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.SPARKRIFLE_CG_SUPPLYCOST, default.SPARKRIFLE_CG_ALLOYCOST, default.SPARKRIFLE_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 15;
 	}
-
 
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
