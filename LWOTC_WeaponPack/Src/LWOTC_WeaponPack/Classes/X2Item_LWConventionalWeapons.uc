@@ -138,6 +138,7 @@ static function X2DataTemplate CreateTemplate_CARBINE_Conventional()
 
 	Template.Abilities.AddItem('CARBINE_CV_StatBonus');
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_CARBINEAbilities'.default.CARBINE_CONVENTIONAL_MOBILITY_BONUS);
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.OffenseStat, eStat_Offense, class'X2Ability_CARBINEAbilities'.default.CARBINE_CONVENTIONAL_AIM_BONUS);
 
 	Template.RangeAccuracy = default.MIDSHORT_CONVENTIONAL_RANGE;
 	Template.BaseDamage = default.CARBINE_CONVENTIONAL_BASEDAMAGE;

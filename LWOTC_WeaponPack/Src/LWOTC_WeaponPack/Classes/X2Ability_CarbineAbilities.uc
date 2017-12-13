@@ -15,11 +15,11 @@ var config int CARBINE_COIL_MOBILITY_BONUS;
 var config int CARBINE_BEAM_MOBILITY_BONUS;
 
 // *****Aim bonuses for CARBINEs
-var config float CARBINE_CONVENTIONAL_AimBonus;
-var config float CARBINE_LASER_AimBonus;
-var config float CARBINE_MAGNETIC_AimBonus;
-var config float CARBINE_COIL_AimBonus;
-var config float CARBINE_BEAM_AimBonus;
+var config float CARBINE_CONVENTIONAL_AIM_BONUS;
+var config float CARBINE_LASER_AIM_BONUS;
+var config float CARBINE_MAGNETIC_AIM_BONUS;
+var config float CARBINE_COIL_AIM_BONUS;
+var config float CARBINE_BEAM_AIM_BONUS;
 
 /// Creates the abilities that add passive Mobility and aim for CARBINEs
 static function array<X2DataTemplate> CreateTemplates()
@@ -59,7 +59,7 @@ static function X2AbilityTemplate AddCARBINEConventionalBonusAbility()
 	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
 	PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, "", "", Template.IconImage, false,,Template.AbilitySourceName);
 	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.CARBINE_CONVENTIONAL_MOBILITY_BONUS);
-	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Offense, default.CARBINE_CONVENTIONAL_AimBonus);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Offense, default.CARBINE_CONVENTIONAL_AIM_BONUS);
 	Template.AddTargetEffect(PersistentStatChangeEffect);
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
