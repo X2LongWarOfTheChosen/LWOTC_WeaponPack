@@ -645,7 +645,7 @@ static function X2DataTemplate CreateTemplate_MarksmanRifle_Laser()
 	Template.WeaponCat = 'sniper_rifle';
 	Template.WeaponTech = 'beam'; //'pulse'; // TODO: fix up any effects that rely on hard-coded techs
 	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///UILibrary_LW_LaserPack.LaserRifle_Base";
+	Template.strImage = "img:///" $ default.MarksmanRifle_Laser_ImagePath;
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
 	Template.Tier = 2;
@@ -670,7 +670,7 @@ static function X2DataTemplate CreateTemplate_MarksmanRifle_Laser()
 	// This all the resources; sounds, animations, models, physics, the works.
 	// TODO : update for Sniper Rifle laser model and default attachments
 		// This all the resources; sounds, animations, models, physics, the works.
-	Template.GameArchetype = "LWAssaultRifle_LS.Archetype.WP_AssaultRifle_LS";
+	Template.GameArchetype = "LWSniperRifle_LS.Archetype.WP_SniperRifle_LS";
 
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
 	Template.AddDefaultAttachment('Mag', "LWAttachments_LS.Meshes.SK_Laser_Mag_A", , "img:///UILibrary_LW_LaserPack.LaserRifle_MagA");
