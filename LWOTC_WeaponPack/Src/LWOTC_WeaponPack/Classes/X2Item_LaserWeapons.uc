@@ -12,13 +12,15 @@ class X2Item_LaserWeapons extends X2Item config(LW_WeaponPack);
 var config WeaponDamageValue ASSAULTRIFLE_LASER_BASEDAMAGE;
 var config WeaponDamageValue BATTLERIFLE_LASER_BASEDAMAGE;
 var config WeaponDamageValue SMG_LASER_BASEDAMAGE;
-var config WeaponDamageValue LMG_LASER_BASEDAMAGE;
+var config WeaponDamageValue CANNON_LASER_BASEDAMAGE;
 var config WeaponDamageValue SHOTGUN_LASER_BASEDAMAGE;
 var config WeaponDamageValue SNIPERRIFLE_LASER_BASEDAMAGE;
 var config WeaponDamageValue MARKSMANRIFLE_LASER_BASEDAMAGE;
 var config WeaponDamageValue PISTOL_LASER_BASEDAMAGE;
 var config WeaponDamageValue BULLPUP_LASER_BASEDAMAGE;
 var config WeaponDamageValue VEKTORRIFLE_LASER_BASEDAMAGE;
+var config WeaponDamageValue SIDEARM_LASER_BASEDAMAGE;
+var config WeaponDamageValue SPARKRIFLE_LASER_BASEDAMAGE;
 
 // ***** Core properties and variables for weapons *****
 var config int ASSAULTRIFLE_LASER_AIM;
@@ -26,7 +28,6 @@ var config int ASSAULTRIFLE_LASER_CRITCHANCE;
 var config int ASSAULTRIFLE_LASER_ICLIPSIZE;
 var config int ASSAULTRIFLE_LASER_ISOUNDRANGE;
 var config int ASSAULTRIFLE_LASER_IENVIRONMENTDAMAGE;
-var config int ASSAULTRIFLE_LASER_ISUPPLIES;
 var config int ASSAULTRIFLE_LASER_TRADINGPOSTVALUE;
 var config int ASSAULTRIFLE_LASER_IPOINTS;
 var config int ASSAULTRIFLE_LASER_UPGRADESLOTS;
@@ -36,7 +37,6 @@ var config int BATTLERIFLE_LASER_CRITCHANCE;
 var config int BATTLERIFLE_LASER_ICLIPSIZE;
 var config int BATTLERIFLE_LASER_ISOUNDRANGE;
 var config int BATTLERIFLE_LASER_IENVIRONMENTDAMAGE;
-var config int BATTLERIFLE_LASER_ISUPPLIES;
 var config int BATTLERIFLE_LASER_TRADINGPOSTVALUE;
 var config int BATTLERIFLE_LASER_IPOINTS;
 var config int BATTLERIFLE_LASER_UPGRADESLOTS;
@@ -46,27 +46,24 @@ var config int SMG_LASER_CRITCHANCE;
 var config int SMG_LASER_ICLIPSIZE;
 var config int SMG_LASER_ISOUNDRANGE;
 var config int SMG_LASER_IENVIRONMENTDAMAGE;
-var config int SMG_LASER_ISUPPLIES;
 var config int SMG_LASER_TRADINGPOSTVALUE;
 var config int SMG_LASER_IPOINTS;
 var config int SMG_LASER_UPGRADESLOTS;
 
-var config int LMG_LASER_AIM;
-var config int LMG_LASER_CRITCHANCE;
-var config int LMG_LASER_ICLIPSIZE;
-var config int LMG_LASER_ISOUNDRANGE;
-var config int LMG_LASER_IENVIRONMENTDAMAGE;
-var config int LMG_LASER_ISUPPLIES;
-var config int LMG_LASER_TRADINGPOSTVALUE;
-var config int LMG_LASER_IPOINTS;
-var config int LMG_LASER_UPGRADESLOTS;
+var config int CANNON_LASER_AIM;
+var config int CANNON_LASER_CRITCHANCE;
+var config int CANNON_LASER_ICLIPSIZE;
+var config int CANNON_LASER_ISOUNDRANGE;
+var config int CANNON_LASER_IENVIRONMENTDAMAGE;
+var config int CANNON_LASER_TRADINGPOSTVALUE;
+var config int CANNON_LASER_IPOINTS;
+var config int CANNON_LASER_UPGRADESLOTS;
 
 var config int SHOTGUN_LASER_AIM;
 var config int SHOTGUN_LASER_CRITCHANCE;
 var config int SHOTGUN_LASER_ICLIPSIZE;
 var config int SHOTGUN_LASER_ISOUNDRANGE;
 var config int SHOTGUN_LASER_IENVIRONMENTDAMAGE;
-var config int SHOTGUN_LASER_ISUPPLIES;
 var config int SHOTGUN_LASER_TRADINGPOSTVALUE;
 var config int SHOTGUN_LASER_IPOINTS;
 var config int SHOTGUN_LASER_UPGRADESLOTS;
@@ -76,7 +73,6 @@ var config int SNIPERRIFLE_LASER_CRITCHANCE;
 var config int SNIPERRIFLE_LASER_ICLIPSIZE;
 var config int SNIPERRIFLE_LASER_ISOUNDRANGE;
 var config int SNIPERRIFLE_LASER_IENVIRONMENTDAMAGE;
-var config int SNIPERRIFLE_LASER_ISUPPLIES;
 var config int SNIPERRIFLE_LASER_TRADINGPOSTVALUE;
 var config int SNIPERRIFLE_LASER_IPOINTS;
 var config int SNIPERRIFLE_LASER_UPGRADESLOTS;
@@ -86,7 +82,6 @@ var config int MARKSMANRIFLE_LASER_CRITCHANCE;
 var config int MARKSMANRIFLE_LASER_ICLIPSIZE;
 var config int MARKSMANRIFLE_LASER_ISOUNDRANGE;
 var config int MARKSMANRIFLE_LASER_IENVIRONMENTDAMAGE;
-var config int MARKSMANRIFLE_LASER_ISUPPLIES;
 var config int MARKSMANRIFLE_LASER_TRADINGPOSTVALUE;
 var config int MARKSMANRIFLE_LASER_IPOINTS;
 var config int MARKSMANRIFLE_LASER_UPGRADESLOTS;
@@ -96,7 +91,6 @@ var config int PISTOL_LASER_CRITCHANCE;
 var config int PISTOL_LASER_ICLIPSIZE;
 var config int PISTOL_LASER_ISOUNDRANGE;
 var config int PISTOL_LASER_IENVIRONMENTDAMAGE;
-var config int PISTOL_LASER_ISUPPLIES;
 var config int PISTOL_LASER_TRADINGPOSTVALUE;
 var config int PISTOL_LASER_IPOINTS;
 var config int PISTOL_LASER_UPGRADESLOTS;
@@ -106,7 +100,6 @@ var config int BULLPUP_LASER_CRITCHANCE;
 var config int BULLPUP_LASER_ICLIPSIZE;
 var config int BULLPUP_LASER_ISOUNDRANGE;
 var config int BULLPUP_LASER_IENVIRONMENTDAMAGE;
-var config int BULLPUP_LASER_ISUPPLIES;
 var config int BULLPUP_LASER_TRADINGPOSTVALUE;
 var config int BULLPUP_LASER_IPOINTS;
 var config int BULLPUP_LASER_UPGRADESLOTS;
@@ -119,6 +112,24 @@ var config int VEKTORRIFLE_LASER_IENVIRONMENTDAMAGE;
 var config int VEKTORRIFLE_LASER_TRADINGPOSTVALUE;
 var config int VEKTORRIFLE_LASER_IPOINTS;
 var config int VEKTORRIFLE_LASER_UPGRADESLOTS;
+
+var config int SIDEARM_LASER_AIM;
+var config int SIDEARM_LASER_CRITCHANCE;
+var config int SIDEARM_LASER_ICLIPSIZE;
+var config int SIDEARM_LASER_ISOUNDRANGE;
+var config int SIDEARM_LASER_IENVIRONMENTDAMAGE;
+var config int SIDEARM_LASER_TRADINGPOSTVALUE;
+var config int SIDEARM_LASER_IPOINTS;
+var config int SIDEARM_LASER_UPGRADESLOTS;
+
+var config int SPARKRIFLE_LASER_AIM;
+var config int SPARKRIFLE_LASER_CRITCHANCE;
+var config int SPARKRIFLE_LASER_ICLIPSIZE;
+var config int SPARKRIFLE_LASER_ISOUNDRANGE;
+var config int SPARKRIFLE_LASER_IENVIRONMENTDAMAGE;
+var config int SPARKRIFLE_LASER_TRADINGPOSTVALUE;
+var config int SPARKRIFLE_LASER_IPOINTS;
+var config int SPARKRIFLE_LASER_UPGRADESLOTS;
 
 var config array<int> SHORT_LASER_RANGE;
 var config array<int> MIDSHORT_LASER_RANGE;
@@ -167,6 +178,14 @@ var config int VEKTORRIFLE_LS_SUPPLYCOST;
 var config int VEKTORRIFLE_LS_ALLOYCOST;
 var config int VEKTORRIFLE_LS_ELERIUMCOST;
 
+var config int SIDEARM_LS_SUPPLYCOST;
+var config int SIDEARM_LS_ALLOYCOST;
+var config int SIDEARM_LS_ELERIUMCOST;
+
+var config int SPARKRIFLE_LS_SUPPLYCOST;
+var config int SPARKRIFLE_LS_ALLOYCOST;
+var config int SPARKRIFLE_LS_ELERIUMCOST;
+
 var config string AssaultRifle_Laser_ImagePath;
 var config string BattleRifle_Laser_ImagePath;
 var config string SMG_Laser_ImagePath;
@@ -175,9 +194,10 @@ var config string Shotgun_Laser_ImagePath;
 var config string SniperRifle_Laser_ImagePath;
 var config string MarksmanRifle_Laser_ImagePath;
 var config string Pistol_Laser_ImagePath;
-var config string Sword_Laser_ImagePath;
 var config string Bullpup_Laser_ImagePath;
 var config string VektorRifle_Laser_ImagePath;
+var config string Sidearm_Laser_ImagePath;
+var config string SparkRifle_Laser_ImagePath;
 
 static function array<X2DataTemplate> CreateTemplates()
 {
@@ -194,8 +214,41 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateTemplate_Pistol_Laser());
 	Weapons.AddItem(CreateTemplate_Bullpup_Laser());
 	Weapons.AddItem(CreateTemplate_Vektor_Laser());
+	Weapons.AddItem(CreateTemplate_Sidearm_Laser());
+	Weapons.AddItem(CreateTemplate_SparkRifle_Laser());
 
 	return Weapons;
+}
+
+defaultproperties
+{
+	bShouldCreateDifficultyVariants = true
+}
+
+static function CreateTemplateCost(out X2WeaponTemplate Template, int supplyCost, int alloyCost, int eleriumCost)
+{
+	local ArtifactCost Resources;
+
+	if (supplyCost > 0)
+	{
+		Resources.ItemTemplateName = 'Supplies';
+		Resources.Quantity = supplyCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
+
+	if (alloyCost > 0)
+	{
+		Resources.ItemTemplateName = 'AlienAlloy';
+		Resources.Quantity = alloyCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
+
+	if (eleriumCost > 0)
+	{
+		Resources.ItemTemplateName = 'EleriumDust';
+		Resources.Quantity = eleriumCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
 }
 
 // **********************************************************************************************************
@@ -205,7 +258,6 @@ static function array<X2DataTemplate> CreateTemplates()
 static function X2DataTemplate CreateTemplate_AssaultRifle_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'AssaultRifle_LS');
 
@@ -224,7 +276,7 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Laser()
 	Template.iClipSize = default.ASSAULTRIFLE_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.ASSAULTRIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.ASSAULTRIFLE_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.ASSAULTRIFLE_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.ASSAULTRIFLE_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -257,21 +309,8 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.ASSAULTRIFLE_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.ASSAULTRIFLE_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.ASSAULTRIFLE_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.ASSAULTRIFLE_LS_SUPPLYCOST, default.ASSAULTRIFLE_LS_ALLOYCOST, default.ASSAULTRIFLE_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 5;
-
 	}
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type
@@ -282,7 +321,6 @@ static function X2DataTemplate CreateTemplate_AssaultRifle_Laser()
 static function X2DataTemplate CreateTemplate_BattleRifle_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'BattleRifle_LS');
 
@@ -301,7 +339,7 @@ static function X2DataTemplate CreateTemplate_BattleRifle_Laser()
 	Template.iClipSize = default.BATTLERIFLE_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.BATTLERIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.BATTLERIFLE_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.BATTLERIFLE_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.BATTLERIFLE_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -334,19 +372,7 @@ static function X2DataTemplate CreateTemplate_BattleRifle_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.BATTLERIFLE_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.BATTLERIFLE_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.BATTLERIFLE_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.BATTLERIFLE_LS_SUPPLYCOST, default.BATTLERIFLE_LS_ALLOYCOST, default.BATTLERIFLE_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 5;
 
 	}
@@ -359,7 +385,6 @@ static function X2DataTemplate CreateTemplate_BattleRifle_Laser()
 static function X2DataTemplate CreateTemplate_SMG_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SMG_LS');
 
@@ -381,7 +406,7 @@ static function X2DataTemplate CreateTemplate_SMG_Laser()
 	Template.iClipSize = default.SMG_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.SMG_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SMG_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SMG_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.SMG_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -414,21 +439,8 @@ static function X2DataTemplate CreateTemplate_SMG_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.SMG_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.SMG_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.SMG_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.SMG_LS_SUPPLYCOST, default.SMG_LS_ALLOYCOST, default.SMG_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 5;
-
 	}
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type
@@ -439,7 +451,6 @@ static function X2DataTemplate CreateTemplate_SMG_Laser()
 static function X2DataTemplate CreateTemplate_Cannon_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Cannon_LS');
 
@@ -452,14 +463,14 @@ static function X2DataTemplate CreateTemplate_Cannon_Laser()
 	Template.Tier = 2;
 
 	Template.RangeAccuracy = default.MEDIUM_LASER_RANGE;
-	Template.BaseDamage = default.LMG_LASER_BASEDAMAGE;
-	Template.Aim = default.LMG_LASER_AIM;
-	Template.CritChance = default.LMG_LASER_CRITCHANCE;
-	Template.iClipSize = default.LMG_LASER_ICLIPSIZE;
-	Template.iSoundRange = default.LMG_LASER_ISOUNDRANGE;
-	Template.iEnvironmentDamage = default.LMG_LASER_IENVIRONMENTDAMAGE;
-
-	Template.NumUpgradeSlots = default.LMG_LASER_UPGRADESLOTS;
+	Template.BaseDamage = default.CANNON_LASER_BASEDAMAGE;
+	Template.Aim = default.CANNON_LASER_AIM;
+	Template.CritChance = default.CANNON_LASER_CRITCHANCE;
+	Template.iClipSize = default.CANNON_LASER_ICLIPSIZE;
+	Template.iSoundRange = default.CANNON_LASER_ISOUNDRANGE;
+	Template.iEnvironmentDamage = default.CANNON_LASER_IENVIRONMENTDAMAGE;
+	Template.TradingPostValue = default.CANNON_LASER_TRADINGPOSTVALUE;
+	Template.NumUpgradeSlots = default.CANNON_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
@@ -489,21 +500,8 @@ static function X2DataTemplate CreateTemplate_Cannon_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[1]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.CANNON_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.CANNON_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.CANNON_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.CANNON_LS_SUPPLYCOST, default.CANNON_LS_ALLOYCOST, default.CANNON_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 10;
-
 	}
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type
@@ -514,7 +512,6 @@ static function X2DataTemplate CreateTemplate_Cannon_Laser()
 static function X2DataTemplate CreateTemplate_Shotgun_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Shotgun_LS');
 
@@ -533,7 +530,7 @@ static function X2DataTemplate CreateTemplate_Shotgun_Laser()
 	Template.iClipSize = default.SHOTGUN_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.SHOTGUN_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SHOTGUN_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SHOTGUN_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.SHOTGUN_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -565,19 +562,7 @@ static function X2DataTemplate CreateTemplate_Shotgun_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.SHOTGUN_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.SHOTGUN_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.SHOTGUN_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.SHOTGUN_LS_SUPPLYCOST, default.SHOTGUN_LS_ALLOYCOST, default.SHOTGUN_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 10;
 	}
 
@@ -590,7 +575,6 @@ static function X2DataTemplate CreateTemplate_Shotgun_Laser()
 static function X2DataTemplate CreateTemplate_SniperRifle_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SniperRifle_LS');
 
@@ -609,7 +593,7 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Laser()
 	Template.iClipSize = default.SNIPERRIFLE_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.SNIPERRIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SNIPERRIFLE_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SNIPERRIFLE_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.SNIPERRIFLE_LASER_UPGRADESLOTS;
 	Template.iTypicalActionCost = 2;
 
@@ -643,19 +627,7 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[1]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.SNIPERRIFLE_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.SNIPERRIFLE_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.SNIPERRIFLE_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.SNIPERRIFLE_LS_SUPPLYCOST, default.SNIPERRIFLE_LS_ALLOYCOST, default.SNIPERRIFLE_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 10;
 	}
 
@@ -667,14 +639,13 @@ static function X2DataTemplate CreateTemplate_SniperRifle_Laser()
 static function X2DataTemplate CreateTemplate_MarksmanRifle_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'MarksmanRifle_LS');
 
 	Template.WeaponCat = 'sniper_rifle';
 	Template.WeaponTech = 'beam'; //'pulse'; // TODO: fix up any effects that rely on hard-coded techs
 	Template.ItemCat = 'weapon';
-	Template.strImage = "img:///UILibrary_LW_LaserPack.LaserRifle_Base";
+	Template.strImage = "img:///" $ default.MarksmanRifle_Laser_ImagePath;
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
 	Template.Tier = 2;
@@ -687,6 +658,7 @@ static function X2DataTemplate CreateTemplate_MarksmanRifle_Laser()
 	Template.iSoundRange = default.MARKSMANRIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.MARKSMANRIFLE_LASER_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = default.MARKSMANRIFLE_LASER_UPGRADESLOTS;
+	Template.TradingPostValue = default.MARKSMANRIFLE_LASER_TRADINGPOSTVALUE;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
 	Template.Abilities.AddItem('StandardShot');
@@ -698,7 +670,7 @@ static function X2DataTemplate CreateTemplate_MarksmanRifle_Laser()
 	// This all the resources; sounds, animations, models, physics, the works.
 	// TODO : update for Sniper Rifle laser model and default attachments
 		// This all the resources; sounds, animations, models, physics, the works.
-	Template.GameArchetype = "LWAssaultRifle_LS.Archetype.WP_AssaultRifle_LS";
+	Template.GameArchetype = "LWSniperRifle_LS.Archetype.WP_SniperRifle_LS";
 
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
 	Template.AddDefaultAttachment('Mag', "LWAttachments_LS.Meshes.SK_Laser_Mag_A", , "img:///UILibrary_LW_LaserPack.LaserRifle_MagA");
@@ -720,19 +692,7 @@ static function X2DataTemplate CreateTemplate_MarksmanRifle_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[1]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.MARKSMANRIFLE_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.MARKSMANRIFLE_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.MARKSMANRIFLE_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.MARKSMANRIFLE_LS_SUPPLYCOST, default.MARKSMANRIFLE_LS_ALLOYCOST, default.MARKSMANRIFLE_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 10;
 	}
 
@@ -744,7 +704,6 @@ static function X2DataTemplate CreateTemplate_MarksmanRifle_Laser()
 static function X2DataTemplate CreateTemplate_Pistol_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Pistol_LS');
 	Template.WeaponPanelImage = "_Pistol";                       // used by the UI. Probably determines iconview of the weapon.
@@ -763,8 +722,8 @@ static function X2DataTemplate CreateTemplate_Pistol_Laser()
 	Template.iClipSize = default.PISTOL_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.PISTOL_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.PISTOL_LASER_IENVIRONMENTDAMAGE;
-
-	Template.NumUpgradeSlots = 2;
+	Template.TradingPostValue = default.PISTOL_LASER_TRADINGPOSTVALUE;
+	Template.NumUpgradeSlots = default.PISTOL_LASER_UPGRADESLOTS;
 
 	Template.OverwatchActionPoint = class'X2CharacterTemplateManager'.default.PistolOverwatchReserveActionPoint;
 	Template.InfiniteAmmo = true;
@@ -794,21 +753,8 @@ static function X2DataTemplate CreateTemplate_Pistol_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.PISTOL_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.PISTOL_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.PISTOL_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.PISTOL_LS_SUPPLYCOST, default.PISTOL_LS_ALLOYCOST, default.PISTOL_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 10;
-
 	}
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type
@@ -821,15 +767,13 @@ static function X2DataTemplate CreateTemplate_Pistol_Laser()
 static function X2DataTemplate CreateTemplate_Bullpup_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Bullpup_LS');
 
 	Template.WeaponCat = 'bullpup';
 	Template.WeaponTech = 'beam'; //'pulse'; // TODO: fix up any effects that rely on hard-coded techs
 	Template.ItemCat = 'weapon';
-	// Placeholder: mag bullpup, replace with assets once completed
-	Template.strImage = "img:///UILibrary_XPACK_Common.MagSMG_Base";
+	Template.strImage = "img:///" $ default.Bullpup_Laser_ImagePath;
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
 	Template.Tier = 2;
@@ -841,7 +785,7 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser()
 	Template.iClipSize = default.BULLPUP_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.BULLPUP_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.BULLPUP_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.BULLPUP_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.BULLPUP_LASER_UPGRADESLOTS;
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -878,21 +822,8 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.BULLPUP_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.BULLPUP_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.BULLPUP_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.BULLPUP_LS_SUPPLYCOST, default.BULLPUP_LS_ALLOYCOST, default.BULLPUP_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 5;
-
 	}
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type
@@ -903,7 +834,6 @@ static function X2DataTemplate CreateTemplate_Bullpup_Laser()
 static function X2DataTemplate CreateTemplate_Vektor_Laser()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'VektorRifle_LS');
 
@@ -922,7 +852,7 @@ static function X2DataTemplate CreateTemplate_Vektor_Laser()
 	Template.iClipSize = default.VEKTORRIFLE_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.VEKTORRIFLE_LASER_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.VEKTORRIFLE_LASER_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.VEKTORRIFLE_LASER_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.VEKTORRIFLE_LASER_UPGRADESLOTS; 
 
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
@@ -958,21 +888,8 @@ static function X2DataTemplate CreateTemplate_Vektor_Laser()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.VEKTORRIFLE_LS_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.VEKTORRIFLE_LS_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.VEKTORRIFLE_LS_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.VEKTORRIFLE_LS_SUPPLYCOST, default.VEKTORRIFLE_LS_ALLOYCOST, default.VEKTORRIFLE_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 5;
-
 	}
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type
@@ -980,7 +897,128 @@ static function X2DataTemplate CreateTemplate_Vektor_Laser()
 	return Template;
 }
 
-defaultproperties
+static function X2DataTemplate CreateTemplate_Sidearm_Laser()
 {
-	bShouldCreateDifficultyVariants = true
+	local X2WeaponTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Sidearm_LS');
+
+	Template.WeaponCat = 'sidearm';
+	Template.WeaponTech = 'beam'; //'pulse'; // TODO: fix up any effects that rely on hard-coded techs
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///" $ default.Sidearm_Laser_ImagePath;
+	Template.WeaponPanelImage = "_Pistol";                       // used by the UI. Probably determines iconview of the weapon.
+	Template.EquipSound = "Secondary_Weapon_Equip_Beam";
+	Template.Tier = 2;
+
+	Template.RangeAccuracy = default.SHORT_LASER_RANGE;
+	Template.BaseDamage = default.SIDEARM_LASER_BASEDAMAGE;
+	Template.Aim = default.SIDEARM_LASER_AIM;
+	Template.CritChance = default.SIDEARM_LASER_CRITCHANCE;
+	Template.iClipSize = default.SIDEARM_LASER_ICLIPSIZE;
+	Template.iSoundRange = default.SIDEARM_LASER_ISOUNDRANGE;
+	Template.iEnvironmentDamage = default.SIDEARM_LASER_IENVIRONMENTDAMAGE;
+	Template.TradingPostValue = default.SIDEARM_LASER_TRADINGPOSTVALUE;
+	Template.NumUpgradeSlots = default.SIDEARM_LASER_UPGRADESLOTS;
+
+	Template.InfiniteAmmo = true;
+	Template.OverwatchActionPoint = class'X2CharacterTemplateManager'.default.PistolOverwatchReserveActionPoint;
+
+	Template.InventorySlot = eInvSlot_SecondaryWeapon;
+	Template.Abilities.AddItem('PistolStandardShot');
+	Template.Abilities.AddItem('PistolOverwatch');
+	Template.Abilities.AddItem('PistolOverwatchShot');
+	Template.Abilities.AddItem('PistolReturnFire');
+	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('Reload');
+
+	Template.SetAnimationNameForAbility('FanFire', 'FF_FireMultiShotConvA');
+
+	// This all the resources; sounds, animations, models, physics, the works.
+	// TODO: Placeholder, replace with assets when completed
+	Template.GameArchetype = "WP_TemplarAutoPistol_MG.WP_TemplarAutoPistol_MG";
+
+	Template.iPhysicsImpulse = 5;
+
+	Template.StartingItem = false;
+
+	Template.CanBeBuilt = !class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
+
+	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
+	{
+		Template.CreatorTemplateName = 'Sidearm_LS_Schematic'; // The schematic which creates this item
+		Template.BaseItem = 'Sidearm_CV'; // Which item this will be upgraded from
+	}
+	else
+	{
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
+		CreateTemplateCost(Template, default.SIDEARM_LS_SUPPLYCOST, default.SIDEARM_LS_ALLOYCOST, default.SIDEARM_LS_ELERIUMCOST);
+		Template.Requirements.RequiredEngineeringScore = 5;
+	}
+
+	Template.bHideClipSizeStat = true;
+
+	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type
+
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_SparkRifle_Laser()
+{
+	local X2WeaponTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SparkRifle_LS');
+
+	Template.WeaponCat = 'sparkrifle';
+	Template.WeaponTech = 'beam'; //'pulse'; // TODO: fix up any effects that rely on hard-coded techs
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///" $ default.SparkRifle_Laser_ImagePath;
+	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
+	Template.EquipSound = "Beam_Weapon_Equip";
+	Template.Tier = 2;
+
+	Template.RangeAccuracy = default.MEDIUM_LASER_RANGE;
+	Template.BaseDamage = default.SPARKRIFLE_LASER_BASEDAMAGE;
+	Template.Aim = default.SPARKRIFLE_LASER_AIM;
+	Template.CritChance = default.SPARKRIFLE_LASER_CRITCHANCE;
+	Template.iClipSize = default.SPARKRIFLE_LASER_ICLIPSIZE;
+	Template.iSoundRange = default.SPARKRIFLE_LASER_ISOUNDRANGE;
+	Template.iEnvironmentDamage = default.SPARKRIFLE_LASER_IENVIRONMENTDAMAGE;
+	Template.TradingPostValue = default.SPARKRIFLE_LASER_TRADINGPOSTVALUE;
+	Template.NumUpgradeSlots = default.SPARKRIFLE_LASER_UPGRADESLOTS;
+
+	Template.InventorySlot = eInvSlot_PrimaryWeapon;
+	Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('Overwatch');
+	Template.Abilities.AddItem('OverwatchShot');
+	Template.Abilities.AddItem('Reload');
+	Template.Abilities.AddItem('HotLoadAmmo');
+
+	// This all the resources; sounds, animations, models, physics, the works.
+	// TODO: Placeholder, replace with assets when completed
+	Template.GameArchetype = "DLC_3_WP_SparkRifle_MG.WP_SparkRifle_MG";
+	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
+
+	Template.iPhysicsImpulse = 5;
+	
+	Template.StartingItem = false;
+	Template.CanBeBuilt = !class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
+
+	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
+	{
+		Template.CreatorTemplateName = 'SparkRifle_LS_Schematic'; // The schematic which creates this item
+		Template.BaseItem = 'SparkRifle_CV'; // Which item this will be upgraded from
+	}
+	else
+	{
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
+		CreateTemplateCost(Template, default.SPARKRIFLE_LS_SUPPLYCOST, default.SPARKRIFLE_LS_ALLOYCOST, default.SPARKRIFLE_LS_ELERIUMCOST);
+		Template.Requirements.RequiredEngineeringScore = 5;
+	}
+
+	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type
+
+	return Template;
 }

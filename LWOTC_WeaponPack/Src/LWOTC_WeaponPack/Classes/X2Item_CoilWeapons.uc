@@ -10,6 +10,8 @@ var config WeaponDamageValue MARKSMANRIFLE_COIL_BASEDAMAGE;
 var config WeaponDamageValue PISTOL_COIL_BASEDAMAGE;
 var config WeaponDamageValue BULLPUP_COIL_BASEDAMAGE;
 var config WeaponDamageValue VEKTORRIFLE_COIL_BASEDAMAGE;
+var config WeaponDamageValue SIDEARM_COIL_BASEDAMAGE;
+var config WeaponDamageValue SPARKRIFLE_COIL_BASEDAMAGE;
 
 var config array<int> SHORT_COIL_RANGE;
 var config array<int> MIDSHORT_COIL_RANGE;
@@ -23,6 +25,8 @@ var config int ASSAULTRIFLE_COIL_CRITCHANCE;
 var config int ASSAULTRIFLE_COIL_ICLIPSIZE;
 var config int ASSAULTRIFLE_COIL_ISOUNDRANGE;
 var config int ASSAULTRIFLE_COIL_IENVIRONMENTDAMAGE;
+var config int ASSAULTRIFLE_COIL_TRADINGPOST;
+var config int ASSAULTRIFLE_COIL_IPOINTS;
 var config int ASSAULTRIFLE_COIL_UPGRADESLOTS;
 
 var config int BATTLERIFLE_COIL_AIM;
@@ -30,6 +34,8 @@ var config int BATTLERIFLE_COIL_CRITCHANCE;
 var config int BATTLERIFLE_COIL_ICLIPSIZE;
 var config int BATTLERIFLE_COIL_ISOUNDRANGE;
 var config int BATTLERIFLE_COIL_IENVIRONMENTDAMAGE;
+var config int BATTLERIFLE_COIL_TRADINGPOST;
+var config int BATTLERIFLE_COIL_IPOINTS;
 var config int BATTLERIFLE_COIL_UPGRADESLOTS;
 
 var config int SMG_COIL_AIM;
@@ -37,6 +43,8 @@ var config int SMG_COIL_CRITCHANCE;
 var config int SMG_COIL_ICLIPSIZE;
 var config int SMG_COIL_ISOUNDRANGE;
 var config int SMG_COIL_IENVIRONMENTDAMAGE;
+var config int SMG_COIL_TRADINGPOST;
+var config int SMG_COIL_IPOINTS;
 var config int SMG_COIL_UPGRADESLOTS;
 
 var config int CANNON_COIL_AIM;
@@ -44,6 +52,8 @@ var config int CANNON_COIL_CRITCHANCE;
 var config int CANNON_COIL_ICLIPSIZE;
 var config int CANNON_COIL_ISOUNDRANGE;
 var config int CANNON_COIL_IENVIRONMENTDAMAGE;
+var config int CANNON_COIL_TRADINGPOST;
+var config int CANNON_COIL_IPOINTS;
 var config int CANNON_COIL_UPGRADESLOTS;
 
 var config int SHOTGUN_COIL_AIM;
@@ -51,6 +61,8 @@ var config int SHOTGUN_COIL_CRITCHANCE;
 var config int SHOTGUN_COIL_ICLIPSIZE;
 var config int SHOTGUN_COIL_ISOUNDRANGE;
 var config int SHOTGUN_COIL_IENVIRONMENTDAMAGE;
+var config int SHOTGUN_COIL_TRADINGPOST;
+var config int SHOTGUN_COIL_IPOINTS;
 var config int SHOTGUN_COIL_UPGRADESLOTS;
 
 var config int SNIPERRIFLE_COIL_AIM;
@@ -58,6 +70,8 @@ var config int SNIPERRIFLE_COIL_CRITCHANCE;
 var config int SNIPERRIFLE_COIL_ICLIPSIZE;
 var config int SNIPERRIFLE_COIL_ISOUNDRANGE;
 var config int SNIPERRIFLE_COIL_IENVIRONMENTDAMAGE;
+var config int SNIPERRIFLE_COIL_TRADINGPOST;
+var config int SNIPERRIFLE_COIL_IPOINTS;
 var config int SNIPERRIFLE_COIL_UPGRADESLOTS;
 
 var config int MARKSMANRIFLE_COIL_AIM;
@@ -65,19 +79,26 @@ var config int MARKSMANRIFLE_COIL_CRITCHANCE;
 var config int MARKSMANRIFLE_COIL_ICLIPSIZE;
 var config int MARKSMANRIFLE_COIL_ISOUNDRANGE;
 var config int MARKSMANRIFLE_COIL_IENVIRONMENTDAMAGE;
+var config int MARKSMANRIFLE_COIL_TRADINGPOST;
+var config int MARKSMANRIFLE_COIL_IPOINTS;
 var config int MARKSMANRIFLE_COIL_UPGRADESLOTS;
 
 var config int PISTOL_COIL_AIM;
 var config int PISTOL_COIL_CRITCHANCE;
 var config int PISTOL_COIL_ICLIPSIZE;
 var config int PISTOL_COIL_ISOUNDRANGE;
+var config int PISTOL_COIL_TRADINGPOST;
+var config int PISTOL_COIL_IPOINTS;
 var config int PISTOL_COIL_IENVIRONMENTDAMAGE;
+var config int PISTOL_COIL_UPGRADESLOTS;
 
 var config int BULLPUP_COIL_AIM;
 var config int BULLPUP_COIL_CRITCHANCE;
 var config int BULLPUP_COIL_ICLIPSIZE;
 var config int BULLPUP_COIL_ISOUNDRANGE;
 var config int BULLPUP_COIL_IENVIRONMENTDAMAGE;
+var config int BULLPUP_COIL_TRADINGPOST;
+var config int BULLPUP_COIL_IPOINTS;
 var config int BULLPUP_COIL_UPGRADESLOTS;
 
 var config int VEKTORRIFLE_COIL_AIM;
@@ -89,13 +110,36 @@ var config int VEKTORRIFLE_COIL_TRADINGPOSTVALUE;
 var config int VEKTORRIFLE_COIL_IPOINTS;
 var config int VEKTORRIFLE_COIL_UPGRADESLOTS;
 
+var config int SIDEARM_COIL_AIM;
+var config int SIDEARM_COIL_CRITCHANCE;
+var config int SIDEARM_COIL_ICLIPSIZE;
+var config int SIDEARM_COIL_ISOUNDRANGE;
+var config int SIDEARM_COIL_IENVIRONMENTDAMAGE;
+var config int SIDEARM_COIL_TRADINGPOSTVALUE;
+var config int SIDEARM_COIL_IPOINTS;
+var config int SIDEARM_COIL_UPGRADESLOTS;
+
+var config int SPARKRIFLE_COIL_AIM;
+var config int SPARKRIFLE_COIL_CRITCHANCE;
+var config int SPARKRIFLE_COIL_ICLIPSIZE;
+var config int SPARKRIFLE_COIL_ISOUNDRANGE;
+var config int SPARKRIFLE_COIL_IENVIRONMENTDAMAGE;
+var config int SPARKRIFLE_COIL_TRADINGPOSTVALUE;
+var config int SPARKRIFLE_COIL_IPOINTS;
+var config int SPARKRIFLE_COIL_UPGRADESLOTS;
+
 var config string AssaultRifle_Coil_ImagePath;
+var config string BattleRifle_Coil_ImagePath;
 var config string SMG_Coil_ImagePath;
 var config string Cannon_Coil_ImagePath;
 var config string Shotgun_Coil_ImagePath;
 var config string SniperRifle_Coil_ImagePath;
+var config string MarksmanRifle_Coil_ImagePath;
+var config string Pistol_Coil_ImagePath;
 var config string Bullpup_Coil_ImagePath;
 var config string VektorRifle_Coil_ImagePath;
+var config string Sidearm_Coil_ImagePath;
+var config string SparkRifle_Coil_ImagePath;
 
 // if not using templates
 var config int ASSAULTRIFLE_CG_SUPPLYCOST;
@@ -138,6 +182,14 @@ var config int VEKTORRIFLE_CG_SUPPLYCOST;
 var config int VEKTORRIFLE_CG_ALLOYCOST;
 var config int VEKTORRIFLE_CG_ELERIUMCOST;
 
+var config int SIDEARM_CG_SUPPLYCOST;
+var config int SIDEARM_CG_ALLOYCOST;
+var config int SIDEARM_CG_ELERIUMCOST;
+
+var config int SPARKRIFLE_CG_SUPPLYCOST;
+var config int SPARKRIFLE_CG_ALLOYCOST;
+var config int SPARKRIFLE_CG_ELERIUMCOST;
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Weapons;
@@ -152,14 +204,41 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreatePistol_Coil_Template());
 	Weapons.AddItem(CreateBullpup_Coil_Template());
 	Weapons.AddItem(CreateVektor_Coil_Template());
+	Weapons.AddItem(CreateSidearm_Coil_Template());
+	Weapons.AddItem(CreateSparkRifle_Coil_Template());
 
 	return Weapons;
+}
+
+static function CreateTemplateCost(out X2WeaponTemplate Template, int supplyCost, int alloyCost, int eleriumCost)
+{
+	local ArtifactCost Resources;
+
+	if (supplyCost > 0)
+	{
+		Resources.ItemTemplateName = 'Supplies';
+		Resources.Quantity = supplyCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
+
+	if (alloyCost > 0)
+	{
+		Resources.ItemTemplateName = 'AlienAlloy';
+		Resources.Quantity = alloyCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
+
+	if (eleriumCost > 0)
+	{
+		Resources.ItemTemplateName = 'EleriumDust';
+		Resources.Quantity = eleriumCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
 }
 
 static function X2DataTemplate CreateAssaultRifle_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'AssaultRifle_CG');
 
@@ -178,7 +257,7 @@ static function X2DataTemplate CreateAssaultRifle_Coil_Template()
 	Template.iClipSize = default.ASSAULTRIFLE_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.ASSAULTRIFLE_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.ASSAULTRIFLE_COIL_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.ASSAULTRIFLE_COIL_TRADINGPOST;
 	Template.NumUpgradeSlots = default.ASSAULTRIFLE_COIL_UPGRADESLOTS;
 
 	Template.GameArchetype = "LWAssaultRifle_CG.Archetypes.WP_AssaultRifle_CG";
@@ -208,19 +287,7 @@ static function X2DataTemplate CreateAssaultRifle_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.ASSAULTRIFLE_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.ASSAULTRIFLE_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.ASSAULTRIFLE_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.ASSAULTRIFLE_CG_SUPPLYCOST, default.ASSAULTRIFLE_CG_ALLOYCOST, default.ASSAULTRIFLE_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 15;
 	}
 
@@ -232,14 +299,13 @@ static function X2DataTemplate CreateAssaultRifle_Coil_Template()
 static function X2DataTemplate CreateBattleRifle_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'BattleRifle_CG');
 
 	Template.WeaponCat = 'rifle';
 	Template.WeaponTech = 'coilgun_lw';
 	Template.ItemCat = 'weapon';
-	Template.strImage ="img:///UILibrary_LW_Overhaul.InventoryArt.CoilRifle_Base";
+	Template.strImage = "img:///" $ default.BattleRifle_Coil_ImagePath;
 	Template.WeaponPanelImage = "";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
 	Template.Tier = 4;
@@ -252,6 +318,7 @@ static function X2DataTemplate CreateBattleRifle_Coil_Template()
 	Template.iSoundRange = default.BATTLERIFLE_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.BATTLERIFLE_COIL_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = default.BATTLERIFLE_COIL_UPGRADESLOTS;
+	Template.TradingPostValue = default.BATTLERIFLE_COIL_TRADINGPOST;
 
 	Template.GameArchetype = "RM_BattleRiflePack.Archetypes.WP_BattleRifle_CG";
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
@@ -281,19 +348,7 @@ static function X2DataTemplate CreateBattleRifle_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.BATTLERIFLE_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.BATTLERIFLE_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.BATTLERIFLE_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.BATTLERIFLE_CG_SUPPLYCOST, default.BATTLERIFLE_CG_ALLOYCOST, default.BATTLERIFLE_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 15;
 	}
 
@@ -305,7 +360,6 @@ static function X2DataTemplate CreateBattleRifle_Coil_Template()
 static function X2DataTemplate CreateSMG_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SMG_CG');
 
@@ -326,7 +380,7 @@ static function X2DataTemplate CreateSMG_Coil_Template()
 	Template.iClipSize = default.SMG_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.SMG_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SMG_COIL_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SMG_COIL_TRADINGPOST;
 	Template.NumUpgradeSlots = default.SMG_COIL_UPGRADESLOTS;
 
 	Template.GameArchetype = "LWSMG_CG.Archetypes.WP_SMG_CG";
@@ -356,19 +410,7 @@ static function X2DataTemplate CreateSMG_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.SMG_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.SMG_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.SMG_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.SMG_CG_SUPPLYCOST, default.SMG_CG_ALLOYCOST, default.SMG_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 15;
 	}
 
@@ -381,7 +423,6 @@ static function X2DataTemplate CreateSMG_Coil_Template()
 static function X2DataTemplate CreateCannon_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Cannon_CG');
 
@@ -400,7 +441,7 @@ static function X2DataTemplate CreateCannon_Coil_Template()
 	Template.iClipSize = default.CANNON_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.CANNON_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.CANNON_COIL_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.CANNON_COIL_TRADINGPOST;
 	Template.NumUpgradeSlots = default.CANNON_COIL_UPGRADESLOTS;
 
 	Template.GameArchetype = "LWCannon_CG.Archetypes.WP_Cannon_CG";
@@ -431,22 +472,9 @@ static function X2DataTemplate CreateCannon_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.CANNON_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.CANNON_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.CANNON_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.CANNON_CG_SUPPLYCOST, default.CANNON_CG_ALLOYCOST, default.CANNON_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 20;
 	}
-
 
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
@@ -456,7 +484,6 @@ static function X2DataTemplate CreateCannon_Coil_Template()
 static function X2DataTemplate CreateShotgun_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Shotgun_CG');
 
@@ -475,7 +502,7 @@ static function X2DataTemplate CreateShotgun_Coil_Template()
 	Template.iClipSize = default.SHOTGUN_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.SHOTGUN_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SHOTGUN_COIL_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SHOTGUN_COIL_TRADINGPOST;
 	Template.NumUpgradeSlots = default.SHOTGUN_COIL_UPGRADESLOTS;
 
 	Template.GameArchetype = "LWShotgun_CG.Archetypes.WP_Shotgun_CG";
@@ -504,19 +531,7 @@ static function X2DataTemplate CreateShotgun_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.SHOTGUN_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.SHOTGUN_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.SHOTGUN_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.SHOTGUN_CG_SUPPLYCOST, default.SHOTGUN_CG_ALLOYCOST, default.SHOTGUN_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 20;
 
 	}
@@ -529,7 +544,6 @@ static function X2DataTemplate CreateShotgun_Coil_Template()
 static function X2DataTemplate CreateSniperRifle_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SniperRifle_CG');
 
@@ -549,7 +563,7 @@ static function X2DataTemplate CreateSniperRifle_Coil_Template()
 	Template.iClipSize = default.SNIPERRIFLE_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.SNIPERRIFLE_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.SNIPERRIFLE_COIL_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.SNIPERRIFLE_COIL_TRADINGPOST;
 	Template.NumUpgradeSlots = default.SNIPERRIFLE_COIL_UPGRADESLOTS;
 
 	Template.GameArchetype = "LWSniperRifle_CG.Archetypes.WP_SniperRifle_CG";
@@ -580,19 +594,7 @@ static function X2DataTemplate CreateSniperRifle_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.SNIPERRIFLE_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.SNIPERRIFLE_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.SNIPERRIFLE_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.SNIPERRIFLE_CG_SUPPLYCOST, default.SNIPERRIFLE_CG_ALLOYCOST, default.SNIPERRIFLE_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 20;
 	}
 
@@ -604,14 +606,13 @@ static function X2DataTemplate CreateSniperRifle_Coil_Template()
 static function X2DataTemplate CreateMarksmanRifle_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'MarksmanRifle_CG');
 
 	Template.WeaponCat = 'sniper_rifle';
 	Template.WeaponTech = 'coilgun_lw';
 	Template.ItemCat = 'weapon';
-	Template.strImage ="img:///" $ default.SniperRifle_Coil_ImagePath;
+	Template.strImage ="img:///" $ default.MarksmanRifle_Coil_ImagePath;
 	Template.WeaponPanelImage = "";
 	Template.EquipSound = "Magnetic_Weapon_Equip";
 	Template.Tier = 4;
@@ -624,6 +625,7 @@ static function X2DataTemplate CreateMarksmanRifle_Coil_Template()
 	Template.iSoundRange = default.MARKSMANRIFLE_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.MARKSMANRIFLE_COIL_IENVIRONMENTDAMAGE;
 	Template.NumUpgradeSlots = default.MARKSMANRIFLE_COIL_UPGRADESLOTS;
+	Template.TradingPostValue = default.MARKSMANRIFLE_COIL_TRADINGPOST;
 
 	Template.GameArchetype = "RM_BattleRiflePack.Archetypes.WP_BattleRifle_CG";
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
@@ -653,19 +655,7 @@ static function X2DataTemplate CreateMarksmanRifle_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.MARKSMANRIFLE_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.MARKSMANRIFLE_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.MARKSMANRIFLE_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.MARKSMANRIFLE_CG_SUPPLYCOST, default.MARKSMANRIFLE_CG_ALLOYCOST, default.MARKSMANRIFLE_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 20;
 	}
 
@@ -677,7 +667,6 @@ static function X2DataTemplate CreateMarksmanRifle_Coil_Template()
 static function X2DataTemplate CreatePistol_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Pistol_CG');
 	Template.WeaponPanelImage = "_Pistol";                       // used by the UI. Probably determines iconview of the weapon.
@@ -685,7 +674,7 @@ static function X2DataTemplate CreatePistol_Coil_Template()
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'pistol';
 	Template.WeaponTech = 'magnetic';
-	Template.strImage = "img:///UILibrary_LW_Coilguns.InventoryArt.Inv_Coil_Pistol";
+	Template.strImage = "img:///" $ default.Pistol_Coil_ImagePath;
 	Template.EquipSound = "Secondary_Weapon_Equip_Beam"; // TODO: update with new equip sound
 	Template.Tier = 4;
 
@@ -696,8 +685,8 @@ static function X2DataTemplate CreatePistol_Coil_Template()
 	Template.iClipSize = default.Pistol_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.Pistol_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.Pistol_COIL_IENVIRONMENTDAMAGE;
-
-	Template.NumUpgradeSlots = 0;
+	Template.TradingPostValue = default.PISTOL_COIL_TRADINGPOST;
+	Template.NumUpgradeSlots = default.PISTOL_COIL_UPGRADESLOTS;
 
 	Template.OverwatchActionPoint = class'X2CharacterTemplateManager'.default.PistolOverwatchReserveActionPoint;
 	Template.InfiniteAmmo = true;
@@ -727,19 +716,7 @@ static function X2DataTemplate CreatePistol_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.PISTOL_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.PISTOL_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.PISTOL_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.PISTOL_CG_SUPPLYCOST, default.PISTOL_CG_ALLOYCOST, default.PISTOL_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 15;
 	}
 
@@ -752,15 +729,13 @@ static function X2DataTemplate CreatePistol_Coil_Template()
 static function X2DataTemplate CreateBullpup_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Bullpup_CG');
 
 	Template.WeaponCat = 'bullpup';
 	Template.WeaponTech = 'coilgun_lw';
 	Template.ItemCat = 'weapon';
-	// TODO: Placeholder, replace with assets when completed
-	Template.strImage = "img:///UILibrary_XPACK_Common.MagSMG_Base";
+	Template.strImage = "img:///" $ default.Bullpup_Coil_ImagePath;
 	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
 	Template.EquipSound = "Beam_Weapon_Equip";
 	Template.Tier = 4;
@@ -772,7 +747,7 @@ static function X2DataTemplate CreateBullpup_Coil_Template()
 	Template.iClipSize = default.BULLPUP_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.BULLPUP_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.BULLPUP_COIL_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.BULLPUP_COIL_TRADINGPOST;
 	Template.NumUpgradeSlots = default.BULLPUP_COIL_UPGRADESLOTS;
 
 	// TODO: Placeholder, replace with assets when completed
@@ -807,22 +782,9 @@ static function X2DataTemplate CreateBullpup_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.BULLPUP_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.BULLPUP_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.BULLPUP_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.BULLPUP_CG_SUPPLYCOST, default.BULLPUP_CG_ALLOYCOST, default.BULLPUP_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 15;
 	}
-
 
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
@@ -832,7 +794,6 @@ static function X2DataTemplate CreateBullpup_Coil_Template()
 static function X2DataTemplate CreateVektor_Coil_Template()
 {
 	local X2WeaponTemplate Template;
-	local ArtifactCost Resources;
 
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'VektorRifle_CG');
 
@@ -851,7 +812,7 @@ static function X2DataTemplate CreateVektor_Coil_Template()
 	Template.iClipSize = default.VEKTORRIFLE_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.VEKTORRIFLE_COIL_ISOUNDRANGE;
 	Template.iEnvironmentDamage = default.VEKTORRIFLE_COIL_IENVIRONMENTDAMAGE;
-
+	Template.TradingPostValue = default.VEKTORRIFLE_COIL_TRADINGPOSTVALUE;
 	Template.NumUpgradeSlots = default.VEKTORRIFLE_COIL_UPGRADESLOTS; 
 	
 	// TODO: Placeholder, replace with assets when completed
@@ -886,22 +847,132 @@ static function X2DataTemplate CreateVektor_Coil_Template()
 	else
 	{
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
-
-		Resources.ItemTemplateName = 'Supplies';
-		Resources.Quantity = default.VEKTORRIFLE_CG_SUPPLYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'AlienAlloy';
-		Resources.Quantity = default.VEKTORRIFLE_CG_ALLOYCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
-		Resources.ItemTemplateName = 'EleriumDust';
-		Resources.Quantity = default.VEKTORRIFLE_CG_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Resources);
-
+		CreateTemplateCost(Template, default.VEKTORRIFLE_CG_SUPPLYCOST, default.VEKTORRIFLE_CG_ALLOYCOST, default.VEKTORRIFLE_CG_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 15;
 	}
 
+	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateSidearm_Coil_Template()
+{
+	local X2WeaponTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'Sidearm_CG');
+
+	Template.WeaponCat = 'sidearm';
+	Template.WeaponTech = 'coilgun_lw';
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///" $ default.Sidearm_Coil_ImagePath;
+	Template.WeaponPanelImage = "_Pistol";                       // used by the UI. Probably determines iconview of the weapon.
+	Template.EquipSound = "Secondary_Weapon_Equip_Beam";
+	Template.Tier = 4;
+
+	Template.RangeAccuracy = default.SHORT_COIL_RANGE;
+	Template.BaseDamage = default.SIDEARM_COIL_BASEDAMAGE;
+	Template.Aim = default.SIDEARM_COIL_AIM;
+	Template.CritChance = default.SIDEARM_COIL_CRITCHANCE;
+	Template.iClipSize = default.SIDEARM_COIL_ICLIPSIZE;
+	Template.iSoundRange = default.SIDEARM_COIL_ISOUNDRANGE;
+	Template.iEnvironmentDamage = default.SIDEARM_COIL_IENVIRONMENTDAMAGE;
+	Template.TradingPostValue = default.SIDEARM_COIL_TRADINGPOSTVALUE;
+	Template.NumUpgradeSlots = default.SIDEARM_COIL_UPGRADESLOTS;
+
+	Template.InfiniteAmmo = true;
+	Template.OverwatchActionPoint = class'X2CharacterTemplateManager'.default.PistolOverwatchReserveActionPoint;
+
+	Template.InventorySlot = eInvSlot_SecondaryWeapon;
+	Template.Abilities.AddItem('PistolStandardShot');
+	Template.Abilities.AddItem('PistolOverwatch');
+	Template.Abilities.AddItem('PistolOverwatchShot');
+	Template.Abilities.AddItem('PistolReturnFire');
+	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('Reload');
+
+	Template.SetAnimationNameForAbility('FanFire', 'FF_FireMultiShotConvA');
+	
+	// TODO: Placeholder, replace with assets when completed
+	Template.GameArchetype = "WP_TemplarAutoPistol_MG.WP_TemplarAutoPistol_MG";
+
+	Template.iPhysicsImpulse = 5;
+
+	Template.StartingItem = false;
+
+	Template.CanBeBuilt = !class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+
+	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
+	{
+		Template.CreatorTemplateName = 'Sidearm_CG_Schematic'; // The schematic which creates this item
+		Template.BaseItem = 'Sidearm_MG'; // Which item this will be upgraded from
+	}
+	else
+	{
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
+		CreateTemplateCost(Template, default.SIDEARM_CG_SUPPLYCOST, default.SIDEARM_CG_ALLOYCOST, default.SIDEARM_CG_ELERIUMCOST);
+		Template.Requirements.RequiredEngineeringScore = 15;
+	}
+
+	Template.bHideClipSizeStat = true;
+
+	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
+
+	return Template;
+}
+
+static function X2DataTemplate CreateSparkRifle_Coil_Template()
+{
+	local X2WeaponTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'SparkRifle_CG');
+
+	Template.WeaponCat = 'sparkrifle';
+	Template.WeaponTech = 'coilgun_lw';
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///" $ default.SparkRifle_Coil_ImagePath;
+	Template.WeaponPanelImage = "_BeamRifle";                       // used by the UI. Probably determines iconview of the weapon.
+	Template.EquipSound = "Beam_Weapon_Equip";
+	Template.Tier = 4;
+
+	Template.RangeAccuracy = default.MEDIUM_COIL_RANGE;
+	Template.BaseDamage = default.SPARKRIFLE_COIL_BASEDAMAGE;
+	Template.Aim = default.SPARKRIFLE_COIL_AIM;
+	Template.CritChance = default.SPARKRIFLE_COIL_CRITCHANCE;
+	Template.iClipSize = default.SPARKRIFLE_COIL_ICLIPSIZE;
+	Template.iSoundRange = default.SPARKRIFLE_COIL_ISOUNDRANGE;
+	Template.iEnvironmentDamage = default.SPARKRIFLE_COIL_IENVIRONMENTDAMAGE;
+	Template.TradingPostValue = default.SPARKRIFLE_COIL_TRADINGPOSTVALUE;
+	Template.NumUpgradeSlots = default.SPARKRIFLE_COIL_UPGRADESLOTS; 
+	
+	// TODO: Placeholder, replace with assets when completed
+	Template.GameArchetype = "DLC_3_WP_SparkRifle_MG.WP_SparkRifle_MG";
+	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
+
+	Template.InventorySlot = eInvSlot_PrimaryWeapon;
+	Template.Abilities.AddItem('StandardShot');
+	Template.Abilities.AddItem('Overwatch');
+	Template.Abilities.AddItem('OverwatchShot');
+	Template.Abilities.AddItem('Reload');
+	Template.Abilities.AddItem('HotLoadAmmo');
+
+	Template.iPhysicsImpulse = 5;
+
+	Template.CanBeBuilt = !class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+
+	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
+	{
+		Template.CreatorTemplateName = 'SparkRifle_CG_Schematic'; // The schematic which creates this item
+		Template.BaseItem = 'SparkRifle_MG'; // Which item this will be upgraded from
+	}
+	else
+	{
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
+		CreateTemplateCost(Template, default.SPARKRIFLE_CG_SUPPLYCOST, default.SPARKRIFLE_CG_ALLOYCOST, default.SPARKRIFLE_CG_ELERIUMCOST);
+		Template.Requirements.RequiredEngineeringScore = 15;
+	}
 
 	Template.DamageTypeTemplateName = 'Projectile_MagXCom';
 
