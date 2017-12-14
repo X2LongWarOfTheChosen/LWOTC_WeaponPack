@@ -30,10 +30,35 @@ static function array<X2DataTemplate> CreateTemplates()
 	return Schematics;
 }
 
+static function CreateTemplateCost(out X2SchematicTemplate Template, int supplyCost, int alloyCost, int eleriumCost)
+{
+	local ArtifactCost Resources;
+
+	if (supplyCost > 0)
+	{
+		Resources.ItemTemplateName = 'Supplies';
+		Resources.Quantity = supplyCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
+
+	if (alloyCost > 0)
+	{
+		Resources.ItemTemplateName = 'AlienAlloy';
+		Resources.Quantity = alloyCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
+
+	if (eleriumCost > 0)
+	{
+		Resources.ItemTemplateName = 'EleriumDust';
+		Resources.Quantity = eleriumCost;
+		Template.Cost.ResourceCosts.AddItem(Resources);
+	}
+}
+
 static function X2DataTemplate CreateTemplate_BR_Beam_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'BR_BM_Schematic');
 
@@ -59,26 +84,13 @@ static function X2DataTemplate CreateTemplate_BR_Beam_Schematic()
 	Template.Requirements.RequiredEngineeringScore = 20;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 
-	// Cost
-	Resources.ItemTemplateName = 'Supplies';
-	Resources.Quantity = default.BR_BEAM_SCHEMATIC_SUPPLYCOST;
-	Template.Cost.ResourceCosts.AddItem(Resources);
-
-	Artifacts.ItemTemplateName = 'AlienAlloy';
-	Artifacts.Quantity = default.BR_BEAM_SCHEMATIC_ALLOYCOST;
-	Template.Cost.ResourceCosts.AddItem(Artifacts);
-
-	Artifacts.ItemTemplateName = 'EleriumDust';
-	Artifacts.Quantity = default.BR_BEAM_SCHEMATIC_ELERIUMCOST;
-	Template.Cost.ResourceCosts.AddItem(Artifacts);
-
+	CreateTemplateCost(Template, default.BR_BEAM_SCHEMATIC_SUPPLYCOST, default.BR_BEAM_SCHEMATIC_ALLOYCOST, default.BR_BEAM_SCHEMATIC_ELERIUMCOST);
 	return Template;
 }
 
 static function X2DataTemplate CreateTemplate_SMG_Beam_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'SMG_BM_Schematic');
 
@@ -103,26 +115,13 @@ static function X2DataTemplate CreateTemplate_SMG_Beam_Schematic()
 	Template.Requirements.RequiredEngineeringScore = 20;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 
-	// Cost
-	Resources.ItemTemplateName = 'Supplies';
-	Resources.Quantity = default.SMG_BEAM_SCHEMATIC_SUPPLYCOST;
-	Template.Cost.ResourceCosts.AddItem(Resources);
-
-	Artifacts.ItemTemplateName = 'AlienAlloy';
-	Artifacts.Quantity = default.SMG_BEAM_SCHEMATIC_ALLOYCOST;
-	Template.Cost.ResourceCosts.AddItem(Artifacts);
-
-	Artifacts.ItemTemplateName = 'EleriumDust';
-	Artifacts.Quantity = default.SMG_BEAM_SCHEMATIC_ELERIUMCOST;
-	Template.Cost.ResourceCosts.AddItem(Artifacts);
-
+	CreateTemplateCost(Template, default.SMG_BEAM_SCHEMATIC_SUPPLYCOST, default.SMG_BEAM_SCHEMATIC_ALLOYCOST, default.SMG_BEAM_SCHEMATIC_ELERIUMCOST);
 	return Template;
 }
 
 static function X2DataTemplate CreateTemplate_MR_Beam_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'MR_BM_Schematic');
 
@@ -148,18 +147,6 @@ static function X2DataTemplate CreateTemplate_MR_Beam_Schematic()
 	Template.Requirements.RequiredEngineeringScore = 25;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 
-	// Cost
-	Resources.ItemTemplateName = 'Supplies';
-	Resources.Quantity = default.MR_BEAM_SCHEMATIC_SUPPLYCOST;
-	Template.Cost.ResourceCosts.AddItem(Resources);
-
-	Artifacts.ItemTemplateName = 'AlienAlloy';
-	Artifacts.Quantity = default.MR_BEAM_SCHEMATIC_ALLOYCOST;
-	Template.Cost.ResourceCosts.AddItem(Artifacts);
-
-	Artifacts.ItemTemplateName = 'EleriumDust';
-	Artifacts.Quantity = default.MR_BEAM_SCHEMATIC_ELERIUMCOST;
-	Template.Cost.ResourceCosts.AddItem(Artifacts);
-
+	CreateTemplateCost(Template, default.MR_BEAM_SCHEMATIC_SUPPLYCOST, default.MR_BEAM_SCHEMATIC_ALLOYCOST, default.MR_BEAM_SCHEMATIC_ELERIUMCOST);
 	return Template;
 }
