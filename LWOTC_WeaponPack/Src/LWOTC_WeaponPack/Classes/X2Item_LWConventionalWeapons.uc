@@ -255,6 +255,9 @@ static function X2DataTemplate CreateTemplate_LMG_Conventional()
 	Template.EquipSound = "Conventional_Weapon_Equip";
 	Template.Tier = 0;
 
+	Template.Abilities.AddItem('LMG_CV_StatBonus');
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_LMGAbilities'.default.LMG_CONVENTIONAL_MOBILITY_BONUS);
+
 	Template.RangeAccuracy = default.MEDLONG_CONVENTIONAL_RANGE;
 	Template.BaseDamage = default.LMG_CONVENTIONAL_BASEDAMAGE;
 	Template.Aim = default.LMG_CONVENTIONAL_AIM;
@@ -270,7 +273,6 @@ static function X2DataTemplate CreateTemplate_LMG_Conventional()
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	//Template.Abilities.AddItem('LMG_Modifiers');
 
 	Template.GameArchetype = "BRMeshPack.Archetypes.WP_LMG_CV";
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
@@ -293,8 +295,6 @@ static function X2DataTemplate CreateTemplate_LMG_Conventional()
 	Template.fKnockbackDamageRadius = 0.0f;
 
 	Template.DamageTypeTemplateName = 'Projectile_Conventional';
-	
-	//Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_LMGAbilities'.default.LMG_MOBILITY_MODIFIER);
 		
 	return Template;
 }

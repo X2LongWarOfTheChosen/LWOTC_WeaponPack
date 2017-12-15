@@ -28,6 +28,10 @@ var config int Cannon_LASER_SCHEMATIC_SUPPLYCOST;
 var config int Cannon_LASER_SCHEMATIC_ALLOYCOST;
 var config int Cannon_LASER_SCHEMATIC_ELERIUMCOST;
 
+var config int LMG_LASER_SCHEMATIC_SUPPLYCOST;
+var config int LMG_LASER_SCHEMATIC_ALLOYCOST;
+var config int LMG_LASER_SCHEMATIC_ELERIUMCOST;
+
 var config int SniperRifle_LASER_SCHEMATIC_SUPPLYCOST;
 var config int SniperRifle_LASER_SCHEMATIC_ALLOYCOST;
 var config int SniperRifle_LASER_SCHEMATIC_ELERIUMCOST;
@@ -77,6 +81,7 @@ static function array<X2DataTemplate> CreateTemplates()
 		Schematics.AddItem(CreateTemplate_Vektor_Laser_Schematic());
 		Schematics.AddItem(CreateTemplate_Sidearm_Laser_Schematic());
 		Schematics.AddItem(CreateTemplate_SparkRifle_Laser_Schematic());
+		Schematics.AddItem(CreateTemplate_LMG_Laser_Schematic());
 
 		return Schematics;
 	}
@@ -483,5 +488,50 @@ static function X2DataTemplate CreateTemplate_SparkRifle_Laser_Schematic()
 	Template.AlternateRequirements.AddItem(AltReq);
 
 	CreateTemplateCost(Template, default.SparkRifle_LASER_SCHEMATIC_SUPPLYCOST, default.SparkRifle_LASER_SCHEMATIC_ALLOYCOST, default.SparkRifle_LASER_SCHEMATIC_ELERIUMCOST);
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_LMG_Laser_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local ArtifactCost Resources, Artifacts;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'LMG_LS_Schematic');
+
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_Base"; // Don't know what img to use here
+	Template.CanBeBuilt = true;
+	Template.bOneTimeBuild = true;
+	Template.HideInInventory = true;
+	Template.HideInLootRecovered = true;
+	Template.PointsToComplete = 0;
+	Template.Tier = 3;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'LMG_LS';
+	Template.HideIfPurchased = 'LMG_MG';
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[1]); 
+	Template.Requirements.RequiredEngineeringScore = 10;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+
+	// Cost
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.LMG_LASER_SCHEMATIC_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Artifacts.ItemTemplateName = 'AlienAlloy';
+	Artifacts.Quantity = default.LMG_LASER_SCHEMATIC_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Artifacts);
+	
+	// only add elerium cost if configured value greater than 0
+	if (default.LMG_LASER_SCHEMATIC_ELERIUMCOST > 0) {
+		Artifacts.ItemTemplateName = 'EleriumDust';
+		Artifacts.Quantity = default.LMG_LASER_SCHEMATIC_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Artifacts);
+	}
+
 	return Template;
 }
