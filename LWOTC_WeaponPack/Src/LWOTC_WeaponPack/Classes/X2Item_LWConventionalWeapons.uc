@@ -270,7 +270,7 @@ static function X2DataTemplate CreateTemplate_LMG_Conventional()
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem('LMG_Modifiers');
+	//Template.Abilities.AddItem('LMG_Modifiers');
 
 	Template.GameArchetype = "BRMeshPack.Archetypes.WP_LMG_CV";
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
