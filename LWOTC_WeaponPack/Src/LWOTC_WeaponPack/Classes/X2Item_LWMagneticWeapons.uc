@@ -296,9 +296,11 @@ static function X2DataTemplate CreateTemplate_LMG_Magnetic()
 
 	Template.iPhysicsImpulse = 5;
 
-	Template.StartingItem = true;
-	Template.bInfiniteItem = true;
+	Template.CreatorTemplateName = 'LMG_MG_Schematic'; // The schematic which creates this item
+	Template.BaseItem = 'LMG_CV'; // Which item this will be upgraded from
+
 	Template.CanBeBuilt = false;
+	Template.bInfiniteItem = true;
 
 	Template.fKnockbackDamageAmount = 5.0f;
 	Template.fKnockbackDamageRadius = 0.0f;
