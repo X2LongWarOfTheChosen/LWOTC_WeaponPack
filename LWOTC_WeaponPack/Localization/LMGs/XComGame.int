@@ -1,0 +1,8 @@
+; Weapon templates
+
+[LMG_CV X2WeaponTemplate]
+FriendlyName="Light Machine Gun"
+FriendlyNamePlural="Light Machine Guns"
+BriefSummary="The Light Machine Gun (LMG for short) is adapted from our Battle Rifle platform to allow our gunners to engage the enemy at intermediate range."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn.\n<Bullet/> Allows for intermediate range engagement.\n<Bullet/> Use upgrades looted from enemies to improve the Light Machine Gun's tactical effectiveness."
+AbilityDescName="cannon"

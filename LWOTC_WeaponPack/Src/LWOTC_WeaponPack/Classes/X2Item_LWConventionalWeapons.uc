@@ -11,6 +11,7 @@ class X2Item_LWConventionalWeapons extends X2Item config(LW_WeaponPack);
 var config WeaponDamageValue BATTLERIFLE_CONVENTIONAL_BASEDAMAGE;
 var config WeaponDamageValue SMG_CONVENTIONAL_BASEDAMAGE;
 var config WeaponDamageValue MARKSMANRIFLE_CONVENTIONAL_BASEDAMAGE;
+var config WeaponDamageValue LMG_CONVENTIONAL_BASEDAMAGE;
 
 // ***** Core properties and variables for weapons *****
 var config int BATTLERIFLE_CONVENTIONAL_AIM;
@@ -34,6 +35,13 @@ var config int MARKSMANRIFLE_CONVENTIONAL_ISOUNDRANGE;
 var config int MARKSMANRIFLE_CONVENTIONAL_IENVIRONMENTDAMAGE;
 var config int MARKSMANRIFLE_CONVENTIONAL_UPGRADESLOTS;
 
+var config int LMG_CONVENTIONAL_AIM;
+var config int LMG_CONVENTIONAL_CRITCHANCE;
+var config int LMG_CONVENTIONAL_ICLIPSIZE;
+var config int LMG_CONVENTIONAL_ISOUNDRANGE;
+var config int LMG_CONVENTIONAL_IENVIRONMENTDAMAGE;
+var config int LMG_CONVENTIONAL_UPGRADESLOTS;
+
 // ***** Range Modifier Tables *****
 var config array<int> SHORT_CONVENTIONAL_RANGE;
 var config array<int> MIDSHORT_CONVENTIONAL_RANGE;
@@ -49,6 +57,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateTemplate_BR_Conventional());
 	Weapons.AddItem(CreateTemplate_SMG_Conventional());
 	Weapons.AddItem(CreateTemplate_MR_Conventional());
+	Weapons.AddItem(CreateTemplate_LMG_Conventional());
 
 	return Weapons;
 }
@@ -226,6 +235,67 @@ static function X2DataTemplate CreateTemplate_MR_Conventional()
 
 	Template.DamageTypeTemplateName = 'Projectile_Conventional';
 
+	return Template;
+}
+
+// **************************************************************************
+// ***                          LMG										  ***
+// **************************************************************************
+static function X2DataTemplate CreateTemplate_LMG_Conventional()
+{
+	local X2WeaponTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'LMG_CV');
+	Template.WeaponPanelImage = "_ConventionalRifle";
+	
+	Template.ItemCat = 'weapon';
+	Template.WeaponCat = 'cannon';
+	Template.WeaponTech = 'conventional';
+	Template.strImage = "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_Base";
+	Template.EquipSound = "Conventional_Weapon_Equip";
+	Template.Tier = 0;
+
+	Template.RangeAccuracy = default.MEDLONG_CONVENTIONAL_RANGE;
+	Template.BaseDamage = default.LMG_CONVENTIONAL_BASEDAMAGE;
+	Template.Aim = default.LMG_CONVENTIONAL_AIM;
+	Template.CritChance = default.LMG_CONVENTIONAL_CRITCHANCE;
+	Template.iClipSize = default.LMG_CONVENTIONAL_ICLIPSIZE;
+	Template.iSoundRange = default.LMG_CONVENTIONAL_ISOUNDRANGE;
+	Template.iEnvironmentDamage = default.LMG_CONVENTIONAL_IENVIRONMENTDAMAGE;
+	Template.NumUpgradeSlots = default.LMG_CONVENTIONAL_UPGRADESLOTS;
+
+	Template.InventorySlot = eInvSlot_PrimaryWeapon;
+	Template.Abilities.AddItem('StandardShot');	
+	Template.Abilities.AddItem('Overwatch');	
+	Template.Abilities.AddItem('OverwatchShot');
+	Template.Abilities.AddItem('Reload');
+	Template.Abilities.AddItem('HotLoadAmmo');
+	Template.Abilities.AddItem('LMG_Modifiers');
+
+	Template.GameArchetype = "BRMeshPack.Archetypes.WP_LMG_CV";
+	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
+	Template.AddDefaultAttachment('Mag', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_MagB", , "img:///UILibrary_BRMeshPack.Attach.SAW_CV_MagA");
+	Template.AddDefaultAttachment('Optic', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_OpticA", , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_OpticA");
+	Template.AddDefaultAttachment('Stock', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_StockA", , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_StockA");
+	Template.AddDefaultAttachment('Fore', "BRMeshPack.Meshes.SM_CV_Bipod", , "img:///UILibrary_BRMeshPack.Attach.MR_CV_Bipod");
+	Template.AddDefaultAttachment('Handle', "BRMeshPack.Meshes.SM_CV_Handle", , "img:///UILibrary_BRMeshPack.Attach.LMG_CV_Handle");
+	Template.AddDefaultAttachment('Reargrip', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_ReargripA", , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_ReargripA");
+	Template.AddDefaultAttachment('Trigger', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_TriggerA", , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_TriggerA");
+	Template.AddDefaultAttachment('Light', "ConvAttachments.Meshes.SM_ConvFlashLight", , "");
+
+	Template.iPhysicsImpulse = 5;
+
+	Template.StartingItem = true;
+	Template.bInfiniteItem = true;
+	Template.CanBeBuilt = false;
+
+	Template.fKnockbackDamageAmount = 5.0f;
+	Template.fKnockbackDamageRadius = 0.0f;
+
+	Template.DamageTypeTemplateName = 'Projectile_Conventional';
+	
+	//Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_LMGAbilities'.default.LMG_MOBILITY_MODIFIER);
+		
 	return Template;
 }
 

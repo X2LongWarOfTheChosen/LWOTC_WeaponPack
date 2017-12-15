@@ -22,6 +22,15 @@
     <Content Include="Config\XComStrategyTuning.ini">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Content\LMG\BattleRifleMeshPack_ModShaderCache.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LMG\BRMeshPack.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\LMG\UILibrary_BRMeshPack.upk">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Content\LWAccessories_CG.upk">
       <SubType>Content</SubType>
     </Content>
@@ -520,6 +529,39 @@
     <Content Include="Localization\Lasers\XComGame.rus">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Localization\LMGs\XComGame.chn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LMGs\XComGame.cht">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LMGs\XComGame.deu">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LMGs\XComGame.esn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LMGs\XComGame.fra">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LMGs\XComGame.int">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LMGs\XComGame.ita">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LMGs\XComGame.jpn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LMGs\XComGame.kor">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LMGs\XComGame.pol">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\LMGs\XComGame.rus">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Localization\SMGs\XComGame.chn">
       <SubType>Content</SubType>
     </Content>
@@ -557,6 +599,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="ReadMe.txt" />
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Ability_LMGAbilities.uc">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Src\LWOTC_WeaponPack\Classes\X2Ability_SMGAbilities.uc">
       <SubType>Content</SubType>
     </Content>
@@ -609,6 +654,7 @@
     <Folder Include="Content\LWSMG_MG" />
     <Folder Include="Content\LWSMG_MG\Meshes" />
     <Folder Include="Content\LWSMG_MG\Textures" />
+    <Folder Include="Content\LMG" />
     <Folder Include="Content\UILibrary_SMG" />
     <Folder Include="Content\UILibrary_SMG\beam" />
     <Folder Include="Content\UILibrary_SMG\conventional" />
@@ -616,6 +662,7 @@
     <Folder Include="Localization\" />
     <Folder Include="Localization\Lasers" />
     <Folder Include="Localization\Coils" />
+    <Folder Include="Localization\LMGs" />
     <Folder Include="Localization\SMGs" />
     <Folder Include="Src\" />
     <Folder Include="Src\LWOTC_WeaponPack\" />
