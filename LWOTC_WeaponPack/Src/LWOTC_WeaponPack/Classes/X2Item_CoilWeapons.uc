@@ -142,6 +142,7 @@ var config string AssaultRifle_Coil_ImagePath;
 var config string BattleRifle_Coil_ImagePath;
 var config string SMG_Coil_ImagePath;
 var config string Cannon_Coil_ImagePath;
+var config string LMG_Coil_ImagePath;
 var config string Shotgun_Coil_ImagePath;
 var config string SniperRifle_Coil_ImagePath;
 var config string MarksmanRifle_Coil_ImagePath;
@@ -1007,13 +1008,17 @@ static function X2DataTemplate CreateLMG_Coil_Template()
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'cannon';
 	Template.WeaponTech = 'coilgun_lw';
-	Template.strImage = "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_Base";
+	Template.strImage = "img:///" $ default.LMG_Coil_ImagePath;
 	Template.EquipSound = "Beam_Weapon_Equip";
 	Template.Tier = 3;
 
+	Template.Abilities.AddItem(class'X2Ability_LMGAbilities'.default.MountedEffectName);
+	Template.Abilities.AddItem(class'X2Ability_LongWatchAbilities'.default.LongOverwatchReserveActionPoint);
+	Template.Abilities.AddItem(class'X2Ability_LongWatchAbilities'.default.ToggleLongWatchEffect);	
+
 	Template.RangeAccuracy = default.MEDLONG_COIL_RANGE;
 	Template.BaseDamage = default.LMG_COIL_BASEDAMAGE;
-	Template.Aim = default.LMG_COIL_AIM;
+	Template.Aim = default.LMG_COIL_AIM + class'X2Ability_LMGAbilities'.default.LMG_AIM_BONUS_WHEN_NOT_SET_UP;
 	Template.CritChance = default.LMG_COIL_CRITCHANCE;
 	Template.iClipSize = default.LMG_COIL_ICLIPSIZE;
 	Template.iSoundRange = default.LMG_COIL_ISOUNDRANGE;

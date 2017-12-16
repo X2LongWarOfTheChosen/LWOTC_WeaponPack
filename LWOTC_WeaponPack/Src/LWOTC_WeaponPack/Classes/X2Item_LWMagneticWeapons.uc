@@ -58,6 +58,9 @@ var config array<int> MEDIUM_MAGNETIC_RANGE;
 var config array<int> MEDLONG_MAGNETIC_RANGE;
 var config array<int> LONG_MAGNETIC_RANGE;
 
+// ***** Image Paths *****
+var config string LMG_Magnetic_ImagePath;
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Weapons;
@@ -264,13 +267,17 @@ static function X2DataTemplate CreateTemplate_LMG_Magnetic()
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'cannon';
 	Template.WeaponTech = 'conventional';
-	Template.strImage = "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_Base";
+	Template.strImage = "img:///" $ default.LMG_Magnetic_ImagePath;
 	Template.EquipSound = "Magnetic_Weapon_Equip";
 	Template.Tier = 2;
 
+	Template.Abilities.AddItem(class'X2Ability_LMGAbilities'.default.MountedEffectName);
+	Template.Abilities.AddItem(class'X2Ability_LongWatchAbilities'.default.LongOverwatchReserveActionPoint);
+	Template.Abilities.AddItem(class'X2Ability_LongWatchAbilities'.default.ToggleLongWatchEffect);	
+
 	Template.RangeAccuracy = default.MEDLONG_MAGNETIC_RANGE;
 	Template.BaseDamage = default.LMG_MAGNETIC_BASEDAMAGE;
-	Template.Aim = default.LMG_MAGNETIC_AIM;
+	Template.Aim = default.LMG_MAGNETIC_AIM + class'X2Ability_LMGAbilities'.default.LMG_AIM_BONUS_WHEN_NOT_SET_UP;;
 	Template.CritChance = default.LMG_MAGNETIC_CRITCHANCE;
 	Template.iClipSize = default.LMG_MAGNETIC_ICLIPSIZE;
 	Template.iSoundRange = default.LMG_MAGNETIC_ISOUNDRANGE;

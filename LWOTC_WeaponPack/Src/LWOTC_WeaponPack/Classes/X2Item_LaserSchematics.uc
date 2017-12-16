@@ -505,7 +505,7 @@ static function X2DataTemplate CreateTemplate_LMG_Laser_Schematic()
 	Template.HideInInventory = true;
 	Template.HideInLootRecovered = true;
 	Template.PointsToComplete = 0;
-	Template.Tier = 3;
+	Template.Tier = 1;
 	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
 
 	// Reference Item

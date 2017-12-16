@@ -205,6 +205,7 @@ var config string AssaultRifle_Laser_ImagePath;
 var config string BattleRifle_Laser_ImagePath;
 var config string SMG_Laser_ImagePath;
 var config string Cannon_Laser_ImagePath;
+var config string LMG_Laser_ImagePath;
 var config string Shotgun_Laser_ImagePath;
 var config string SniperRifle_Laser_ImagePath;
 var config string MarksmanRifle_Laser_ImagePath;
@@ -1052,16 +1053,17 @@ static function X2DataTemplate CreateTemplate_LMG_Laser()
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'cannon';
 	Template.WeaponTech = 'conventional';
-	Template.strImage = "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_Base";
+	Template.strImage = "img:///" $ default.LMG_Laser_ImagePath;
 	Template.EquipSound = "Beam_Weapon_Equip";
 	Template.Tier = 1;
 
-	Template.Abilities.AddItem('LMG_LS_StatBonus');
-	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_LMGAbilities'.default.LMG_LASER_MOBILITY_BONUS);
+	Template.Abilities.AddItem(class'X2Ability_LMGAbilities'.default.MountedEffectName);
+	Template.Abilities.AddItem(class'X2Ability_LongWatchAbilities'.default.LongOverwatchReserveActionPoint);
+	Template.Abilities.AddItem(class'X2Ability_LongWatchAbilities'.default.ToggleLongWatchEffect);	
 
 	Template.RangeAccuracy = default.MEDLONG_LASER_RANGE;
 	Template.BaseDamage = default.LMG_LASER_BASEDAMAGE;
-	Template.Aim = default.LMG_LASER_AIM;
+	Template.Aim = default.LMG_LASER_AIM + class'X2Ability_LMGAbilities'.default.LMG_AIM_BONUS_WHEN_NOT_SET_UP;
 	Template.CritChance = default.LMG_LASER_CRITCHANCE;
 	Template.iClipSize = default.LMG_LASER_ICLIPSIZE;
 	Template.iSoundRange = default.LMG_LASER_ISOUNDRANGE;

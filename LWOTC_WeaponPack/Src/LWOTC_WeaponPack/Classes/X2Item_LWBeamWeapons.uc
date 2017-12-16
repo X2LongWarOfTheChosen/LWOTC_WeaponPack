@@ -59,6 +59,9 @@ var config array<int> MEDIUM_BEAM_RANGE;
 var config array<int> MEDLONG_BEAM_RANGE;
 var config array<int> LONG_BEAM_RANGE;
 
+// ***** Image Paths *****
+var config string LMG_Beam_ImagePath;
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Weapons;
@@ -249,13 +252,17 @@ static function X2DataTemplate CreateTemplate_LMG_Beam()
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'cannon';
 	Template.WeaponTech = 'conventional';
-	Template.strImage = "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_Base";
+Template.strImage = "img:///" $ default.LMG_Beam_ImagePath;
 	Template.EquipSound = "Magnetic_Weapon_Equip";
 	Template.Tier = 4;
 
+	Template.Abilities.AddItem(class'X2Ability_LMGAbilities'.default.MountedEffectName);
+	Template.Abilities.AddItem(class'X2Ability_LongWatchAbilities'.default.LongOverwatchReserveActionPoint);
+	Template.Abilities.AddItem(class'X2Ability_LongWatchAbilities'.default.ToggleLongWatchEffect);	
+
 	Template.RangeAccuracy = default.MEDLONG_BEAM_RANGE;
 	Template.BaseDamage = default.LMG_BEAM_BASEDAMAGE;
-	Template.Aim = default.LMG_BEAM_AIM;
+	Template.Aim = default.LMG_BEAM_AIM + class'X2Ability_LMGAbilities'.default.LMG_AIM_BONUS_WHEN_NOT_SET_UP;
 	Template.CritChance = default.LMG_BEAM_CRITCHANCE;
 	Template.iClipSize = default.LMG_BEAM_ICLIPSIZE;
 	Template.iSoundRange = default.LMG_BEAM_ISOUNDRANGE;

@@ -49,6 +49,9 @@ var config array<int> MEDIUM_CONVENTIONAL_RANGE;
 var config array<int> MEDLONG_CONVENTIONAL_RANGE;
 var config array<int> LONG_CONVENTIONAL_RANGE;
 
+// ***** Image Paths *****
+var config string LMG_Conventional_ImagePath;
+
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Weapons;
@@ -251,16 +254,17 @@ static function X2DataTemplate CreateTemplate_LMG_Conventional()
 	Template.ItemCat = 'weapon';
 	Template.WeaponCat = 'cannon';
 	Template.WeaponTech = 'conventional';
-	Template.strImage = "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_Base";
+	Template.strImage = "img:///" $ default.LMG_Conventional_ImagePath;
 	Template.EquipSound = "Conventional_Weapon_Equip";
 	Template.Tier = 0;
 
-	Template.Abilities.AddItem('LMG_CV_StatBonus');
-	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_LMGAbilities'.default.LMG_CONVENTIONAL_MOBILITY_BONUS);
+	Template.Abilities.AddItem(class'X2Ability_LMGAbilities'.default.MountedEffectName);
+	Template.Abilities.AddItem(class'X2Ability_LongWatchAbilities'.default.LongOverwatchReserveActionPoint);
+	Template.Abilities.AddItem(class'X2Ability_LongWatchAbilities'.default.ToggleLongWatchEffect);	
 
 	Template.RangeAccuracy = default.MEDLONG_CONVENTIONAL_RANGE;
 	Template.BaseDamage = default.LMG_CONVENTIONAL_BASEDAMAGE;
-	Template.Aim = default.LMG_CONVENTIONAL_AIM;
+	Template.Aim = default.LMG_CONVENTIONAL_AIM + class'X2Ability_LMGAbilities'.default.LMG_AIM_BONUS_WHEN_NOT_SET_UP;
 	Template.CritChance = default.LMG_CONVENTIONAL_CRITCHANCE;
 	Template.iClipSize = default.LMG_CONVENTIONAL_ICLIPSIZE;
 	Template.iSoundRange = default.LMG_CONVENTIONAL_ISOUNDRANGE;
