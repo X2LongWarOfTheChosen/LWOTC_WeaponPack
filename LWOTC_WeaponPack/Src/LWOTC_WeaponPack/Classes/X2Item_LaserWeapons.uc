@@ -13,6 +13,7 @@ var config WeaponDamageValue ASSAULTRIFLE_LASER_BASEDAMAGE;
 var config WeaponDamageValue BATTLERIFLE_LASER_BASEDAMAGE;
 var config WeaponDamageValue SMG_LASER_BASEDAMAGE;
 var config WeaponDamageValue CANNON_LASER_BASEDAMAGE;
+var config WeaponDamageValue LMG_LASER_BASEDAMAGE;
 var config WeaponDamageValue SHOTGUN_LASER_BASEDAMAGE;
 var config WeaponDamageValue SNIPERRIFLE_LASER_BASEDAMAGE;
 var config WeaponDamageValue MARKSMANRIFLE_LASER_BASEDAMAGE;
@@ -58,6 +59,16 @@ var config int CANNON_LASER_IENVIRONMENTDAMAGE;
 var config int CANNON_LASER_TRADINGPOSTVALUE;
 var config int CANNON_LASER_IPOINTS;
 var config int CANNON_LASER_UPGRADESLOTS;
+
+var config int LMG_LASER_AIM;
+var config int LMG_LASER_CRITCHANCE;
+var config int LMG_LASER_ICLIPSIZE;
+var config int LMG_LASER_ISOUNDRANGE;
+var config int LMG_LASER_IENVIRONMENTDAMAGE;
+var config int LMG_LASER_ISUPPLIES;
+var config int LMG_LASER_TRADINGPOSTVALUE;
+var config int LMG_LASER_IPOINTS;
+var config int LMG_LASER_UPGRADESLOTS;
 
 var config int SHOTGUN_LASER_AIM;
 var config int SHOTGUN_LASER_CRITCHANCE;
@@ -154,6 +165,10 @@ var config int CANNON_LS_SUPPLYCOST;
 var config int CANNON_LS_ALLOYCOST;
 var config int CANNON_LS_ELERIUMCOST;
 
+var config int LMG_LS_SUPPLYCOST;
+var config int LMG_LS_ALLOYCOST;
+var config int LMG_LS_ELERIUMCOST;
+
 var config int SHOTGUN_LS_SUPPLYCOST;
 var config int SHOTGUN_LS_ALLOYCOST;
 var config int SHOTGUN_LS_ELERIUMCOST;
@@ -190,6 +205,7 @@ var config string AssaultRifle_Laser_ImagePath;
 var config string BattleRifle_Laser_ImagePath;
 var config string SMG_Laser_ImagePath;
 var config string Cannon_Laser_ImagePath;
+var config string LMG_Laser_ImagePath;
 var config string Shotgun_Laser_ImagePath;
 var config string SniperRifle_Laser_ImagePath;
 var config string MarksmanRifle_Laser_ImagePath;
@@ -216,6 +232,7 @@ static function array<X2DataTemplate> CreateTemplates()
 	Weapons.AddItem(CreateTemplate_Vektor_Laser());
 	Weapons.AddItem(CreateTemplate_Sidearm_Laser());
 	Weapons.AddItem(CreateTemplate_SparkRifle_Laser());
+	Weapons.AddItem(CreateTemplate_LMG_Laser());
 
 	return Weapons;
 }
@@ -1016,6 +1033,76 @@ static function X2DataTemplate CreateTemplate_SparkRifle_Laser()
 		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
 		CreateTemplateCost(Template, default.SPARKRIFLE_LS_SUPPLYCOST, default.SPARKRIFLE_LS_ALLOYCOST, default.SPARKRIFLE_LS_ELERIUMCOST);
 		Template.Requirements.RequiredEngineeringScore = 5;
+	}
+
+	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type
+
+	return Template;
+}
+
+// **************************************************************************
+// ***                          LMG                                       ***
+// **************************************************************************
+static function X2DataTemplate CreateTemplate_LMG_Laser()
+{
+	local X2WeaponTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, 'LMG_LS');
+	Template.WeaponPanelImage = "_ConventionalRifle";	
+
+	Template.ItemCat = 'weapon';
+	Template.WeaponCat = 'cannon';
+	Template.WeaponTech = 'conventional';
+	Template.strImage = "img:///" $ default.LMG_Laser_ImagePath;
+	Template.EquipSound = "Beam_Weapon_Equip";
+	Template.Tier = 1;
+
+	Template.Abilities.AddItem(class'X2Ability_LMGAbilities'.default.MountedEffectName);
+	Template.Abilities.AddItem(class'X2Ability_LongWatchAbilities'.default.LongOverwatchReserveActionPoint);
+	Template.Abilities.AddItem(class'X2Ability_LongWatchAbilities'.default.ToggleLongWatchEffect);	
+
+	Template.RangeAccuracy = default.MEDLONG_LASER_RANGE;
+	Template.BaseDamage = default.LMG_LASER_BASEDAMAGE;
+	Template.Aim = default.LMG_LASER_AIM + class'X2Ability_LMGAbilities'.default.LMG_AIM_BONUS_WHEN_NOT_SET_UP;
+	Template.CritChance = default.LMG_LASER_CRITCHANCE;
+	Template.iClipSize = default.LMG_LASER_ICLIPSIZE;
+	Template.iSoundRange = default.LMG_LASER_ISOUNDRANGE;
+	Template.iEnvironmentDamage = default.LMG_LASER_IENVIRONMENTDAMAGE;
+	Template.NumUpgradeSlots = default.LMG_LASER_UPGRADESLOTS;
+
+	Template.InventorySlot = eInvSlot_PrimaryWeapon;
+	Template.Abilities.AddItem('StandardShot');	
+	Template.Abilities.AddItem('Overwatch');	
+	Template.Abilities.AddItem('OverwatchShot');
+	Template.Abilities.AddItem('Reload');
+	Template.Abilities.AddItem('HotLoadAmmo');
+
+	Template.GameArchetype = "BRMeshPack.Archetypes.WP_LMG_CV";
+	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_AssaultRifle';
+	Template.AddDefaultAttachment('Mag', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_MagB", , "img:///UILibrary_BRMeshPack.Attach.SAW_CV_MagA");
+	Template.AddDefaultAttachment('Optic', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_OpticA", , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_OpticA");
+	Template.AddDefaultAttachment('Stock', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_StockA", , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_StockA");
+	Template.AddDefaultAttachment('Fore', "BRMeshPack.Meshes.SM_CV_Bipod", , "img:///UILibrary_BRMeshPack.Attach.MR_CV_Bipod");
+	Template.AddDefaultAttachment('Handle', "BRMeshPack.Meshes.SM_CV_Handle", , "img:///UILibrary_BRMeshPack.Attach.LMG_CV_Handle");
+	Template.AddDefaultAttachment('Reargrip', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_ReargripA", , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_ReargripA");
+	Template.AddDefaultAttachment('Trigger', "ConvAssaultRifle.Meshes.SM_ConvAssaultRifle_TriggerA", , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_TriggerA");
+	Template.AddDefaultAttachment('Light', "ConvAttachments.Meshes.SM_ConvFlashLight", , "");
+
+	Template.iPhysicsImpulse = 5;
+
+	Template.CanBeBuilt = !class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
+	Template.bInfiniteItem = class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
+
+	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
+	{
+		Template.CreatorTemplateName = 'LMG_LS_Schematic'; // The schematic which creates this item
+		Template.BaseItem = 'LMG_CV'; // Which item this will be upgraded from
+	}
+	else
+	{
+		Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[1]);
+		CreateTemplateCost(Template, default.LMG_LS_SUPPLYCOST, default.LMG_LS_ALLOYCOST, default.LMG_LS_ELERIUMCOST);
+		Template.Requirements.RequiredEngineeringScore = 10;
 	}
 
 	Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type

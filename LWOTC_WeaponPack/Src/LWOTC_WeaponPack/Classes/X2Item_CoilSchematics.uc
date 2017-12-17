@@ -29,6 +29,10 @@ var config int Cannon_COIL_SCHEMATIC_SUPPLYCOST;
 var config int Cannon_COIL_SCHEMATIC_ALLOYCOST;
 var config int Cannon_COIL_SCHEMATIC_ELERIUMCOST;
 
+var config int LMG_COIL_SCHEMATIC_SUPPLYCOST;
+var config int LMG_COIL_SCHEMATIC_ALLOYCOST;
+var config int LMG_COIL_SCHEMATIC_ELERIUMCOST;
+
 var config int SniperRifle_COIL_SCHEMATIC_SUPPLYCOST;
 var config int SniperRifle_COIL_SCHEMATIC_ALLOYCOST;
 var config int SniperRifle_COIL_SCHEMATIC_ELERIUMCOST;
@@ -70,6 +74,7 @@ static function array<X2DataTemplate> CreateTemplates()
 		Schematics.AddItem(CreateTemplate_SMG_Coil_Schematic());
 		Schematics.AddItem(CreateTemplate_Shotgun_Coil_Schematic());
 		Schematics.AddItem(CreateTemplate_Cannon_Coil_Schematic());
+		Schematics.AddItem(CreateTemplate_LMG_Coil_Schematic());
 		Schematics.AddItem(CreateTemplate_SniperRifle_Coil_Schematic());
 		Schematics.AddItem(CreateTemplate_MarksmanRifle_Coil_Schematic());
 		Schematics.AddItem(CreateTemplate_Pistol_Coil_Schematic());
@@ -479,6 +484,51 @@ static function X2DataTemplate CreateTemplate_SparkRifle_Coil_Schematic()
 	Template.AlternateRequirements.AddItem(AltReq);
 
 	CreateTemplateCost(Template, default.SparkRifle_COIL_SCHEMATIC_SUPPLYCOST, default.SparkRifle_COIL_SCHEMATIC_ALLOYCOST, default.SparkRifle_COIL_SCHEMATIC_ELERIUMCOST);
+
+	return Template;
+}
+
+static function X2DataTemplate CreateTemplate_LMG_Coil_Schematic()
+{
+	local X2SchematicTemplate Template;
+	local ArtifactCost Resources, Artifacts;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'LMG_CG_Schematic');
+
+	Template.ItemCat = 'weapon';
+	Template.strImage = "img:///UILibrary_LW_Coilguns.InventoryArt.Inv_Coil_Cannon";
+	Template.CanBeBuilt = true;
+	Template.bOneTimeBuild = true;
+	Template.HideInInventory = true;
+	Template.HideInLootRecovered = true;
+	Template.PointsToComplete = 0;
+	Template.Tier = 3;
+	Template.OnBuiltFn = class'X2Item_DefaultSchematics'.static.UpgradeItems;
+
+	// Reference Item
+	Template.ReferenceItemTemplate = 'LMG_CG';
+	Template.HideIfPurchased = 'LMG_BM';
+
+	// Requirements
+	Template.Requirements.RequiredTechs.AddItem(class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[1]);
+	Template.Requirements.RequiredEngineeringScore = 20;
+	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
+
+	// Cost
+	Resources.ItemTemplateName = 'Supplies';
+	Resources.Quantity = default.LMG_Coil_SCHEMATIC_SUPPLYCOST;
+	Template.Cost.ResourceCosts.AddItem(Resources);
+
+	Artifacts.ItemTemplateName = 'AlienAlloy';
+	Artifacts.Quantity = default.LMG_Coil_SCHEMATIC_ALLOYCOST;
+	Template.Cost.ResourceCosts.AddItem(Artifacts);
+
+	// only add elerium cost if configured value greater than 0
+	if (default.LMG_Coil_SCHEMATIC_ELERIUMCOST > 0) {
+		Artifacts.ItemTemplateName = 'EleriumDust';
+		Artifacts.Quantity = default.LMG_Coil_SCHEMATIC_ELERIUMCOST;
+		Template.Cost.ResourceCosts.AddItem(Artifacts);
+	}
 
 	return Template;
 }

@@ -109,6 +109,25 @@ static function UpdateConventionalStorage()
 		}
 	}
 
+	//add Conventional LMG always
+	`Log("LWOTC WeaponPack : Updated Conventional LMG");
+	ItemTemplate = ItemTemplateMgr.FindItemTemplate('LMG_CV');
+	if(ItemTemplate != none)
+	{
+		`Log("LW LMGPack : Found LMG item template");
+		if (!XComHQ.HasItem(ItemTemplate))
+		{
+			`Log("LW LMGPack : LMG_CV not found, adding to inventory");
+			NewItemState = ItemTemplate.CreateInstanceFromTemplate(NewGameState);
+			NewGameState.AddStateObject(NewItemState);
+			XComHQ.AddItemToHQInventory(NewItemState);
+			History.AddGameStateToHistory(NewGameState);
+		} else {
+			`Log("LW LMGPack : LMG_CV found, skipping inventory add");
+			History.CleanupPendingGameState(NewGameState);
+		}
+	}
+
 	//schematics should be handled already, as the BuildItem UI draws from ItemTemplates, which are automatically loaded
 }
 
