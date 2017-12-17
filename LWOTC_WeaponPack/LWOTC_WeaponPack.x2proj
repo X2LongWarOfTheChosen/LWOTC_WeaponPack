@@ -653,6 +653,9 @@
     <Content Include="Src\LWOTC_WeaponPack\Classes\X2Ability_LongWatchAbilities.uc">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Ability_CarbineAbilities.uc">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Src\LWOTC_WeaponPack\Classes\X2Ability_SMGAbilities.uc">
       <SubType>Content</SubType>
     </Content>
