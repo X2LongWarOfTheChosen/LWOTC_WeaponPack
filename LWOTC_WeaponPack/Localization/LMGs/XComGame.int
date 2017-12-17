@@ -35,6 +35,41 @@ BriefSummary="The Light Machine Gun (LMG for short) is adapted from our Battle R
 TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn.\n<Bullet/> Allows for long range engagement.\n<Bullet/> Mount the LMG on cover to increase accuracy and allow squad sight shots.\n<Bullet/> Use upgrades looted from enemies to improve the Light Machine Gun's tactical effectiveness."
 AbilityDescName="cannon"
 
+[SAW_CV X2WeaponTemplate]
+FriendlyName="SAW"
+FriendlyNamePlural="SAWs"
+BriefSummary="The Light Machine Gun (LMG for short) is adapted from our Battle Rifle platform to allow our gunners to engage the enemy at intermediate range."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn.\n<Bullet/> Allows for long range engagement.\n<Bullet/> Mount the LMG on cover to increase accuracy and allow squad sight shots.\n<Bullet/> Use upgrades looted from enemies to improve the Light Machine Gun's tactical effectiveness."
+AbilityDescName="cannon"
+
+[SAW_LS X2WeaponTemplate]
+FriendlyName="Laser SAW"
+FriendlyNamePlural="Laser SAWs"
+BriefSummary="The Light Machine Gun (LMG for short) is adapted from our Battle Rifle platform to allow our gunners to engage the enemy at intermediate range."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn.\n<Bullet/> Allows for long range engagement.\n<Bullet/> Mount the LMG on cover to increase accuracy and allow squad sight shots.\n<Bullet/> Use upgrades looted from enemies to improve the Light Machine Gun's tactical effectiveness."
+AbilityDescName="cannon"
+
+[SAW_MG X2WeaponTemplate]
+FriendlyName="Mag SAW"
+FriendlyNamePlural="Mag SAWs"
+BriefSummary="The Light Machine Gun (LMG for short) is adapted from our Battle Rifle platform to allow our gunners to engage the enemy at intermediate range."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn.\n<Bullet/> Allows for long range engagement.\n<Bullet/> Mount the LMG on cover to increase accuracy and allow squad sight shots.\n<Bullet/> Use upgrades looted from enemies to improve the Light Machine Gun's tactical effectiveness."
+AbilityDescName="cannon"
+
+[SAW_CG X2WeaponTemplate]
+FriendlyName="Coil SAW"
+FriendlyNamePlural="Coil SAWs"
+BriefSummary="The Light Machine Gun (LMG for short) is adapted from our Battle Rifle platform to allow our gunners to engage the enemy at intermediate range."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn.\n<Bullet/> Allows for long range engagement.\n<Bullet/> Mount the LMG on cover to increase accuracy and allow squad sight shots.\n<Bullet/> Use upgrades looted from enemies to improve the Light Machine Gun's tactical effectiveness."
+AbilityDescName="cannon"
+
+[SAW_BM X2WeaponTemplate]
+FriendlyName="Beam SAW"
+FriendlyNamePlural="Beam SAWs"
+BriefSummary="The Light Machine Gun (LMG for short) is adapted from our Battle Rifle platform to allow our gunners to engage the enemy at intermediate range."
+TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn.\n<Bullet/> Allows for long range engagement.\n<Bullet/> Mount the LMG on cover to increase accuracy and allow squad sight shots.\n<Bullet/> Use upgrades looted from enemies to improve the Light Machine Gun's tactical effectiveness."
+AbilityDescName="cannon"
+
 ; Ability templates
 [ToggleLongWatch X2AbilityTemplate]
 LocFriendlyName="Long Watch"

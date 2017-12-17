@@ -42,6 +42,7 @@ static function Create_Cannon_Template(out X2WeaponTemplate Template, int tier)
 	Template.Tier = tier;
 	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Cannon';
 	Template.strImage = "img:///" $ default.Cannon_ImagePath[tier];
+	Template.bIsLargeWeapon = true;
 	Assign_Tier_Values(Template);
 
 	//Abilities
