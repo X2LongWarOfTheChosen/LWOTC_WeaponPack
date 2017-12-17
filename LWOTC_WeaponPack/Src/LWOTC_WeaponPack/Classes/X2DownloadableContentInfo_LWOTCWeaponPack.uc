@@ -73,38 +73,38 @@ static function UpdateConventionalStorage()
 
 	//add Conventional Battle Rifle always
 	`Log("LWOTC WeaponPack : Updated Conventional BR");
-	ItemTemplate = ItemTemplateMgr.FindItemTemplate('BR_CV');
+	ItemTemplate = ItemTemplateMgr.FindItemTemplate('BattleRifle_CV');
 	if(ItemTemplate != none)
 	{
-		`Log("LW SMGPack : Found BR_CV item template");
+		`Log("LW SMGPack : Found BattleRifle_CV item template");
 		if (!XComHQ.HasItem(ItemTemplate))
 		{
-			`Log("LW SMGPack : BR_CV not found, adding to inventory");
+			`Log("LW SMGPack : BattleRifle_CV not found, adding to inventory");
 			NewItemState = ItemTemplate.CreateInstanceFromTemplate(NewGameState);
 			NewGameState.AddStateObject(NewItemState);
 			XComHQ.AddItemToHQInventory(NewItemState);
 			History.AddGameStateToHistory(NewGameState);
 		} else {
-			`Log("LW SMGPack : BR_CV found, skipping inventory add");
+			`Log("LW SMGPack : BattleRifle_CV found, skipping inventory add");
 			History.CleanupPendingGameState(NewGameState);
 		}
 	}
 
 	//add Conventional Marksman Rifle always
 	`Log("LWOTC WeaponPack : Updated Conventional MR");
-	ItemTemplate = ItemTemplateMgr.FindItemTemplate('MR_CV');
+	ItemTemplate = ItemTemplateMgr.FindItemTemplate('MarksmanRifle_CV');
 	if(ItemTemplate != none)
 	{
-		`Log("LW SMGPack : Found MR_CV item template");
+		`Log("LW SMGPack : Found MarksmanRifle_CV item template");
 		if (!XComHQ.HasItem(ItemTemplate))
 		{
-			`Log("LW SMGPack : MR_CV not found, adding to inventory");
+			`Log("LW SMGPack : MarksmanRifle_CV not found, adding to inventory");
 			NewItemState = ItemTemplate.CreateInstanceFromTemplate(NewGameState);
 			NewGameState.AddStateObject(NewItemState);
 			XComHQ.AddItemToHQInventory(NewItemState);
 			History.AddGameStateToHistory(NewGameState);
 		} else {
-			`Log("LW SMGPack : MR_CV found, skipping inventory add");
+			`Log("LW SMGPack : MarksmanRifle_CV found, skipping inventory add");
 			History.CleanupPendingGameState(NewGameState);
 		}
 	}

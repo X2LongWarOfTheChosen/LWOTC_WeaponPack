@@ -83,13 +83,13 @@ BriefSummary="A powerful but physically-heavy cannon designed specifically for u
 TacticalText="<Bullet/> Firing the primary weapon ends the soldier's turn, in the absence of special training."
 AbilityDescName="heavy autocannon"
 
-[LaserWeaponsTech_LW X2TechTemplate]
+[LaserWeaponsTech X2TechTemplate]
 DisplayName="Laser Weapons"
 Summary="Using our new understanding of alien weapon systems, we should be able develop designs for powerful laser weaponry."
 CodeName="Linebacker"
 LongDescription="By studying the methods used by the aliens to manage energy consumption and heat dissipation in their weapons, we've built a working prototype of what we're calling a pulsed laser weapon, although some of the troops prefer to call them 'blasters' for reasons that are obscure to me. The power we are able to put through these weapons is immense, but the system cannot maintain a continuous beam of such massive energies, so it instead relies on a series of picosecond-long pulses of intense energy density to break down any chemical bonds the beam encounters. These weapons should be more accurate and do more damage, on average, than the ballistic weapons we have been using, although they don't quite match the firepower of the weaponry we have seen the aliens operating. R. Tygan."
 
-[AdvancedLaserWeaponsTech_LW X2TechTemplate]
+[AdvancedLaserWeaponsTech X2TechTemplate]
 DisplayName="Advanced Laser Weapons"
 Summary="With the basics of combat laser technology fully understood, we believe we can now develop specialized weapons for the troops."
 CodeName="Fulcrum"

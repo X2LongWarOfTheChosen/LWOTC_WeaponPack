@@ -91,6 +91,6 @@ static function X2DataTemplate CreatePulseLaserWeaponsTemplate()
 
 defaultProperties
 {
-	LaserWeaponTech_Tier[0]="LaserWeaponsTech_LW";
-	LaserWeaponTech_Tier[1]="AdvancedLaserWeaponsTech_LW";
+	LaserWeaponTech_Tier[0]="LaserWeaponsTech";
+	LaserWeaponTech_Tier[1]="AdvancedLaserWeaponsTech";
 }

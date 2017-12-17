@@ -1,11 +1,5 @@
-//---------------------------------------------------------------------------------------
-//  FILE:    X2Ability_SMGAbilities.uc
-//  AUTHOR:  Amineri (Pavonis Interactive)
-//  PURPOSE: Adds stat modifier abilities for all tech tiers of SMG
-//           
-//---------------------------------------------------------------------------------------
 class X2Ability_SMGAbilities extends X2Ability
-	dependson (XComGameStateContext_Ability) config(LW_WeaponPack);
+	dependson (XComGameStateContext_Ability) config(LongWar_WeaponPack_Abilities);
 	
 // ***** Mobility bonuses for SMGs
 var config int SMG_CONVENTIONAL_MOBILITY_BONUS;

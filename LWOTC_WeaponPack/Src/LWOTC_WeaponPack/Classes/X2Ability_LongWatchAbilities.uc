@@ -1,5 +1,5 @@
 class X2Ability_LongWatchAbilities extends X2Ability_DefaultAbilitySet
-	dependson (XComGameStateContext_Ability) config(LW_WeaponPack);
+	dependson (XComGameStateContext_Ability) config(LongWar_WeaponPack_Abilities);
 
 var name ToggleLongWatchEffect;
 var name LongOverwatchReserveActionPoint;

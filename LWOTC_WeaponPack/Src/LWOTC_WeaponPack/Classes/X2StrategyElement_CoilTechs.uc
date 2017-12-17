@@ -92,6 +92,6 @@ static function X2DataTemplate CreateAdvancedCoilWeaponsTemplate()
 
 defaultProperties
 {
-	CoilWeaponTech_Tier[0]="Coilguns";
-	CoilWeaponTech_Tier[1]="AdvancedCoilguns";
+	CoilWeaponTech_Tier[0]="CoilWeaponsTech";
+	CoilWeaponTech_Tier[1]="AdvancedCoilWeaponsTech";
 }

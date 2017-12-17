@@ -1,10 +1,10 @@
-[Coilguns X2TechTemplate]
+[CoilWeaponsTech X2TechTemplate]
 DisplayName="Coilguns"
 CodeName="Laertes"
 Summary="It is now time to move beyond reverse-engineering captured weapons to develop a new line of magnetic weaponry superior to what ADVENT utilizes."
 LongDescription="The principles of coil-type magnetic weapons have long been known, but it has taken our understanding of alien materials and energy supplies to make that a reality. And the reality is we have developed weaponry that exceed the firepower of ADVENT troops and approach that of some alien weaponry. Our coilguns fire rounds sheathed in ablative plastic that melts away as the round travels through the gun barrel at speeds even greater than those achieved by the aliens' railgun-based systems. The round itself can punch through thin armor, as well. R. Tygan."
 
-[AdvancedCoilguns X2TechTemplate]
+[AdvancedCoilWeaponsTech X2TechTemplate]
 DisplayName="Advanced Coilguns"
 CodeName="Firefox"
 Summary="We can now turn our attention to developing specialized coil weaponry."

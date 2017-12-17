@@ -16,10 +16,55 @@
     <Content Include="Config\XComGame.ini">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Config\XComLongWar_WeaponPack_Abilities.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComLongWar_WeaponPack_AssaultRifle.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComLongWar_WeaponPack_Bullpup.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComLongWar_WeaponPack_Cannon.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComLongWar_WeaponPack_LMG.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComLongWar_WeaponPack_MarksmanRifle.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComLongWar_WeaponPack_MiniSMG.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComLongWar_WeaponPack_Pistol.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComLongWar_WeaponPack_Range.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComLongWar_WeaponPack_Shotgun.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComLongWar_WeaponPack_SMG.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComLongWar_WeaponPack_SniperRifle.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComLongWar_WeaponPack_SparkRifle.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComLongWar_WeaponPack_Vektor.ini">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Config\XComLW_WeaponPack.ini">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Config\XComStrategyTuning.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComLongWar_WeaponPack_BattleRifle.ini">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Content\LMG\BattleRifleMeshPack_ModShaderCache.upk">
@@ -599,7 +644,7 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="ReadMe.txt" />
-	<Content Include="Src\LWOTC_WeaponPack\Classes\X2Ability_BRAbilities.uc">
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Ability_BattleRifleAbilities.uc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LWOTC_WeaponPack\Classes\X2Ability_LMGAbilities.uc">
@@ -617,19 +662,46 @@
     <Content Include="Src\LWOTC_WeaponPack\Classes\X2EventListener_LWOTC_WeaponPack.uc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LWConventionalWeapons.uc">
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_AssaultRifle.uc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LaserWeapons.uc">
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_BattleRifle.uc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LWMagneticWeapons.uc">
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_Bullpup.uc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_CoilWeapons.uc">
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_Cannon.uc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LWBeamWeapons.uc">
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_LMG.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_MarksmanRifle.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_MiniSMG.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_Pistol.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_Shotgun.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_SMG.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_SniperRifle.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_SparkRifle.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_Vektor.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_Weapon.uc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LaserSchematics.uc">
