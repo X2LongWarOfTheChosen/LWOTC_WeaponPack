@@ -43,6 +43,9 @@
     <Content Include="Config\XComLongWar_WeaponPack_Range.ini">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Config\XComLongWar_WeaponPack_SAW.ini">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Config\XComLongWar_WeaponPack_Shotgun.ini">
       <SubType>Content</SubType>
     </Content>
@@ -687,6 +690,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_Pistol.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_SAW.uc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_Shotgun.uc">

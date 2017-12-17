@@ -130,6 +130,25 @@ static function UpdateSMGConventionalStorage()
 		}
 	}
 
+	//add Conventional SAW always
+	`Log("LWOTC WeaponPack : Updated Conventional SAW");
+	ItemTemplate = ItemTemplateMgr.FindItemTemplate('SAW_CV');
+	if(ItemTemplate != none)
+	{
+		`Log("LW SAWPack : Found SAW item template");
+		if (!XComHQ.HasItem(ItemTemplate))
+		{
+			`Log("LW SAWPack : SAW_CV not found, adding to inventory");
+			NewItemState = ItemTemplate.CreateInstanceFromTemplate(NewGameState);
+			NewGameState.AddStateObject(NewItemState);
+			XComHQ.AddItemToHQInventory(NewItemState);
+			History.AddGameStateToHistory(NewGameState);
+		} else {
+			`Log("LW SAWPack : SAW_CV found, skipping inventory add");
+			History.CleanupPendingGameState(NewGameState);
+		}
+	}
+
 	//schematics should be handled already, as the BuildItem UI draws from ItemTemplates, which are automatically loaded
 }
 
