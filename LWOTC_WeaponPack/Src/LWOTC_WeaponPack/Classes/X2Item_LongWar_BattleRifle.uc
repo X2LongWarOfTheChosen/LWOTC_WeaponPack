@@ -152,7 +152,7 @@ static function X2DataTemplate Create_BattleRifle_Magnetic(name TemplateName)
 	Template.AddDefaultAttachment('Light', "ConvAttachments.Meshes.SM_ConvFlashLight");
 
 	// Building info
-	Template.CreatorTemplateName = 'BR_MG_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'BattleRifle_MG_Schematic'; // The schematic which creates this item
 	Template.BaseItem = default.BattleRifleConventional; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
@@ -210,7 +210,7 @@ static function X2DataTemplate Create_BattleRifle_Beam(name TemplateName)
 	Template.AddDefaultAttachment('HeatSink', "BeamAssaultRifle.Meshes.SM_BeamAssaultRifle_HeatSinkA", , "img:///UILibrary_Common.UI_BeamAssaultRifle.BeamAssaultRifle_HeatsinkA");
 	Template.AddDefaultAttachment('Light', "BeamAttachments.Meshes.BeamFlashLight");
 
-	Template.CreatorTemplateName = 'BR_BM_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'BattleRifle_BM_Schematic'; // The schematic which creates this item
 	Template.BaseItem = default.BattleRifleMagnetic; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;

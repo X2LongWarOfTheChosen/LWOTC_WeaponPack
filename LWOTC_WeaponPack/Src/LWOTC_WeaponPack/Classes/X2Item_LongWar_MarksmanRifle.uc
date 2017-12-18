@@ -148,7 +148,7 @@ static function X2DataTemplate Create_MarksmanRifle_Magnetic(name TemplateName)
 	Template.AddDefaultAttachment('Trigger', "MagAssaultRifle.Meshes.SM_MagAssaultRifle_TriggerA", , "img:///UILibrary_Common.UI_MagAssaultRifle.MagAssaultRifle_TriggerA");
 	Template.AddDefaultAttachment('Light', "ConvAttachments.Meshes.SM_ConvFlashLight");
 
-	Template.CreatorTemplateName = 'BR_MG_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'MarksmanRifle_MG_Schematic'; // The schematic which creates this item
 	Template.BaseItem = default.MarksmanRifleConventional; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;
@@ -206,7 +206,7 @@ static function X2DataTemplate Create_MarksmanRifle_Beam(name TemplateName)
 	Template.AddDefaultAttachment('HeatSink', "BeamAssaultRifle.Meshes.SM_BeamAssaultRifle_HeatSinkA", , "img:///UILibrary_Common.UI_BeamAssaultRifle.BeamAssaultRifle_HeatsinkA");
 	Template.AddDefaultAttachment('Light', "BeamAttachments.Meshes.BeamFlashLight");
 
-	Template.CreatorTemplateName = 'MR_BM_Schematic'; // The schematic which creates this item
+	Template.CreatorTemplateName = 'MarksmanRifle_BM_Schematic'; // The schematic which creates this item
 	Template.BaseItem = default.MarksmanRifleMagnetic; // Which item this will be upgraded from
 
 	Template.CanBeBuilt = false;

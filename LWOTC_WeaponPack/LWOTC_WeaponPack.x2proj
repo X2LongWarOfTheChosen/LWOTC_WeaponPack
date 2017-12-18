@@ -740,13 +740,16 @@
     <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LaserSchematics.uc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LWMagneticSchematics.uc">
-      <SubType>Content</SubType>
-    </Content>
     <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_CoilSchematics.uc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LWBeamSchematics.uc">
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_Schematic_LongWar.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_Schematic_LWBeam.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_Schematic_LWMagnetic.uc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LWOTC_WeaponPack\Classes\X2Override_Attachments_Carbine.uc">

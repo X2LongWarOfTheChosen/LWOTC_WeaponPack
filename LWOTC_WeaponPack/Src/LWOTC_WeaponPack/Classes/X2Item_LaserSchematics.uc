@@ -494,7 +494,6 @@ static function X2DataTemplate CreateTemplate_SparkRifle_Laser_Schematic()
 static function X2DataTemplate CreateTemplate_LMG_Laser_Schematic()
 {
 	local X2SchematicTemplate Template;
-	local ArtifactCost Resources, Artifacts;
 
 	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, 'LMG_LS_Schematic');
 
@@ -517,21 +516,7 @@ static function X2DataTemplate CreateTemplate_LMG_Laser_Schematic()
 	Template.Requirements.RequiredEngineeringScore = 10;
 	Template.Requirements.bVisibleIfPersonnelGatesNotMet = true;
 
-	// Cost
-	Resources.ItemTemplateName = 'Supplies';
-	Resources.Quantity = default.LMG_LASER_SCHEMATIC_SUPPLYCOST;
-	Template.Cost.ResourceCosts.AddItem(Resources);
-
-	Artifacts.ItemTemplateName = 'AlienAlloy';
-	Artifacts.Quantity = default.LMG_LASER_SCHEMATIC_ALLOYCOST;
-	Template.Cost.ResourceCosts.AddItem(Artifacts);
-	
-	// only add elerium cost if configured value greater than 0
-	if (default.LMG_LASER_SCHEMATIC_ELERIUMCOST > 0) {
-		Artifacts.ItemTemplateName = 'EleriumDust';
-		Artifacts.Quantity = default.LMG_LASER_SCHEMATIC_ELERIUMCOST;
-		Template.Cost.ResourceCosts.AddItem(Artifacts);
-	}
+	CreateTemplateCost(Template, default.LMG_LASER_SCHEMATIC_SUPPLYCOST, default.LMG_LASER_SCHEMATIC_ALLOYCOST, default.LMG_LASER_SCHEMATIC_ELERIUMCOST);
 
 	return Template;
 }

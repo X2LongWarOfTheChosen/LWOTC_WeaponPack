@@ -298,10 +298,10 @@ static function AddSchematicLoc (X2ItemTemplateManager ItemTemplateMgr)
 	CopySchematicLoc (ItemTemplateMgr, 'LMG_CG_Schematic', 'Cannon_MG_Schematic');
 	CopySchematicLoc (ItemTemplateMgr, 'LMG_BM_Schematic', 'Cannon_MG_Schematic');
 
-	CopySchematicLoc (ItemTemplateMgr, 'MarksmansRifle_LS_Schematic', 'SniperRifle_MG_Schematic');
-	CopySchematicLoc (ItemTemplateMgr, 'MarksmansRifle_MG_Schematic', 'SniperRifle_MG_Schematic');
-	CopySchematicLoc (ItemTemplateMgr, 'MarksmansRifle_CG_Schematic', 'SniperRifle_MG_Schematic');
-	CopySchematicLoc (ItemTemplateMgr, 'MarksmansRifle_BM_Schematic', 'SniperRifle_MG_Schematic');
+	CopySchematicLoc (ItemTemplateMgr, 'MarksmanRifle_LS_Schematic', 'SniperRifle_MG_Schematic');
+	CopySchematicLoc (ItemTemplateMgr, 'MarksmanRifle_MG_Schematic', 'SniperRifle_MG_Schematic');
+	CopySchematicLoc (ItemTemplateMgr, 'MarksmanRifle_CG_Schematic', 'SniperRifle_MG_Schematic');
+	CopySchematicLoc (ItemTemplateMgr, 'MarksmanRifle_BM_Schematic', 'SniperRifle_MG_Schematic');
 
 	CopySchematicLoc (ItemTemplateMgr, 'Sidearm_LS_Schematic', 'Sidearm_MG_Schematic');
 	CopySchematicLoc (ItemTemplateMgr, 'Sidearm_CG_Schematic', 'Sidearm_MG_Schematic');
@@ -328,8 +328,8 @@ static function AddSchematicLoc (X2ItemTemplateManager ItemTemplateMgr)
 	CopySchematicLoc (ItemTemplateMgr, 'SparkRifle_LS_Schematic', 'SparkRifle_MG_Schematic');
 	CopySchematicLoc (ItemTemplateMgr, 'SparkRifle_CG_Schematic', 'SparkRifle_MG_Schematic');
 
-	CopySchematicLoc (ItemTemplateMgr, 'Vektor_LS_Schematic', 'Vektor_MG_Schematic');
-	CopySchematicLoc (ItemTemplateMgr, 'Vektor_CG_Schematic', 'Vektor_MG_Schematic');
+	CopySchematicLoc (ItemTemplateMgr, 'Vektor_LS_Schematic', 'VektorRifle_MG_Schematic');
+	CopySchematicLoc (ItemTemplateMgr, 'Vektor_CG_Schematic', 'VektorRifle_MG_Schematic');
 }
 
 static function CopySchematicLoc (X2ItemTemplateManager ItemTemplateMgr, Name NewItem, Name BaseItem)
