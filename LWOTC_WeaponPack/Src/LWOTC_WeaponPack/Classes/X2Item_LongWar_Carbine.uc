@@ -60,8 +60,8 @@ static function Create_Carbine_Template(out X2WeaponTemplate Template, int tier)
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem('Carbine_CV_StatBonus');
-	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_CarbineAbilities'.default.Carbine_CONVENTIONAL_MOBILITY_BONUS);
+	Template.Abilities.AddItem(class'X2Ability_CarbineAbilities'.default.CarbineBonusAbility);
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_CarbineAbilities'.default.Carbine_Mobility_Bonus);
 
 	//Stats
 	Template.BaseDamage = default.Carbine_Damage[tier];
