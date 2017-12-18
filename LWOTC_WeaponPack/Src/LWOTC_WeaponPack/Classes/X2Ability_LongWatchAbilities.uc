@@ -110,7 +110,7 @@ static function X2AbilityTemplate ToggleLongWatch()
 
 	Template.Hostility = eHostility_Defensive;
 
-	Template.AdditionalAbilities.AddItem('ToggleLongWatchShot');
+	Template.AdditionalAbilities.AddItem(default.ToggleLongWatchShotAbility);
 
 	Template.DefaultKeyBinding = class'UIUtilities_Input'.const.FXS_KEY_Y;
 	Template.bNoConfirmationWithHotKey = true;
