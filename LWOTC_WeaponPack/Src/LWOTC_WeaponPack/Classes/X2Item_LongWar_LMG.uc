@@ -60,13 +60,13 @@ static function Create_LMG_Template(out X2WeaponTemplate Template, int tier)
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem(class'X2Ability_LMGAbilities'.default.MountedEffectName);
-	Template.Abilities.AddItem(class'X2Ability_LongWatchAbilities'.default.LongOverwatchReserveActionPoint);
-	Template.Abilities.AddItem(class'X2Ability_LongWatchAbilities'.default.ToggleLongWatchEffect);
+	Template.Abilities.AddItem(class'X2Ability_LMGAbilities'.default.MountLMGAbility);
+	Template.Abilities.AddItem(class'X2Ability_LongWatchAbilities'.default.ToggleLongWatchAbility);
+	Template.Abilities.AddItem(class'X2Ability_LongWatchAbilities'.default.ToggleLongWatchShotAbility);
 
 	//Stats
 	Template.BaseDamage = default.LMG_Damage[tier];
-	Template.Aim = default.LMG_Aim[tier] + class'X2Ability_LMGAbilities'.default.LMG_AIM_BONUS_WHEN_NOT_SET_UP;
+	Template.Aim = default.LMG_Aim[tier] - class'X2Ability_LMGAbilities'.default.LMG_Aim_Bonus_When_Mounted;
 	Template.CritChance = default.LMG_CritChance[tier];
 	Template.iClipSize = default.LMG_ClipSize[tier];
 	Template.iSoundRange = default.LMG_SoundRange[tier];

@@ -60,8 +60,8 @@ static function Create_SMG_Template(out X2WeaponTemplate Template, int tier)
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem('SMG_CV_StatBonus');
-	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_SMGAbilities'.default.SMG_CONVENTIONAL_MOBILITY_BONUS);
+	Template.Abilities.AddItem(class'X2Ability_SMGAbilities'.default.SMGBonusAbility);
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_SMGAbilities'.default.SMG_Mobility_Bonus);
 
 	//Stats
 	Template.BaseDamage = default.SMG_Damage[tier];

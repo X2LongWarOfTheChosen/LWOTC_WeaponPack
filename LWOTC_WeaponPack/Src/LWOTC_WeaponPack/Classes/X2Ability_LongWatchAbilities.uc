@@ -4,8 +4,13 @@ class X2Ability_LongWatchAbilities extends X2Ability_DefaultAbilitySet
 var name ToggleLongWatchEffect;
 var name LongOverwatchReserveActionPoint;
 
+var name ToggleLongWatchAbility;
+var name ToggleLongWatchShotAbility;
+
 DefaultProperties
 {
+	ToggleLongWatchAbility="ToggleLongWatchAbility"
+	ToggleLongWatchShotAbility="ToggleLongWatchShotAbility"
 	ToggleLongWatchEffect="ToggleLongWatch"
 	LongOverwatchReserveActionPoint="ToggleLongWatchShot"
 }
@@ -34,8 +39,7 @@ static function X2AbilityTemplate ToggleLongWatch()
 	local X2Condition_UnitEffects           SuppressedCondition;
 	local X2Condition_UnitEffects           RequireToggleCondition;
 
-//	`CREATE_X2ABILITY_TEMPLATE(Template, 'ToggleLongWatch');
-	`CREATE_X2ABILITY_TEMPLATE(Template, default.ToggleLongWatchEffect);
+	`CREATE_X2ABILITY_TEMPLATE(Template, default.ToggleLongWatchAbility);
 	
 	AmmoCost = new class'X2AbilityCost_Ammo';	
 	AmmoCost.iAmmo = 1;
@@ -129,8 +133,7 @@ static function X2AbilityTemplate ToggleLongWatchShot()
 	local X2Condition_Visibility            TargetVisibilityCondition;
 
 	
-	//`CREATE_X2ABILITY_TEMPLATE(Template, 'ToggleLongWatchShot');
-	`CREATE_X2ABILITY_TEMPLATE(Template, default.LongOverwatchReserveActionPoint);
+	`CREATE_X2ABILITY_TEMPLATE(Template, default.ToggleLongWatchShotAbility);
 	
 	AmmoCost = new class'X2AbilityCost_Ammo';	
 	AmmoCost.iAmmo = 1;	

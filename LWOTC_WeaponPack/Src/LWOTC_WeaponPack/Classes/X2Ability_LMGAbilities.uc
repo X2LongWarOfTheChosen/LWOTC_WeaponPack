@@ -1,12 +1,15 @@
 class X2Ability_LMGAbilities extends X2Ability_DefaultAbilitySet
 	dependson (XComGameStateContext_Ability) config(LongWar_WeaponPack_Abilities);
 
-var config int LMG_AIM_BONUS_WHEN_NOT_SET_UP;
+var config int LMG_Aim_Bonus_When_Mounted;
+var config string Mount_LMG_Ability_Icon;
 
 var name MountedEffectName;
+var name MountLMGAbility;
 
 DefaultProperties
 {
+	MountLMGAbility="MountLMGAbility"
 	MountedEffectName="MountLMG"
 }
 
@@ -30,13 +33,13 @@ static function X2AbilityTemplate AddLMG_MountAbility()
 	local X2Condition_UnitEffects MountedCondition;
 	local X2Effect_Squadsight Squadsight;
 
-	`CREATE_X2ABILITY_TEMPLATE(Template, default.MountedEffectName);
+	`CREATE_X2ABILITY_TEMPLATE(Template, default.MountLMGAbility);
 
 	Template.AbilityToHitCalc = default.DeadEye;
 	Template.AbilityTargetStyle = default.SelfTarget;
 	Template.AbilitySourceName = 'eAbilitySource_Item';
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_ShowIfAvailable;
-	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_pistoloverwatch";
+	Template.IconImage = "img:///" $ default.Mount_LMG_Ability_Icon;
 	Template.ShotHUDPriority = 150;
 	Template.bDisplayInUITooltip = false;
 	Template.bDisplayInUITacticalText = false;
@@ -64,7 +67,7 @@ static function X2AbilityTemplate AddLMG_MountAbility()
 	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
 	PersistentStatChangeEffect.EffectName = default.MountedEffectName;
 	PersistentStatChangeEffect.BuildPersistentEffect(1, true, true, false);
-	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Offense, 20);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Offense, default.LMG_Aim_Bonus_When_Mounted);
 	PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage,,,Template.AbilitySourceName);
 	Template.AddTargetEffect(PersistentStatChangeEffect);
 
