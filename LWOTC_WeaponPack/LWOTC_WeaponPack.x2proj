@@ -749,6 +749,24 @@
     <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LWBeamSchematics.uc">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Override_Attachments_Carbine.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Override_Attachments_Coil.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Override_Attachments_Laser.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Override_Attachments_SMG.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Override_LongWar.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Override_LongWar_Tech.uc">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Src\LWOTC_WeaponPack\Classes\X2StrategyElement_LaserTechs.uc">
       <SubType>Content</SubType>
     </Content>
