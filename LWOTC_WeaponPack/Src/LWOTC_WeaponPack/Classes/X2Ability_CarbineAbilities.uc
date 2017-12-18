@@ -38,7 +38,7 @@ static function X2AbilityTemplate AddCarbineBonusAbility()
 	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
 	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
 	PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, "", "", Template.IconImage, false,,Template.AbilitySourceName);
-	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.CARBINE_CONVENTIONAL_MOBILITY_BONUS);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.Carbine_Mobility_Bonus);
 	Template.AddTargetEffect(PersistentStatChangeEffect);
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
