@@ -73,13 +73,19 @@
     <Content Include="Config\XComLongWar_WeaponPack_BattleRifle.ini">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Content\LMG\BattleRifleMeshPack_ModShaderCache.upk">
+    <Content Include="Content\BattleRifleExpansion_ModShaderCache.upk">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Content\LMG\BRMeshPack.upk">
+    <Content Include="Content\BattleRifleMeshPack_ModShaderCache.upk">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Content\LMG\UILibrary_BRMeshPack.upk">
+    <Content Include="Content\BattleRiflePack_ModShaderCache.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\BRMeshPack.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\BRPack.upk">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Content\LWAccessories_CG.upk">
@@ -332,6 +338,15 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Content\LWSniperRifle_LS.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\RM_BattleRiflePack.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\UILibrary_BRMeshPack.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\UILibrary_BRPack.upk">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Content\UILibrary_LW_Coilguns.upk">
@@ -753,7 +768,6 @@
     <Folder Include="Content\LWSMG_MG" />
     <Folder Include="Content\LWSMG_MG\Meshes" />
     <Folder Include="Content\LWSMG_MG\Textures" />
-    <Folder Include="Content\LMG" />
     <Folder Include="Content\UILibrary_SMG" />
     <Folder Include="Content\UILibrary_SMG\beam" />
     <Folder Include="Content\UILibrary_SMG\conventional" />
