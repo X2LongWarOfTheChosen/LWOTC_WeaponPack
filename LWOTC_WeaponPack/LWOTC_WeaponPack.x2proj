@@ -28,6 +28,9 @@
     <Content Include="Config\XComLongWar_WeaponPack_Cannon.ini">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Config\XComLongWar_WeaponPack_Carbine.ini">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Config\XComLongWar_WeaponPack_LMG.ini">
       <SubType>Content</SubType>
     </Content>
@@ -681,6 +684,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_Cannon.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_Carbine.uc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_LMG.uc">
