@@ -22,13 +22,13 @@ To start working on the codebase:
     + Fork and clone this repository.  
     + This repository has git LFS enabled, make sure that all files were properly.
     acquired. You can check this by making sure the Content folder has appropriately 800Mb of files.   
-    + Run `git remote add upstream https://github.com/X2LongWarOfTheChosen/LWOTC_WeaponPack.git`.   
+    + Run `git remote add upstream https://github.com/X2LongWarOfTheChosen/LongWarOfTheChosen_WeaponPack.git`.   
     + Verify that everything is set up properly by typing `git remote -v` which should produce output the same as the following but with your GitHub username in place:  
 ```
-  origin   https://github.com/YourUsername/LWOTC_WeaponPack.git (fetch)
-  origin   https://github.com/YourUsername/LWOTC_WeaponPack.git (push)
-  upstream https://github.com/X2LongWarOfTheChosen/LWOTC_WeaponPack.git (fetch)
-  upstream https://github.com/X2LongWarOfTheChosen/LWOTC_WeaponPack.git (push)
+  origin   https://github.com/YourUsername/LongWarOfTheChosen_WeaponPack.git (fetch)
+  origin   https://github.com/YourUsername/LongWarOfTheChosen_WeaponPack.git (push)
+  upstream https://github.com/X2LongWarOfTheChosen/LongWarOfTheChosen_WeaponPack.git (fetch)
+  upstream https://github.com/X2LongWarOfTheChosen/LongWarOfTheChosen_WeaponPack.git (push)
 ```
 
 # Contributing
