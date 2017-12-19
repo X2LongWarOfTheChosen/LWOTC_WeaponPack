@@ -1,4 +1,6 @@
-class X2Item_Schematic_LongWar extends X2Item;
+class X2Item_Schematic_LongWar extends X2Item config(LW_WeaponPack);
+
+var config bool USE_SCHEMATICS;
 
 static function CreateTemplateCost(out X2SchematicTemplate Template, int supplyCost, int alloyCost, int eleriumCost)
 {
