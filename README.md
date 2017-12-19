@@ -3,11 +3,11 @@ X2LongWarOfTheChosen is a team dedicated to porting Pavonis Interactive's
 original LW work.
 
 ## Weapons Pack
-The weapons pack is a port of the laser, coil and smg pack from PI.
-The new version is available  
-# What version are we at?
-The release version of X2LongWarOfTheChosen/WeaponsPack is v0.1-alpha
-The working version of X2LongWarOfTheChosen/WeaponsPack is v0.2-alpha
+The weapons pack is a port of the laser, coil and smg pack from PI.  
+The new version is available    
+# What version are we at?  
+The release version of X2LongWarOfTheChosen/WeaponsPack is v0.1-alpha.  
+The working version of X2LongWarOfTheChosen/WeaponsPack is v0.2-alpha. 
 
 # The Job List
 * Complete issues
@@ -18,17 +18,18 @@ provided here https://www.reddit.com/r/xcom2mods/wiki/firsttime . There are a
 number of other fantastic resources available here
 https://www.reddit.com/r/xcom2mods/wiki/index
 
-To start working on the codebase
-    - Fork and clone this repository
-    - This repository has git LFS enabled, make sure that all files were properly
-    acquired. You can check this by making sure the Content folder has appropriately 800Mb of files
-    - Run `git remote add upstream https://github.com/X2LongWarOfTheChosen/LWOTC_WeaponPack.git`
-    - Verify that everything is set up properly by typing `git remote -v` which should produce output the same as the following but with your GitHub username in place:
-
-  origin   https://github.com/YourUsername/habitica.git (fetch)
-  origin   https://github.com/YourUsername/habitica.git (push)
-  upstream https://github.com/X2LongWarOfTheChosen/LWOTC_WeaponPack.git (fetch)
-  upstream https://github.com/X2LongWarOfTheChosen/LWOTC_WeaponPack.git (push)
+To start working on the codebase:   
+    + Fork and clone this repository.  
+    + This repository has git LFS enabled, make sure that all files were properly.
+    acquired. You can check this by making sure the Content folder has appropriately 800Mb of files.   
+    + Run `git remote add upstream https://github.com/X2LongWarOfTheChosen/LongWarOfTheChosen_WeaponPack.git`.   
+    + Verify that everything is set up properly by typing `git remote -v` which should produce output the same as the following but with your GitHub username in place:  
+```
+  origin   https://github.com/YourUsername/LongWarOfTheChosen_WeaponPack.git (fetch)
+  origin   https://github.com/YourUsername/LongWarOfTheChosen_WeaponPack.git (push)
+  upstream https://github.com/X2LongWarOfTheChosen/LongWarOfTheChosen_WeaponPack.git (fetch)
+  upstream https://github.com/X2LongWarOfTheChosen/LongWarOfTheChosen_WeaponPack.git (push)
+```
 
 # Contributing
 Due to the large number of people working on this project, it is important to
