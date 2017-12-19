@@ -737,10 +737,10 @@
     <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LongWar_Weapon.uc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_LaserSchematics.uc">
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_Schematic_Coil.uc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_CoilSchematics.uc">
+    <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_Schematic_Laser.uc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LWOTC_WeaponPack\Classes\X2Item_Schematic_LongWar.uc">

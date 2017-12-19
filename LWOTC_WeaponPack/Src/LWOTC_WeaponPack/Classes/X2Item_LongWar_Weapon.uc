@@ -61,12 +61,12 @@ static function bool BuildWeaponSchematics(out X2WeaponTemplate Template)
 
 	if (Template.Tier == 1)
 	{
-		UseSchematics = class'X2Item_LaserSchematics'.default.USE_SCHEMATICS;
+		UseSchematics = class'X2Item_Schematic_LongWar'.default.USE_SCHEMATICS;
 
 	}
 	else if (Template.Tier == 3)
 	{
-		UseSchematics = class'X2Item_CoilSchematics'.default.USE_SCHEMATICS;
+		UseSchematics = class'X2Item_Schematic_LongWar'.default.USE_SCHEMATICS;
 	}
 	else
 	{

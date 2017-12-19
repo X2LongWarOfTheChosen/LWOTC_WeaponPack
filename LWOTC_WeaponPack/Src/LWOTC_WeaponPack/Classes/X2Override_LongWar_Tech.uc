@@ -6,7 +6,7 @@ static function UpdateBaseGameLaserAndCoilTechTemplates()
 	local X2TechTemplate TechTemplate;
 	local array<X2TechTemplate> TechTemplates;
 
-	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
+	if (class'X2Item_Schematic_LongWar'.default.USE_SCHEMATICS)
 	{
 		FindTechTemplateAllDifficulties('MagnetizedWeapons', TechTemplates);
 		foreach TechTemplates(TechTemplate)
@@ -18,10 +18,6 @@ static function UpdateBaseGameLaserAndCoilTechTemplates()
 		{
 			TechTemplate.Requirements.RequiredTechs[0] = class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier.Length - 1];
 		}
-	}
-
-	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
-	{
 		FindTechTemplateAllDifficulties('PlasmaRifle', TechTemplates);
 		foreach TechTemplates(TechTemplate)
 		{
@@ -32,7 +28,7 @@ static function UpdateBaseGameLaserAndCoilTechTemplates()
 
 static function UpdateLaserWeaponTemplates(X2ItemTemplateManager ItemTemplateManager)
 {
-	if (class'X2Item_LaserSchematics'.default.USE_SCHEMATICS)
+	if (class'X2Item_Schematic_LongWar'.default.USE_SCHEMATICS)
 	{
 		//update weapon templates so they upgrade from the correct weapon
 		SetWeaponBaseItem(ItemTemplateManager, 'AssaultRifle_MG', 'AssaultRifle_LS');
@@ -55,7 +51,7 @@ static function UpdateLaserWeaponTemplates(X2ItemTemplateManager ItemTemplateMan
 
 static function UpdateCoilWeaponTemplates(X2ItemTemplateManager ItemTemplateManager)
 {
-	if (class'X2Item_CoilSchematics'.default.USE_SCHEMATICS)
+	if (class'X2Item_Schematic_LongWar'.default.USE_SCHEMATICS)
 	{
 		//update weapon templates so they upgrade from the correct weapon
 		SetWeaponBaseItem(ItemTemplateManager, 'AssaultRifle_BM', 'AssaultRifle_CG');

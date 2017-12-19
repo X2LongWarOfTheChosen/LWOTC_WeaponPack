@@ -243,6 +243,22 @@ static function X2DataTemplate Create_MarksmanRifle_Laser_Schematic(name Templat
 	return Template;
 }
 
+static function X2DataTemplate Create_Carbine_Laser_Schematic(name TemplateName)
+{
+	local X2SchematicTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, TemplateName);
+	Create_Laser_Schematic(Template, class'X2StrategyElement_LaserTechs'.default.LaserWeaponTech_Tier[0]);
+	Template.Requirements.RequiredEngineeringScore = 5;
+	Template.strImage = "img:///UILibrary_LW_LaserPack.Inv_Laser_Assault_Rifle";
+	
+	Template.ReferenceItemTemplate = 'Carbine_LS';
+	Template.HideIfPurchased = 'Carbine_MG';
+
+	CreateTemplateCost(Template, default.Carbine_Laser_Schematic_SupplyCost, default.Carbine_Laser_Schematic_AlloyCost, default.Carbine_Laser_Schematic_EleriumCost);
+	return Template;
+}
+
 static function X2DataTemplate Create_LMG_Laser_Schematic(name TemplateName)
 {
 	local X2SchematicTemplate Template;

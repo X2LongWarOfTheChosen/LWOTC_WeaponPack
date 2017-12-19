@@ -147,7 +147,7 @@ static function X2DataTemplate Create_AssaultRifle_Coil_Schematic(name TemplateN
 	return Template;
 }
 
-static function X2DataTemplate Create_AssaultRifle_Coil_Schematic(name TemplateName)
+static function X2DataTemplate Create_BattleRifle_Coil_Schematic(name TemplateName)
 {
 	local X2SchematicTemplate Template;
 
@@ -256,6 +256,22 @@ static function X2DataTemplate Create_LMG_Coil_Schematic(name TemplateName)
 	Template.HideIfPurchased = 'LMG_BM';
 
 	CreateTemplateCost(Template, default.LMG_Coil_Schematic_SupplyCost, default.LMG_Coil_Schematic_AlloyCost, default.LMG_Coil_Schematic_EleriumCost);
+	return Template;
+}
+
+static function X2DataTemplate Create_Carbine_Coil_Schematic(name TemplateName)
+{
+	local X2SchematicTemplate Template;
+
+	`CREATE_X2TEMPLATE(class'X2SchematicTemplate', Template, TemplateName);
+	Create_Coil_Schematic(Template, class'X2StrategyElement_CoilTechs'.default.CoilWeaponTech_Tier[0]);
+	Template.Requirements.RequiredEngineeringScore = 15;
+	Template.strImage = "img:///UILibrary_LW_Coilguns.InventoryArt.Inv_Coil_AssaultRifle";
+	
+	Template.ReferenceItemTemplate = 'Carbine_CG';
+	Template.HideIfPurchased = 'Carbine_BM';
+
+	CreateTemplateCost(Template, default.Carbine_Coil_Schematic_SupplyCost, default.Carbine_Coil_Schematic_AlloyCost, default.Carbine_Coil_Schematic_EleriumCost);
 	return Template;
 }
 
