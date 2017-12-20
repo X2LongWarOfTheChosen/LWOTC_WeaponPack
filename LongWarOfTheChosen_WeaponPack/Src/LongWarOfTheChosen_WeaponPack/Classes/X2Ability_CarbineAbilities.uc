@@ -1,5 +1,5 @@
 class X2Ability_CarbineAbilities extends X2Ability
-	dependson (XComGameStateContext_Ability) config(LW_WeaponPack);
+	dependson (XComGameStateContext_Ability) config(LongWar_WeaponPack_Abilities);
 
 var config int Carbine_Mobility_Bonus;
 var config string Carbine_Mobility_Bonus_Icon;
