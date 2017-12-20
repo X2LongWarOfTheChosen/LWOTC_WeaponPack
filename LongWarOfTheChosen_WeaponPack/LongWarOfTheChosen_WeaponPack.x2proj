@@ -529,6 +529,39 @@
     <Content Include="Content\UILibrary_SMG\magnetic\MagAssaultRifle_Base.TGA">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Localization\Carbines\XComGame.chn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Carbines\XComGame.cht">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Carbines\XComGame.deu">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Carbines\XComGame.esn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Carbines\XComGame.fra">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Carbines\XComGame.int">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Carbines\XComGame.ita">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Carbines\XComGame.jpn">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Carbines\XComGame.kor">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Carbines\XComGame.pol">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Carbines\XComGame.rus">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Localization\Coils\XComGame.chn">
       <SubType>Content</SubType>
     </Content>
@@ -797,6 +830,7 @@
     <Folder Include="Localization\Lasers" />
     <Folder Include="Localization\Coils" />
     <Folder Include="Localization\LMGs" />
+    <Folder Include="Localization\Carbines" />
     <Folder Include="Localization\SMGs" />
     <Folder Include="Src\" />
     <Folder Include="Src\LongWarOfTheChosen_WeaponPack" />

@@ -1,0 +1,36 @@
+; Carbine item localization 
+
+[Carbine_CV X2WeaponTemplate]
+FriendlyName="Carbine"
+FriendlyNamePlural="Carbines"
+BriefSummary="Carbine offer a lighter and more accurat alternative to the standard smg, although they lack the same concealabilety."
+TacticalText="<Bullet/>Firing the primary weapon ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Carbines tactical effectiveness. \n<Bullet/> Carbine-style weapons offer a smaller bonus mobility and increased accuracy boost relative to SMG's, "
+AbilityDescName="Carbine"
+
+[Carbine_LS X2WeaponTemplate]
+FriendlyName="Laser Carbine"
+FriendlyNamePlural="Laser Carbines"
+BriefSummary="Carbine offer a lighter and more accurat alternative to the standard smg, although they lack the same concealabilety."
+TacticalText="<Bullet/>Firing the primary weapon ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Carbines tactical effectiveness. \n<Bullet/> Carbine-style weapons offer a smaller bonus mobility and increased accuracy boost relative to SMG's, "
+AbilityDescName="Carbine"
+
+[Carbine_MG X2WeaponTemplate]
+FriendlyName="Mag Carbine"
+FriendlyNamePlural="Mag Carbines"
+BriefSummary="Carbine offer a lighter and more accurat alternative to the standard smg, although they lack the same concealabilety."
+TacticalText="<Bullet/>Firing the primary weapon ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Carbines tactical effectiveness. \n<Bullet/> Carbine-style weapons offer a smaller bonus mobility and increased accuracy boost relative to SMG's, "
+AbilityDescName="Carbine"
+
+[Carbine_CG X2WeaponTemplate]
+FriendlyName="Coil Carbine"
+FriendlyNamePlural="Coil Carbines"
+BriefSummary="Carbine offer a lighter and more accurat alternative to the standard smg, although they lack the same concealabilety."
+TacticalText="<Bullet/>Firing the primary weapon ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Carbines tactical effectiveness. \n<Bullet/> Carbine-style weapons offer a smaller bonus mobility and increased accuracy boost relative to SMG's, "
+AbilityDescName="Carbine"
+
+[Carbine_BM X2WeaponTemplate]
+FriendlyName="Beam Carbine"
+FriendlyNamePlural="Beam Carbines"
+BriefSummary="Carbine offer a lighter and more accurat alternative to the standard smg, although they lack the same concealabilety."
+TacticalText="<Bullet/>Firing the primary weapon ends the soldier's turn, in the absence of special training.\n<Bullet/> Use upgrades recovered from ADVENT enemies to improve the Carbines tactical effectiveness. \n<Bullet/> Carbine-style weapons offer a smaller bonus mobility and increased accuracy boost relative to SMG's, "
+AbilityDescName="Carbine"
