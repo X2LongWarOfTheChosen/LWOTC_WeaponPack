@@ -343,6 +343,9 @@
     <Content Include="Content\RM_BattleRiflePack.upk">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Content\RM_ETCSAW.upk">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Content\UILibrary_BRMeshPack.upk">
       <SubType>Content</SubType>
     </Content>
@@ -353,6 +356,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Content\UILibrary_LW_LaserPack.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\UILibrary_LW_Overhaul.upk">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Content\UILibrary_SMG.upk">
@@ -759,6 +765,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Override_Attachments_Laser.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Override_Attachments_SAW.uc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Override_Attachments_SMG.uc">
