@@ -4,8 +4,8 @@ class X2Ability_LMGAbilities extends X2Ability_DefaultAbilitySet
 var config int LMG_Aim_Bonus_When_Mounted;
 var config string Mount_LMG_Ability_Icon;
 
-var name MountedEffectName;
 var name MountLMGAbility;
+var name MountedEffectName;
 
 DefaultProperties
 {
