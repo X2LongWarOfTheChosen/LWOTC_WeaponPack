@@ -71,7 +71,7 @@ TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn
 AbilityDescName="cannon"
 
 ; Ability templates
-[ToggleLongWatch X2AbilityTemplate]
+[ToggleLongWatchAbility X2AbilityTemplate]
 LocFriendlyName="Long Watch"
 LocLongDescription="Allow Overwatch to trigger with Squadsight."
 LocHelpText="Fire on the first enemy that moves within your line of sight (in Squadsight range.)"
@@ -80,10 +80,10 @@ LocFlyOverText="Long Watch"
 LocFriendlyNameWhenConcealed="Long Watch (Concealed)"
 LocPromotionPopupText="<Bullet/> Like the Overwatch ability it upgrades, Long Watch suffers a base penalty to aim.<br/><Bullet/> Long Watch also suffers the Squadsight penalty to aim that increases with distance.<br/>"
  
-[ToggleLongWatchShot X2AbilityTemplate]
+[ToggleLongWatchShotAbility X2AbilityTemplate]
 LocFriendlyName="Long Watch Shot"
 
-[MountLMG X2AbilityTemplate]
+[MountLMGAbility X2AbilityTemplate]
 LocFriendlyName="Mount LMG"
 LocLongDescription="Mount the LMG on cover to increase accuracy and allow squad sight shots."
 LocHelpText="Mount the LMG on cover to increase accuracy and allow squad sight shots."

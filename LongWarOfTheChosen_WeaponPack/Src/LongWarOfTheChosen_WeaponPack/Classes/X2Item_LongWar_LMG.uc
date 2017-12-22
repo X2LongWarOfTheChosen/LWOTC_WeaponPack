@@ -60,7 +60,7 @@ static function Create_LMG_Template(out X2WeaponTemplate Template, int tier)
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem(class'X2Ability_LMGAbilities'.default.MountedEffectName);
+	Template.Abilities.AddItem(class'X2Ability_LMGAbilities'.default.MountLMGAbility);
 	Template.Abilities.AddItem(class'X2Ability_LongWatchAbilities'.default.ToggleLongWatchAbility);
 	Template.Abilities.AddItem(class'X2Ability_LongWatchAbilities'.default.ToggleLongWatchShotAbility);
 

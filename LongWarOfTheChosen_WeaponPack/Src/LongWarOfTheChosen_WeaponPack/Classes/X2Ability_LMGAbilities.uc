@@ -4,10 +4,12 @@ class X2Ability_LMGAbilities extends X2Ability_DefaultAbilitySet
 var config int LMG_Aim_Bonus_When_Mounted;
 var config string Mount_LMG_Ability_Icon;
 
+var name MountLMGAbility;
 var name MountedEffectName;
 
 DefaultProperties
 {
+	MountLMGAbility="MountLMGAbility"
 	MountedEffectName="MountLMG"
 }
 
@@ -31,7 +33,7 @@ static function X2AbilityTemplate AddLMG_MountAbility()
 	local X2Condition_UnitEffects MountedCondition;
 	local X2Effect_Squadsight Squadsight;
 
-	`CREATE_X2ABILITY_TEMPLATE(Template, default.MountedEffectName);
+	`CREATE_X2ABILITY_TEMPLATE(Template, default.MountLMGAbility);
 
 	Template.AbilityToHitCalc = default.DeadEye;
 	Template.AbilityTargetStyle = default.SelfTarget;
