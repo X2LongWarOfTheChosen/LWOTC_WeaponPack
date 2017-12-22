@@ -3,7 +3,7 @@ class X2Override_Attachments_Carbine extends X2Override_LongWar;
 //add CARBINE to the DefaultUpgrades Templates so that upgrades work with new weapon
 //this doesn't make the upgrade available, it merely configures the art
 //TODO: make this class actually do something
-static function UpdateCARBINEAttachmentTemplates(X2ItemTemplateManager ItemTemplateManager)
+static function UpdateCarbineAttachmentTemplates(X2ItemTemplateManager ItemTemplateManager)
 {
 	AddCARBINECritUpgrade(ItemTemplateManager, 'CritUpgrade_Bsc');
 	AddCARBINECritUpgrade(ItemTemplateManager, 'CritUpgrade_Adv');
