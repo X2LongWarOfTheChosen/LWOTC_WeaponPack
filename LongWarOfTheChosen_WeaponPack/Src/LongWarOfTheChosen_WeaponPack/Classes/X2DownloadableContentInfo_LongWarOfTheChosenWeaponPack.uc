@@ -260,6 +260,7 @@ static event OnPostTemplatesCreated()
 	}
 
 	class'X2Override_Attachments_SMG'.static.UpdateSMGAttachmentTemplates(ItemTemplateManager);
+	class'X2Override_Attachments_SAW'.static.UpdateSAWAttachmentTemplates(ItemTemplateManager);
 	class'X2Override_Attachments_Carbine'.static.UpdateCarbineAttachmentTemplates(ItemTemplateManager);
 	class'X2Override_Attachments_Laser'.static.UpdateLaserAttachmentTemplates(ItemTemplateManager);
 	class'X2Override_Attachments_Coil'.static.UpdateCoilAttachmentTemplates(ItemTemplateManager);
