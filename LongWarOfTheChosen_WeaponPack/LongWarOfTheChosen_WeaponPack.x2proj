@@ -800,6 +800,9 @@
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Override_Attachments_Laser.uc">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Override_Attachments_MarksmanRifle.uc">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Override_Attachments_SAW.uc">
       <SubType>Content</SubType>
     </Content>
