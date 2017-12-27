@@ -791,6 +791,9 @@
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Item_Schematic_LWMagnetic.uc">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Override_Attachments_BattleRifle.uc">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Override_Attachments_Carbine.uc">
       <SubType>Content</SubType>
     </Content>
