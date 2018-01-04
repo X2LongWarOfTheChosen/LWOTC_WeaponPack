@@ -46,6 +46,9 @@
     <Content Include="Config\XComLongWar_WeaponPack_Range.ini">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Config\XComLongWar_WeaponPack_RangeOverride.ini">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Config\XComLongWar_WeaponPack_SAW.ini">
       <SubType>Content</SubType>
     </Content>

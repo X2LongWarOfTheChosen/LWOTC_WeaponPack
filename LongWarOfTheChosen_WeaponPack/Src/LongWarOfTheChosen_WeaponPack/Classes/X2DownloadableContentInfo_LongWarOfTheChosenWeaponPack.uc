@@ -269,6 +269,8 @@ static event OnPostTemplatesCreated()
 	class'X2Override_LongWar_Tech'.static.UpdateLaserWeaponTemplates(ItemTemplateManager);
 	class'X2Override_LongWar_Tech'.static.UpdateCoilWeaponTemplates(ItemTemplateManager);
 
+	class'X2Override_Weapons_Ranges'.static.UpdateStockWeaponRanges(ItemTemplateManager);
+
 	AddSchematicLoc (ItemTemplateManager);
 }
 
