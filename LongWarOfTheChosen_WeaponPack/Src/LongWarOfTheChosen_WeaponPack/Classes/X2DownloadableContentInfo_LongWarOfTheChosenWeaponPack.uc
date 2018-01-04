@@ -265,7 +265,8 @@ static event OnPostTemplatesCreated()
 	class'X2Override_Attachments_Carbine'.static.UpdateCarbineAttachmentTemplates(ItemTemplateManager);
 	class'X2Override_Attachments_Laser'.static.UpdateLaserAttachmentTemplates(ItemTemplateManager);
 	class'X2Override_Attachments_Coil'.static.UpdateCoilAttachmentTemplates(ItemTemplateManager);
-
+	class'X2Override_Attachments_BattleRifle'.static.UpdateBattleRifleAttachmentTemplates(ItemTemplateManager);
+		
 	class'X2Override_LongWar_Tech'.static.UpdateBaseGameLaserAndCoilTechTemplates();
 	class'X2Override_LongWar_Tech'.static.UpdateLaserWeaponTemplates(ItemTemplateManager);
 	class'X2Override_LongWar_Tech'.static.UpdateCoilWeaponTemplates(ItemTemplateManager);
