@@ -1,0 +1,2 @@
+class X2Override_Weapons_Ranges extends X2Override_LongWar;
+

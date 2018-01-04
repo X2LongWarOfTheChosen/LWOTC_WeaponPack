@@ -812,6 +812,9 @@
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Override_LongWar_Tech.uc">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Override_Weapons_Ranges.uc">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2StrategyElement_LaserTechs.uc">
       <SubType>Content</SubType>
     </Content>
