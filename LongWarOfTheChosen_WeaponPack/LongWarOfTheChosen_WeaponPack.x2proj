@@ -16,6 +16,9 @@
     <Content Include="Config\XComGame.ini">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Config\XComGameData.ini">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Config\XComLongWar_WeaponPack_Abilities.ini">
       <SubType>Content</SubType>
     </Content>
