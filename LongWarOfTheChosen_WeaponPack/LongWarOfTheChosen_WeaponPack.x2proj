@@ -827,6 +827,36 @@
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2StrategyElement_CoilTechs.uc">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Src\LW_Tuple\Classes\LWTuple.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\XModBase_Core_2_0_1\Classes\XMBAbilityCost_ActionPoints.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\XModBase_Core_2_0_1\Classes\XMBAbilityMultiTarget_Radius.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\XModBase_Core_2_0_1\Classes\XMBAbilityTag.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\XModBase_Core_2_0_1\Classes\XMBAbilityToHitCalc_StandardAim.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\XModBase_Core_2_0_1\Classes\XMBConfig.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\XModBase_Core_2_0_1\Classes\XMBDownloadableContentInfo_XModBase.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\XModBase_Core_2_0_1\Classes\XMBTargetingMethod_Grenade.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\XModBase_Interfaces\Classes\XMBEffectInterface.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\XModBase_Interfaces\Classes\XMBOverrideInterface.uc">
+      <SubType>Content</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Config\" />
@@ -853,6 +883,12 @@
     <Folder Include="Src\" />
     <Folder Include="Src\LongWarOfTheChosen_WeaponPack" />
     <Folder Include="Src\LongWarOfTheChosen_WeaponPack\Classes" />
+    <Folder Include="Src\LW_Tuple" />
+    <Folder Include="Src\LW_Tuple\Classes" />
+    <Folder Include="Src\XModBase_Core_2_0_1\Classes" />
+    <Folder Include="Src\XModBase_Interfaces" />
+    <Folder Include="Src\XModBase_Core_2_0_1" />
+    <Folder Include="Src\XModBase_Interfaces\Classes" />
   </ItemGroup>
   <Import Project="$(MSBuildLocalExtensionPath)\XCOM2.targets" />
 </Project>
