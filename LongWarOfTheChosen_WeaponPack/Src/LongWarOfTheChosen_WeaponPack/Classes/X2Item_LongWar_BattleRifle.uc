@@ -1,5 +1,6 @@
 class X2Item_LongWar_BattleRifle extends X2Item_LongWar_Weapon config(LongWar_WeaponPack_BattleRifle);
 
+var config bool Create_Battlerifles
 var config array<WeaponDamageValue> BattleRifle_Damage;
 var config array<int> BattleRifle_Aim;
 var config array<int> BattleRifle_CritChance;
@@ -34,11 +35,16 @@ defaultproperties
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Weapons;
-	Weapons.AddItem(Create_BattleRifle_Conventional(default.BattleRifleConventional));
-	Weapons.AddItem(Create_BattleRifle_Laser(default.BattleRifleLaser));
-	Weapons.AddItem(Create_BattleRifle_Magnetic(default.BattleRifleMagnetic));
-	Weapons.AddItem(Create_BattleRifle_Coil(default.BattleRifleCoil));
-	Weapons.AddItem(Create_BattleRifle_Beam(default.BattleRifleBeam));
+
+	if (default.Create_Battlerifles)
+	{
+		Weapons.AddItem(Create_BattleRifle_Conventional(default.BattleRifleConventional));
+		Weapons.AddItem(Create_BattleRifle_Laser(default.BattleRifleLaser));
+		Weapons.AddItem(Create_BattleRifle_Magnetic(default.BattleRifleMagnetic));
+		Weapons.AddItem(Create_BattleRifle_Coil(default.BattleRifleCoil));
+		Weapons.AddItem(Create_BattleRifle_Beam(default.BattleRifleBeam));
+	}
+
 	return Weapons;
 }
 

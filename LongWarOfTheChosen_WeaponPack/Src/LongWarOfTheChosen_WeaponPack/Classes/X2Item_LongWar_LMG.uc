@@ -1,5 +1,6 @@
 class X2Item_LongWar_LMG extends X2Item_LongWar_Weapon config(LongWar_WeaponPack_LMG);
 
+var config bool Create_LMGs;
 var config array<WeaponDamageValue> LMG_Damage;
 var config array<int> LMG_Aim;
 var config array<int> LMG_CritChance;
@@ -34,11 +35,16 @@ defaultproperties
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Weapons;
-	Weapons.AddItem(Create_LMG_Conventional(default.LMGConventional));
-	Weapons.AddItem(Create_LMG_Laser(default.LMGLaser));
-	Weapons.AddItem(Create_LMG_Magnetic(default.LMGMagnetic));
-	Weapons.AddItem(Create_LMG_Coil(default.LMGCoil));
-	Weapons.AddItem(Create_LMG_Beam(default.LMGBeam));
+
+	if(default.Create_LMGs)
+	{
+		Weapons.AddItem(Create_LMG_Conventional(default.LMGConventional));
+		Weapons.AddItem(Create_LMG_Laser(default.LMGLaser));
+		Weapons.AddItem(Create_LMG_Magnetic(default.LMGMagnetic));
+		Weapons.AddItem(Create_LMG_Coil(default.LMGCoil));
+		Weapons.AddItem(Create_LMG_Beam(default.LMGBeam));
+	}
+
 	return Weapons;
 }
 
