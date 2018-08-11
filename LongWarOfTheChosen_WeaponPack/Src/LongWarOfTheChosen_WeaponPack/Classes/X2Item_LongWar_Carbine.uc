@@ -1,5 +1,6 @@
 class X2Item_LongWar_Carbine extends X2Item_LongWar_Weapon config(LongWar_WeaponPack_Carbine);
 
+var config bool Create_Carbines;
 var config array<WeaponDamageValue> Carbine_Damage;
 var config array<int> Carbine_Aim;
 var config array<int> Carbine_CritChance;
@@ -34,11 +35,15 @@ defaultproperties
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Weapons;
-	Weapons.AddItem(Create_Carbine_Conventional(default.CarbineConventional));
-	Weapons.AddItem(Create_Carbine_Laser(default.CarbineLaser));
-	Weapons.AddItem(Create_Carbine_Magnetic(default.CarbineMagnetic));
-	Weapons.AddItem(Create_Carbine_Coil(default.CarbineCoil));
-	Weapons.AddItem(Create_Carbine_Beam(default.CarbineBeam));
+
+	if(default.Create_Carbines)
+	{
+		Weapons.AddItem(Create_Carbine_Conventional(default.CarbineConventional));
+		Weapons.AddItem(Create_Carbine_Laser(default.CarbineLaser));
+		Weapons.AddItem(Create_Carbine_Magnetic(default.CarbineMagnetic));
+		Weapons.AddItem(Create_Carbine_Coil(default.CarbineCoil));
+		Weapons.AddItem(Create_Carbine_Beam(default.CarbineBeam));
+	}
 	return Weapons;
 }
 
