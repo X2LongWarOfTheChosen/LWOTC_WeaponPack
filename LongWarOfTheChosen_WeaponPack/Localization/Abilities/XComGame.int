@@ -1,0 +1,25 @@
+[LWOTC_MountLMG X2AbilityTemplate]
+LocFriendlyName="Mount Cannon"
+LocFlyOverText="Mount Cannon"
+LocLongDescription="Mount the Cannon on cover to remove aim penalties and allow for area suppression."
+LocHelpText="Mount the Cannon on cover to remove aim penalties and allow for area suppression."
+LocPromotionPopupText="This will never show up" 
+
+[LWOTC_CannonAreaSuppression X2AbilityTemplate]
+LocFriendlyName="Area Suppression"
+LocFlyOverText="Area Suppression"
+LocLongDescription="Fire a barrage that pins down multiple targets within a 4-tile radius, granting reaction fire against anyone that moves and imposing a <Ability:SUPPRESSIONPENALTY/> penalty. Requires setup, and cannot be used when concealed."
+LocHelpText="Suppress multiple targets within an area of effect."
+LocPromotionPopupText="This will never show up"
+
+[LWotC_CannonFullReload X2AbilityTemplate]
+LocFriendlyName="Full Reload"
+LocFlyOverText="Full Reload"
+LocLongDescription="Spend two actions to reload the cannon's ammunition. "
+LocHelpText="Spend two actions to reload the cannon's ammunition."
+LocPromotionPopupText="This will never show up" 
+
+; AbilityAvailabilityCodes="AA_UnitIsConcealed"
+AbilityAvailabilityStrings[53]="Unit is already concealed."
+
+

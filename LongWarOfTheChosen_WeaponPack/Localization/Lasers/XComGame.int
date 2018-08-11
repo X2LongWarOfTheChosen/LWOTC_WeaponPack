@@ -23,7 +23,7 @@ AbilityDescName="SMG"
 FriendlyName="Laser Cannon"
 FriendlyNamePlural="Laser Cannons"
 BriefSummary="Laser weapons tech combined with an improved cooling system will let us deploy a rapid-fire version of the cannon, able to lay down a much deadlier volume of fire."
-TacticalText="<Bullet/> The Laser Cannon is a much more powerful, yet equally deployable, version of the conventional Cannon.\n<Bullet/> Use upgrades looted from enemies to improve the Laser Cannon's tactical effectiveness.\n<Bullet/> Lasers receive bonus aim."
+TacticalText="<Bullet/> The Laser Cannon is a much more powerful, yet equally deployable, version of the conventional Cannon.<br/><Bullet/> The cannon is a heavy weapon that possesses high damage and ammo capacity, but requires setup to be fired effectively.<br/><Bullet/> Use upgrades looted from enemies to improve the Laser Cannon's tactical effectiveness.<br/><Bullet/> Lasers receive bonus aim."
 AbilityDescName="cannon"
 
 [Shotgun_LS X2WeaponTemplate]

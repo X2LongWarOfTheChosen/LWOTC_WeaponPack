@@ -70,6 +70,27 @@ BriefSummary="The Light Machine Gun (LMG for short) is adapted from our Battle R
 TacticalText="<Bullet/> Firing the primary weapon always ends the soldier's turn.\n<Bullet/> Allows for long range engagement.\n<Bullet/> Mount the LMG on cover to increase accuracy and allow squad sight shots.\n<Bullet/> Use upgrades looted from enemies to improve the Light Machine Gun's tactical effectiveness."
 AbilityDescName="cannon"
 
+[Cannon_CV X2WeaponTemplate]
+FriendlyName="Cannon"
+FriendlyNamePlural="Cannons"
+BriefSummary="The Cannon is an improvised light support weapon, specialized for high volume fire. While decidedly inferior to ADVENT magnetic technology, it can at least be upgraded using additional weapons salvage once we perfect modular weapon technology."
+TacticalText="<Bullet/> The cannon is a heavy weapon that possesses high damage and ammo capacity, but requires setup to be fired effectively.<br/><Bullet/> Use upgrades looted from enemies to improve the Cannon's tactical effectiveness."
+AbilityDescName="cannon"
+
+[Cannon_MG X2WeaponTemplate]
+FriendlyName="Mag Cannon"
+FriendlyNamePlural="Mag Cannons"
+BriefSummary="Magnetic weapons tech will let us deploy a rapid-fire version of the cannon. Our Grenadiers will be able to lay down a much deadlier volume of fire."
+TacticalText="<Bullet/> The Mag Cannon is a much more powerful, yet equally deployable, version of the conventional Cannon.<br/><Bullet/> The cannon is a heavy weapon that possesses high damage and ammo capacity, but requires setup to be fired effectively.<br/><Bullet/> Use upgrades looted from enemies to improve the Mag Cannon's tactical effectiveness."
+AbilityDescName="cannon"
+
+[Cannon_BM X2WeaponTemplate]
+FriendlyName="Beam Cannon"
+FriendlyNamePlural="Beam Cannons"
+BriefSummary="Devising a more powerful, high-volume beam weapon for our Grenadiers required substantial effort, but the firepower it brings is unquestioned."
+TacticalText="<Bullet/> The Beam Cannon is the most powerful combat support weapon human forces can deploy.<br/><Bullet/> The cannon is a heavy weapon that possesses high damage and ammo capacity, but requires setup to be fired effectively.<br/><Bullet/> Use upgrades looted from enemies to improve the Beam Cannon's tactical effectiveness."
+AbilityDescName="cannon"
+
 ; Ability templates
 [ToggleLongWatchAbility X2AbilityTemplate]
 LocFriendlyName="Long Watch"

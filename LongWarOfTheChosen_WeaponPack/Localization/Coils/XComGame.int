@@ -28,7 +28,7 @@ AbilityDescName="battle rifle"
 FriendlyName="Gauss Cannon"
 FriendlyNamePlural="Gauss Cannons"
 BriefSummary="A heavy duty, automatic coilgun with a huge rate of fire."
-TacticalText="<Bullet/> Coil weapons automatically pierce (ignore) 1 enemy armor.<br/><Bullet/> The cannon serves in a squad automatic weapon role, has more ammo and does more damage than its rifle counterpart, but it is cumbersome to carry.<br/><Bullet/> Use upgrades recovered from ADVENT enemies to improve the Gauss Cannon's tactical effectiveness.<br/>"
+TacticalText="<Bullet/> Coil weapons automatically pierce (ignore) 1 enemy armor.<br/><Bullet/> The cannon is a heavy weapon that possesses high damage and ammo capacity, but requires setup to be fired effectively.<br/><Bullet/> Use upgrades recovered from ADVENT enemies to improve the Gauss Cannon's tactical effectiveness.<br/>"
 AbilityDescName="cannon"
 
 [SniperRifle_CG X2WeaponTemplate]

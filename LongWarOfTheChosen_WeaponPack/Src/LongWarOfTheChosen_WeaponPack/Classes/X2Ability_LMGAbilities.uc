@@ -55,7 +55,6 @@ static function X2AbilityTemplate AddLMG_MountAbility()
 	Template.DisplayTargetHitChance = false;
 	Template.Hostility = eHostility_Neutral;
 	Template.CinescriptCameraType = "GenericAccentCam";
-	Template.bDontDisplayInAbilitySummary = true;
 
 	ActionPointCost = new class'X2AbilityCost_ActionPoints';
 	ActionPointCost.iNumPoints = 1;
@@ -135,15 +134,6 @@ simulated function HunkerDownAbility_BuildVisualization(XComGameState VisualizeG
 		SoundAndFlyOver.SetSoundAndFlyOverParameters(SoundCue'SoundUI.HunkerDownCue', AbilityTemplate.LocFlyOverText, 'HunkerDown', eColor_Good, AbilityTemplate.IconImage, 1.0, true);
 	}
 	//****************************************************************************************
-
-	//	this visualization handles the removal of burning effects
-	AbilityTemplate = class'X2AbilityTemplateManager'.static.GetAbilityTemplateManager().FindAbilityTemplate(Context.InputContext.AbilityTemplateName);
-
-	for (EffectIndex = 0; EffectIndex < AbilityTemplate.AbilityTargetEffects.Length; ++EffectIndex)
-	{
-		ApplyResult = Context.FindTargetEffectApplyResult(AbilityTemplate.AbilityTargetEffects[EffectIndex]);
-		AbilityTemplate.AbilityTargetEffects[EffectIndex].AddX2ActionsForVisualization(VisualizeGameState, ActionMetadata, ApplyResult);
-	}
 }
 
 static function X2AbilityTemplate AreaSuppression()
@@ -189,16 +179,6 @@ static function X2AbilityTemplate AreaSuppression()
 	Template.AbilityShooterConditions.AddItem(MountedCondition);
 
     Template.AssociatedPassives.AddItem('HoloTargeting');
-
-    InventoryCondition = new class'X2Condition_UnitInventory';
-    InventoryCondition.RelevantSlot=eInvSlot_PrimaryWeapon;
-    InventoryCondition.ExcludeWeaponCategory = 'shotgun';
-    Template.AbilityShooterConditions.AddItem(InventoryCondition);
-
-    InventoryCondition2 = new class'X2Condition_UnitInventory';
-    InventoryCondition2.RelevantSlot=eInvSlot_PrimaryWeapon;
-    InventoryCondition2.ExcludeWeaponCategory = 'sniper_rifle';
-    Template.AbilityShooterConditions.AddItem(InventoryCondition2);
 
     AmmoCost = new class'X2AbilityCost_Ammo';   
     AmmoCost.iAmmo = default.AREA_SUPPRESSION_AMMO_COST;
