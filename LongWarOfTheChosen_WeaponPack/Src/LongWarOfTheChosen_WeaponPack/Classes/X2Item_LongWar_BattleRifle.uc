@@ -1,6 +1,9 @@
 class X2Item_LongWar_BattleRifle extends X2Item_LongWar_Weapon config(LongWar_WeaponPack_BattleRifle);
 
 var config bool Create_Battlerifles;
+
+var config name BattleRifle_Category;
+
 var config array<WeaponDamageValue> BattleRifle_Damage;
 var config array<int> BattleRifle_Aim;
 var config array<int> BattleRifle_CritChance;
@@ -15,12 +18,24 @@ var config array<int> BattleRifle_EleriumCost;
 var config array<int> BattleRifle_Engineering;
 var config array<name> BattleRifle_RequiredTech;
 var config array<string> BattleRifle_ImagePath;
+var config array<int> BattleRifle_Mobility;
 
 var name BattleRifleConventional;
 var name BattleRifleLaser;
 var name BattleRifleMagnetic;
 var name BattleRifleCoil;
 var name BattleRifleBeam;
+
+var config array<name> CommonAbilities;
+var config array<name> BallisticAbilities;
+var config array<name> LaserAbilities;
+var config array<name> MagneticAbilities;
+var config array<name> CoilgunAbilities;
+var config array<name> PlasmaAbilities;
+
+var config bool RemoveStandardShot;
+var config bool RemoveOverwatch;
+var config bool RemoveReload;
 
 defaultproperties
 {
@@ -50,8 +65,10 @@ static function array<X2DataTemplate> CreateTemplates()
 
 static function Create_BattleRifle_Template(out X2WeaponTemplate Template, int tier)
 {
+	local name Ability;
+
 	//Default Settings
-	Template.WeaponCat = 'rifle';
+	Template.WeaponCat = default.BattleRifle_Category;
 	Template.ItemCat = 'weapon';
 	Template.iPhysicsImpulse = 5;
 	Template.Tier = tier;
@@ -61,13 +78,37 @@ static function Create_BattleRifle_Template(out X2WeaponTemplate Template, int t
 
 	//Abilities
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('StandardShot');
-	Template.Abilities.AddItem('Overwatch');
+	
+	if(!default.RemoveStandardShot)
+	{
+		Template.Abilities.AddItem('StandardShot');
+	}
+	if(!default.RemoveOverwatch)
+	{
+		Template.Abilities.AddItem('Overwatch');
+	}
+	if(!default.RemoveReload)
+	{
+		Template.Abilities.AddItem('Reload');
+	}
 	Template.Abilities.AddItem('OverwatchShot');
-	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem(class'X2Ability_BattleRifleAbilities'.default.BattleRifleStatBonusAbilityName);
-	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_BattleRifleAbilities'.default.BattleRifle_MobilityBonus);
+
+	foreach default.CommonAbilities(Ability)
+	{
+		Template.Abilities.AddItem(Ability);
+	}
+	
+	if(default.BattleRifle_Mobility[tier] > 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityBonus_' $ default.BattleRifle_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.BattleRifle_Mobility[tier]);
+	}
+	if(default.BattleRifle_Mobility[tier] < 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityPenalty_' $ default.BattleRifle_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.BattleRifle_Mobility[tier]);
+	}
 
 	//Stats
 	Template.BaseDamage = default.BattleRifle_Damage[tier];

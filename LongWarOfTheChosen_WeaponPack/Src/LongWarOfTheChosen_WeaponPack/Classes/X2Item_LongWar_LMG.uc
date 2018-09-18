@@ -1,6 +1,9 @@
 class X2Item_LongWar_LMG extends X2Item_LongWar_Weapon config(LongWar_WeaponPack_LMG);
 
 var config bool Create_LMGs;
+
+var config name LMG_Category;
+
 var config array<WeaponDamageValue> LMG_Damage;
 var config array<int> LMG_Aim;
 var config array<int> LMG_CritChance;
@@ -15,12 +18,24 @@ var config array<int> LMG_EleriumCost;
 var config array<int> LMG_Engineering;
 var config array<name> LMG_RequiredTech;
 var config array<string> LMG_ImagePath;
+var config array<int> LMG_Mobility;
 
 var name LMGConventional;
 var name LMGLaser;
 var name LMGMagnetic;
 var name LMGCoil;
 var name LMGBeam;
+
+var config array<name> CommonAbilities;
+var config array<name> BallisticAbilities;
+var config array<name> LaserAbilities;
+var config array<name> MagneticAbilities;
+var config array<name> CoilgunAbilities;
+var config array<name> PlasmaAbilities;
+
+var config bool RemoveStandardShot;
+var config bool RemoveOverwatch;
+var config bool RemoveReload;
 
 defaultproperties
 {
@@ -50,8 +65,10 @@ static function array<X2DataTemplate> CreateTemplates()
 
 static function Create_LMG_Template(out X2WeaponTemplate Template, int tier)
 {
+	local name Ability;
+
 	//Default Settings
-	Template.WeaponCat = 'cannon';
+	Template.WeaponCat = default.LMG_Category;
 	Template.ItemCat = 'weapon';
 	Template.iPhysicsImpulse = 5;
 	Template.Tier = tier;
@@ -61,11 +78,37 @@ static function Create_LMG_Template(out X2WeaponTemplate Template, int tier)
 
 	//Abilities
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('StandardShot');
-	Template.Abilities.AddItem('Overwatch');	
+	
+	if(!default.RemoveStandardShot)
+	{
+		Template.Abilities.AddItem('StandardShot');
+	}
+	if(!default.RemoveOverwatch)
+	{
+		Template.Abilities.AddItem('Overwatch');
+	}
+	if(!default.RemoveReload)
+	{
+		Template.Abilities.AddItem('Reload');
+	}
 	Template.Abilities.AddItem('OverwatchShot');
 	Template.Abilities.AddItem('HotLoadAmmo');
 
+	foreach default.CommonAbilities(Ability)
+	{
+		Template.Abilities.AddItem(Ability);
+	}
+	
+	if(default.LMG_Mobility[tier] > 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityBonus_' $ default.LMG_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.LMG_Mobility[tier]);
+	}
+	if(default.LMG_Mobility[tier] < 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityPenalty_' $ default.LMG_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.LMG_Mobility[tier]);
+	}
 
 	//Stats
 	Template.BaseDamage = default.LMG_Damage[tier];

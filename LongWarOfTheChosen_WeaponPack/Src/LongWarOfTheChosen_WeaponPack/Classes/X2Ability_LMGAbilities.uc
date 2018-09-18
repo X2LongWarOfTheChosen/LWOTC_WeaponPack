@@ -4,6 +4,18 @@ class X2Ability_LMGAbilities extends XMBAbility
 var config int LMG_Aim_Bonus_When_Mounted;
 var config string Mount_LMG_Ability_Icon;
 
+var config int Spray_Aim_Penalty;
+var config int Spray_Crit_Penalty;
+var config float Spray_Damage_Penalty;
+var config int Spray_Ammo_Cost;
+
+var config string LMG_Mobility_Bonus_Icon;
+var config int Conv_Cannon_Mobility_Bonus;
+var config int Mag_Cannon_Mobility_Bonus;
+var config int Laser_Cannon_Mobility_Bonus;
+var config int Coil_Cannon_Mobility_Bonus;
+var config int Beam_Cannon_Mobility_Bonus;
+
 var name MountedEffectName;
 
 var config int AREA_SUPPRESSION_AMMO_COST;
@@ -23,12 +35,159 @@ static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
 
+	Templates.AddItem(AddConvCannonBonusAbility());
+	Templates.AddItem(AddMagCannonBonusAbility());
+	Templates.AddItem(AddLaserCannonBonusAbility());
+	Templates.AddItem(AddCoilCannonBonusAbility());
+	Templates.AddItem(AddBeamCannonBonusAbility());
 	Templates.AddItem(AddLMG_MountAbility());
 	Templates.AddItem(AreaSuppression());
     Templates.AddItem(AreaSuppressionShot()); //Additional Ability
 	Templates.AddItem(AddFullReloadCannonAbility());
+	Templates.AddItem(AddMountedLMGShot());
+	Templates.AddItem(AddNonMountedLMGShot());
 
 	return Templates;
+}
+
+static function X2AbilityTemplate AddConvCannonBonusAbility()
+{
+	local X2AbilityTemplate                 Template;	
+	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'LWOTC_ConvCannonBonusAbility');
+	Template.IconImage = "img:///" $ default.LMG_Mobility_Bonus_Icon;
+
+	Template.AbilitySourceName = 'eAbilitySource_Item';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.bDisplayInUITacticalText = false;
+	
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
+	
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, "", "", Template.IconImage, false,,Template.AbilitySourceName);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.Conv_Cannon_Mobility_Bonus);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	return Template;	
+}
+
+static function X2AbilityTemplate AddMagCannonBonusAbility()
+{
+	local X2AbilityTemplate                 Template;	
+	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'LWOTC_MagCannonBonusAbility');
+	Template.IconImage = "img:///" $ default.LMG_Mobility_Bonus_Icon;
+
+	Template.AbilitySourceName = 'eAbilitySource_Item';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.bDisplayInUITacticalText = false;
+	
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
+	
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, "", "", Template.IconImage, false,,Template.AbilitySourceName);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.Mag_Cannon_Mobility_Bonus);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	return Template;	
+}
+
+static function X2AbilityTemplate AddLaserCannonBonusAbility()
+{
+	local X2AbilityTemplate                 Template;	
+	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'LWOTC_LaserCannonBonusAbility');
+	Template.IconImage = "img:///" $ default.LMG_Mobility_Bonus_Icon;
+
+	Template.AbilitySourceName = 'eAbilitySource_Item';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.bDisplayInUITacticalText = false;
+	
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
+	
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, "", "", Template.IconImage, false,,Template.AbilitySourceName);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.Laser_Cannon_Mobility_Bonus);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	return Template;	
+}
+
+static function X2AbilityTemplate AddCoilCannonBonusAbility()
+{
+	local X2AbilityTemplate                 Template;	
+	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'LWOTC_CoilCannonBonusAbility');
+	Template.IconImage = "img:///" $ default.LMG_Mobility_Bonus_Icon;
+
+	Template.AbilitySourceName = 'eAbilitySource_Item';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.bDisplayInUITacticalText = false;
+	
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
+	
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, "", "", Template.IconImage, false,,Template.AbilitySourceName);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.Coil_Cannon_Mobility_Bonus);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	return Template;	
+}
+
+static function X2AbilityTemplate AddBeamCannonBonusAbility()
+{
+	local X2AbilityTemplate                 Template;	
+	local X2Effect_PersistentStatChange		PersistentStatChangeEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'LWOTC_BeamCannonBonusAbility');
+	Template.IconImage = "img:///" $ default.LMG_Mobility_Bonus_Icon;
+
+	Template.AbilitySourceName = 'eAbilitySource_Item';
+	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	Template.bDisplayInUITacticalText = false;
+	
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
+	
+	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
+	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
+	PersistentStatChangeEffect.SetDisplayInfo(ePerkBuff_Passive, "", "", Template.IconImage, false,,Template.AbilitySourceName);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.Beam_Cannon_Mobility_Bonus);
+	Template.AddTargetEffect(PersistentStatChangeEffect);
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	return Template;	
 }
 
 static function X2AbilityTemplate AddLMG_MountAbility()
@@ -81,6 +240,81 @@ static function X2AbilityTemplate AddLMG_MountAbility()
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
 	Template.BuildVisualizationFn = HunkerDownAbility_BuildVisualization;
+
+	return Template;
+}
+
+static function X2AbilityTemplate AddNonMountedLMGShot()
+{
+	local X2AbilityTemplate				Template;
+	local X2Condition_UnitEffects		MountedCondition;
+
+	Template = Attack('LWOTC_LMG_NonMountedShot', "", false, none, class'UIUtilities_Tactical'.const.STANDARD_SHOT_PRIORITY, eCost_SingleConsumeAll, default.Spray_Ammo_Cost);
+
+	MountedCondition = new class'X2Condition_UnitEffects';
+	MountedCondition.AddExcludeEffect(default.MountedEffectName, 'AA_AbilityUnavailable');
+	Template.AbilityShooterConditions.AddItem(MountedCondition);
+
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_HideIfOtherAvailable;
+	Template.HideIfAvailable.AddItem('LWOTC_LMG_MountedShot');
+
+	AddSecondaryAbility(Template, NonMountedLMGShotPenalties());
+
+	Template.bDisplayInUITooltip = false;
+	Template.bDisplayInUITacticalText = false;
+
+	return Template;
+}
+
+static function X2AbilityTemplate NonMountedLMGShotPenalties()
+{
+	local X2AbilityTemplate				Template;
+	local XMBEffect_ConditionalBonus	Effect;
+	local XMBCondition_AbilityName		Condition;
+
+	// Create a conditional bonus effect
+	Effect = new class'XMBEffect_ConditionalBonus';
+	Effect.EffectName = 'LW2WotC_PrecisionShot_Bonuses';
+    
+	// Spray decreases hit chance
+	Effect.AddToHitModifier(default.Spray_Aim_Penalty);
+
+	// Spray can also decrease crit chance
+	Effect.AddToHitModifier(default.Spray_Crit_Penalty, eHit_Crit);
+
+	// Spray can also decrease damage
+	Effect.AddPercentDamageModifier(default.Spray_Damage_Penalty);
+
+	// The bonus only applies to the Precision Shot ability
+	Condition = new class'XMBCondition_AbilityName';
+	Condition.IncludeAbilityNames.AddItem('LWotC_LMG_NonMountedShot');
+	Effect.AbilityTargetConditions.AddItem(Condition);
+
+	// Create the template using a helper function
+	Template = Passive('LWotC_LMG_NonMountedShot_Penalties', "", false, Effect);
+
+	// The main Shot will show up as an active ability, so hide the icon for the passive damage effect
+	HidePerkIcon(Template);
+
+	return Template;
+}
+
+static function X2AbilityTemplate AddMountedLMGShot()
+{
+	local X2AbilityTemplate				Template;
+	local X2Condition_UnitEffects		MountedCondition;
+
+	Template = Attack('LWOTC_LMG_MountedShot', "", false, none, class'UIUtilities_Tactical'.const.STANDARD_SHOT_PRIORITY, eCost_SingleConsumeAll);
+
+	MountedCondition = new class'X2Condition_UnitEffects';
+	MountedCondition.AddRequireEffect(default.MountedEffectName, 'AA_AbilityUnavailable');
+	Template.AbilityShooterConditions.AddItem(MountedCondition);
+
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_HideIfOtherAvailable;
+	Template.HideIfAvailable.AddItem('LWOTC_LMG_NonMountedShot');
+
+	Template.bDisplayInUITooltip = false;
+	Template.bDisplayInUITacticalText = false;
 
 	return Template;
 }

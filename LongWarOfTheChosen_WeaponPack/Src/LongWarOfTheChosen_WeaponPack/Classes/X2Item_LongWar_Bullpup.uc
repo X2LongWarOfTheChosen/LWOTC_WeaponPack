@@ -14,9 +14,23 @@ var config array<int> Bullpup_EleriumCost;
 var config array<int> Bullpup_Engineering;
 var config array<name> Bullpup_RequiredTech;
 var config array<string> Bullpup_ImagePath;
+var config array<int> Bullpup_Mobility;
 
 var name BullpupLaser;
 var name BullpupCoil;
+
+var bool CreateNewBullpups;
+
+var config array<name> CommonAbilities;
+var config array<name> BallisticAbilities;
+var config array<name> LaserAbilities;
+var config array<name> MagneticAbilities;
+var config array<name> CoilgunAbilities;
+var config array<name> PlasmaAbilities;
+
+var config bool RemoveStandardShot;
+var config bool RemoveOverwatch;
+var config bool RemoveReload;
 
 defaultproperties
 {
@@ -28,13 +42,20 @@ defaultproperties
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Weapons;
-	Weapons.AddItem(Create_Bullpup_Laser(default.BullpupLaser));
-	Weapons.AddItem(Create_Bullpup_Coil(default.BullpupCoil));
+
+	if(default.CreateNewBullpups)
+	{
+		Weapons.AddItem(Create_Bullpup_Laser(default.BullpupLaser));
+		Weapons.AddItem(Create_Bullpup_Coil(default.BullpupCoil));
+	}
+
 	return Weapons;
 }
 
 static function Create_Bullpup_Template(out X2WeaponTemplate Template, int tier)
 {
+	local name Ability;
+
 	//Default Settings
 	Template.WeaponCat = 'bullpup';
 	Template.ItemCat = 'weapon';
@@ -46,12 +67,37 @@ static function Create_Bullpup_Template(out X2WeaponTemplate Template, int tier)
 
 	//Abilities
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('StandardShot');
-	Template.Abilities.AddItem('Overwatch');
+	
+	if(!default.RemoveStandardShot)
+	{
+		Template.Abilities.AddItem('StandardShot');
+	}
+	if(!default.RemoveOverwatch)
+	{
+		Template.Abilities.AddItem('Overwatch');
+	}
+	if(!default.RemoveReload)
+	{
+		Template.Abilities.AddItem('Reload');
+	}
 	Template.Abilities.AddItem('OverwatchShot');
-	Template.Abilities.AddItem('PistolReturnFire');
-	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+
+	foreach default.CommonAbilities(Ability)
+	{
+		Template.Abilities.AddItem(Ability);
+	}
+	
+	if(default.Bullpup_Mobility[tier] > 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityBonus_' $ default.Bullpup_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.Bullpup_Mobility[tier]);
+	}
+	if(default.Bullpup_Mobility[tier] < 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityPenalty_' $ default.Bullpup_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.Bullpup_Mobility[tier]);
+	}
 
 	//Stats
 	Template.BaseDamage = default.Bullpup_Damage[tier];

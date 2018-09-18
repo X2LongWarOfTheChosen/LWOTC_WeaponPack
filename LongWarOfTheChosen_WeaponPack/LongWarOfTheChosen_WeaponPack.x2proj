@@ -7,6 +7,9 @@
     <Guid>01c5fe48-aaa1-4163-a230-6c1bf67781f6</Guid>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Config\XComContent.ini">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Config\XComEditor.ini">
       <SubType>Content</SubType>
     </Content>
@@ -68,6 +71,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Config\XComLongWar_WeaponPack_Vektor.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComLWOTC_ArmorStats.ini">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Config\XComLW_WeaponPack.ini">
@@ -367,6 +373,9 @@
     <Content Include="Content\UILibrary_LW_Overhaul.upk">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Content\UILibrary_LW_PerkPack.upk">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Content\UILibrary_SMG.upk">
       <SubType>Content</SubType>
     </Content>
@@ -541,6 +550,12 @@
     <Content Include="Content\UILibrary_SMG\magnetic\MagAssaultRifle_Base.TGA">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Localization\Abilities\XComGame.int">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\Armors\XComGame.int">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Localization\Carbines\XComGame.chn">
       <SubType>Content</SubType>
     </Content>
@@ -713,6 +728,9 @@
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Ability_BattleRifleAbilities.uc">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Ability_ExosuitAbilities.uc">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Ability_LMGAbilities.uc">
       <SubType>Content</SubType>
     </Content>
@@ -722,10 +740,25 @@
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Ability_CarbineAbilities.uc">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Ability_MobilityPassives.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Ability_ProximityBonuses.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Ability_ShotgunAbilities.uc">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Ability_SMGAbilities.uc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Ability_SAWAbilities.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Ability_SniperRifleAbilities.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Ability_StealthPassives.uc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2DownloadableContentInfo_LongWarOfTheChosenWeaponPack.uc">
@@ -735,6 +768,12 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Effect_LW2WotC_RemoveAreaSuppressionEffect.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Effect_LWOTC_SnapShotPenalties.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Effect_LWOTC_StrafingShot.uc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2EventListener_LongWarOfTheChosen_WeaponPack.uc">
@@ -788,6 +827,9 @@
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Item_LongWar_Weapon.uc">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Item_LWOTC_ArmorExosuits.uc">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Item_Schematic_Coil.uc">
       <SubType>Content</SubType>
     </Content>
@@ -806,7 +848,16 @@
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Override_Abilities_Cannon.uc">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Override_Abilities_Shotgun.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Override_Abilities_SniperRifle.uc">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Override_Attachments_BattleRifle.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Override_Attachments_Bullpup.uc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Override_Attachments_Carbine.uc">
@@ -825,6 +876,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Override_Attachments_SMG.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Override_Attachments_VektorRifle.uc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LongWarOfTheChosen_WeaponPack\Classes\X2Override_LongWar.uc">
@@ -1002,6 +1056,8 @@
     <Folder Include="Localization\Coils" />
     <Folder Include="Localization\LMGs" />
     <Folder Include="Localization\Carbines" />
+    <Folder Include="Localization\Abilities" />
+    <Folder Include="Localization\Armors" />
     <Folder Include="Localization\SMGs" />
     <Folder Include="Src\" />
     <Folder Include="Src\LongWarOfTheChosen_WeaponPack" />

@@ -90,7 +90,7 @@ static function Assign_Tier_Values(out X2WeaponTemplate Template)
 	}
 	if (Template.Tier == 1)
 	{
-		Template.WeaponTech = 'beam'; //'pulse'; // TODO: fix up any effects that rely on hard-coded techs
+		Template.WeaponTech = 'laser'; //'pulse'; // TODO: fix up any effects that rely on hard-coded techs
 		Template.EquipSound = "Beam_Weapon_Equip";
 		Template.DamageTypeTemplateName = 'Projectile_BeamXCom';  // TODO : update with new damage type
 		Template.WeaponPanelImage = "_BeamRifle"; // used by the UI. Probably determines iconview of the weapon.
@@ -104,7 +104,7 @@ static function Assign_Tier_Values(out X2WeaponTemplate Template)
 	}
 	if (Template.Tier == 3)
 	{
-		Template.WeaponTech = 'coilgun_lw';
+		Template.WeaponTech = 'coil';
 		Template.EquipSound = "Magnetic_Weapon_Equip";
 		Template.WeaponPanelImage = "";
 		Template.DamageTypeTemplateName = 'Projectile_MagXCom';

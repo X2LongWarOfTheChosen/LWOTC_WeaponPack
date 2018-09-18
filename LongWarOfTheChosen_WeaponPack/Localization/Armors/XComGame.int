@@ -1,0 +1,24 @@
+[GunnerExosuitKevlar X2ArmorTemplate]
+FriendlyName="E.X.O. Suit"
+FriendlyNamePlural="E.X.O. Suits"
+BriefSummary="This heavy armor combines reinforced ADVENT plating with a powered exoskeleton, offering superior protection and damage Resistance coupled with a wrist-mounted rocket launcher. With further study we could unlock additional heavy weapon options for this suit."
+TacticalText="<Bullet/> As a heavy-class armor system, the E.X.O. Suit allows a soldier to mount a heavy weapon.\n<Bullet/> Only the Rocket Launcher is available initially; Additional heavy weapons projects in the Proving Grounds will unlock more heavy weapon systems for construction."
+
+[GunnerExosuitPlated X2ArmorTemplate]
+FriendlyName="Advanced E.X.O. Suit"
+FriendlyNamePlural="Advanced E.X.O. EXOSuits"
+BriefSummary="This heavy armor combines reinforced ADVENT plating with a powered exoskeleton, offering superior protection and damage Resistance coupled with a wrist-mounted rocket launcher. With further study we could unlock additional heavy weapon options for this suit."
+TacticalText="<Bullet/> As a heavy-class armor system, the E.X.O. Suit allows a soldier to mount a heavy weapon.\n<Bullet/> Only the Rocket Launcher is available initially; Additional heavy weapons projects in the Proving Grounds will unlock more heavy weapon systems for construction."
+
+[GunnerExosuitPowered X2ArmorTemplate]
+FriendlyName="W.A.R. Suit"
+FriendlyNamePlural="W.A.R. Suits"
+BriefSummary="This powered heavy battle armor grants massive damage Resistance and survivability, as well as a wrist-mounted heavy weapon hardpoint. The W.A.R. Suit can also generate temporary cover for allies with its powerful \"Shieldwall\" technology."
+TacticalText="<Bullet/> The W.A.R. Suit allows a soldier to wrist mount a heavy weapon.\n<Bullet/> The W.A.R. Suit grants the \"Shieldwall\" ability, allowing the wearer to temporarily act as high cover for squadmates."
+
+[GunnerExosuitSmoke X2AbilityTemplate]
+LocFriendlyName="Defensive Smoke"
+LocFlyOverText="Defensive Smoke"
+LocLongDescription="As a free action, you may deploy defensive smoke around yourself. The smoke stays for 2 turns and grants +20 defense."
+LocHelpText="Deploy defensive smoke to cover yourself and nearby teammates."
+LocPromotionPopupText="This will never show up"

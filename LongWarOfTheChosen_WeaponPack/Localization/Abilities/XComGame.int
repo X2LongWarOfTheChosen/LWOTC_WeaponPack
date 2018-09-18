@@ -5,6 +5,20 @@ LocLongDescription="Mount the Cannon on cover to remove aim penalties and allow 
 LocHelpText="Mount the Cannon on cover to remove aim penalties and allow for area suppression."
 LocPromotionPopupText="This will never show up" 
 
+[LWotC_LMG_NonMountedShot X2AbilityTemplate]
+LocFriendlyName="Spray"
+LocFlyOverText="Spray"
+LocLongDescription="Fire at an enemy. Recieves significant penalties because the cannon isnt mounted."
+LocHelpText="Fire at an enemy. Recieves significant penalties because the cannon isnt mounted."
+LocPromotionPopupText="This will never show up" 
+
+[LWotC_LMG_MountedShot X2AbilityTemplate]
+LocFriendlyName="Fire Cannon"
+LocFlyOverText="Fire Cannon"
+LocLongDescription="Fire your cannon at an enemy."
+LocHelpText="Fire your cannon at an enemy."
+LocPromotionPopupText="This will never show up" 
+
 [LWOTC_CannonAreaSuppression X2AbilityTemplate]
 LocFriendlyName="Area Suppression"
 LocFlyOverText="Area Suppression"
@@ -19,7 +33,33 @@ LocLongDescription="Spend two actions to reload the cannon's ammunition. "
 LocHelpText="Spend two actions to reload the cannon's ammunition."
 LocPromotionPopupText="This will never show up" 
 
-; AbilityAvailabilityCodes="AA_UnitIsConcealed"
-AbilityAvailabilityStrings[53]="Unit is already concealed."
+[LWotC_SniperRifleSnapshot X2AbilityTemplate]
+LocFriendlyName="Snapshot"
+LocFlyOverText="Snapshot"
+LocLongDescription="Fire using only one action, at a -15 aim penalty. Squadsight penalties are increased significantly. Does not trigger Double Tap, Ready for Anything or Death from Above."
+LocHelpText="Fire using only one action, at a -15 aim penalty. Does not trigger bonus action perks."
+LocPromotionPopupText="This will never show up" 
+
+[LWotC_MarksmanRiflePrecisionShot X2AbilityTemplate]
+LocFriendlyName="Precision Shot"
+LocFlyOverText="Precision Shot"
+LocLongDescription="Special shot that requires concealment or squadsight, but grants large bonuses to crit chance and crit damage."
+LocHelpText="Fire a shot with large crit bonuses. Requires concealment or squadsight."
+LocPromotionPopupText="This will never show up" 
+
+[LWotC_MarksmanRifleStandardShot X2AbilityTemplate]
+LocFriendlyName="Fire Marksman Rifle"
+LocFlyOverText="Fire Marksman Rifle"
+LocLongDescription="Fire your marksman rifle at an enemy."
+LocHelpText="Fire your marksman rifle at an enemy."
+LocPromotionPopupText="This will never show up" 
+
+[LWOTC_SMG_StrafingShot X2AbilityTemplate]
+LocFriendlyName="Strafing Shot"
+LocFlyOverText="Strafing Shot"
+LocLongDescription="Gain a free move after taking a standard shot at a flanked or exposed target. If you also have Hit and Run you gain a full action instead."
+LocHelpText="Gain a free move after taking a standard shot at a flanked or exposed target. If you also have Hit and Run you gain a full action instead."
+LocPromotionPopupText="<Bullet/> Cannot be used on the same turn as Run and Gun.<br/><Bullet/> Bonus full actions from Serial and Death from Above will be awarded first.<br/><Bullet/> <Ability:HNR_USES_PER_TURN/>"
+
 
 

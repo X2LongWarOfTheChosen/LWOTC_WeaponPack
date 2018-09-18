@@ -18,10 +18,13 @@ static event OnPostTemplatesCreated()
 		Template = X2WeaponTemplate(DifficultyTemplate);
 		if(Template != none)
 		{	
+			Template.Abilities.AddItem('LWotC_LMG_MountedShot');
+			Template.Abilities.AddItem('LWotC_LMG_NonMountedShot');
 			Template.Abilities.AddItem('LWotC_MountLMG');
 			Template.Abilities.AddItem('LWotC_CannonAreaSuppression');
 			Template.Abilities.AddItem('LWotC_CannonFullReload');
 			Template.Abilities.RemoveItem('Reload');
+			Template.Abilities.RemoveItem('StandardShot');
 		}
 	}
 	ItemTemplateManager.FindDataTemplateAllDifficulties('Cannon_MG',DifficultyTemplates);
@@ -30,10 +33,13 @@ static event OnPostTemplatesCreated()
 		Template = X2WeaponTemplate(DifficultyTemplate);
 		if(Template != none)
 		{	
+			Template.Abilities.AddItem('LWotC_LMG_MountedShot');
+			Template.Abilities.AddItem('LWotC_LMG_NonMountedShot');
 			Template.Abilities.AddItem('LWotC_MountLMG');
 			Template.Abilities.AddItem('LWotC_CannonAreaSuppression');
 			Template.Abilities.AddItem('LWotC_CannonFullReload');
 			Template.Abilities.RemoveItem('Reload');
+			Template.Abilities.RemoveItem('StandardShot');
 		}
 	}
 	ItemTemplateManager.FindDataTemplateAllDifficulties('Cannon_BM',DifficultyTemplates);
@@ -42,10 +48,13 @@ static event OnPostTemplatesCreated()
 		Template = X2WeaponTemplate(DifficultyTemplate);
 		if(Template != none)
 		{	
+			Template.Abilities.AddItem('LWotC_LMG_MountedShot');
+			Template.Abilities.AddItem('LWotC_LMG_NonMountedShot');
 			Template.Abilities.AddItem('LWotC_MountLMG');
 			Template.Abilities.AddItem('LWotC_CannonAreaSuppression');
 			Template.Abilities.AddItem('LWotC_CannonFullReload');
 			Template.Abilities.RemoveItem('Reload');
+			Template.Abilities.RemoveItem('StandardShot');
 		}
 	}
 }

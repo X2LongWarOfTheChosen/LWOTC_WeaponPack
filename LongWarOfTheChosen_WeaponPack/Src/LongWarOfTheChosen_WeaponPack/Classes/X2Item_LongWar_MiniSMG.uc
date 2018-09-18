@@ -14,9 +14,23 @@ var config array<int> MiniSMG_EleriumCost;
 var config array<int> MiniSMG_Engineering;
 var config array<name> MiniSMG_RequiredTech;
 var config array<string> MiniSMG_ImagePath;
+var config array<int> MiniSMG_Mobility;
 
 var name MiniSMGLaser;
 var name MiniSMGCoil;
+
+var bool CreateNewMachinePistols;
+
+var config array<name> CommonAbilities;
+var config array<name> BallisticAbilities;
+var config array<name> LaserAbilities;
+var config array<name> MagneticAbilities;
+var config array<name> CoilgunAbilities;
+var config array<name> PlasmaAbilities;
+
+var config bool RemoveStandardShot;
+var config bool RemoveOverwatch;
+var config bool RemoveReload;
 
 defaultproperties
 {
@@ -28,13 +42,20 @@ defaultproperties
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Weapons;
-	Weapons.AddItem(Create_MiniSMG_Laser(default.MiniSMGLaser));
-	Weapons.AddItem(Create_MiniSMG_Coil(default.MiniSMGCoil));
+
+	if(default.CreateNewMachinePistols)
+	{
+		Weapons.AddItem(Create_MiniSMG_Laser(default.MiniSMGLaser));
+		Weapons.AddItem(Create_MiniSMG_Coil(default.MiniSMGCoil));
+	}
+
 	return Weapons;
 }
 
 static function Create_MiniSMG_Template(out X2WeaponTemplate Template, int tier)
 {
+	local name Ability;
+
 	//Default Settings
 	Template.WeaponCat = 'sidearm';
 	Template.ItemCat = 'weapon';
@@ -52,12 +73,35 @@ static function Create_MiniSMG_Template(out X2WeaponTemplate Template, int tier)
 
 	//Abilities
 	Template.InventorySlot = eInvSlot_SecondaryWeapon;
-	Template.Abilities.AddItem('PistolStandardShot');
-	Template.Abilities.AddItem('PistolOverwatch');
+
+	if(!default.RemoveStandardShot)
+	{
+		Template.Abilities.AddItem('PistolStandardShot');
+	}
+	if(!default.RemoveOverwatch)
+	{
+		Template.Abilities.AddItem('PistolOverwatch');
+	}
 	Template.Abilities.AddItem('PistolOverwatchShot');
 	Template.Abilities.AddItem('PistolReturnFire');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem('Reload');
+
+	foreach default.CommonAbilities(Ability)
+	{
+		Template.Abilities.AddItem(Ability);
+	}
+	
+	if(default.MiniSMG_Mobility[tier] > 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityBonus_' $ default.MiniSMG_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.MiniSMG_Mobility[tier]);
+	}
+	if(default.MiniSMG_Mobility[tier] < 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityPenalty_' $ default.MiniSMG_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.MiniSMG_Mobility[tier]);
+	}
+
 
 	Template.SetAnimationNameForAbility('FanFire', 'FF_FireMultiShotConvA');
 

@@ -1,5 +1,7 @@
 class X2Item_LongWar_SMG extends X2Item_LongWar_Weapon config(LongWar_WeaponPack_SMG);
 
+var config name SMG_Category;
+
 var config array<WeaponDamageValue> SMG_Damage;
 var config array<int> SMG_Aim;
 var config array<int> SMG_CritChance;
@@ -14,12 +16,24 @@ var config array<int> SMG_EleriumCost;
 var config array<int> SMG_Engineering;
 var config array<name> SMG_RequiredTech;
 var config array<string> SMG_ImagePath;
+var config array<int> SMG_Mobility;
 
 var name SMGConventional;
 var name SMGLaser;
 var name SMGMagnetic;
 var name SMGCoil;
 var name SMGBeam;
+
+var config array<name> CommonAbilities;
+var config array<name> BallisticAbilities;
+var config array<name> LaserAbilities;
+var config array<name> MagneticAbilities;
+var config array<name> CoilgunAbilities;
+var config array<name> PlasmaAbilities;
+
+var config bool RemoveStandardShot;
+var config bool RemoveOverwatch;
+var config bool RemoveReload;
 
 defaultproperties
 {
@@ -44,8 +58,10 @@ static function array<X2DataTemplate> CreateTemplates()
 
 static function Create_SMG_Template(out X2WeaponTemplate Template, int tier)
 {
+	local name Ability;
+
 	//Default Settings
-	Template.WeaponCat = 'rifle';
+	Template.WeaponCat = default.SMG_Category;
 	Template.ItemCat = 'weapon';
 	Template.iPhysicsImpulse = 5;
 	Template.Tier = tier;
@@ -55,13 +71,37 @@ static function Create_SMG_Template(out X2WeaponTemplate Template, int tier)
 
 	//Abilities
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('StandardShot');
-	Template.Abilities.AddItem('Overwatch');
+	
+	if(!default.RemoveStandardShot)
+	{
+		Template.Abilities.AddItem('StandardShot');
+	}
+	if(!default.RemoveOverwatch)
+	{
+		Template.Abilities.AddItem('Overwatch');
+	}
+	if(!default.RemoveReload)
+	{
+		Template.Abilities.AddItem('Reload');
+	}
 	Template.Abilities.AddItem('OverwatchShot');
-	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem(class'X2Ability_SMGAbilities'.default.SMGBonusAbility);
-	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_SMGAbilities'.default.SMG_Mobility_Bonus);
+
+	foreach default.CommonAbilities(Ability)
+	{
+		Template.Abilities.AddItem(Ability);
+	}
+	
+	if(default.SMG_Mobility[tier] > 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityBonus_' $ default.SMG_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.SMG_Mobility[tier]);
+	}
+	if(default.SMG_Mobility[tier] < 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityPenalty_' $ default.SMG_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.SMG_Mobility[tier]);
+	}
 
 	//Stats
 	Template.BaseDamage = default.SMG_Damage[tier];
@@ -172,11 +212,11 @@ static function X2DataTemplate Create_SMG_Coil(name TemplateName)
 
 	// Model
 	Template.GameArchetype = "LWSMG_CG.Archetypes.WP_SMG_CG";
-	Template.AddDefaultAttachment('Mag', "LWAssaultRifle_CG.Meshes.LW_CoilRifle_MagA", , "img:///UILibrary_LW_Coilguns.InventoryArt.CoilSMG_MagA");
+	Template.AddDefaultAttachment('Mag', "LWSniperRifle_CG.Meshes.LW_CoilSniper_MagA", , "img:///UILibrary_LW_Coilguns.InventoryArt.CoilSniperRifle_MagA");
 	Template.AddDefaultAttachment('Stock', "LWAccessories_CG.Meshes.LW_Coil_StockA", , "img:///UILibrary_LW_Coilguns.InventoryArt.CoilSMG_StockA");
 	Template.AddDefaultAttachment('Reargrip', "LWAccessories_CG.Meshes.LW_Coil_ReargripA", , "img:///UILibrary_LW_Coilguns.InventoryArt.CoilSMG_ReargripA");
 	Template.AddDefaultAttachment('Light', "BeamAttachments.Meshes.BeamFlashLight"); //, , "img:///UILibrary_Common.ConvAssaultRifle.ConvAssault_LightA");  // re-use common conventional flashlight
-
+	
 	// Building info
 	if (BuildWeaponSchematics(Template))
 	{

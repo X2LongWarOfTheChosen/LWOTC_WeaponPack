@@ -14,9 +14,21 @@ var config array<int> SparkRifle_EleriumCost;
 var config array<int> SparkRifle_Engineering;
 var config array<name> SparkRifle_RequiredTech;
 var config array<string> SparkRifle_ImagePath;
+var config array<int> SparkRifle_Mobility;
 
 var name SparkRifleLaser;
 var name SparkRifleCoil;
+
+var config array<name> CommonAbilities;
+var config array<name> BallisticAbilities;
+var config array<name> LaserAbilities;
+var config array<name> MagneticAbilities;
+var config array<name> CoilgunAbilities;
+var config array<name> PlasmaAbilities;
+
+var config bool RemoveStandardShot;
+var config bool RemoveOverwatch;
+var config bool RemoveReload;
 
 defaultproperties
 {
@@ -35,6 +47,8 @@ static function array<X2DataTemplate> CreateTemplates()
 
 static function Create_SparkRifle_Template(out X2WeaponTemplate Template, int tier)
 {
+	local name Ability;
+
 	//Default Settings
 	Template.WeaponCat = 'sparkrifle';
 	Template.ItemCat = 'weapon';
@@ -46,11 +60,37 @@ static function Create_SparkRifle_Template(out X2WeaponTemplate Template, int ti
 
 	//Abilities
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('StandardShot');
-	Template.Abilities.AddItem('Overwatch');
+	
+	if(!default.RemoveStandardShot)
+	{
+		Template.Abilities.AddItem('StandardShot');
+	}
+	if(!default.RemoveOverwatch)
+	{
+		Template.Abilities.AddItem('Overwatch');
+	}
+	if(!default.RemoveReload)
+	{
+		Template.Abilities.AddItem('Reload');
+	}
 	Template.Abilities.AddItem('OverwatchShot');
-	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+
+	foreach default.CommonAbilities(Ability)
+	{
+		Template.Abilities.AddItem(Ability);
+	}
+	
+	if(default.SparkRifle_Mobility[tier] > 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityBonus_' $ default.SparkRifle_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.SparkRifle_Mobility[tier]);
+	}
+	if(default.SparkRifle_Mobility[tier] < 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityPenalty_' $ default.SparkRifle_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.SparkRifle_Mobility[tier]);
+	}
 
 	//Stats
 	Template.BaseDamage = default.SparkRifle_Damage[tier];

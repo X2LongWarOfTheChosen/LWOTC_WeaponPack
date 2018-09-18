@@ -1,5 +1,7 @@
 class X2Item_LongWar_SAW extends X2Item_LongWar_Weapon config(LongWar_WeaponPack_SAW);
 
+var config name SAW_Category;
+
 var config array<WeaponDamageValue> SAW_Damage;
 var config array<int> SAW_Aim;
 var config array<int> SAW_CritChance;
@@ -14,12 +16,24 @@ var config array<int> SAW_EleriumCost;
 var config array<int> SAW_Engineering;
 var config array<name> SAW_RequiredTech;
 var config array<string> SAW_ImagePath;
+var config array<int> SAW_Mobility;
 
 var name SAWConventional;
 var name SAWLaser;
 var name SAWMagnetic;
 var name SAWCoil;
 var name SAWBeam;
+
+var config array<name> CommonAbilities;
+var config array<name> BallisticAbilities;
+var config array<name> LaserAbilities;
+var config array<name> MagneticAbilities;
+var config array<name> CoilgunAbilities;
+var config array<name> PlasmaAbilities;
+
+var config bool RemoveStandardShot;
+var config bool RemoveOverwatch;
+var config bool RemoveReload;
 
 defaultproperties
 {
@@ -44,8 +58,10 @@ static function array<X2DataTemplate> CreateTemplates()
 
 static function Create_SAW_Template(out X2WeaponTemplate Template, int tier)
 {
+	local name Ability;
+
 	//Default Settings
-	Template.WeaponCat = 'cannon';
+	Template.WeaponCat = default.SAW_Category;
 	Template.ItemCat = 'weapon';
 	Template.iPhysicsImpulse = 5;
 	Template.Tier = tier;
@@ -56,13 +72,37 @@ static function Create_SAW_Template(out X2WeaponTemplate Template, int tier)
 
 	//Abilities
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('StandardShot');
-	Template.Abilities.AddItem('Overwatch');
+	
+	if(!default.RemoveStandardShot)
+	{
+		Template.Abilities.AddItem('StandardShot');
+	}
+	if(!default.RemoveOverwatch)
+	{
+		Template.Abilities.AddItem('Overwatch');
+	}
+	if(!default.RemoveReload)
+	{
+		Template.Abilities.AddItem('Reload');
+	}
 	Template.Abilities.AddItem('OverwatchShot');
-	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem(class'X2Ability_SAWAbilities'.default.SawBonusAbility);
-	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_SAWAbilities'.default.SAW_Mobility_Bonus);
+
+	foreach default.CommonAbilities(Ability)
+	{
+		Template.Abilities.AddItem(Ability);
+	}
+	
+	if(default.SAW_Mobility[tier] > 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityBonus_' $ default.SAW_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.SAW_Mobility[tier]);
+	}
+	if(default.SAW_Mobility[tier] < 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityPenalty_' $ default.SAW_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.SAW_Mobility[tier]);
+	}
 
 	//Stats
 	Template.BaseDamage = default.SAW_Damage[tier];

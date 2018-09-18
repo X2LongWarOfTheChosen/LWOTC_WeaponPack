@@ -1,4 +1,4 @@
-class X2Ability_SMGAbilities extends X2Ability
+class X2Ability_SMGAbilities extends XMBAbility
 	dependson (XComGameStateContext_Ability) config(LongWar_WeaponPack_Abilities);
 	
 var config int SMG_Mobility_Bonus;
@@ -15,8 +15,28 @@ DefaultProperties
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Templates;
+
+	Templates.AddItem(AddSMGStrafingShot());
 	Templates.AddItem(AddSMGBonusAbility());
 	return Templates;
+}
+
+static function X2AbilityTemplate AddSMGStrafingShot()
+{
+	local X2Effect_LWOTC_StrafingShot				HitandRunEffect;
+	local X2AbilityTemplate							Template;
+
+	HitandRunEffect = new class'X2Effect_LWotC_StrafingShot';
+	HitandRunEffect.DuplicateResponse = eDupe_Ignore;
+
+	// Create the template using a helper function
+	Template = Passive('LWOTC_SMG_StrafingShot', "img:///UILibrary_LW_PerkPack.LW_AbilityHitandRun", false, HitandRunEffect);
+
+	Template.bDontDisplayInAbilitySummary = false;
+	Template.bDisplayInUITooltip = true;
+	Template.bDisplayInUITacticalText = true;
+
+	return Template;
 }
 
 static function X2AbilityTemplate AddSMGBonusAbility()

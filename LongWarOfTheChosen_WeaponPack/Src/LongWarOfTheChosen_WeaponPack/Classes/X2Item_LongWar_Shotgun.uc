@@ -14,9 +14,21 @@ var config array<int> Shotgun_EleriumCost;
 var config array<int> Shotgun_Engineering;
 var config array<name> Shotgun_RequiredTech;
 var config array<string> Shotgun_ImagePath;
+var config array<int> Shotgun_Mobility;
 
 var name ShotgunLaser;
 var name ShotgunCoil;
+
+var config array<name> CommonAbilities;
+var config array<name> BallisticAbilities;
+var config array<name> LaserAbilities;
+var config array<name> MagneticAbilities;
+var config array<name> CoilgunAbilities;
+var config array<name> PlasmaAbilities;
+
+var config bool RemoveStandardShot;
+var config bool RemoveOverwatch;
+var config bool RemoveReload;
 
 defaultproperties
 {
@@ -35,6 +47,8 @@ static function array<X2DataTemplate> CreateTemplates()
 
 static function Create_Shotgun_Template(out X2WeaponTemplate Template, int tier)
 {
+	local name Ability;
+
 	//Default Settings
 	Template.WeaponCat = 'shotgun';
 	Template.ItemCat = 'weapon';
@@ -46,11 +60,37 @@ static function Create_Shotgun_Template(out X2WeaponTemplate Template, int tier)
 
 	//Abilities
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('StandardShot');
-	Template.Abilities.AddItem('Overwatch');
+	
+	if(!default.RemoveStandardShot)
+	{
+		Template.Abilities.AddItem('StandardShot');
+	}
+	if(!default.RemoveOverwatch)
+	{
+		Template.Abilities.AddItem('Overwatch');
+	}
+	if(!default.RemoveReload)
+	{
+		Template.Abilities.AddItem('Reload');
+	}
 	Template.Abilities.AddItem('OverwatchShot');
-	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+
+	foreach default.CommonAbilities(Ability)
+	{
+		Template.Abilities.AddItem(Ability);
+	}
+	
+	if(default.Shotgun_Mobility[tier] > 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityBonus_' $ default.Shotgun_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.Shotgun_Mobility[tier]);
+	}
+	if(default.Shotgun_Mobility[tier] < 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityPenalty_' $ default.Shotgun_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.Shotgun_Mobility[tier]);
+	}
 
 	//Stats
 	Template.BaseDamage = default.Shotgun_Damage[tier];
@@ -70,6 +110,7 @@ static function X2DataTemplate Create_Shotgun_Laser(name TemplateName)
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Create_Shotgun_Template(Template, 1);
 	Template.RangeAccuracy = default.SHORT_LASER_RANGE;
+	Template.Abilities.AddItem('LWotC_Shotgun_MobBonus_Laser');
 
 	// Model
 	Template.GameArchetype = "LWShotgun_LS.Archetype.WP_Shotgun_LS";
@@ -101,6 +142,7 @@ static function X2DataTemplate Create_Shotgun_Coil(name TemplateName)
 	`CREATE_X2TEMPLATE(class'X2WeaponTemplate', Template, TemplateName);
 	Create_Shotgun_Template(Template, 1);
 	Template.RangeAccuracy = default.SHORT_COIL_RANGE;
+	Template.Abilities.AddItem('LWotC_Shotgun_MobBonus_Coil');
 
 	// Model
 	Template.GameArchetype = "LWShotgun_CG.Archetypes.WP_Shotgun_CG";

@@ -1,6 +1,9 @@
 class X2Item_LongWar_Carbine extends X2Item_LongWar_Weapon config(LongWar_WeaponPack_Carbine);
 
 var config bool Create_Carbines;
+
+var config name Carbine_Category;
+
 var config array<WeaponDamageValue> Carbine_Damage;
 var config array<int> Carbine_Aim;
 var config array<int> Carbine_CritChance;
@@ -15,12 +18,24 @@ var config array<int> Carbine_EleriumCost;
 var config array<int> Carbine_Engineering;
 var config array<name> Carbine_RequiredTech;
 var config array<string> Carbine_ImagePath;
+var config array<int> Carbine_Mobility;
 
 var name CarbineConventional;
 var name CarbineLaser;
 var name CarbineMagnetic;
 var name CarbineCoil;
 var name CarbineBeam;
+
+var config array<name> CommonAbilities;
+var config array<name> BallisticAbilities;
+var config array<name> LaserAbilities;
+var config array<name> MagneticAbilities;
+var config array<name> CoilgunAbilities;
+var config array<name> PlasmaAbilities;
+
+var config bool RemoveStandardShot;
+var config bool RemoveOverwatch;
+var config bool RemoveReload;
 
 defaultproperties
 {
@@ -49,8 +64,10 @@ static function array<X2DataTemplate> CreateTemplates()
 
 static function Create_Carbine_Template(out X2WeaponTemplate Template, int tier)
 {
+	local name Ability;
+
 	//Default Settings
-	Template.WeaponCat = 'rifle';
+	Template.WeaponCat = default.Carbine_Category;
 	Template.ItemCat = 'weapon';
 	Template.iPhysicsImpulse = 5;
 	Template.Tier = tier;
@@ -60,13 +77,37 @@ static function Create_Carbine_Template(out X2WeaponTemplate Template, int tier)
 
 	//Abilities
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('StandardShot');
-	Template.Abilities.AddItem('Overwatch');
+	
+	if(!default.RemoveStandardShot)
+	{
+		Template.Abilities.AddItem('StandardShot');
+	}
+	if(!default.RemoveOverwatch)
+	{
+		Template.Abilities.AddItem('Overwatch');
+	}
+	if(!default.RemoveReload)
+	{
+		Template.Abilities.AddItem('Reload');
+	}
 	Template.Abilities.AddItem('OverwatchShot');
-	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem(class'X2Ability_CarbineAbilities'.default.CarbineBonusAbility);
-	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_CarbineAbilities'.default.Carbine_Mobility_Bonus);
+
+	foreach default.CommonAbilities(Ability)
+	{
+		Template.Abilities.AddItem(Ability);
+	}
+	
+	if(default.Carbine_Mobility[tier] > 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityBonus_' $ default.Carbine_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.Carbine_Mobility[tier]);
+	}
+	if(default.Carbine_Mobility[tier] < 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityPenalty_' $ default.Carbine_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.Carbine_Mobility[tier]);
+	}
 
 	//Stats
 	Template.BaseDamage = default.Carbine_Damage[tier];

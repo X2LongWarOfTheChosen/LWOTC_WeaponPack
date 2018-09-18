@@ -14,9 +14,23 @@ var config array<int> Vektor_EleriumCost;
 var config array<int> Vektor_Engineering;
 var config array<name> Vektor_RequiredTech;
 var config array<string> Vektor_ImagePath;
+var config array<int> Vektor_Mobility;
 
 var name VektorLaser;
 var name VektorCoil;
+
+var bool CreateNewVektorRifles;
+
+var config array<name> CommonAbilities;
+var config array<name> BallisticAbilities;
+var config array<name> LaserAbilities;
+var config array<name> MagneticAbilities;
+var config array<name> CoilgunAbilities;
+var config array<name> PlasmaAbilities;
+
+var config bool RemoveStandardShot;
+var config bool RemoveOverwatch;
+var config bool RemoveReload;
 
 defaultproperties
 {
@@ -28,13 +42,20 @@ defaultproperties
 static function array<X2DataTemplate> CreateTemplates()
 {
 	local array<X2DataTemplate> Weapons;
-	Weapons.AddItem(Create_Vektor_Laser(default.VektorLaser));
-	Weapons.AddItem(Create_Vektor_Coil(default.VektorCoil));
+
+	if(default.CreateNewVektorRifles)
+	{
+		Weapons.AddItem(Create_Vektor_Laser(default.VektorLaser));
+		Weapons.AddItem(Create_Vektor_Coil(default.VektorCoil));
+	}
+
 	return Weapons;
 }
 
 static function Create_Vektor_Template(out X2WeaponTemplate Template, int tier)
 {
+	local name Ability;
+
 	//Default Settings
 	Template.WeaponCat = 'vektor_rifle';
 	Template.ItemCat = 'weapon';
@@ -46,11 +67,37 @@ static function Create_Vektor_Template(out X2WeaponTemplate Template, int tier)
 
 	//Abilities
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('StandardShot');
-	Template.Abilities.AddItem('Overwatch');
+	
+	if(!default.RemoveStandardShot)
+	{
+		Template.Abilities.AddItem('StandardShot');
+	}
+	if(!default.RemoveOverwatch)
+	{
+		Template.Abilities.AddItem('Overwatch');
+	}
+	if(!default.RemoveReload)
+	{
+		Template.Abilities.AddItem('Reload');
+	}
 	Template.Abilities.AddItem('OverwatchShot');
-	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+
+	foreach default.CommonAbilities(Ability)
+	{
+		Template.Abilities.AddItem(Ability);
+	}
+	
+	if(default.Vektor_Mobility[tier] > 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityBonus_' $ default.Vektor_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.Vektor_Mobility[tier]);
+	}
+	if(default.Vektor_Mobility[tier] < 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityPenalty_' $ default.Vektor_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.Vektor_Mobility[tier]);
+	}
 
 	//Stats
 	Template.BaseDamage = default.Vektor_Damage[tier];
@@ -73,13 +120,23 @@ static function X2DataTemplate Create_Vektor_Laser(name TemplateName)
 
 
 	// Model
-	Template.GameArchetype = "WP_ReaperRifle_MG.WP_ReaperRifle_MG";
-	Template.AddDefaultAttachment('Mag', "MagReaperRifle.Meshes.SM_HOR_Mag_ReaperRifle_MagA", , "img:///UILibrary_XPACK_Common.MagVektor_MagazineA");
-	Template.AddDefaultAttachment('Optic', "MagReaperRifle.Meshes.SM_HOR_Mag_ReaperRifle_OpticA", , "img:///UILibrary_XPACK_Common.MagVektor_OpticA");
-	Template.AddDefaultAttachment('Reargrip', "CnvReaperRifle.Meshes.SM_HOR_Cnv_ReaperRifle_ReargripA");
-	Template.AddDefaultAttachment('Stock', "CnvReaperRifle.Meshes.SM_HOR_Cnv_ReaperRifle_StockA", , "img:///UILibrary_XPACK_Common.MagVektor_StockA");
-	Template.AddDefaultAttachment('Trigger', "CnvReaperRifle.Meshes.SM_HOR_Cnv_ReaperRifle_TriggerA", , "img:///UILibrary_XPACK_Common.MagVektor_TriggerA");
-	Template.AddDefaultAttachment('Light', "ConvAttachments.Meshes.SM_ConvFlashLight");
+	// Template.GameArchetype = "WP_ReaperRifle_BM.WP_ReaperRifle_BM";
+	// Template.AddDefaultAttachment('Mag', "MagReaperRifle.Meshes.SM_HOR_Mag_ReaperRifle_MagA", , "img:///UILibrary_XPACK_Common.MagVektor_MagazineA");
+	// Template.AddDefaultAttachment('Optic', "MagReaperRifle.Meshes.SM_HOR_Mag_ReaperRifle_OpticA", , "img:///UILibrary_XPACK_Common.MagVektor_OpticA");
+	// Template.AddDefaultAttachment('Reargrip', "CnvReaperRifle.Meshes.SM_HOR_Cnv_ReaperRifle_ReargripA");
+	// Template.AddDefaultAttachment('Stock', "CnvReaperRifle.Meshes.SM_HOR_Cnv_ReaperRifle_StockA", , "img:///UILibrary_XPACK_Common.MagVektor_StockA");
+	// Template.AddDefaultAttachment('Trigger', "CnvReaperRifle.Meshes.SM_HOR_Cnv_ReaperRifle_TriggerA", , "img:///UILibrary_XPACK_Common.MagVektor_TriggerA");
+	// Template.AddDefaultAttachment('Light', "ConvAttachments.Meshes.SM_ConvFlashLight");
+
+	Template.GameArchetype = "WP_ReaperRifle_BM.WP_ReaperRifle_BM";
+	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Sniper';
+	Template.AddDefaultAttachment('Optic', "BemReaperRifle.Meshes.SM_HOR_Bem_ReaperRifle_OpticA", , "img:///UILibrary_XPACK_Common.BeamVektor_OpticA");
+	Template.AddDefaultAttachment('Mag', "BemReaperRifle.Meshes.SM_HOR_Bem_ReaperRifle_MagA", , "img:///UILibrary_XPACK_Common.BeamVektor_MagazineA");
+	Template.AddDefaultAttachment('Suppressor', "BemReaperRifle.Meshes.SM_HOR_Bem_ReaperRifle_SuppressorB", , "img:///UILibrary_XPACK_Common.BeamVektor_SuppressorB");
+	Template.AddDefaultAttachment('Reargrip', "BemReaperRifle.Meshes.SM_HOR_Bem_ReaperRifle_ReargripA");
+	Template.AddDefaultAttachment('Trigger', "CnvReaperRifle.Meshes.SM_HOR_Cnv_ReaperRifle_TriggerA", , "img:///UILibrary_XPACK_Common.BeamVektor_TriggerA");
+	Template.AddDefaultAttachment('Stock', "BemReaperRifle.Meshes.SM_HOR_Bem_ReaperRifle_StockA", , "img:///UILibrary_XPACK_Common.BeamVektor_StockA");
+	Template.AddDefaultAttachment('Light', "ConvAttachments.Meshes.SM_ConvFlashLight");	
 
 	// Building info
 	if (BuildWeaponSchematics(Template))
@@ -106,13 +163,15 @@ static function X2DataTemplate Create_Vektor_Coil(name TemplateName)
 	Template.RangeAccuracy = default.VEKTOR_COIL_RANGE;
 	
 	// Model
-	Template.GameArchetype = "WP_ReaperRifle_MG.WP_ReaperRifle_MG";
+	Template.GameArchetype = "WP_ReaperRifle.WP_ReaperRifle";
+	Template.UIArmoryCameraPointTag = 'UIPawnLocation_WeaponUpgrade_Sniper';
 	Template.AddDefaultAttachment('Mag', "MagReaperRifle.Meshes.SM_HOR_Mag_ReaperRifle_MagA", , "img:///UILibrary_XPACK_Common.MagVektor_MagazineA");
-	Template.AddDefaultAttachment('Optic', "MagReaperRifle.Meshes.SM_HOR_Mag_ReaperRifle_OpticA", , "img:///UILibrary_XPACK_Common.MagVektor_OpticA");
+	Template.AddDefaultAttachment('Optic', "BemReaperRifle.Meshes.SM_HOR_Bem_ReaperRifle_OpticA", , "img:///UILibrary_XPACK_Common.BeamVektor_OpticA");
 	Template.AddDefaultAttachment('Reargrip', "CnvReaperRifle.Meshes.SM_HOR_Cnv_ReaperRifle_ReargripA");
-	Template.AddDefaultAttachment('Stock', "CnvReaperRifle.Meshes.SM_HOR_Cnv_ReaperRifle_StockA", , "img:///UILibrary_XPACK_Common.MagVektor_StockA");
-	Template.AddDefaultAttachment('Trigger', "CnvReaperRifle.Meshes.SM_HOR_Cnv_ReaperRifle_TriggerA", , "img:///UILibrary_XPACK_Common.MagVektor_TriggerA");
+	Template.AddDefaultAttachment('Stock', "CnvReaperRifle.Meshes.SM_HOR_Cnv_ReaperRifle_StockA", , "img:///UILibrary_XPACK_Common.ConvVektor_StockA");
+	Template.AddDefaultAttachment('Trigger', "CnvReaperRifle.Meshes.SM_HOR_Cnv_ReaperRifle_TriggerA", , "img:///UILibrary_XPACK_Common.ConvVektor_TriggerA");
 	Template.AddDefaultAttachment('Light', "ConvAttachments.Meshes.SM_ConvFlashLight");
+	Template.AddDefaultAttachment('Suppressor', "LWSniperRifle_CG.Meshes.LW_CoilSniper_Suppressor", , "img:///UILibrary_LW_Coilguns.InventoryArt.CoilSniperRifle_Suppressor");
 
 	// Building info
 	if (BuildWeaponSchematics(Template))

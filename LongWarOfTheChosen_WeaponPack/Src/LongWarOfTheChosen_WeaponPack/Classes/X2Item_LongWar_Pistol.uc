@@ -14,9 +14,21 @@ var config array<int> Pistol_EleriumCost;
 var config array<int> Pistol_Engineering;
 var config array<name> Pistol_RequiredTech;
 var config array<string> Pistol_ImagePath;
+var config array<int> Pistol_Mobility;
 
 var name PistolLaser;
 var name PistolCoil;
+
+var config array<name> CommonAbilities;
+var config array<name> BallisticAbilities;
+var config array<name> LaserAbilities;
+var config array<name> MagneticAbilities;
+var config array<name> CoilgunAbilities;
+var config array<name> PlasmaAbilities;
+
+var config bool RemoveStandardShot;
+var config bool RemoveOverwatch;
+var config bool RemoveReload;
 
 defaultproperties
 {
@@ -35,6 +47,8 @@ static function array<X2DataTemplate> CreateTemplates()
 
 static function Create_Pistol_Template(out X2WeaponTemplate Template, int tier)
 {
+	local name Ability;
+
 	//Default Settings
 	Template.WeaponCat = 'pistol';
 	Template.ItemCat = 'weapon';
@@ -52,13 +66,36 @@ static function Create_Pistol_Template(out X2WeaponTemplate Template, int tier)
 
 	//Abilities
 	Template.InventorySlot = eInvSlot_SecondaryWeapon;
-	Template.Abilities.AddItem('PistolOverwatch');
+
+	if(!default.RemoveStandardShot)
+	{
+		Template.Abilities.AddItem('PistolStandardShot');
+	}
+	if(!default.RemoveOverwatch)
+	{
+		Template.Abilities.AddItem('PistolOverwatch');
+	}
 	Template.Abilities.AddItem('PistolOverwatchShot');
 	Template.Abilities.AddItem('PistolReturnFire');
 	Template.Abilities.AddItem('HotLoadAmmo');
-	Template.Abilities.AddItem('Reload');
 
-	Template.SetAnimationNameForAbility('FanFire', 'FF_FireMultiShotBeamA'); // TODO : update with new animation if necessary
+	foreach default.CommonAbilities(Ability)
+	{
+		Template.Abilities.AddItem(Ability);
+	}
+	
+	if(default.Pistol_Mobility[tier] > 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityBonus_' $ default.Pistol_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.Pistol_Mobility[tier]);
+	}
+	if(default.Pistol_Mobility[tier] < 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityPenalty_' $ default.Pistol_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.Pistol_Mobility[tier]);
+	}
+
+	Template.SetAnimationNameForAbility('FanFire', 'FF_FireMultiShotConvA');
 
 	//Stats
 	Template.BaseDamage = default.Pistol_Damage[tier];

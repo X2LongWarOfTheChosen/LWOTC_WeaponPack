@@ -14,9 +14,21 @@ var config array<int> SniperRifle_EleriumCost;
 var config array<int> SniperRifle_Engineering;
 var config array<name> SniperRifle_RequiredTech;
 var config array<string> SniperRifle_ImagePath;
+var config array<int> SniperRifle_Mobility;
 
 var name SniperRifleLaser;
 var name SniperRifleCoil;
+
+var config array<name> CommonAbilities;
+var config array<name> BallisticAbilities;
+var config array<name> LaserAbilities;
+var config array<name> MagneticAbilities;
+var config array<name> CoilgunAbilities;
+var config array<name> PlasmaAbilities;
+
+var config bool RemoveStandardShot;
+var config bool RemoveOverwatch;
+var config bool RemoveReload;
 
 defaultproperties
 {
@@ -35,6 +47,8 @@ static function array<X2DataTemplate> CreateTemplates()
 
 static function Create_SniperRifle_Template(out X2WeaponTemplate Template, int tier)
 {
+	local name Ability;
+
 	//Default Settings
 	Template.WeaponCat = 'sniper_rifle';
 	Template.ItemCat = 'weapon';
@@ -47,11 +61,37 @@ static function Create_SniperRifle_Template(out X2WeaponTemplate Template, int t
 
 	//Abilities
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('SniperStandardFire');
-	Template.Abilities.AddItem('SniperRifleOverwatch');
+	
+	if(!default.RemoveStandardShot)
+	{
+		Template.Abilities.AddItem('StandardShot');
+	}
+	if(!default.RemoveOverwatch)
+	{
+		Template.Abilities.AddItem('Overwatch');
+	}
+	if(!default.RemoveReload)
+	{
+		Template.Abilities.AddItem('Reload');
+	}
 	Template.Abilities.AddItem('OverwatchShot');
-	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+
+	foreach default.CommonAbilities(Ability)
+	{
+		Template.Abilities.AddItem(Ability);
+	}
+	
+	if(default.SniperRifle_Mobility[tier] > 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityBonus_' $ default.SniperRifle_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.SniperRifle_Mobility[tier]);
+	}
+	if(default.SniperRifle_Mobility[tier] < 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityPenalty_' $ default.SniperRifle_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.SniperRifle_Mobility[tier]);
+	}
 
 	//Stats
 	Template.BaseDamage = default.SniperRifle_Damage[tier];

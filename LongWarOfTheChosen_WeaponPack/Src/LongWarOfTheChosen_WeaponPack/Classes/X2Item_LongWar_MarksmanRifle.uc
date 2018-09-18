@@ -1,5 +1,7 @@
 class X2Item_LongWar_MarksmanRifle extends X2Item_LongWar_Weapon config(LongWar_WeaponPack_MarksmanRifle);
 
+var config name MarksmanRifle_Category;
+
 var config array<WeaponDamageValue> MarksmanRifle_Damage;
 var config array<int> MarksmanRifle_Aim;
 var config array<int> MarksmanRifle_CritChance;
@@ -14,12 +16,24 @@ var config array<int> MarksmanRifle_EleriumCost;
 var config array<int> MarksmanRifle_Engineering;
 var config array<name> MarksmanRifle_RequiredTech;
 var config array<string> MarksmanRifle_ImagePath;
+var config array<int> MarksmanRifle_Mobility;
 
 var name MarksmanRifleConventional;
 var name MarksmanRifleLaser;
 var name MarksmanRifleMagnetic;
 var name MarksmanRifleCoil;
 var name MarksmanRifleBeam;
+
+var config array<name> CommonAbilities;
+var config array<name> BallisticAbilities;
+var config array<name> LaserAbilities;
+var config array<name> MagneticAbilities;
+var config array<name> CoilgunAbilities;
+var config array<name> PlasmaAbilities;
+
+var config bool RemoveStandardShot;
+var config bool RemoveOverwatch;
+var config bool RemoveReload;
 
 defaultproperties
 {
@@ -44,8 +58,10 @@ static function array<X2DataTemplate> CreateTemplates()
 
 static function Create_MarksmanRifle_Template(out X2WeaponTemplate Template, int tier)
 {
+	local name Ability;
+
 	//Default Settings
-	Template.WeaponCat = 'sniper_rifle';
+	Template.WeaponCat = default.MarksmanRifle_Category;
 	Template.ItemCat = 'weapon';
 	Template.iPhysicsImpulse = 5;
 	Template.Tier = tier;
@@ -55,11 +71,37 @@ static function Create_MarksmanRifle_Template(out X2WeaponTemplate Template, int
 
 	//Abilities
 	Template.InventorySlot = eInvSlot_PrimaryWeapon;
-	Template.Abilities.AddItem('StandardShot');
-	Template.Abilities.AddItem('Overwatch');	
+	
+	if(!default.RemoveStandardShot)
+	{
+		Template.Abilities.AddItem('StandardShot');
+	}
+	if(!default.RemoveOverwatch)
+	{
+		Template.Abilities.AddItem('Overwatch');
+	}
+	if(!default.RemoveReload)
+	{
+		Template.Abilities.AddItem('Reload');
+	}
 	Template.Abilities.AddItem('OverwatchShot');
-	Template.Abilities.AddItem('Reload');
 	Template.Abilities.AddItem('HotLoadAmmo');
+
+	foreach default.CommonAbilities(Ability)
+	{
+		Template.Abilities.AddItem(Ability);
+	}
+	
+	if(default.MarksmanRifle_Mobility[tier] > 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityBonus_' $ default.MarksmanRifle_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.MarksmanRifle_Mobility[tier]);
+	}
+	if(default.MarksmanRifle_Mobility[tier] < 0)
+	{
+		Template.Abilities.AddItem(name('LWOTC_MobilityPenalty_' $ default.MarksmanRifle_Mobility[tier]));
+		Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, default.MarksmanRifle_Mobility[tier]);
+	}
 
 	//Stats
 	Template.BaseDamage = default.MarksmanRifle_Damage[tier];
